@@ -5,11 +5,13 @@ import { Sarabun, Tajawal } from "next/font/google";
 const sarabun = Sarabun({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
-}); // Choose the weights you need
+  variable: "--font-sarabun",
+});
 const tajawal = Tajawal({
   subsets: ["latin"],
   weight: ["300", "400", "500", "700", "800"],
-}); // Choose the weights you need
+  variable: "--font-tajawal",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
