@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 import BestSellingStaticText from "./components/best-selling-static-text";
 import { BestSellingCarousel } from "./components/best-selling-carousel";
+import BestSellingCarouselSkeleton from "@/components/skeletons/best-selling-carousel.skeleton";
 
 export default function BestSellingIndex() {
   return (
@@ -10,7 +11,9 @@ export default function BestSellingIndex() {
         <BestSellingStaticText />
       </div>
       <div className="flex-1 w-full min-w-0">
-        <BestSellingCarousel />
+        <Suspense fallback={<BestSellingCarouselSkeleton />}>
+          <BestSellingCarousel />
+        </Suspense>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ import BestSellingCard from "./best-selling-card";
 import { getBestSelling } from "@/lib/api/get-best-selling";
 
 export async function BestSellingCarousel() {
-  const result = await getBestSelling();
+  const result = await getBestSelling({ limit: 6 });
 
   return (
     <Carousel
@@ -28,8 +28,8 @@ export async function BestSellingCarousel() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className="-start-5 bg-maroon-500 hover:bg-maroon-600 text-white hover:text-white w-10 h-10 border-0" />
+      <CarouselNext className="-end-5 bg-maroon-500 hover:bg-maroon-600 text-white hover:text-white w-10 h-10 border-0" />
     </Carousel>
   );
 }

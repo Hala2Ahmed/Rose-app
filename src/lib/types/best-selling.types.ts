@@ -16,5 +16,12 @@ export type BestSellingProduct = {
   rateCount: number;
 };
 export type BestSellingResponse = {
-  bestSeller: BestSellingProduct[];
+  products: BestSellingProduct[];
 };
+
+export interface GetBestSellingParams {
+  filter?: string;
+  occasion?: string;
+
+  limit?: number;
+}

@@ -12,9 +12,16 @@ type BestSellingResult =
       data: [];
     };
 
-export async function getBestSelling(): Promise<BestSellingResult> {
+interface GetBestSellingParams {
+  occasion?: string;
+  limit?: number;
+}
+
+export async function getBestSelling(
+  params?: GetBestSellingParams
+): Promise<BestSellingResult> {
   try {
-    const data = await bestSellingService();
+    const data = await bestSellingService(params);
     return { success: true, data };
   } catch (error) {
     console.error("Error fetching best selling products:", error);

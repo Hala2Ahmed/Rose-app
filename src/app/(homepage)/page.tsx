@@ -1,11 +1,15 @@
 import BestSellingIndex from "./_features/best-selling";
-import BestSellingCard from "./_features/best-selling/components/best-selling-card";
-import BestSellingStaticText from "./_features/best-selling/components/best-selling-static-text";
+import MostPopularIndex from "./_features/most-popular";
 
-export default function Home() {
+interface HomeProps {
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default function Home({ searchParams }: HomeProps) {
   return (
     <>
       <BestSellingIndex />
+      <MostPopularIndex searchParams={searchParams as { occasion?: string }} />
     </>
   );
 }
