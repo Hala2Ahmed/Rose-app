@@ -9,6 +9,7 @@
 }
 body {
   background-color: white;
+  font-family: var(--font-sarabun);
 }
 
 @layer base {
