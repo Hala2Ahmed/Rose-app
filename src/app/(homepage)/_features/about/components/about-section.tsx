@@ -1,3 +1,4 @@
+import SubTitle from "@/components/shared/sub-title";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
 import Image from "next/image";
@@ -50,6 +51,8 @@ export default function About() {
 
       {/* Text */}
       <div className="py-5 max-w-[38.75rem]">
+        <SubTitle title="About" />
+
         <h2 className="font-bold text-3xl pb-2 pt-6 text-maroon-700 dark:text-softPink-200">
           Delivering the{" "}
           <span className="text-softPink-500 dark:text-maroon-400">Finest</span>{" "}
