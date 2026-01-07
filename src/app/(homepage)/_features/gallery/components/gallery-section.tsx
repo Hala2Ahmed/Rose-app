@@ -33,6 +33,9 @@ export default function Gallery() {
               src={image.src}
               alt="Gallery image"
               fill
+              sizes="(max-width: 640px) 100vw,
+         (max-width: 1024px) 50vw,
+         33vw"
               className="object-cover"
             />
           </div>

@@ -40,8 +40,8 @@ export default function About() {
             height={193}
           />
           <Image
-            className="rounded-tl-[3.125rem] rounded-tr-[6.25rem] rounded-br-[6.25rem] rounded-bl-[3.125rem]"
-            src="/assets/images/image10.png"
+            className="rounded-tl-[3.125rem] rounded-tr-[6.25rem] rounded-br-[6.25rem] rounded-bl-[3.125rem] object-cover w-[193px] h-[144px]"
+            src="/assets/images/image3.png"
             alt="about"
             width={193}
             height={144}
