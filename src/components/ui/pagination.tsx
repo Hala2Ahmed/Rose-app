@@ -65,8 +65,8 @@ const PaginationLink = React.forwardRef<HTMLButtonElement, PaginationLinkProps>(
       className={cn(
         "flex h-9 w-9 items-center justify-center rounded-xl border text-sm transition-colors ",
         isActive
-          ? "bg-maroon-600 text-white border-maroon-600 dark:bg-softPink-400 dark:text-zinc-800 dark:border-softPink-400"
-          : "bg-white text-zinc-800 border-zinc-100 dark:bg-zinc-700 dark:text-zinc-400 dark:border-zinc-600",
+          ? "bg-maroon-600 text-white border-maroon-600 dark:bg-softPink-400 dark:text-zinc-700 dark:border-softPink-400"
+          : "bg-white text-zinc-800 border-zinc-100 dark:bg-zinc-700 dark:text-zinc-50 dark:border-zinc-600",
         className
       )}
       {...props}
@@ -87,7 +87,7 @@ const PaginationPrevious = ({
     className={className}
     {...props}
   >
-    <ChevronLeft className="h-4 w-4 text-zinc-800 dark:text-zinc-400" />
+    <ChevronLeft className="h-4 w-4 text-zinc-800 dark:text-zinc-50" />
   </PaginationLink>
 );
 PaginationPrevious.displayName = "PaginationPrevious";
@@ -100,7 +100,7 @@ const PaginationNext = ({
   ...props
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink aria-label="Go to next page" className={className} {...props}>
-    <ChevronRight className="h-4 w-4 text-zinc-800 dark:text-zinc-400" />
+    <ChevronRight className="h-4 w-4 text-zinc-800 dark:text-zinc-50" />
   </PaginationLink>
 );
 PaginationNext.displayName = "PaginationNext";
@@ -117,7 +117,7 @@ const PaginationFirst = ({
     className={className}
     {...props}
   >
-    <ChevronsLeft className="h-4 w-4 text-zinc-800 dark:text-zinc-400" />
+    <ChevronsLeft className="h-4 w-4 text-zinc-800 dark:text-zinc-50" />
   </PaginationLink>
 );
 PaginationFirst.displayName = "PaginationFirst";
@@ -130,7 +130,7 @@ const PaginationLast = ({
   ...props
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink aria-label="Go to last page" className={className} {...props}>
-    <ChevronsRight className="h-4 w-4 text-zinc-800 dark:text-zinc-400" />
+    <ChevronsRight className="h-4 w-4 text-zinc-800 dark:text-zinc-50" />
   </PaginationLink>
 );
 PaginationLast.displayName = "PaginationLast";
