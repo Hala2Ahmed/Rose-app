@@ -76,3 +76,57 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Toast Styles */
+[data-sonner-toaster] {
+  --width: 447px;
+  --border-radius: 0.75rem;
+}
+
+[data-sonner-toast] {
+  border-width: 1px !important;
+  border-style: solid !important;
+}
+
+[data-sonner-toast][data-type="default"] {
+  background-color: rgb(244 244 245) !important;
+  border-color: rgb(161 161 170) !important;
+}
+
+[data-sonner-toast][data-type="success"] {
+  background-color: rgb(236 253 245) !important;
+  border-color: rgb(16 185 129) !important;
+}
+
+[data-sonner-toast][data-type="error"] {
+  background-color: rgb(254 242 242) !important;
+  border-color: rgb(185 28 28) !important;
+}
+
+[data-sonner-toast][data-type="info"] {
+  background-color: rgb(251 234 234) !important;
+  border-color: rgb(166 37 42) !important;
+}
+
+[data-sonner-toast][data-type="warning"] {
+  background-color: rgb(255 241 245) !important;
+  border-color: rgb(255 102 139) !important;
+}
+
+[data-sonner-toast] [data-close-button] {
+  position: absolute !important;
+  top: 0.5rem !important;
+  right: 0.5rem !important;
+  width: 1rem !important;
+  height: 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: rgb(161 161 170) !important;
+  cursor: pointer !important;
+  z-index: 10 !important;
+}
+
+[data-sonner-toast] [data-close-button]:hover {
+  color: rgb(82 82 91) !important;
+}
