@@ -149,7 +149,9 @@ export default function Home() {
             <PaginationItem>
               <PaginationEllipsis />
             </PaginationItem>
-
+<PaginationItem>
+              <PaginationLink>10</PaginationLink>
+            </PaginationItem>
             <PaginationItem>
               <PaginationNext />
             </PaginationItem>
