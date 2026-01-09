@@ -1,12 +1,4 @@
-/**
- * Button Component
- * 
- * A versatile button component with multiple variants, sizes, and states.
- * Supports loading state, disabled state, and full dark mode.
- * Uses class-variance-authority for variant management.
- * 
- * @module Button
- */
+
 
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";

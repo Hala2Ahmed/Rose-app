@@ -1,7 +1,8 @@
 "use client";
 
+import * as React from "react";
+import { cn } from "@/lib/utils/tailwind-merge";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import { InputPassword } from "@/components/ui/input-password";
 import {
   InputOTP,
@@ -24,7 +25,7 @@ import {
 import { Select } from "@/components/ui/input-select";
 import { FileInput } from "@/components/ui/input-file";
 import { PhoneInput } from "@/components/ui/phone-input";
-import { cn } from "@/lib/utils/tailwind-merge";
+import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -49,40 +50,46 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export default function Home() {
+export default function UIExample() {
   return (
-    <>
-      {/* ================= Toasts ================= */}
-      <section className="flex gap-2">
-        <Button onClick={() => toast("Default Toast")}>Default</Button>
-        <Button onClick={() => toast.success("Success Toast")}>Success</Button>
-        <Button onClick={() => toast.error("Error Toast")}>Error</Button>
+    <main className="p-8 space-y-12 bg-zinc-50 dark:bg-zinc-900 min-h-screen">
+      {/* ========== Toasts ========== */}
+      <section className="space-y-2">
+        <h2 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100">
+          Toasts
+        </h2>
+        <div className="flex gap-2 flex-wrap">
+          <Button onClick={() => toast("Default Toast")}>Default</Button>
+          <Button onClick={() => toast.success("Success Toast")}>
+            Success
+          </Button>
+          <Button onClick={() => toast.error("Error Toast")}>Error</Button>
+        </div>
       </section>
 
-
-
-      {/* ================= Password ================= */}
-      <section className="w-[350px] mt-6">
-        <Label>Password</Label>
-   <InputPassword
-    placeholder="Enter password"
-    status="default"
-  />
-
-  <InputPassword
-    placeholder="Enter password"
-    status="error"
-  />
-
-  <InputPassword
-    placeholder="Enter password"
-    status="disabled"
-  />
+      {/* ========== Badges ========== */}
+      <section className="space-y-2">
+        <h2 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100">
+          Badges
+        </h2>
+        <div className="flex gap-2 flex-wrap">
+          <Badge variant="subtle">Subtle</Badge>
+          <Badge variant="secondary">Secondary</Badge>
+          <Badge variant="primary">Primary</Badge>
+        </div>
       </section>
 
-      {/* ================= OTP ================= */}
-      <section className="mt-6">
-        <Label>OTP</Label>
+      {/* ========== Password Input ========== */}
+      <section className="space-y-2 w-72">
+        <Label>Password Input</Label>
+        <InputPassword placeholder="Enter password" status="default" />
+        <InputPassword placeholder="Enter password" status="error" />
+        <InputPassword placeholder="Enter password" status="disabled" />
+      </section>
+
+      {/* ========== OTP Input ========== */}
+      <section className="space-y-2">
+        <Label>OTP Input</Label>
         <InputOTP maxLength={6}>
           <InputOTPGroup>
             {[0, 1, 2].map((i) => (
@@ -97,31 +104,31 @@ export default function Home() {
         </InputOTP>
       </section>
 
-      {/* ================= Select & File ================= */}
-      <section className="flex flex-col gap-4 w-72 mt-6">
+      {/* ========== Select & File Input ========== */}
+      <section className="flex flex-col gap-4 w-72">
+        <Label>Select Inputs</Label>
         <Select status="default">
-  <option>Option 1</option>
-  <option>Option 2</option>
-</Select>
+          <option>Option 1</option>
+          <option>Option 2</option>
+        </Select>
+        <Select status="error">
+          <option>Option 1</option>
+          <option>Option 2</option>
+        </Select>
+        <Select status="disabled">
+          <option>Option 1</option>
+          <option>Option 2</option>
+        </Select>
 
-<Select status="error">
-  <option>Option 1</option>
-  <option>Option 2</option>
-</Select>
-
-<Select status="disabled">
-  <option>Option 1</option>
-  <option>Option 2</option>
-</Select>
-
-
+        <Label>File Inputs</Label>
         <FileInput />
         <FileInput status="error" />
         <FileInput status="disabled" />
       </section>
 
-      {/* ================= Phone ================= */}
-      <section className="w-80 mt-6">
+      {/* ========== Phone Input ========== */}
+      <section className="w-80">
+        <Label>Phone Input</Label>
         <PhoneInput
           defaultCountry="EG"
           placeholder="Enter your phone number"
@@ -129,8 +136,9 @@ export default function Home() {
         />
       </section>
 
-      {/* ================= Pagination ================= */}
-      <section className="mt-6">
+      {/* ========== Pagination ========== */}
+      <section className="space-y-2">
+        <Label>Pagination</Label>
         <Pagination>
           <PaginationContent>
             <PaginationItem>
@@ -139,7 +147,6 @@ export default function Home() {
             <PaginationItem>
               <PaginationPrevious />
             </PaginationItem>
-
             <PaginationItem>
               <PaginationLink isActive>1</PaginationLink>
             </PaginationItem>
@@ -149,7 +156,7 @@ export default function Home() {
             <PaginationItem>
               <PaginationEllipsis />
             </PaginationItem>
-<PaginationItem>
+            <PaginationItem>
               <PaginationLink>10</PaginationLink>
             </PaginationItem>
             <PaginationItem>
@@ -162,8 +169,9 @@ export default function Home() {
         </Pagination>
       </section>
 
-      {/* ================= Breadcrumbs ================= */}
-      <section className="flex flex-col gap-4 mt-6">
+      {/* ========== Breadcrumbs ========== */}
+      <section className="space-y-4">
+        <Label>Breadcrumbs</Label>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -197,29 +205,28 @@ export default function Home() {
         </Breadcrumb>
       </section>
 
-      {/* ================= Dropdown ================= */}
-      <section className="mt-6">
+      {/* ========== Dropdown Menu ========== */}
+      <section className="space-y-2">
+        <Label>Dropdown Menu</Label>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline">Open</Button>
+            <Button variant="outline">Open Menu</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="start">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                Profile
-                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                Profile <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                Billing
-                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                Billing <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                Settings
-                <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                Settings <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                Keyboard shortcuts
+                Keyboard shortcuts{" "}
                 <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
               </DropdownMenuItem>
             </DropdownMenuGroup>
@@ -238,8 +245,7 @@ export default function Home() {
                 </DropdownMenuPortal>
               </DropdownMenuSub>
               <DropdownMenuItem>
-                New Team
-                <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+                New Team <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
@@ -248,12 +254,11 @@ export default function Home() {
             <DropdownMenuItem disabled>API</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              Log out
-              <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+              Log out <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </section>
-    </>
+    </main>
   );
 }
