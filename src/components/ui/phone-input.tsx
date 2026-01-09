@@ -1,5 +1,8 @@
 "use client";
 
+/* =========================
+   Imports
+========================= */
 import * as React from "react";
 import { CheckIcon, ChevronsUpDown } from "lucide-react";
 import * as RPNInput from "react-phone-number-input";
@@ -23,6 +26,9 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils/tailwind-merge";
 
+/* =========================
+   Types
+========================= */
 type Status = "default" | "error" | "disabled";
 
 interface PhoneInputProps
@@ -32,6 +38,9 @@ interface PhoneInputProps
   status?: Status;
 }
 
+/* =========================
+   Phone Input Component
+========================= */
 const PhoneInput = React.forwardRef<
   React.ElementRef<typeof RPNInput.default>,
   PhoneInputProps
@@ -50,18 +59,21 @@ const PhoneInput = React.forwardRef<
     return (
       <div
         className={cn(
-          "group flex items-center w-full h-11 rounded-xl border bg-white transition-all duration-200",
-          // Container Styles based on Status
+          "group flex items-center w-full h-11 rounded-xl border transition-all duration-200",
+          "bg-white dark:bg-zinc-700 ",
+
           status === "default" && [
-            "border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900",
+            "border-zinc-300 dark:border-zinc-700",
             "focus-within:ring-2 focus-within:ring-maroon-100 focus-within:border-maroon-600",
             "dark:focus-within:ring-softpink-400/20 dark:focus-within:border-softpink-400",
-            "hover:border-zinc-400 dark:hover:border-zinc-600",
           ],
+
           status === "error" &&
             "border-red-600 ring-2 ring-red-100 dark:ring-red-900/30",
+
           status === "disabled" &&
             "bg-zinc-50 opacity-60 cursor-not-allowed dark:bg-zinc-800",
+
           className
         )}
       >
@@ -86,23 +98,33 @@ const PhoneInput = React.forwardRef<
 
 PhoneInput.displayName = "PhoneInput";
 
+/* =========================
+   Input Field
+========================= */
 const InputComponent = React.forwardRef<
   HTMLInputElement,
   React.ComponentProps<"input"> & { status?: Status }
 >(({ className, status, ...props }, ref) => (
   <Input
+    ref={ref}
+    disabled={status === "disabled"}
     className={cn(
-      "h-full w-full border-none bg-transparent px-3 text-sm focus-visible:ring-0 focus-visible:ring-offset-0 disabled:cursor-not-allowed",
-      "dark:text-zinc-200 placeholder:text-zinc-400",
+      "h-full w-full border-none bg-transparent px-3 text-sm   ",
+      "focus-visible:ring-0 focus-visible:ring-offset-0 dark:focus-visible:ring-0",
+      "placeholder:text-zinc-400",
+      "text-zinc-800 dark:text-zinc-200 ",
+      "disabled:cursor-not-allowed",
       className
     )}
     {...props}
-    ref={ref}
-    disabled={status === "disabled"}
   />
 ));
+
 InputComponent.displayName = "InputComponent";
 
+/* =========================
+   Country Select Dropdown
+========================= */
 type CountrySelectProps = {
   disabled?: boolean;
   value: RPNInput.Country;
@@ -120,8 +142,8 @@ const CountrySelect = ({
 }: CountrySelectProps) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const countryCode = selectedCountry
-    ? `+${RPNInput.getCountryCallingCode(selectedCountry)}`
+  const countryLabel = selectedCountry
+    ? `${selectedCountry} (+${RPNInput.getCountryCallingCode(selectedCountry)})`
     : "";
 
   return (
@@ -132,62 +154,74 @@ const CountrySelect = ({
           variant="ghost"
           disabled={disabled || status === "disabled"}
           className={cn(
-            "flex items-center gap-1.5 h-full px-3 rounded-l-xl border-none bg-transparent transition-colors",
-            "hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:ring-0 focus:outline-none"
+            "flex items-center gap-2 h-full px-3 ",
+            "bg-transparent transition-none",
+            "hover:bg-transparent",
+            "focus-visible:ring-0 focus-visible:outline-none",
+            "dark:bg-zinc-700 dark:text-zinc-50"
           )}
         >
           <FlagComponent
             country={selectedCountry}
             countryName={selectedCountry}
           />
+
           <span
             className={cn(
-              "text-xs font-medium",
+              "text-xs font-medium whitespace-nowrap",
               status === "error"
                 ? "text-red-600"
-                : "text-zinc-600 dark:text-zinc-400"
+                : "text-gray-950 dark:text-zinc-50"
             )}
           >
-            {countryCode}
+            {countryLabel}
           </span>
-          <ChevronsUpDown className="h-3 w-3 opacity-50 shrink-0" />
+
+          <ChevronsUpDown className="h-3.5 w-3.5 text-gray-950 dark:text-zinc-50 shrink-0" />
         </Button>
       </PopoverTrigger>
+
       <PopoverContent
-        className="w-[300px] p-0 shadow-xl border-zinc-200 dark:border-zinc-800"
         align="start"
+        className="w-[300px] p-0 shadow-xl border-zinc-200 dark:border-zinc-800"
       >
         <Command>
           <CommandInput placeholder="Search country..." className="h-10" />
+
           <CommandList>
             <ScrollArea className="h-72">
               <CommandEmpty>No country found.</CommandEmpty>
+
               <CommandGroup>
-                {countryList.map(({ value, label }) =>
-                  value ? (
-                    <CommandItem
-                      key={value}
-                      className="gap-2 cursor-pointer"
-                      onSelect={() => {
-                        onChange(value);
-                        setIsOpen(false);
-                      }}
-                    >
-                      <FlagComponent country={value} countryName={label} />
-                      <span className="flex-1 text-sm truncate">{label}</span>
-                      <span className="text-xs text-zinc-400">
-                        +{RPNInput.getCountryCallingCode(value)}
-                      </span>
-                      <CheckIcon
-                        className={cn(
-                          "ml-auto h-4 w-4 text-maroon-600",
-                          value === selectedCountry
-                            ? "opacity-100"
-                            : "opacity-0"
-                        )}
-                      />
-                    </CommandItem>
-                  ) : null
+                {countryList.map(
+                  ({ value, label }) =>
+                    value && (
+                      <CommandItem
+                        key={value}
+                        className="gap-2 cursor-pointer"
+                        onSelect={() => {
+                          setIsOpen(false);
+                          if (onChange) onChange(value);
+                        }}
+                      >
+                        <FlagComponent country={value} countryName={label} />
+
+                        <span className="flex-1 text-sm truncate">{label}</span>
+
+                        <span className="text-xs text-zinc-400">
+                          +{RPNInput.getCountryCallingCode(value)}
+                        </span>
+
+                        <CheckIcon
+                          className={cn(
+                            "ml-auto h-4 w-4 text-maroon-600 transition-opacity",
+                            value === selectedCountry
+                              ? "opacity-100"
+                              : "opacity-0"
+                          )}
+                        />
+                      </CommandItem>
+                    )
                 )}
               </CommandGroup>
             </ScrollArea>
@@ -198,12 +232,16 @@ const CountrySelect = ({
   );
 };
 
+/* =========================
+   Country Flag
+========================= */
 const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
   const Flag = flags[country];
+
   return (
-    <span className="flex h-5 w-5 shrink-0 overflow-hidden rounded-full">
+    <span className="flex h-5 w-5 items-center justify-center shrink-0 overflow-hidden rounded-full border border-zinc-200 dark:border-zinc-700">
       {Flag ? (
-        <Flag title={countryName} />
+        <Flag title={countryName} className="h-6 w-6 object-cover" />
       ) : (
         <span className="bg-zinc-200 w-full h-full" />
       )}
@@ -211,4 +249,7 @@ const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
   );
 };
 
+/* =========================
+   Export
+========================= */
 export { PhoneInput };
