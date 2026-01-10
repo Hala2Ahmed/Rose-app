@@ -1,0 +1,64 @@
+"use client";
+
+import * as React from "react";
+import Autoplay from "embla-carousel-autoplay";
+
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Testimonial } from "../../../../../lib/types/testimonials";
+import TestimonialsCard from "./testimonials-card";
+
+type TestimonialsCarouselProps = {
+    items: Testimonial[];
+};
+
+export default function TestimonialsCarousel({
+    items,
+}: TestimonialsCarouselProps) {
+
+    {/* Embla Carousel */ }
+    const autoplay = React.useRef(
+        Autoplay({
+            delay: 2000,
+            stopOnInteraction: false,
+            stopOnMouseEnter: true,
+        })
+    );
+
+    return (
+        <div className="w-full bg-maroon-50 flex flex-col justify-center items-center px-28 py-16">
+            <Carousel
+                opts={{
+                    loop: true,
+                    align: "start",
+                }}
+                plugins={[autoplay.current]}
+                className="w-full max-w-303"
+            >
+                {/* Carousel Content */}
+                <CarouselContent>
+                    {[...items, ...items].map((item, index) => (
+                        <CarouselItem
+                            key={index}
+                            className="basis-full sm:basis-1/2 lg:basis-1/3 pt-11 px-8 pb-16"
+                        >
+                            <TestimonialsCard
+                                testimonial={item}
+                                key={item._id}
+                            />
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+
+                {/* Arrow Navigation */}
+                <CarouselPrevious />
+                <CarouselNext />
+            </Carousel>
+        </div>
+    );
+}

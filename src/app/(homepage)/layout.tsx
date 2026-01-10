@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${sarabun.variable} ${tajawal.variable} antialiased`}>
-        <main className="px-20 pt-10">{children}</main>
+        <main className="">{children}</main>
       </body>
     </html>
   );
