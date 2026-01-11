@@ -1,7 +1,7 @@
 import React from 'react';
 import { getTestimonialsService } from './services/testimonial.service';
 import TestimonialsCarousel from './_components/testimonial-carousel';
-import Title from '../../../../components/shared/title';
+import Title from '../../../../../components/shared/title';
 
 const Index = async () => {
     const data = await getTestimonialsService();
