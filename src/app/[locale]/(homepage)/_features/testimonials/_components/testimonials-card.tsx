@@ -36,7 +36,7 @@ const TestimonialsCard = ({ testimonial }: TestimonialsCardProps) => {
 
             {/* Card Content */}
             <CardContent className="text-zinc-800 flex flex-col gap-2.5">
-
+                {/*//TODO: Using Rating Component*/}
                 {/* Rating */}
                 <div className="flex justify-center gap-1">
                     {[...Array(testimonial.rating)].map((_, i) => (
