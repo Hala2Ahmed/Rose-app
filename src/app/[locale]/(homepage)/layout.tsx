@@ -1,6 +1,6 @@
 import { Sarabun, Tajawal } from "next/font/google";
 import { Providers } from "../../../components/providers/index";
-import { hasLocale } from "next-intl";
+import { hasLocale, Locale } from "next-intl";
 import { routing } from "../../../i18n/routing";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -20,11 +20,11 @@ const tajawal = Tajawal({
 
 type LayoutProps = {
   children: React.ReactNode,
-  params: { locale: string },
+  params: { locale: Locale },
 }
 
 export async function generateMetadata({ params: { locale } }: Pick<LayoutProps, "params">): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: "metadata.root" });
+  const t = await getTranslations("metadata.root");
 
   return {
     title: t("title"),
