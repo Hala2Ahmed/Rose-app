@@ -47,7 +47,7 @@ export default function LocaleLayout({ children, params: { locale } }: LayoutPro
   return (
     <html lang="en">
       <body className={`${sarabun.variable} ${tajawal.variable} antialiased`}>
-        <main className="">
+        <main className="mx-20">
           <Providers>
             {children}
           </Providers>

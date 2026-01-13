@@ -7,7 +7,7 @@ const Testimonial = async () => {
     const data = await getTestimonialsService();
 
     return (
-        <section className='w-full flex flex-col gap-10'>
+        <section className='flex flex-col gap-10 -mx-20'>
             {/* //TODO: Using Title Component that done by Sarah */}
             {/* Title */}
             <Title title='Testimonials' heading='Real Words from Happy Customers' />
