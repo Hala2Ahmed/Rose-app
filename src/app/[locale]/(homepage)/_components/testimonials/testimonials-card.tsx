@@ -1,8 +1,8 @@
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Star } from "lucide-react";
-import { Testimonial } from "../../../../../../lib/types/testimonials";
 import Image from "next/image";
 import { useFormatter } from "next-intl";
+import { Testimonial } from "../../../../../lib/types/testimonials";
 
 type TestimonialsCardProps = {
     testimonial: Testimonial
@@ -12,10 +12,10 @@ const TestimonialsCard = ({ testimonial }: TestimonialsCardProps) => {
     //translation
     const format = useFormatter();
     return (
-        <Card className="flex flex-col gap-3 justify-center relative rounded-3xl shadow-lg pt-14 pb-5 px-5">
+        <Card className="flex flex-col gap-3 justify-center relative rounded-3xl shadow-lg pt-14 pb-5 px-5 dark:bg-white">
 
             {/* card Image */}
-            <div className="absolute -top-11 left-1/2 -translate-x-1/2  h-30 w-30 rounded-full overflow-hidden border-4 border-background shadow-md">
+            <div className="absolute -top-11 left-1/2 -translate-x-1/2  h-30 w-30 rounded-full overflow-hidden border-4 border-white  shadow-md">
                 <Image
                     src={testimonial.user.photo}
                     alt={`${testimonial.user.firstName} ${testimonial.user.lastName} Photo`}
@@ -29,7 +29,7 @@ const TestimonialsCard = ({ testimonial }: TestimonialsCardProps) => {
             {/* Card Header */}
             <CardHeader>
                 {/* Name */}
-                <h3 className="text-base font-semibold text-center">
+                <h3 className="text-base font-semibold text-center text-zinc-800">
                     {testimonial.user.firstName} {testimonial.user.lastName}
                 </h3>
             </CardHeader>

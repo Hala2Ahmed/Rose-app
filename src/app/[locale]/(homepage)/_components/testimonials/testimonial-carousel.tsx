@@ -10,7 +10,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Testimonial } from "../../../../../../lib/types/testimonials";
+import { Testimonial } from "../../../../../lib/types/testimonials";
 import TestimonialsCard from "./testimonials-card";
 
 type TestimonialsCarouselProps = {
@@ -31,7 +31,7 @@ export default function TestimonialsCarousel({
     );
 
     return (
-        <div className="w-full bg-maroon-50 flex flex-col justify-center items-center px-28 py-16">
+        <div className="w-full bg-maroon-50 flex flex-col justify-center items-center px-28 py-16 dark:bg-zinc-700">
             <Carousel
                 opts={{
                     loop: true,
