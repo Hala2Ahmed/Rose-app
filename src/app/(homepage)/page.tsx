@@ -1,6 +1,6 @@
-import About from "./_features/about/components/about-section";
-import Companies from "./_features/companies/components/companies-section";
-import Gallery from "./_features/gallery/components/gallery-section";
+import About from "./_components/about/about-section";
+import Companies from "./_components/companies/companies-section";
+import Gallery from "./_components/gallery/gallery-section";
 
 export default function Home() {
   return (

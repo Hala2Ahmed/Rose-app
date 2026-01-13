@@ -2,17 +2,9 @@ import Image from "next/image";
 import React from "react";
 // import MainTitle from "@/components/shared/shard-title";
 import SubTitle from "@/components/shared/sub-title";
+import { GALLERY_FEATURES } from "@/lib/constants/homepage.constant";
 
 export default function Gallery() {
-  const galleryImages = [
-    { src: "/assets/images/image11.png", height: "38.563rem" },
-    { src: "/assets/images/image12.png", height: "25.3rem" },
-    { src: "/assets/images/image5.png", height: "25.688rem" },
-    { src: "/assets/images/image10.png", height: "38.188rem" },
-    { src: "/assets/images/image10.png", height: "25.688rem" },
-    { src: "/assets/images/image7.png", height: "38.188rem" },
-  ];
-
   return (
     <section>
       {/* Section Header */}
@@ -22,10 +14,10 @@ export default function Gallery() {
       </header>
 
       {/* Masonry Gallery */}
-      <section className="columns-3 gap-3 space-y-3.5">
-        {galleryImages.map((image, index) => (
+      <div className="columns-3 gap-3 space-y-3.5">
+        {GALLERY_FEATURES.map((image) => (
           <div
-            key={index}
+            key={image.id}
             className="relative w-full break-inside-avoid"
             style={{ height: image.height }}
           >
@@ -40,7 +32,7 @@ export default function Gallery() {
             />
           </div>
         ))}
-      </section>
+      </div>
     </section>
   );
 }

@@ -1,25 +1,19 @@
 import SubTitle from "@/components/shared/sub-title";
 import { Button } from "@/components/ui/button";
+import { ABOUT_FEATURES } from "@/lib/constants/homepage.constant";
 import { ArrowRight, Check } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function About() {
-  const features = [
-    "Competitive Prices & Easy Shopping",
-    "Premium Quality & Elegant Packaging",
-    "Perfect for Every Occasion",
-    "Fast & Reliable Delivery",
-  ];
-
   return (
-    <section className="flex gap-20 mb-32 justify-center items-center">
+    <section className="flex gap-20 mb-24 justify-center items-center">
       {/* Images */}
       <div className="flex gap-2">
         {/* Main Image with Decorative Border */}
         <div
           className="relative max-h-[22.6875rem] before:absolute before:-top-4 before:-left-4 before:-z-10 before:w-full before:rounded-tl-[3.125rem] before:rounded-tr-[7.5rem] before:rounded-br-[7.5rem] before:rounded-bl-[7.5rem]
- before:h-full before:border-4 before:border-maroon-600 before:rotate-[3deg] dark:before:border-softPink-400"
+ before:h-full before:border-4 before:border-maroon-600 before:rotate-3 dark:before:border-softPink-400"
         >
           <Image
             className="rounded-tl-[3.125rem] rounded-tr-[7.5rem] rounded-br-[7.5rem] rounded-bl-[7.5rem] w-full h-full object-cover"
@@ -40,7 +34,7 @@ export default function About() {
             height={193}
           />
           <Image
-            className="rounded-tl-[3.125rem] rounded-tr-[6.25rem] rounded-br-[6.25rem] rounded-bl-[3.125rem] object-cover w-[193px] h-[144px]"
+            className="rounded-tl-[3.125rem] rounded-tr-[6.25rem] rounded-br-[6.25rem] rounded-bl-[3.125rem] object-cover w-[12.063rem] h-36"
             src="/assets/images/image3.png"
             alt="about"
             width={193}
@@ -50,7 +44,7 @@ export default function About() {
       </div>
 
       {/* Text */}
-      <div className="py-5 max-w-[38.75rem]">
+      <div className="py-5 max-w-2xl">
         <SubTitle title="About" />
 
         <h2 className="font-bold text-3xl pb-2 pt-6 text-maroon-700 dark:text-softPink-200">
@@ -72,23 +66,23 @@ export default function About() {
         </p>
 
         <Link href="/products">
-          <Button className="my-6 dark:text-zinc-800">
+          <Button className="my-6 bg-maroon-600 dark:bg-softPink-200 dark:text-zinc-800">
             Discover
             <ArrowRight size={16} />
           </Button>
         </Link>
 
         <ul className="grid grid-cols-2 gap-6">
-          {features.map((feature, index) => (
+          {ABOUT_FEATURES.map((feature) => (
             <li
-              key={index}
+              key={feature.id}
               className="flex items-center gap-2 text-sm dark:bg-zinc-50"
             >
               <Check
                 className="text-maroon-700 dark:text-softPink-400"
                 size={20}
               />
-              {feature}
+              {feature.text}
             </li>
           ))}
         </ul>
