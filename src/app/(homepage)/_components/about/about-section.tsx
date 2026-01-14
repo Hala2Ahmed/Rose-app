@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <section className="flex gap-20 mb-24 justify-center items-center">
+    <section className="flex gap-20 mb-16 justify-center items-center">
       {/* Images */}
       <div className="flex gap-2">
         {/* Main Image with Decorative Border */}
@@ -76,7 +76,7 @@ export default function About() {
           {ABOUT_FEATURES.map((feature) => (
             <li
               key={feature.id}
-              className="flex items-center gap-2 text-sm dark:bg-zinc-50"
+              className="flex items-center gap-2 text-sm dark:text-zinc-50"
             >
               <Check
                 className="text-maroon-700 dark:text-softPink-400"
