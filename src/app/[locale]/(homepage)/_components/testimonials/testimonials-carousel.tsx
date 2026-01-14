@@ -11,7 +11,7 @@ type TestimonialsCarouselProps = {
     children: React.ReactNode,
 }
 
-function TestimonialsCarousel ({ children }: TestimonialsCarouselProps) {
+export default function TestimonialsCarousel({ children }: TestimonialsCarouselProps) {
     {/* Embla Carousel */ }
     const autoScroll = React.useRef(
         AutoScroll({
@@ -40,5 +40,3 @@ function TestimonialsCarousel ({ children }: TestimonialsCarouselProps) {
         </div>
     )
 }
-
-export default TestimonialsCarousel;

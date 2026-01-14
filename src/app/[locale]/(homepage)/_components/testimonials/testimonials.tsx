@@ -5,7 +5,7 @@ import TestimonialsCarousel from './testimonials-carousel';
 import TestimonialsContent from './testimonials-content';
 import TestimonialsContentSkeleton from '../../../../../components/skeleton/testimonials/testimonials-content.skeleton';
 
-async function Testimonials() {
+export default async function Testimonials() {
     // translation
     const t = await getTranslations("testimonials");
 
@@ -24,5 +24,3 @@ async function Testimonials() {
         </section>
     )
 }
-
-export default Testimonials;

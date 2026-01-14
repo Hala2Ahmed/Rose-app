@@ -5,7 +5,7 @@ import {
     CardHeader
 } from "@/components/ui/card";
 
-function TestimonialsCardSkeleton() {
+export default function TestimonialsCardSkeleton() {
     return (
         <Card className="flex flex-col gap-3 justify-center relative rounded-3xl shadow-lg pt-14 pb-5 px-5 dark:bg-white animate-pulse">
 
@@ -19,7 +19,7 @@ function TestimonialsCardSkeleton() {
 
             {/* Card Content */}
             <CardContent className="flex flex-col gap-3">
-                
+
                 {/* Rating Skeleton */}
                 <div className="flex justify-center gap-1">
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -46,4 +46,3 @@ function TestimonialsCardSkeleton() {
     );
 }
 
-export default TestimonialsCardSkeleton;

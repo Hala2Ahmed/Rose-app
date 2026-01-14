@@ -7,7 +7,7 @@ import {
 import TestimonialsCardSkeleton from './testimonials-card.skeleton';
 
 
-function TestimonialsContentSkeleton() {
+export default function TestimonialsContentSkeleton() {
     return (
         <CarouselContent>
             {Array.from({ length: 6 }).map((_, index) => (
@@ -22,4 +22,3 @@ function TestimonialsContentSkeleton() {
     );
 }
 
-export default TestimonialsContentSkeleton;

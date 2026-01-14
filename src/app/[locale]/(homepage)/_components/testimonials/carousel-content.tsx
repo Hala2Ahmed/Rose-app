@@ -12,7 +12,7 @@ type TestimonialsCarouselProps = {
     items: Testimonial[];
 };
 
-function Content({
+export default function Content({
     items,
 }: TestimonialsCarouselProps) {
     return (
@@ -31,5 +31,3 @@ function Content({
         </CarouselContent>
     );
 }
-
-export default Content;

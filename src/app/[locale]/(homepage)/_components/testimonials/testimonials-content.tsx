@@ -2,7 +2,7 @@ import React from 'react';
 import { getTestimonialsService } from '../../_services/testimonial.service';
 import Content from './carousel-content';
 
-async function TestimonialsContent() {
+export default async function TestimonialsContent() {
     // services
     const data = await getTestimonialsService();
 
@@ -10,5 +10,3 @@ async function TestimonialsContent() {
         <Content items={data.testimonials} />
     )
 }
-
-export default TestimonialsContent;

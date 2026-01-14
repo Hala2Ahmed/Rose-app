@@ -8,7 +8,7 @@ type TestimonialsCardProps = {
     testimonial: Testimonial
 }
 
-function TestimonialsCard({ testimonial }: TestimonialsCardProps) {
+export default function TestimonialsCard({ testimonial }: TestimonialsCardProps) {
     //translation
     const format = useFormatter();
 
@@ -69,5 +69,3 @@ function TestimonialsCard({ testimonial }: TestimonialsCardProps) {
         </Card>
     )
 }
-
-export default TestimonialsCard;
