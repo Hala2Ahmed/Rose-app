@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Autoplay from "embla-carousel-autoplay";
 
 import {
     Carousel,
@@ -12,6 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import { Testimonial } from "../../../../../lib/types/testimonials";
 import TestimonialsCard from "./testimonials-card";
+import AutoScroll from "embla-carousel-auto-scroll";
 
 type TestimonialsCarouselProps = {
     items: Testimonial[];
@@ -22,9 +22,9 @@ export default function TestimonialsCarousel({
 }: TestimonialsCarouselProps) {
 
     {/* Embla Carousel */ }
-    const autoplay = React.useRef(
-        Autoplay({
-            delay: 2000,
+    const autoScroll = React.useRef(
+        AutoScroll({
+            startDelay: 0,
             stopOnInteraction: false,
             stopOnMouseEnter: true,
         })
@@ -37,7 +37,7 @@ export default function TestimonialsCarousel({
                     loop: true,
                     align: "start",
                 }}
-                plugins={[autoplay.current]}
+                plugins={[autoScroll.current]}
                 className="w-full max-w-303"
             >
                 {/* Carousel Content */}
