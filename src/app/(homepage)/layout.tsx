@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { Sarabun, Tajawal } from "next/font/google";
+import { ThemeProvider } from "@/components/providers/theme-provider"
 
 const sarabun = Sarabun({
   subsets: ["latin"],
@@ -26,7 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${sarabun.variable} ${tajawal.variable} antialiased`}>
-        <main className="px-20 pt-10">{children}</main>
+                  <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+        <main className="px-20 pt-10">{children}</main></ThemeProvider>
       </body>
     </html>
   );
