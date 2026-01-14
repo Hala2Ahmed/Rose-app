@@ -8,9 +8,10 @@ type TestimonialsCardProps = {
     testimonial: Testimonial
 }
 
-const TestimonialsCard = ({ testimonial }: TestimonialsCardProps) => {
+function TestimonialsCard({ testimonial }: TestimonialsCardProps) {
     //translation
     const format = useFormatter();
+
     return (
         <Card className="flex flex-col gap-3 justify-center relative rounded-3xl shadow-lg pt-14 pb-5 px-5 dark:bg-white">
 

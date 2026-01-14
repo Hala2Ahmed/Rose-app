@@ -6,21 +6,15 @@ import {
     Carousel,
     CarouselContent,
     CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Testimonial } from "../../../../../lib/types/testimonials";
 import TestimonialsCard from "./testimonials-card";
 import AutoScroll from "embla-carousel-auto-scroll";
 
 type TestimonialsCarouselProps = {
-    items: Testimonial[];
-};
+    children: React.ReactNode,
+}
 
-export default function TestimonialsCarousel({
-    items,
-}: TestimonialsCarouselProps) {
-
+function TestimonialsCarousel ({ children }: TestimonialsCarouselProps) {
     {/* Embla Carousel */ }
     const autoScroll = React.useRef(
         AutoScroll({
@@ -42,23 +36,12 @@ export default function TestimonialsCarousel({
             >
                 {/* Carousel Content */}
                 <CarouselContent>
-                    {[...items, ...items].map((item, index) => (
-                        <CarouselItem
-                            key={index}
-                            className="basis-full sm:basis-1/2 lg:basis-1/3 pt-11 px-8 pb-16"
-                        >
-                            <TestimonialsCard
-                                testimonial={item}
-                                key={item._id}
-                            />
-                        </CarouselItem>
-                    ))}
+                    {children}
                 </CarouselContent>
 
-                {/* Arrow Navigation */}
-                <CarouselPrevious />
-                <CarouselNext />
             </Carousel>
         </div>
-    );
+    )
 }
+
+export default TestimonialsCarousel;

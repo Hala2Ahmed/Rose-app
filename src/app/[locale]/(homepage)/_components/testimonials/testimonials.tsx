@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Title from '../../../../../components/shared/title';
-import { getTestimonialsService } from '../../services/testimonial.service';
-import TestimonialsCarousel from './testimonial-carousel';
+import { getTestimonialsService } from '../../_services/testimonial.service';
 import { getTranslations } from 'next-intl/server';
+import TestimonialsCarousel from './testimonials-carousel';
+import TestimonialsContent from './testimonials-content';
+import TestimonialsContentSkeleton from '../../../../../components/skeleton/testimonials/testimonials-content.skeleton';
 
-const Testimonials = async () => {
-    const data = await getTestimonialsService();
+async function Testimonials() {
+    // translation
     const t = await getTranslations("testimonials");
-
 
     return (
         <section className='flex flex-col gap-10 -mx-20'>
@@ -16,7 +17,11 @@ const Testimonials = async () => {
             <Title title={t("title")} heading={t("heading")} />
 
             {/* Carousel */}
-            <TestimonialsCarousel items={data.testimonials} />
+            <TestimonialsCarousel>
+                <Suspense fallback={<TestimonialsContentSkeleton />}>
+                    <TestimonialsContent />
+                </Suspense>
+            </TestimonialsCarousel>
         </section>
     )
 }

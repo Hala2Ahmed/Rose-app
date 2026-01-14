@@ -5,6 +5,7 @@ import { routing } from "../../../i18n/routing";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
+import { cn } from "../../../lib/utils/tailwind-merge";
 
 const sarabun = Sarabun({
   subsets: ["latin"],
@@ -46,7 +47,7 @@ export default function LocaleLayout({ children, params: { locale } }: LayoutPro
 
   return (
     <html lang="en">
-      <body className={`${sarabun.variable} ${tajawal.variable} antialiased`}>
+      <body className={cn(`${sarabun.variable} ${tajawal.variable} antialiased`)}>
         <main className="mx-20">
           <Providers>
             {children}

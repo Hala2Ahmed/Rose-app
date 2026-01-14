@@ -13,6 +13,7 @@ const LanguageSwitcher = () => {
     const router = useRouter();
     const pathname = usePathname();
 
+    // Functions
     function switchLanguage() {
         router.push({
             pathname,
@@ -24,12 +25,12 @@ const LanguageSwitcher = () => {
     }
 
     return (
-        <Button 
-        onClick={switchLanguage}
-        variant={"ghost"}
-        className=' border-l hover:border-l border-zinc-200'
+        <Button
+            onClick={switchLanguage}
+            variant={"ghost"}
+            className=' border-l hover:border-l border-zinc-200'
         >
-            {locale == "ar"? "English" : "العربية"}
+            {locale == "ar" ? "English" : "العربية"}
         </Button>
     )
 }
