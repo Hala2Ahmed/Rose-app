@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import Title from '../../../../../components/shared/title';
-import { getTestimonialsService } from '../../_services/testimonial.service';
 import { getTranslations } from 'next-intl/server';
 import TestimonialsCarousel from './testimonials-carousel';
 import TestimonialsContent from './testimonials-content';

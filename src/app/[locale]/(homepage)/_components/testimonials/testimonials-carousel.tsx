@@ -1,13 +1,10 @@
 "use client";
 
 import * as React from "react";
-
 import {
     Carousel,
     CarouselContent,
-    CarouselItem,
 } from "@/components/ui/carousel";
-import TestimonialsCard from "./testimonials-card";
 import AutoScroll from "embla-carousel-auto-scroll";
 
 type TestimonialsCarouselProps = {

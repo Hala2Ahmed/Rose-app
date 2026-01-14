@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { getTestimonialsService } from '../../_services/testimonial.service';
 import Content from './carousel-content';
 
