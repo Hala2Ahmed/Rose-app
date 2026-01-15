@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+/**==================================
+ * Footer navigation links configuration
+ ====================================*/
 const footerLinks = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
@@ -16,11 +19,21 @@ const footerLinks = [
   { href: "/faq", label: "FAQs" },
 ];
 
-const Footer = () => {
+/**==================================
+ * Footer Component
+ * Renders:
+ * - Brand logo and copyright
+ * - Navigation links
+ * - Newsletter subscription form
+ ==================================*/
+function Footer() {
   return (
+    /*====================== Footer wrapper ===================== */
     <footer className="bg-zinc-800 opacity-100 dark:bg-zinc-900">
-      <div className="mx-auto  px-8 py-10">
+      <div className="mx-auto px-8 py-10">
+        {/* ======================Main footer grid layout ==================== */}
         <div className="grid grid-cols-1 md:grid-cols-4 h-full">
+          {/* ======================== Brand logo & app information ======================= */}
           <div className="flex flex-col items-center justify-center gap-2 md:col-span-1">
             <Image
               src="/assets/brands/logo.png"
@@ -40,6 +53,7 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* =================================Footer navigation links section =================== */}
           <div className="flex flex-col justify-start md:col-span-2">
             <h3 className="font-semibold text-lg text-softPink-300 mb-2">
               Discover our website
@@ -59,6 +73,7 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* ========================== subscription section=========================== */}
           <div className="flex flex-col justify-start md:col-span-1 gap-4">
             <div>
               <h3 className="font-semibold text-softPink-300 text-xl">
@@ -71,13 +86,16 @@ const Footer = () => {
               </p>
             </div>
 
+            {/*============================== Subscription form ==========================*/}
             <form className="flex items-center bg-zinc-600 rounded-full overflow-hidden">
+              {/*============== Email input============ */}
               <input
                 type="email"
                 placeholder="Enter your email"
                 className="flex-1 bg-transparent px-4 py-2.5 text-sm text-white placeholder:text-zinc-400 focus:outline-none"
               />
 
+              {/*============== Submit button ============*/}
               <button
                 type="submit"
                 className="flex items-center justify-center gap-2 bg-maroon-50 text-maroon-700 px-5 py-2.5 text-sm font-medium rounded-full transition-colors hover:bg-maroon-100 dark:bg-softPink-300 dark:text-zinc-900 dark:hover:bg-softPink-400"
@@ -91,6 +109,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;
