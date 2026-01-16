@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      letterSpacing: {
+        "extra-wide": "0.25em",
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

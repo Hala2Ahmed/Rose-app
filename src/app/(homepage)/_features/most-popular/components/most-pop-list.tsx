@@ -1,8 +1,13 @@
 import { getBestSelling } from "@/lib/api/get-best-selling";
+
 import React from "react";
+
 import BestSellingCard from "../../best-selling/components/best-selling-card";
+
 import EmptyProductState from "@/components/shared/empty-products";
+
 import Link from "next/link";
+
 import { ArrowRight } from "lucide-react";
 
 interface MostPopularListProps {
@@ -27,7 +32,7 @@ export default async function MostPopularList({
         ))}
       </div>
       <Link
-        className="  text-maroon-700 font-medium w-full justify-end  relative inline-flex items-center gap-2 mt-14 hover:text-maroon-800 transition-colors"
+        className="text-maroon-700 font-medium w-full justify-end  relative inline-flex items-center gap-2 mt-14 hover:text-maroon-800 transition-colors"
         href={"/products"}>
         View More
         <ArrowRight className="w-5 h-5" />

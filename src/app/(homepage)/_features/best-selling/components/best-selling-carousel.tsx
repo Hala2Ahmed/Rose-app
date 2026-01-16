@@ -7,11 +7,23 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+
 import BestSellingCard from "./best-selling-card";
+
 import { getBestSelling } from "@/lib/api/get-best-selling";
 
+import EmptyProductState from "@/components/shared/empty-products";
+
 export async function BestSellingCarousel() {
+  // {get best selling function}
+
   const result = await getBestSelling({ limit: 6 });
+
+  // {handling empty state}
+
+  if (!result?.data || result.data.length === 0) {
+    return <EmptyProductState />;
+  }
 
   return (
     <Carousel
@@ -29,7 +41,7 @@ export async function BestSellingCarousel() {
         ))}
       </CarouselContent>
       <CarouselPrevious className="-start-5 bg-maroon-500 hover:bg-maroon-600 text-white hover:text-white w-10 h-10 border-0" />
-      <CarouselNext className="-end-5 bg-maroon-500 hover:bg-maroon-600 text-white hover:text-white w-10 h-10 border-0" />
+      <CarouselNext className="-end-4 bg-maroon-500 hover:bg-maroon-600 text-white hover:text-white w-10 h-10 border-0" />
     </Carousel>
   );
 }

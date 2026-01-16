@@ -1,7 +1,11 @@
 import { ShoppingCart } from "lucide-react";
+
 import Image from "next/image";
+
 import React from "react";
+
 import { BestSellingProduct } from "@/lib/types/best-selling.types";
+
 import { renderStars } from "@/lib/utils/render-stars";
 
 type BestSellingCardProps = {
@@ -9,10 +13,6 @@ type BestSellingCardProps = {
 };
 
 export default function BestSellingCard({ data }: BestSellingCardProps) {
-  const isOutOfStock = data.quantity <= 0;
-  const hasDiscount =
-    data.priceAfterDiscount && data.priceAfterDiscount < data.price;
-
   return (
     <article className="w-full relative">
       <div className="relative h-72 rounded-2xl overflow-hidden">
@@ -26,7 +26,10 @@ export default function BestSellingCard({ data }: BestSellingCardProps) {
           quality={85}
           className="object-cover"
         />
-        {isOutOfStock && (
+
+        {/* {Out Of stock state} */}
+
+        {data.quantity <= 0 && (
           <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-medium">
             OUT OF STOCK
           </div>
@@ -38,8 +41,11 @@ export default function BestSellingCard({ data }: BestSellingCardProps) {
       <div className="flex items-center justify-between">
         <div>
           <div className="flex gap-1 my-1">{renderStars(data.rateAvg)}</div>
+
+          {/* {Product has a discount} */}
+
           <p className="text-maroon-700 font-medium mb-2">
-            {hasDiscount ? (
+            {data.priceAfterDiscount && data.priceAfterDiscount < data.price ? (
               <>
                 {data.priceAfterDiscount.toFixed(2)} EGP{" "}
                 <span className="text-zinc-400 line-through">
@@ -51,6 +57,9 @@ export default function BestSellingCard({ data }: BestSellingCardProps) {
             )}
           </p>
         </div>
+
+        {/* {Add to cart button} */}
+
         <button className="bg-maroon-600 hover:bg-maroon-700 transition-colors text-white w-10 h-10 rounded-full flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed">
           <ShoppingCart className="w-5 h-5" />
         </button>

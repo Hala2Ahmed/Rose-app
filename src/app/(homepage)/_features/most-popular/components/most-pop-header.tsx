@@ -1,8 +1,13 @@
 "use client";
 
 import MainTitle from "@/components/shared/main-title";
+
 import { Occasion } from "@/lib/types/occasions.types";
+
+import { cn } from "@/lib/utils/tailwind-merge";
+
 import { useRouter, useSearchParams } from "next/navigation";
+
 import React from "react";
 
 interface MostPopularHeaderProps {
@@ -12,10 +17,13 @@ interface MostPopularHeaderProps {
 export default function MostPopularHeader({
   occasions,
 }: MostPopularHeaderProps) {
+  //Navigation
   const router = useRouter();
+
   const searchParams = useSearchParams();
   const activeOccasion = searchParams.get("occasion");
 
+  //get products upon occasion click function
   const handleOccasionClick = (occasionId: string) => {
     const params = new URLSearchParams(searchParams.toString());
 
@@ -36,11 +44,13 @@ export default function MostPopularHeader({
           <li key={occasion._id}>
             <button
               onClick={() => handleOccasionClick(occasion._id)}
-              className={`transition-colors ${
+              //toggle active occasion class
+              className={cn(
+                "transition-colors",
                 activeOccasion === occasion._id
                   ? "text-maroon-600 font-semibold"
                   : "text-zinc-700 hover:text-maroon-500"
-              }`}>
+              )}>
               {occasion.name}
             </button>
           </li>

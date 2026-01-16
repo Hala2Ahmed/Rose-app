@@ -1,16 +1,18 @@
 import { ArrowRight } from "lucide-react";
+
 import Link from "next/link";
+
 import React from "react";
 
 export default function BestSellingStaticText() {
   return (
     <section className="max-w-72">
-      <h4 className="uppercase text-softPink-500 font-medium mb-3 ">
+      <h4 className="uppercase text-softPink-500 font-medium mb-3 tracking-extra-wide">
         Best Selling
       </h4>
-      <h2 className="font-medium text-3xl text-maroon-700">
-        <span className="text-softPink-500"> Check Out </span> What Everyone’s
-        <span className="text-softPink-500"> Buying</span> Right Now
+      <h2 className="font-bold text-3xl text-maroon-700 capitalize">
+        <span className="text-softPink-500"> check Out </span> what everyone’s
+        <span className="text-softPink-500"> buying</span> right Now
       </h2>
       <p className="mt-2 text-zinc-500">
         Not sure what to choose? Start with our best sellers, these are the
