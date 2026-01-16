@@ -21,6 +21,7 @@ export default function MostPopularHeader({
   const router = useRouter();
 
   const searchParams = useSearchParams();
+
   const activeOccasion = searchParams.get("occasion");
 
   //get products upon occasion click function

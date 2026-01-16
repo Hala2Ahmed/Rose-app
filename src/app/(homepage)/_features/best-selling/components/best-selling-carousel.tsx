@@ -15,11 +15,11 @@ import { getBestSelling } from "@/lib/api/get-best-selling";
 import EmptyProductState from "@/components/shared/empty-products";
 
 export async function BestSellingCarousel() {
-  // {get best selling function}
+  //get best selling function
 
   const result = await getBestSelling({ limit: 6 });
 
-  // {handling empty state}
+  //handling empty state
 
   if (!result?.data || result.data.length === 0) {
     return <EmptyProductState />;

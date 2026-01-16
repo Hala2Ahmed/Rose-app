@@ -27,7 +27,7 @@ export default function BestSellingCard({ data }: BestSellingCardProps) {
           className="object-cover"
         />
 
-        {/* {Out Of stock state} */}
+        {/* Out Of stock state */}
 
         {data.quantity <= 0 && (
           <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-medium">

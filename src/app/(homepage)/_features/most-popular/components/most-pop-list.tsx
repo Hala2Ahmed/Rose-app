@@ -24,6 +24,7 @@ export default async function MostPopularList({
   if (results.data.length == 0) {
     return <EmptyProductState />;
   }
+
   return (
     <>
       <div className="grid grid-cols-4 gap-6 min-h-96">
