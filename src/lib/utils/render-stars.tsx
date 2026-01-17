@@ -6,7 +6,7 @@ export const renderStars = (rating: number) => {
 
   for (let i = 0; i < fullStars; i++) {
     stars.push(
-      //  stars svg from figma as lucide did not have prefilled star
+      //  stars svg from figma as lucide did not have prefilled stars
 
       <svg
         key={`full-${i}`}
