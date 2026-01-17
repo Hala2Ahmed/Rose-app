@@ -2,13 +2,12 @@ import { getBestSelling } from "@/lib/api/get-best-selling";
 
 import React from "react";
 
-import BestSellingCard from "../../best-selling/components/best-selling-card";
-
 import EmptyProductState from "@/components/shared/empty-products";
 
 import Link from "next/link";
 
 import { ArrowRight } from "lucide-react";
+import BestSellingCard from "../../best-selling/components/best-selling-card";
 
 interface MostPopularListProps {
   searchParams?: { occasion?: string; limit?: number };

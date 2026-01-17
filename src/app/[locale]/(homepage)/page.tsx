@@ -1,5 +1,5 @@
-import BestSellingIndex from "./_features/best-selling";
-import MostPopularIndex from "./_features/most-popular";
+import BestSellingIndex from "./_components/best-selling";
+import MostPopularIndex from "./_components/most-popular";
 
 interface HomeProps {
   searchParams: { [key: string]: string | string[] | undefined };

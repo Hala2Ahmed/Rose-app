@@ -1,4 +1,4 @@
-import { bestSellingService } from "@/app/(homepage)/_features/best-selling/service/best-selling.service";
+import { bestSellingService } from "@/app/[locale]/(homepage)/_services/best-selling.service";
 import { BestSellingProduct } from "@/lib/types/best-selling.types";
 
 type BestSellingResult =
@@ -18,7 +18,7 @@ interface GetBestSellingParams {
 }
 
 export async function getBestSelling(
-  params?: GetBestSellingParams
+  params?: GetBestSellingParams,
 ): Promise<BestSellingResult> {
   try {
     const data = await bestSellingService(params);

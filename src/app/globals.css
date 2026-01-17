@@ -80,19 +80,18 @@ body {
   }
 }
 
-
 @layer components {
   .title-heading {
     @apply w-fit font-bold text-4xl leading-100 text-maroon-700 relative;
   }
 
   .title-heading::before {
-    content: '';
+    content: "";
     @apply absolute w-3/4 h-2/4 bg-maroon-100 -bottom-1 -z-10 rounded-r-md;
   }
 
   .title-heading::after {
-    content: '';
+    content: "";
     @apply absolute left-0 -bottom-1 z-20 w-2/6 h-0.5 bg-maroon-300;
   }
 
