@@ -89,6 +89,24 @@ const config: Config = {
         sarabun: ["var(--font-sarabun)", "sarabun"],
         tajawal: ["var(--font-tajawal)", "tajawal"],
       },
+      height: {
+        30: "120px",
+      },
+      width: {
+        30: "120px",
+      },
+      maxWidth: {
+        303: "1212px",
+      },
+      lineHeight: {
+        "100": "100%",
+      },
+      fontSize: {
+        xs12: "12px",
+      },
+      letterSpacing: {
+        '25': '0.25em',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
