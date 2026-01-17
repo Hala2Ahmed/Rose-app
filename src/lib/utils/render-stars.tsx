@@ -51,6 +51,7 @@ export const renderStars = (rating: number) => {
       </svg>
     );
   }
+  //empty stars
 
   for (let i = 0; i < emptyStars; i++) {
     stars.push(
