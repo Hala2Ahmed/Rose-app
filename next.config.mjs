@@ -1,10 +1,10 @@
-import createNextIntlPlugin from 'next-intl/plugin';
+import createNextIntlPlugin from "next-intl/plugin";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        domains: ['flower.elevateegy.com'],
-    },
+  images: {
+    domains: ["flower.elevateegy.com"],
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();
