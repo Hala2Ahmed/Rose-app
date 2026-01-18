@@ -46,7 +46,7 @@ export default function LocaleLayout({ children, params: { locale } }: LayoutPro
   setRequestLocale(locale);
 
   return (
-    <html lang="en">
+    <html lang={locale} dir={locale == "ar" ? "rtl" : "ltr"}>
       <body className={cn(`${sarabun.variable} ${tajawal.variable} antialiased`)}>
         <main className="mx-20">
           <Providers>

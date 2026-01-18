@@ -20,5 +20,24 @@
   },
   "common": {
     "view-more": "View More"
+  },
+  "about": {
+    "title": "About",
+    "header": "Delivering the <span>Finest</span> Gift Boxes for Your <span>Special</span> Moments",
+    "description": "Make every moment memorable with our premium gift boxes. Carefully curated and beautifully packaged, each box is filled with handpicked items designed to impress. Whether it's for a birthday, wedding, or a simple “thank you,” our gift boxes are crafted to leave a lasting impression — because thoughtful gifting starts here.",
+    "button": "Discover",
+    "features": {
+      "feature_1": "Competitive Prices & Easy Shopping",
+      "feature_2": "Premium Quality & Elegant Packaging",
+      "feature_3": "Perfect for Every Occasion",
+      "feature_4": "Fast & Reliable Delivery"
+    }
+  },
+  "gallery": {
+    "title": "Gallery",
+    "header": "Check Out our Wonderful Gallery"
+  },
+  "companies": {
+    "header": "Trusted by over <span>4.5k+</span> companies"
   }
 }
