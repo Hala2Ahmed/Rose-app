@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Upload } from "lucide-react";
+import { Upload, Image } from "lucide-react";  
 import { cn } from "@/lib/utils/tailwind-merge";
 
 type Status = "default" | "error" | "disabled";
@@ -44,7 +44,6 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
           className
         )}
       >
-        {/* Hidden input */}
         <input
           type="file"
           id={inputId}
@@ -55,7 +54,6 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
           {...props}
         />
 
-        {/* Label as button */}
         <label
           htmlFor={inputId}
           className={cn(
@@ -63,33 +61,30 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
             status === "disabled" && "cursor-not-allowed pointer-events-none"
           )}
         >
-          {/* File name */}
           <span
             className={cn(
-              "text-sm font-sarabun truncate",
-              status === "default" &&
-                "text-maroon-500 hover:text-maroon-600 dark:text-zinc-400",
-              status === "error" &&
-                "text-red-600 dark:text-zinc-400",
-              status === "disabled" &&
-                "text-zinc-400 dark:text-zinc-700",
-              !fileName &&
-                "text-zinc-400 dark:text-zinc-400"
+              "flex items-center gap-2 text-sm font-sarabun truncate",
+              fileName
+                ? "text-blue-600 dark:text-blue-600"
+                : status === "default"
+                ? "text-maroon-500 hover:text-maroon-600 dark:text-zinc-400"
+                : status === "error"
+                ? "text-red-600 dark:text-zinc-400"
+                : "text-zinc-400 dark:text-zinc-400"
             )}
           >
+            {fileName && <Image className="h-4 w-4 text-blue-600" />}
             {fileName || "No file selected"}
           </span>
 
-          {/* Upload file button with Icon */}
           <span
             className={cn(
               "flex items-center gap-2 text-sm font-medium transition-colors flex-shrink-0",
-              status === "default" &&
-                "text-maroon-500 hover:text-maroon-600 dark:text-zinc-400",
-              status === "error" &&
-                "text-red-600 dark:text-zinc-400",
-              status === "disabled" &&
-                "text-zinc-400 dark:text-zinc-700 cursor-not-allowed"
+              status === "default"
+                ? "text-maroon-500 hover:text-maroon-600 dark:text-zinc-400"
+                : status === "error"
+                ? "text-red-600 dark:text-zinc-400"
+                : "text-zinc-400 dark:text-zinc-700 cursor-not-allowed"
             )}
           >
             <Upload className="h-4 w-4" />
