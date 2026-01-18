@@ -4,10 +4,13 @@ import React from "react";
 
 import EmptyProductState from "@/components/shared/empty-products";
 
-import Link from "next/link";
-
 import { ArrowRight } from "lucide-react";
-import BestSellingCard from "../../best-selling/components/best-selling-card";
+
+import BestSellingCard from "../best-selling/best-selling-card";
+
+import { getTranslations } from "next-intl/server";
+
+import { Link } from "@/i18n/navigation";
 
 interface MostPopularListProps {
   searchParams?: { occasion?: string; limit?: number };
@@ -18,6 +21,9 @@ export default async function MostPopularList({
   const occasionId = searchParams?.occasion;
 
   const results = await getBestSelling({ occasion: occasionId, limit: 12 });
+
+  //translations
+  const t = await getTranslations("common");
 
   //Empty state
   if (results.data.length == 0) {
@@ -34,7 +40,7 @@ export default async function MostPopularList({
       <Link
         className="text-maroon-700 font-medium w-full justify-end  relative inline-flex items-center gap-2 mt-14 hover:text-maroon-800 transition-colors"
         href={"/products"}>
-        View More
+        {t("view-more")}
         <ArrowRight className="w-5 h-5" />
       </Link>
     </>

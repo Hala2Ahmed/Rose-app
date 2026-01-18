@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
-import MostPopularHeader from "./components/most-pop-header";
-import MostPopularList from "./components/most-pop-list";
+import MostPopularHeader from "./most-pop-header";
+import MostPopularList from "./most-pop-list";
 import { getAllOccasions } from "@/lib/api/get-all-occasions";
 import ProductCardSkeleton from "@/components/skeletons/product-card.skeleton";
 
