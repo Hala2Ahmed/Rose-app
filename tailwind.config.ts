@@ -88,6 +88,7 @@ const config: Config = {
       fontFamily: {
         sarabun: ["var(--font-sarabun)", "sarabun"],
         tajawal: ["var(--font-tajawal)", "tajawal"],
+        edwardian: ["var(--font-edwardian)", "edwardian"],
       },
       height: {
         30: "120px",
