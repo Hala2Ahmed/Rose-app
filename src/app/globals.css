@@ -92,10 +92,10 @@ body {
 
   .title-heading::after {
     content: "";
-    @apply absolute left-0 -bottom-1 z-20 w-2/6 h-0.5 bg-maroon-300;
+    @apply absolute start-0 -bottom-1 z-20 w-2/6 h-0.5 bg-maroon-300;
   }
 
   .title-sub {
-    @apply font-bold text-base leading-100 tracking-25 text-softPink-500 text-center;
+    @apply font-bold text-base leading-100 tracking-extra-wide text-softPink-500 text-center;
   }
 }

@@ -11,7 +11,6 @@ const config: Config = {
     extend: {
       letterSpacing: {
         "extra-wide": "0.25em",
-        "25": "0.25em",
       },
       colors: {
         background: "hsl(var(--background))",
@@ -92,6 +91,7 @@ const config: Config = {
       },
       height: {
         30: "120px",
+        80: "320px",
       },
       width: {
         30: "120px",
