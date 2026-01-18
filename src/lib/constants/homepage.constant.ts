@@ -1,9 +1,9 @@
 // Feature items displayed in the About section
 export const ABOUT_FEATURES = [
-  { id: "feature-1", text: "Competitive Prices & Easy Shopping" },
-  { id: "feature-2", text: "Premium Quality & Elegant Packaging" },
-  { id: "feature-3", text: "Perfect for Every Occasion" },
-  { id: "feature-4", text: "Fast & Reliable Delivery" },
+  { id: 1, textKey: "features.feature_1" },
+  { id: 2, textKey: "features.feature_2" },
+  { id: 3, textKey: "features.feature_3" },
+  { id: 4, textKey: "features.feature_4" },
 ];
 
 // Feature items displayed in the Gallery section
