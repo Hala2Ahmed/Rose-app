@@ -6,6 +6,8 @@ import { Occasion } from "@/lib/types/occasions.types";
 
 import { cn } from "@/lib/utils/tailwind-merge";
 
+import { useTranslations } from "next-intl";
+
 import { useRouter, useSearchParams } from "next/navigation";
 
 import React from "react";
@@ -21,6 +23,9 @@ export default function MostPopularHeader({
   const router = useRouter();
 
   const searchParams = useSearchParams();
+
+  //translations
+  const t = useTranslations("most-popular");
 
   const activeOccasion = searchParams.get("occasion");
 
@@ -39,7 +44,7 @@ export default function MostPopularHeader({
 
   return (
     <div className="flex items-center justify-between mb-10">
-      <MainTitle title="Most Popular" />
+      <MainTitle title={t("title")} />
       <ul className="flex gap-6">
         {occasions.map((occasion) => (
           <li key={occasion._id}>
@@ -50,7 +55,7 @@ export default function MostPopularHeader({
                 "transition-colors",
                 activeOccasion === occasion._id
                   ? "text-maroon-600 font-semibold"
-                  : "text-zinc-700 hover:text-maroon-500"
+                  : "text-zinc-700 hover:text-maroon-500",
               )}>
               {occasion.name}
             </button>

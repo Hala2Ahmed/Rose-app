@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 
-import BestSellingStaticText from "./components/best-selling-static-text";
-import { BestSellingCarousel } from "./components/best-selling-carousel";
+import BestSellingStaticText from "./best-selling-static-text";
+import { BestSellingCarousel } from "./best-selling-carousel";
 import BestSellingCarouselSkeleton from "@/components/skeletons/best-selling-carousel.skeleton";
 
 export default function BestSellingIndex() {

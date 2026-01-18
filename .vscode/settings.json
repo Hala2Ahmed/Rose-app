@@ -5,11 +5,7 @@
   },
   "eslint.nodePath": ".yarn/sdks",
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
-}
-    "i18n-ally.localesPaths": [
-        "src/i18n",
-        "src/i18n/messages"
-    ],
-    "i18n-ally.keystyle": "nested"
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "i18n-ally.localesPaths": ["src/i18n", "src/i18n/messages"],
+  "i18n-ally.keystyle": "nested"
 }

@@ -41,7 +41,7 @@ export async function BestSellingCarousel() {
         ))}
       </CarouselContent>
       <CarouselPrevious className="-start-5 bg-maroon-500 hover:bg-maroon-600 text-white hover:text-white w-10 h-10 border-0" />
-      <CarouselNext className="-end-4 bg-maroon-500 hover:bg-maroon-600 text-white hover:text-white w-10 h-10 border-0" />
+      <CarouselNext className="-end-5 bg-maroon-500 hover:bg-maroon-600 text-white hover:text-white w-10 h-10 border-0" />
     </Carousel>
   );
 }
