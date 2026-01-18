@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "search.exclude": {
     "**/.yarn": true,
     "**/.pnp.*": true
@@ -8,11 +7,9 @@
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true
 }
-=======
     "i18n-ally.localesPaths": [
         "src/i18n",
         "src/i18n/messages"
     ],
     "i18n-ally.keystyle": "nested"
 }
->>>>>>> 25c615b03e1fe868b4c4cc4ac4188734d809520f
