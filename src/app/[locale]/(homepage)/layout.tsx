@@ -6,6 +6,11 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import { cn } from "../../../lib/utils/tailwind-merge";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import ReactQueryProvider from "@/components/providers/react-query-provider";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import { Toaster } from "sonner";
 
 const sarabun = Sarabun({
   subsets: ["latin"],
@@ -20,24 +25,29 @@ const tajawal = Tajawal({
 });
 
 type LayoutProps = {
-  children: React.ReactNode,
-  params: { locale: Locale },
-}
+  children: React.ReactNode;
+  params: { locale: Locale };
+};
 
-export async function generateMetadata({ params: { locale } }: Pick<LayoutProps, "params">): Promise<Metadata> {
+export async function generateMetadata({
+  params: { locale },
+}: Pick<LayoutProps, "params">): Promise<Metadata> {
   const t = await getTranslations("metadata.root");
 
   return {
     title: t("title"),
     description: t("description"),
-  }
+  };
 }
 
 export function generateStaticParams() {
-  return routing.locales.map(locale => ({ locale }));
+  return routing.locales.map((locale) => ({ locale }));
 }
 
-export default function LocaleLayout({ children, params: { locale } }: LayoutProps) {
+export default function LocaleLayout({
+  children,
+  params: { locale },
+}: LayoutProps) {
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -47,11 +57,25 @@ export default function LocaleLayout({ children, params: { locale } }: LayoutPro
 
   return (
     <html lang={locale} dir={locale == "ar" ? "rtl" : "ltr"}>
-      <body className={cn(`${sarabun.variable} ${tajawal.variable} antialiased`)}>
+      <body
+        className={cn(`${sarabun.variable} ${tajawal.variable} antialiased`)}
+      >
         <main className="mx-20">
-          <Providers>
-            {children}
-          </Providers>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ReactQueryProvider>
+              <Providers>
+                <Header />
+                <main className="px-20 pt-10">{children}</main>
+                <Footer />
+                <Toaster />
+              </Providers>
+            </ReactQueryProvider>
+          </ThemeProvider>
         </main>
       </body>
     </html>
