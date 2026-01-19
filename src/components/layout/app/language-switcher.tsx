@@ -28,7 +28,7 @@ const LanguageSwitcher = () => {
         <Button
             onClick={switchLanguage}
             variant={"ghost"}
-            className=' border-l hover:border-l border-zinc-200'
+            className=' text-zinc-700 dark:text-zinc-50 rounded-none shadow-none'
         >
             {locale == "ar" ? "English" : "العربية"}
         </Button>

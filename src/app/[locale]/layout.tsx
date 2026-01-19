@@ -4,12 +4,10 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-
 import { cn } from "@/lib/utils/tailwind-merge";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import ReactQueryProvider from "@/components/providers/react-query-provider";
 import { Providers } from "@/components/providers";
-
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Toaster } from "sonner";
