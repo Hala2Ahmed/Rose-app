@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Testimonial } from "../../../../../lib/types/testimonials";
+import { Testimonial } from "@/lib/types/testimonials";
 import TestimonialsCard from "./testimonials-card";
 import {
     CarouselContent,

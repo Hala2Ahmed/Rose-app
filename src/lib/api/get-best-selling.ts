@@ -1,5 +1,5 @@
-import { bestSellingService } from "@/app/[locale]/(homepage)/_services/best-selling.service";
 import { BestSellingProduct } from "@/lib/types/best-selling.types";
+import { bestSellingService } from "@/app/[locale]/(site)/(homepage)/_services/best-selling.service";
 
 type BestSellingResult =
   | {
