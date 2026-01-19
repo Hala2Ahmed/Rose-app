@@ -18,8 +18,8 @@ import {
   Headset,
 } from "lucide-react";
 import { cn } from "@/lib/utils/tailwind-merge";
-import Notifications from "./app/notifications";
-import LanguageSwitcher from "./app/language-switcher";
+import Notifications from "./notifications/index";
+import LanguageSwitcher from "./language-switcher";
 
 /* -------------------------------------------------------------------------- */
 /*                                   Header                                   */

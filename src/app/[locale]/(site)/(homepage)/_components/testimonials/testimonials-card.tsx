@@ -1,9 +1,8 @@
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Star } from "lucide-react";
 import Image from "next/image";
 import { useFormatter } from "next-intl";
-import { Testimonial } from "../../../../../lib/types/testimonials";
-import { renderStars } from "../../../../../lib/utils/render-stars";
+import { Testimonial } from "@/lib/types/testimonials";
+import { renderStars } from "@/lib/utils/render-stars";
 
 type TestimonialsCardProps = {
     testimonial: Testimonial

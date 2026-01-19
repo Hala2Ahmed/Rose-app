@@ -1,4 +1,4 @@
-import { allOccasionsService } from "@/app/[locale]/(homepage)/_services/all-occasion.service";
+import { allOccasionsService } from "@/app/[locale]/(site)/(homepage)/_services/all-occasion.service";
 import { Occasion } from "../types/occasions.types";
 
 type OccasionResult =

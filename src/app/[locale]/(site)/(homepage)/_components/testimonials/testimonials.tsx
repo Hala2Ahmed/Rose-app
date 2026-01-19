@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react';
-import Title from '../../../../../components/shared/title';
+import Title from '@/components/shared/title';
 import TestimonialsCarousel from './testimonials-carousel';
 import TestimonialsContent from './testimonials-content';
-import TestimonialsContentSkeleton from '../../../../../components/skeletons/testimonials/testimonials-content.skeleton';
+import TestimonialsContentSkeleton from '@/components/skeletons/testimonials/testimonials-content.skeleton';
 import { useTranslations } from 'next-intl';
 
 export default function Testimonials() {
