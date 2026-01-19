@@ -19,6 +19,7 @@ import {
   Headset,
 } from "lucide-react";
 import { cn } from "@/lib/utils/tailwind-merge";
+import Notifications from "./app/notifications";
 
 /* -------------------------------------------------------------------------- */
 /*                                   Header                                   */
@@ -90,7 +91,8 @@ function Header() {
           <div className="flex items-center gap-4 px-4 border-x border-zinc-200">
             <Heart className="h-5 w-5 cursor-pointer" />
             <ShoppingCart className="h-5 w-5 cursor-pointer" />
-            <Bell className="h-5 w-5 cursor-pointer" />
+              <Notifications notificationCount={5}/>
+            
           </div>
 
           <button className="text-sm">العربية</button>

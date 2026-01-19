@@ -1,43 +1,27 @@
-"use client";
+"use client"
 
-/* ========================= 
-   Imports
-========================= */
-import * as React from "react";
-import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
-import { Check, ChevronRight, Circle } from "lucide-react";
+import * as React from "react"
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
+import { Check, ChevronRight, Circle } from "lucide-react"
 
-import { cn } from "@/lib/utils/tailwind-merge";
+import { cn } from "@/lib/utils/tailwind-merge"
 
-/* =========================
-   Root & Basic Components
-========================= */
+const DropdownMenu = DropdownMenuPrimitive.Root
 
-// Root component for dropdown menu
-const DropdownMenu = DropdownMenuPrimitive.Root;
+const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
 
-// Trigger button to open the dropdown
-const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
+const DropdownMenuGroup = DropdownMenuPrimitive.Group
 
-// Group items together
-const DropdownMenuGroup = DropdownMenuPrimitive.Group;
+const DropdownMenuPortal = DropdownMenuPrimitive.Portal
 
-// Portal to render menu outside the DOM hierarchy
-const DropdownMenuPortal = DropdownMenuPrimitive.Portal;
+const DropdownMenuSub = DropdownMenuPrimitive.Sub
 
-// Submenu wrapper
-const DropdownMenuSub = DropdownMenuPrimitive.Sub;
+const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup
 
-// Radio group wrapper for radio items
-const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
-
-/* =========================
-   Submenu Trigger
-========================= */
 const DropdownMenuSubTrigger = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.SubTrigger>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubTrigger> & {
-    inset?: boolean;
+    inset?: boolean
   }
 >(({ className, inset, children, ...props }, ref) => (
   <DropdownMenuPrimitive.SubTrigger
@@ -161,16 +145,16 @@ const DropdownMenuRadioItem = React.forwardRef<
     )}
     {...props}
   >
-    {/* Circle indicator for selected radio */}
     <span className="absolute left-2 flex h-4 w-4 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <Circle className="h-2 w-2 fill-current text-maroon-600 dark:text-softPink-400" />
+        <Circle className="h-2 w-2 fill-current text-maroon-600 dark:text-softpink-400" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
   </DropdownMenuPrimitive.RadioItem>
 ));
-DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName;
+DropdownMenuRadioItem.displayName =
+  DropdownMenuPrimitive.RadioItem.displayName;
 
 /* =========================
    Label

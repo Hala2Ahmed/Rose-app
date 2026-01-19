@@ -99,6 +99,12 @@ const config: Config = {
       },
       maxWidth: {
         303: "1212px",
+        "3.5xl": "740px",
+        "1.5xl": "406px",
+      },
+      minWidth: {
+        "3.5xl": "740px",
+        "1.5xl": "406px",
       },
       lineHeight: {
         "100": "100%",

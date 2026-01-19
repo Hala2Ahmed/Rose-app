@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/navigation";
+
 import { cn } from "@/lib/utils/tailwind-merge";
 
 import React from "react";
@@ -12,7 +13,7 @@ export default function FormFooter({ text, link, linkHref, className }: Props) {
   return (
     <div
       className={cn(
-        "pt-5  font-medium text-sm text-center border-t-2 mt-9",
+        "pt-5 font-medium text-sm text-center border-t-2 mt-9 first-letter:capitalize",
         className,
       )}>
       {text}
