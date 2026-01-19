@@ -9,6 +9,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import ReactQueryProvider from "@/components/providers/react-query-provider";
 import { Providers } from "@/components/providers";
 import { Toaster } from "sonner";
+import localFont from "next/font/local";
 
 const sarabun = Sarabun({
   subsets: ["latin"],
@@ -22,6 +23,11 @@ const tajawal = Tajawal({
   variable: "--font-tajawal",
 });
 
+const edwardianScript = localFont({
+  src: "../fonts/EdwardianScriptITC.ttf", // adjust path as needed
+  variable: "--font-edwardian",
+  display: "swap",
+});
 type LayoutProps = {
   children: React.ReactNode;
   params: { locale: Locale };
@@ -60,7 +66,13 @@ export default function LocaleLayout({
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
       suppressHydrationWarning>
-      <body className={cn(sarabun.variable, tajawal.variable, "antialiased")}>
+      <body
+        className={cn(
+          sarabun.variable,
+          tajawal.variable,
+          edwardianScript.variable,
+          "antialiased",
+        )}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
