@@ -39,5 +39,6 @@
   },
   "companies": {
     "header": "Trusted by over <span>4.5k+</span> companies"
-  }
+  },
+  "auth": {}
 }
