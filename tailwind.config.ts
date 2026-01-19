@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      letterSpacing: {
+        "extra-wide": "0.25em",
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -85,6 +88,22 @@ const config: Config = {
       fontFamily: {
         sarabun: ["var(--font-sarabun)", "sarabun"],
         tajawal: ["var(--font-tajawal)", "tajawal"],
+      },
+      height: {
+        30: "120px",
+        80: "320px",
+      },
+      width: {
+        30: "120px",
+      },
+      maxWidth: {
+        303: "1212px",
+      },
+      lineHeight: {
+        "100": "100%",
+      },
+      fontSize: {
+        xs12: "12px",
       },
     },
   },

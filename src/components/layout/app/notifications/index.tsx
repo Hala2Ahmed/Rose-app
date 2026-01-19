@@ -2,13 +2,15 @@
 
 import React, { useState } from "react";
 import {
-  BellIcon,
   BrushCleaning,
   CheckCheck,
   EllipsisVertical,
   Check,
   Trash2,
+  Bell,
 } from "lucide-react";
+
+import { cn } from "@/lib/utils/tailwind-merge";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -24,6 +26,7 @@ import {
 import { Notification, NotificationsResponse } from "@/lib/types/notifications";
 import InfiniteScroll from "react-infinite-scroll-component";
 import EmptyNotifications from "./empty-notifications";
+
 
 // Props type
 interface NotificationsProps {
@@ -81,12 +84,12 @@ export default function Notifications({
           size="icon"
           className="relative h-8 w-8 rounded-full"
         >
-          <BellIcon size={30} className="h-4 w-4 text-[#3F3F46]" />
+            <Bell className="h-5 w-5 cursor-pointer" />
 
           {notificationCount > 0 && (
             <Badge
               className="absolute -top-0.5 right-0.5 h-4 w-4 p-0 text-xs flex items-center justify-center rounded-full"
-              variant="destructive"
+              variant={"primary"}
             >
               {notificationCount > 9 ? "9+" : notificationCount}
             </Badge>
@@ -97,25 +100,26 @@ export default function Notifications({
 
       <DropdownMenuContent
         align="start"
-        className="w-[21rem] rounded-xl p-0 border-none"
+        className="w-80 rounded-xl p-0 border-none"
       >
         {/* notification */}
-        <DropdownMenuLabel className=" text-white bg-[#741C21] text-xl px-4 py-3 dark:bg-[#FFC2D0] dark:text-[#27272A]">
+        <DropdownMenuLabel className=" text-white bg-maroon-700 text-xl px-4 py-3 dark:bg-soft-pink-200 dark:text-zinc-800">
           Notifications <span> ({notificationCount})</span>
         </DropdownMenuLabel>
-        <DropdownMenuLabel className="flex justify-between px-2.5 py-0 border-b border-[#D4D4D8] dark:border-[#52525B] dark:bg-[#3F3F46]">
+        {/* second label */}
+        <DropdownMenuLabel className="flex justify-between px-2.5 py-0 border-b border-zinc-300 dark:border-zinc-600 dark:bg-zinc-700">
           <Button
             disabled={notifications.length === 0}
-            className="bg-transparent text-[#000000] hover:bg-transparent border-none shadow-none p-0 text-xs font-semibold dark:text-[#FAFAFA]"
+            className="bg-transparent text-zinc-800 hover:bg-transparent border-none shadow-none p-0 text-xs font-semibold dark:text-zinc-50"
           >
-            <BrushCleaning className="text-[#71717A] dark:text-[#A1A1AA]" />
+            <BrushCleaning className="text-zinc-500 dark:text-zinc-400" />
             Clear all notifications
           </Button>
           <Button
             disabled={notifications.length === 0}
-            className="bg-transparent text-[#000000] hover:bg-transparent border-none shadow-none p-0 text-xs font-semibold dark:text-[#FAFAFA]"
+            className="bg-transparent text-zinc-800 hover:bg-transparent border-none shadow-none p-0 text-xs font-semibold dark:text-zinc-50"
           >
-            <CheckCheck className="text-[#71717A] dark:text-[#A1A1AA]" />
+            <CheckCheck className="text-zinc-500 dark:text-zinc-400" />
             Mark all as read
           </Button>
         </DropdownMenuLabel>
@@ -125,10 +129,9 @@ export default function Notifications({
         ) : (
           <div
             id="notifications-scroll"
-            className="max-h-[320px] overflow-auto"
+            className="max-h-[320px] overflow-auto scrollbar-hide scroll-smooth"
           >
             {/* infinite scroll */}
-
             <InfiniteScroll
               dataLength={notifications.length}
               next={fetchMoreNotifications}
@@ -149,17 +152,17 @@ export default function Notifications({
               {notifications.map((item) => (
                 <DropdownMenuItem
                   key={item.id}
-                  className={`flex justify-between items-start rounded-none px-4 py-3 border-b border-[#D4D4D8] dark:border-[#52525B] ${
+                  className={cn(`flex justify-between items-start rounded-none px-4 py-3 border-b border-zinc-300 dark:border-zinc-600 ${
                     !item.read
-                      ? "bg-[#E4E4E7] dark:bg-[#52525B]"
-                      : "dark:bg-[#18181B]"
-                  }`}
+                      ? "bg-zinc-200 dark:bg-zinc-600"
+                      : "dark:bg-zinc-900"
+                  }`)}
                 >
                   <div className="flex flex-col gap-1">
-                    <p className="text-md text-[#27272A] font-semibold dark:text-[#FAFAFA]">
+                    <p className="text-md text-zinc-800 font-semibold dark:text-zinc-50">
                       {item.title}
                     </p>
-                    <p className="text-sm text-[#71717A] line-clamp-3 dark:text-[#A1A1AA]">
+                    <p className="text-sm text-zinc-500 line-clamp-3 dark:text-zinc-400">
                       {item.description}
                     </p>
                   </div>
@@ -168,19 +171,21 @@ export default function Notifications({
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button className="bg-transparent hover:bg-transparent shadow-none p-0">
-                        <EllipsisVertical className="text-[#A1A1AA]" />
+                        <EllipsisVertical className="text-zinc-400" />
                       </Button>
                     </DropdownMenuTrigger>
+
+                    {/* sub menu content*/}
                     <DropdownMenuContent
-                      className="w-44 dark:bg-[#3F3F46] border-none"
+                      className="w-44 dark:bg-zinc-700 border-none"
                       align="start"
                     >
-                      <DropdownMenuGroup className="py-2.5 text-[#27272A] text-sm dark:text-[#FAFAFA]">
-                        <DropdownMenuItem className="hover:dark:bg-[#52525B]">
-                          <Check className="text-[#71717A] dark:text-[#A1A1AA]" />
+                      <DropdownMenuGroup className="py-2.5 text-zinc-800 text-sm dark:text-zinc-50">
+                        <DropdownMenuItem className="hover:dark:bg-zinc-600">
+                          <Check className="text-zinc-500 dark:text-zinc-400" />
                           Mark as read
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="hover:dark:bg-[#52525B]">
+                        <DropdownMenuItem className="hover:dark:bg-zinc-600">
                           <Trash2 className="text-red-600 dark:text-red-500" />
                           Delete notification
                         </DropdownMenuItem>

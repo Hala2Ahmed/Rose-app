@@ -1,27 +1,26 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils/tailwind-merge"
+import { cn } from "@/lib/utils/tailwind-merge";
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "inline-flex items-center rounded-md border px-2.5 py-0.5 font-primary font-medium text-xs transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 dark:focus:ring-offset-zinc-800",
   {
     variants: {
       variant: {
-        default:
-          "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80",
+        subtle:
+          "bg-zinc-100 text-zinc-700  hover:bg-zinc-200 dark:bg-zinc-700 dark:text-zinc-50 dark:hover-text-inc-50 dark:hover:bg-zinc-600",
         secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        destructive:
-          "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
-        outline: "text-foreground",
+          "bg-maroon-50 text-maroon-600 border-maroon-200 hover:bg-maroon-100 dark:bg-zinc-700  dark:text-softPink-300 dark:hover:text-softPink-300  dark:hover:bg-zinc-600",
+        primary:
+          "bg-maroon-600 text-white border-maroon-600 hover:bg-maroon-700  dark:bg-softPink-300 dark:text-zinc-800 dark:hover:text-zinc-800 dark:hover:bg-softPink-400",
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "subtle",
     },
   }
-)
+);
 
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
@@ -30,7 +29,7 @@ export interface BadgeProps
 function Badge({ className, variant, ...props }: BadgeProps) {
   return (
     <div className={cn(badgeVariants({ variant }), className)} {...props} />
-  )
+  );
 }
 
-export { Badge, badgeVariants }
+export { Badge, badgeVariants };

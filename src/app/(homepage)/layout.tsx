@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { Sarabun, Tajawal } from "next/font/google";
-import { ThemeProvider } from "@/components/providers/theme-provider"
+import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import ReactQueryProvider from "@/components/providers/react-query-provider";
 
 const sarabun = Sarabun({
   subsets: ["latin"],
@@ -25,15 +29,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${sarabun.variable} ${tajawal.variable} antialiased`}>
-                  <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-        <main className="px-20 pt-10">{children}</main></ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ReactQueryProvider>
+            <Header />
+            <main className="px-20 pt-10">{children}</main>
+            <Footer />
+            <Toaster />
+          </ReactQueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
