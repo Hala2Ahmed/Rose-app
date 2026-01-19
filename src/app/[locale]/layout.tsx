@@ -8,8 +8,6 @@ import { cn } from "@/lib/utils/tailwind-merge";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import ReactQueryProvider from "@/components/providers/react-query-provider";
 import { Providers } from "@/components/providers";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import { Toaster } from "sonner";
 
 const sarabun = Sarabun({
@@ -78,14 +76,13 @@ export default function LocaleLayout({
         >
           <ReactQueryProvider>
             <Providers>
-              <Header />
 
-              <main className="px-20 pt-10">
+              <main>
                 {children}
               </main>
 
-              <Footer />
               <Toaster richColors />
+
             </Providers>
           </ReactQueryProvider>
         </ThemeProvider>
