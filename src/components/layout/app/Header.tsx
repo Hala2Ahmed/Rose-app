@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -91,10 +90,9 @@ function Header() {
           <div className="flex items-center gap-4 px-4 border-x border-zinc-200">
             <Heart className="h-5 w-5 cursor-pointer" />
             <ShoppingCart className="h-5 w-5 cursor-pointer" />
-              <Notifications notificationCount={5}/>
-            
+            <Notifications notificationCount={5} />
           </div>
-          
+
           {/* Language Switcher */}
           <LanguageSwitcher />
         </div>
@@ -115,8 +113,7 @@ function Header() {
                     isActive
                       ? "text-softPink-200 dark:text-maroon-800 after:absolute after:left-0 after:bottom-0 after:h-[0.125rem] after:w-full after:bg-softPink-300 dark:after:bg-maroon-800"
                       : "text-zinc-50 dark:text-zinc-800 hover:text-softPink-100 dark:hover:text-maroon-700",
-                  )}
-                >
+                  )}>
                   {link.icon}
                   {link.label}
                 </Link>

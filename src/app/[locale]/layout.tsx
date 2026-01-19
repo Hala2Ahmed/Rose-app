@@ -59,30 +59,18 @@ export default function LocaleLayout({
     <html
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
-      suppressHydrationWarning
-    >
-      <body
-        className={cn(
-          sarabun.variable,
-          tajawal.variable,
-          "antialiased"
-        )}
-      >
+      suppressHydrationWarning>
+      <body className={cn(sarabun.variable, tajawal.variable, "antialiased")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
-        >
+          disableTransitionOnChange>
           <ReactQueryProvider>
             <Providers>
-
-              <main>
-                {children}
-              </main>
+              <main>{children}</main>
 
               <Toaster richColors />
-
             </Providers>
           </ReactQueryProvider>
         </ThemeProvider>
