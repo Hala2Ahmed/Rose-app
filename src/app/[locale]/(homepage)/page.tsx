@@ -12,8 +12,12 @@ interface HomeProps {
 export default function Home({ searchParams }: HomeProps) {
   return (
     <>
+      {/* Best Selling Section */}
       <BestSellingIndex />
+
+      {/* Most Popular Section */}
       <MostPopularIndex searchParams={searchParams as { occasion?: string }} />
+
       {/* Testimonials Section */}
       <Testimonials />
 

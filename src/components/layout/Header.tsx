@@ -12,7 +12,6 @@ import {
   User,
   Heart,
   ShoppingCart,
-  Bell,
   Gift,
   ClipboardList,
   PartyPopper,
@@ -20,6 +19,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils/tailwind-merge";
 import Notifications from "./app/notifications";
+import LanguageSwitcher from "./app/language-switcher";
 
 /* -------------------------------------------------------------------------- */
 /*                                   Header                                   */
@@ -94,8 +94,9 @@ function Header() {
               <Notifications notificationCount={5}/>
             
           </div>
-
-          <button className="text-sm">العربية</button>
+          
+          {/* Language Switcher */}
+          <LanguageSwitcher />
         </div>
       </div>
 

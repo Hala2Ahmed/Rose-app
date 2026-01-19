@@ -5,6 +5,7 @@ import { Providers } from "@/components/providers";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils/tailwind-merge";
+import LanguageSwitcher from "@/components/layout/app/language-switcher";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -33,13 +34,18 @@ const Separator = ({ rotated = false }: { rotated?: boolean }) => (
 export default function Layout({ children }: LayoutProps) {
   return (
     <Providers>
-      <div className="flex justify-between items-center min-h-screen">
+      <div className="flex justify-between min-h-screen">
         {/* Form Section */}
         <div className="w-full max-w-1.5xl mx-auto px-4">
+          {/* language switcher */}
+          <LanguageSwitcher className="mb-10 " />
+
+          {/* image sperator */}
           <Separator />
 
           {children}
 
+          {/* rotated image seprator */}
           <Separator rotated />
         </div>
 
