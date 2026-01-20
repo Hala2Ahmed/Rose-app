@@ -11,7 +11,7 @@ const Select = SelectPrimitive.Root;
 const SelectGroup = SelectPrimitive.Group;
 
 const SelectValue = SelectPrimitive.Value;
-
+// =======input select =============
 type Status = "default" | "error" | "disabled";
 
 type SelectTriggerProps = React.ComponentPropsWithoutRef<
