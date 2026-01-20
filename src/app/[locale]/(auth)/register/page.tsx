@@ -1,18 +1,27 @@
 import React from "react";
+
 import GreetingTitle from "../_components/greeting-title";
+
 import FormFooter from "../_components/form-footer";
-import FormInputs from "./register-form";
+
+import RegisterForm from "./_components/register-form";
+
+import { useTranslations } from "next-intl";
 
 export default function RegisterPage() {
+  //translations
+  const t = useTranslations("auth.register");
+
   return (
     <div>
-      <GreetingTitle title="welcome back !" className="text-center" />
-      <FormInputs />
-      <FormFooter
-        link="create new one"
-        text="don't have an account ?"
-        linkHref="/login"
-      />
+      {/* Form Header */}
+      <GreetingTitle title={t("greeting-title")} className="text-center" />
+
+      {/* RegisterForm */}
+      <RegisterForm />
+
+      {/* Form Footer */}
+      <FormFooter translationKey={t("form-footer")} linkHref="/login" />
     </div>
   );
 }

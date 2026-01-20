@@ -11,7 +11,7 @@ export default function GreetingTitle({ title, className }: Props) {
   return (
     <h3
       className={cn(
-        "text-maroon-700 text-5xl font-edwardian border-b-2 pb-4 mb-6 first-letter:capitalize",
+        "text-maroon-700 text-5xl font-edwardian border-b-2 pb-4 mb-6 first-letter:capitalize dark:border-zinc-600  dark:text-softPink-300",
         className,
       )}>
       {title}
