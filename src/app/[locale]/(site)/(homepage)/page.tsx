@@ -1,3 +1,4 @@
+import HomePagination from "@/components/features/HomePagination";
 import About from "./_components/about/about-section";
 import BestSellingIndex from "./_components/best-selling";
 import Companies from "./_components/companies/companies-section";
@@ -29,6 +30,8 @@ export default function Home({ searchParams }: HomeProps) {
 
       {/* Companies Section */}
       <Companies />
+
+      <HomePagination />
     </>
   );
 }
