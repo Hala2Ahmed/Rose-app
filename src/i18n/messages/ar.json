@@ -44,7 +44,9 @@
   },
   "auth": {
     "register": {
-      "form-footer": "لديك حساب بالفعل؟ <link>سجل دخول</link>",
+      "form-footer": "لديك حساب بالفعل؟",
+      "form-footer-link": "سجل دخول",
+
       "greeting-title": "انضم إلى عائلتنا!",
       "create-account": "قم بإنشاء حساب",
       "register-success": "تم إنشاء حسابك بنجاح"

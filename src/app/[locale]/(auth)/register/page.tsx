@@ -21,7 +21,11 @@ export default function RegisterPage() {
       <RegisterForm />
 
       {/* Form Footer */}
-      <FormFooter translationKey={t("form-footer")} linkHref="/login" />
+      <FormFooter
+        link={t("form-footer-link")}
+        text={t("form-footer")}
+        linkHref="/login"
+      />
     </div>
   );
 }

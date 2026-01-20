@@ -44,7 +44,8 @@
   },
   "auth": {
     "register": {
-      "form-footer": "Already have an account? <link>Login</link>",
+      "form-footer": "Already have an account?",
+      "form-footer-link": "Login",
       "greeting-title": "Become part of our family!",
       "create-account": "Create Account",
       "register-success": "Your account has been created successfully."
