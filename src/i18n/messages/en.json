@@ -40,5 +40,27 @@
   "companies": {
     "header": "Trusted by over <span>4.5k+</span> companies"
   },
-  "auth": {}
+  "auth": {
+    "forgot-password": {
+      "email-step": {
+        "email-required": "Your email is required",
+        "email-validate": "Please enter a valid email",
+        "button": "Continue",
+        "footer": "Don’t have an account yet?",
+        "footer-link": "Create one now!",
+        "label": "Email"
+      },
+      "reset-password-step": {
+        "password-required": "Your password is required",
+        "password-password-pattern": "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character",
+        "re-password-mismatch": "Password and confirm password must match",
+        "password-label": "Password",
+        "re-password-label": "Confirm Password",
+        "button": "Reset Password",
+        "footer-link": "Contact us",
+        "footer": "Need help?",
+        "success-toast": "Your password has been successfully reset."
+      }
+    }
+  }
 }

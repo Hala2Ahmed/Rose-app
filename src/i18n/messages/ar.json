@@ -41,6 +41,26 @@
     "header": "موثوق به من قبل أكثر من <span>+4.5k</span> شركة"
   },
   "auth": {
-    
+    "forgot-password": {
+      "email-step": {
+        "email-required": "بريدك الإلكتروني مطلوب",
+        "email-validate": "الرجاء إدخال بريد إلكتروني صالح",
+        "button": "استمر",
+        "footer": "ليس لديك حساب حتى الآن؟",
+        "footer-link": "قم بإنشاء واحد الآن!",
+        "label": "البريد الالكتروني"
+      },
+      "reset-password-step": {
+        "password-required": "كلمة المرور الخاصة بك مطلوبة",
+        "password-password-pattern": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، حرف واحد كبير وحرف صغير ورقم واحد وحرف خاص واحد",
+        "re-password-mismatch": "يجب أن تتطابق كلمة المرور وتأكيد كلمة المرور",
+        "password-label": "كلمة المرور",
+        "re-password-label": "تأكيد كلمة المرور",
+        "button": "إعادة تعيين كلمة المرور",
+        "footer-link": "اتصل بنا",
+        "footer": "تحتاج مساعدة؟",
+        "success-toast": "تم إعادة تعيين كلمة المرور بنجاح."
+      }
+    }
   }
 }
