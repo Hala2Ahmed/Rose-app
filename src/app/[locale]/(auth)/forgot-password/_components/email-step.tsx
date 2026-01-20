@@ -18,7 +18,7 @@ import { EmailStepFields, ForgotPasswordSteps } from "@/lib/types/auth.type";
 import { emailStepSchema } from "@/lib/schemes/auth.schema";
 import useSendOtp from "../_hooks/use-send-otp";
 import FormFooter from "../../_components/form-footer";
-import { FORGOT_PASSWORD_STEPS } from "@/lib/constants/global.constant";
+// import { FORGOT_PASSWORD_STEPS } from "@/lib/constants/global.constant";
 import { ErrorMessage } from "@/components/shared/forms-error-message";
 
 interface EmailStepProps {
@@ -54,7 +54,7 @@ export default function EmailStep({
         setEmail(values.email);
 
         // go to the next step
-        setStep(FORGOT_PASSWORD_STEPS.NEW_PASSWORD);
+        // setStep(FORGOT_PASSWORD_STEPS.OTP);
       },
     });
   };
