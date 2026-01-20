@@ -1,8 +1,6 @@
 "use client";
 
-/* =========================
-   Imports
-========================= */
+//    Imports
 import * as React from "react";
 import { CheckIcon, ChevronsUpDown } from "lucide-react";
 import * as RPNInput from "react-phone-number-input";
@@ -27,9 +25,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils/tailwind-merge";
 import { useTranslations } from "next-intl";
 
-/* =========================
-   Types
-========================= */
+//  Types
 type Status = "default" | "error" | "disabled";
 
 interface PhoneInputProps
@@ -40,9 +36,7 @@ interface PhoneInputProps
   status?: Status;
 }
 
-/* =========================
-   Phone Input Component
-========================= */
+//  Phone Input Component
 const PhoneInput = React.forwardRef<
   React.ElementRef<typeof RPNInput.default>,
   PhoneInputProps
@@ -112,9 +106,7 @@ const PhoneInput = React.forwardRef<
 
 PhoneInput.displayName = "PhoneInput";
 
-/* =========================
-   Input Field
-========================= */
+//  Input Field
 const InputComponent = React.forwardRef<
   HTMLInputElement,
   React.ComponentProps<"input"> & { status?: Status }
@@ -136,9 +128,7 @@ const InputComponent = React.forwardRef<
 
 InputComponent.displayName = "InputComponent";
 
-/* =========================
-   Country Select Dropdown
-========================= */
+//  Country Select Dropdown
 type CountrySelectProps = {
   disabled?: boolean;
   value: RPNInput.Country;
@@ -243,9 +233,7 @@ const CountrySelect = ({
   );
 };
 
-/* =========================
-   Country Flag
-========================= */
+//  Country Flag
 const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
   const Flag = flags[country];
 
@@ -260,7 +248,5 @@ const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
   );
 };
 
-/* =========================
-   Export
-========================= */
+//  Export
 export { PhoneInput };

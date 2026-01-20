@@ -20,12 +20,13 @@ export const registerSchema = (t: Translations) =>
         ),
       gender: z.enum(["male", "female"], t("validations.gender-required")),
       password: z
-        .string(t("validations.password-required"))
+        .string()
+        .min(1, t("validations.password-required"))
         .regex(
           /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
-          "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character",
+          t("validations.password-pattern"),
         ),
-      rePassword: z.string().min(1, "please confirm your password"),
+      rePassword: z.string().min(1, t("validations.confirmpassword-required")),
     })
     .refine((data) => data.password === data.rePassword, {
       path: ["rePassword"],

@@ -67,7 +67,7 @@
       "phonenumber-min": "يرجى إدخال رقم الهاتف",
       "phonenumber-valid": "يرجى إدخال رقم هاتف مصري صحيح (01[0125]XXXXXXXX)",
 
-      "password-required": "كلمة المرور مطلوبة",
+      "password-required": " يرجى ادخال كلمة المرور ",
       "password-pattern": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل وحرف صغير ورقم ورمز خاص",
 
       "confirmpassword-required": "يرجى تأكيد كلمة المرور",
