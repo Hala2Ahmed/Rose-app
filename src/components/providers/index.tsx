@@ -1,10 +1,13 @@
 import { NextIntlClientProvider } from "next-intl";
+import NextAuthProvider from "./shared/components/next-auth.provider";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <>
       {/* Providers */}
-      <NextIntlClientProvider>{children}</NextIntlClientProvider>
+      <NextAuthProvider>
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+      </NextAuthProvider>
     </>
   );
 }

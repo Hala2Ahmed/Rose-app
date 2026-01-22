@@ -79,6 +79,7 @@ export default function LocaleLayout({
           enableSystem
           disableTransitionOnChange>
           <ReactQueryProvider>
+            
             <Providers>
               <main>{children}</main>
 
