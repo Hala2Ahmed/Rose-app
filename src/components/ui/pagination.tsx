@@ -143,7 +143,6 @@ export function AppPagination({
 
   //  Last page
   pages.push(totalPages);
-
   const handleClick = (p: number) => {
     if (p < 1 || p > totalPages || p === page) return;
     onPageChange(p);
@@ -191,7 +190,6 @@ export function AppPagination({
             onClick={() => handleClick(page + 1)}
           />
         </PaginationItem>
-
         {/* Last */}
         <PaginationItem>
           <PaginationLast
