@@ -57,7 +57,7 @@ export default function VerifyOtpStep({setStep, email}: VerifyOtpStep) {
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="text-zinc-800 border-y border-zinc-200 pt-6 pb-9 bg-zinc-800 dark:text-zinc-50"
+                className="text-zinc-800 border-y border-zinc-200 pt-6 pb-9 dark:text-zinc-50"
             >
                 {/* OTP Field */}
                 <FormField
