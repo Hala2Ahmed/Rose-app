@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -10,13 +11,18 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils/tailwind-merge";
 
+  // ==================== Types
 type PaginationProps = {
   page: number;
   totalPages: number;
   onPageChange: (page: number) => void;
 };
 
-  //  Containers
+  // ====================   Helpers
+const range = (start: number, end: number) =>
+  Array.from({ length: end - start + 1 }, (_, i) => start + i);
+
+   // ====================  Containers
 const PaginationWrapper = ({
   className,
   ...props
@@ -33,7 +39,11 @@ const PaginationContent = React.forwardRef<
   HTMLUListElement,
   React.ComponentProps<"ul">
 >(({ className, ...props }, ref) => (
-  <ul ref={ref} className={cn("flex items-center gap-1", className)} {...props} />
+  <ul
+    ref={ref}
+    className={cn("flex items-center gap-1", className)}
+    {...props}
+  />
 ));
 PaginationContent.displayName = "PaginationContent";
 
@@ -45,90 +55,120 @@ const PaginationItem = React.forwardRef<
 ));
 PaginationItem.displayName = "PaginationItem";
 
-  //  Buttons
-const PaginationLink = ({
-  isActive,
-  className,
-  ...props
-}: {
+   // ====================  Pagination Link
+type PaginationLinkProps = {
   isActive?: boolean;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>) => (
-  <button
-    aria-current={isActive ? "page" : undefined}
-    className={cn(
-      "flex h-9 w-9 items-center justify-center rounded-xl border text-sm",
-      isActive
-        ? "bg-maroon-600 text-white border-maroon-600"
-        : "bg-white text-zinc-800 border-zinc-200",
-      className
-    )}
-    {...props}
-  />
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+const PaginationLink = React.forwardRef<HTMLButtonElement, PaginationLinkProps>(
+  ({ className, isActive, ...props }, ref) => (
+    <button
+      ref={ref}
+      aria-current={isActive ? "page" : undefined}
+      className={cn(
+        "flex h-9 w-9 items-center justify-center rounded-xl border text-sm transition-colors",
+        isActive
+          ? "bg-maroon-600 text-white border-maroon-600"
+          : "bg-white text-zinc-800 border-zinc-200 hover:bg-zinc-100",
+        className,
+      )}
+      {...props}
+    />
+  ),
+);
+PaginationLink.displayName = "PaginationLink";
+ // ====================  Buttons 
+const PaginationFirst = (
+  props: React.ComponentProps<typeof PaginationLink>,
+) => (
+  <PaginationLink aria-label="Go to first page" {...props}>
+    <ChevronsLeft className="h-4 w-4" />
+  </PaginationLink>
+);
+
+const PaginationPrevious = (
+  props: React.ComponentProps<typeof PaginationLink>,
+) => (
+  <PaginationLink aria-label="Go to previous page" {...props}>
+    <ChevronLeft className="h-4 w-4" />
+  </PaginationLink>
+);
+
+const PaginationNext = (props: React.ComponentProps<typeof PaginationLink>) => (
+  <PaginationLink aria-label="Go to next page" {...props}>
+    <ChevronRight className="h-4 w-4" />
+  </PaginationLink>
+);
+
+const PaginationLast = (props: React.ComponentProps<typeof PaginationLink>) => (
+  <PaginationLink aria-label="Go to last page" {...props}>
+    <ChevronsRight className="h-4 w-4" />
+  </PaginationLink>
 );
 
 const PaginationEllipsis = () => (
   <span className="flex h-9 w-9 items-center justify-center">
-    <MoreHorizontal className="h-4 w-4" />
+    <MoreHorizontal className="h-4 w-4 text-zinc-500" />
   </span>
 );
-
-  //  AppPagination Logic
+ // ====================  AppPagination
 export function AppPagination({
   page,
   totalPages,
   onPageChange,
 }: PaginationProps) {
+  if (totalPages <= 1) return null;
+
   const siblingCount = 2;
-
-  const range = (start: number, end: number) =>
-    Array.from({ length: end - start + 1 }, (_, i) => start + i);
-
   const pages: (number | "dots")[] = [];
 
   const left = Math.max(page - siblingCount, 2);
   const right = Math.min(page + siblingCount, totalPages - 1);
+
+  // First page
   pages.push(1);
 
+  //  Dots before
   if (left > 2) {
     pages.push("dots");
   }
 
+  //  Middle pages
   pages.push(...range(left, right));
 
+  //  Dots after
   if (right < totalPages - 1) {
     pages.push("dots");
   }
 
-  if (totalPages > 1) {
-    pages.push(totalPages);
-  }
+  //  Last page
+  pages.push(totalPages);
 
   const handleClick = (p: number) => {
-    if (p < 1 || p > totalPages) return;
+    if (p < 1 || p > totalPages || p === page) return;
     onPageChange(p);
   };
 
   return (
     <PaginationWrapper>
       <PaginationContent>
+        {/* First */}
         <PaginationItem>
-          <PaginationLink
+          <PaginationFirst
+            disabled={page === 1}
             onClick={() => handleClick(1)}
-            disabled={page === 1}
-          >
-            <ChevronsLeft size={16} />
-          </PaginationLink>
+          />
         </PaginationItem>
 
+        {/* Prev */}
         <PaginationItem>
-          <PaginationLink
-            onClick={() => handleClick(page - 1)}
+          <PaginationPrevious
             disabled={page === 1}
-          >
-            <ChevronLeft size={16} />
-          </PaginationLink>
+            onClick={() => handleClick(page - 1)}
+          />
         </PaginationItem>
 
+        {/* Pages */}
         {pages.map((item, idx) => (
           <PaginationItem key={idx}>
             {item === "dots" ? (
@@ -144,22 +184,20 @@ export function AppPagination({
           </PaginationItem>
         ))}
 
+        {/* Next */}
         <PaginationItem>
-          <PaginationLink
-            onClick={() => handleClick(page + 1)}
+          <PaginationNext
             disabled={page === totalPages}
-          >
-            <ChevronRight size={16} />
-          </PaginationLink>
+            onClick={() => handleClick(page + 1)}
+          />
         </PaginationItem>
 
+        {/* Last */}
         <PaginationItem>
-          <PaginationLink
-            onClick={() => handleClick(totalPages)}
+          <PaginationLast
             disabled={page === totalPages}
-          >
-            <ChevronsRight size={16} />
-          </PaginationLink>
+            onClick={() => handleClick(totalPages)}
+          />
         </PaginationItem>
       </PaginationContent>
     </PaginationWrapper>
