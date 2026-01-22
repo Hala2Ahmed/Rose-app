@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as React from "react";
@@ -11,18 +10,18 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils/tailwind-merge";
 
-  // ==================== Types
+// ==================== Types
 type PaginationProps = {
   page: number;
   totalPages: number;
   onPageChange: (page: number) => void;
 };
 
-  // ====================   Helpers
+// ====================   Helpers
 const range = (start: number, end: number) =>
   Array.from({ length: end - start + 1 }, (_, i) => start + i);
 
-   // ====================  Containers
+// ====================  Containers
 const PaginationWrapper = ({
   className,
   ...props
@@ -55,21 +54,20 @@ const PaginationItem = React.forwardRef<
 ));
 PaginationItem.displayName = "PaginationItem";
 
-   // ====================  Pagination Link
+// ====================  Pagination Link
 type PaginationLinkProps = {
   isActive?: boolean;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
-
 const PaginationLink = React.forwardRef<HTMLButtonElement, PaginationLinkProps>(
   ({ className, isActive, ...props }, ref) => (
     <button
       ref={ref}
       aria-current={isActive ? "page" : undefined}
       className={cn(
-        "flex h-9 w-9 items-center justify-center rounded-xl border text-sm transition-colors",
+        "flex h-9 w-9 items-center justify-center rounded-xl  text-sm transition-colors",
         isActive
-          ? "bg-maroon-600 text-white border-maroon-600"
-          : "bg-white text-zinc-800 border-zinc-200 hover:bg-zinc-100",
+          ? "bg-maroon-600 text-white  dark:bg-softPink-300 dark:text-zinc-700"
+          : "bg-white text-zinc-800 border border-zinc-200 hover:bg-zinc-100  dark:bg-zinc-700 dark:text-zinc-50 ",
         className,
       )}
       {...props}
@@ -77,7 +75,7 @@ const PaginationLink = React.forwardRef<HTMLButtonElement, PaginationLinkProps>(
   ),
 );
 PaginationLink.displayName = "PaginationLink";
- // ====================  Buttons 
+// ====================  Buttons
 const PaginationFirst = (
   props: React.ComponentProps<typeof PaginationLink>,
 ) => (
@@ -111,7 +109,7 @@ const PaginationEllipsis = () => (
     <MoreHorizontal className="h-4 w-4 text-zinc-500" />
   </span>
 );
- // ====================  AppPagination
+// ====================  AppPagination
 export function AppPagination({
   page,
   totalPages,
