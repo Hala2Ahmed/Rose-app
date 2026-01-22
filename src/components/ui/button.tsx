@@ -60,6 +60,7 @@ const buttonVariants = cva(
           dark:bg-red-500 dark:text-zinc-50 dark:hover:bg-red-600
           ${disabledPrimary}
         `,
+        link: "bg-none"
       },
       size: {
         default: "px-4 py-2",

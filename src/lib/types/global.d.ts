@@ -1,6 +1,7 @@
 import { routing } from '@/i18n/routing';
 import { formats } from '@/i18n/request';
 import messages from './messages/en.json';
+import { getTranslations } from 'next-intl/server';
 
 declare module 'next-intl' {
     interface AppConfig {
@@ -9,3 +10,5 @@ declare module 'next-intl' {
         Formats: typeof formats;
     }
 }
+
+export type Translations = Awaited<ReturnType<typeof getTranslations>>; 

@@ -1,4 +1,4 @@
-import { Testimonials } from "../../../../lib/types/testimonials";
+import { Testimonials } from "@/lib/types/testimonials";
 
 const BASE_AUTH_URL = `${process.env.API_URL!}/testimonials`;
 

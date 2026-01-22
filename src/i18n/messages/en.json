@@ -40,5 +40,21 @@
   "companies": {
     "header": "Trusted by over <span>4.5k+</span> companies"
   },
-  "auth": {}
+  "auth": {
+    "forgot-password": {
+      "otp-step": {
+        "title": "Enter the OTP Code",
+        "description": "We have sent a 6-digit code to",
+        "label": "OTP Label",
+        "new-code": "Send a new code",
+        "help": "Need help?",
+        "contact": "Contact us",
+        "verify-otp": "Verify OTP",
+        "otp-length": "OTP must be 6 digits",
+        "otp-regex": "OTP must contain only numbers",
+        "otp-resend-countdown": "request another code in: {seconds, plural, =0 {0 second} =1 {1 second} other {# seconds}}",
+        "otp-toast": "A new OTP code has been sent"
+      }
+    }
+  }
 }

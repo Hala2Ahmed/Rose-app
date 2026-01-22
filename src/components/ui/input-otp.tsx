@@ -30,7 +30,7 @@ const InputOTP = React.forwardRef<
       ref={ref}
       disabled={status === "disabled"}
       containerClassName={cn(
-        "flex items-center gap-2",
+        "flex items-center justify-center gap-2",
         status === "disabled" && "opacity-50 cursor-not-allowed",
         containerClassName
       )}
