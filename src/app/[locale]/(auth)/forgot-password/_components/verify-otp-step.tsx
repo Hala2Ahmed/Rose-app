@@ -107,7 +107,7 @@ function ResendOTP({ email }: { email: string | null }) {
         storedValue: otpCountdown,
         setValue,
         removeValue,
-    } = useLocalStorage(OTP_COUNTDOWN_KEY, new Date(Date.now() + OTP_COUNTDOWN_TIME).toISOString());
+    } = useLocalStorage(OTP_COUNTDOWN_KEY, null);
 
     // State
     const [countdown, setCountdown] = useState<number>(() => {
