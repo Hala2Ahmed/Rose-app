@@ -12,7 +12,6 @@ export default function LoginForm() {
     // Hook
     const { form, onSubmit, showConfirmPassword, setShowConfirmPassword } = useLogin()
 
-    
     return (
         <form className="flex flex-col gap-4" onSubmit={form.handleSubmit(onSubmit)}>
             {/* email */}
@@ -27,6 +26,7 @@ export default function LoginForm() {
                     render={({ field }) => <Input {...field} placeholder="user@example.com"
                     />}
                 />
+                <p className="text-red-500 text-sm mt-1">{form.formState.errors.email?.message}</p>
             </div>
 
             {/* password */}
@@ -58,6 +58,8 @@ export default function LoginForm() {
                             {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                         </button>
                     </div>
+
+                    <p className="text-red-500 text-sm mt-1">{form.formState.errors.password?.message}</p>
                 </div>
 
                 <Link href="/forgot-password" className="mt-2 flex justify-end text-maroon-700 text-sm font-semibold">
