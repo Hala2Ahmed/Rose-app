@@ -48,7 +48,8 @@
         "button": "Continue",
         "footer": "Don’t have an account yet?",
         "footer-link": "Create one now!",
-        "label": "Email"
+        "label": "Email",
+        "success-toast": "OTP has been sent to your email!"
       },
       "reset-password-step": {
         "password-required": "Your password is required",

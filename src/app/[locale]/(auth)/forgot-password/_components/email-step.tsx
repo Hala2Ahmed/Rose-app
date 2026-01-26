@@ -60,51 +60,51 @@ export default function EmailStep({
   };
 
   return (
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          {/* Email */}
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                {/* label */}
-                <FormLabel>{t("label")}</FormLabel>
-                {/* field */}
-                <FormControl>
-                  <Input {...field} placeholder="user@example.com" />
-                </FormControl>
-                {/* feedback */}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        {/* Email */}
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              {/* label */}
+              <FormLabel>{t("label")}</FormLabel>
+              {/* field */}
+              <FormControl>
+                <Input {...field} placeholder="user@example.com" />
+              </FormControl>
+              {/* feedback */}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-          {/* Error Message */}
-          {error && <ErrorMessage message={error.message} />}
+        {/* Error Message */}
+        {error && <ErrorMessage message={error.message} />}
 
-          {/* Submit Button */}
-          <div className="my-9">
-            <Button
-              type="submit"
-              loading={isPending}
-              disabled={
-                isPending ||
-                (!form.formState.isValid && form.formState.isSubmitted)
-              }
-              className="w-full"
-            >
-              {t("button")}
-            </Button>
-          </div>
+        {/* Submit Button */}
+        <div className="my-9">
+          <Button
+            type="submit"
+            loading={isPending}
+            disabled={
+              isPending ||
+              (!form.formState.isValid && form.formState.isSubmitted)
+            }
+            className="w-full"
+          >
+            {t("button")}
+          </Button>
+        </div>
 
-          {/* Form Footer */}
-          <FormFooter
-            link={t("footer-link")}
-            text={t("footer")}
-            linkHref="/register"
-          />
-        </form>
-      </Form>
+        {/* Form Footer */}
+        <FormFooter
+          link={t("footer-link")}
+          text={t("footer")}
+          linkHref="/register"
+        />
+      </form>
+    </Form>
   );
 }

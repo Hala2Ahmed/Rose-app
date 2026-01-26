@@ -17,12 +17,12 @@ export type EmailStepResponse = {
 };
 
 // Form fields for the reset password step
-export type resetPasswordStepFields = z.infer<
+export type ResetPasswordStepFields = z.infer<
   ReturnType<typeof resetPasswordStepSchema>
 >;
 
 // Response returned by the reset password step API
-export type resetPasswordStepResponse = {
+export type ResetPasswordStepResponse = {
   message: string;
   token: string;
 };

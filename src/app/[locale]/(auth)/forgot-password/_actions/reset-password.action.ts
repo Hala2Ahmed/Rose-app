@@ -1,6 +1,6 @@
 "use server";
 
-import { resetPasswordStepResponse } from "@/lib/types/auth.type";
+import { ResetPasswordStepResponse } from "@/lib/types/auth.type";
 
 export async function resetPasswordAction(fields: {
   email: string;
@@ -13,7 +13,7 @@ export async function resetPasswordAction(fields: {
     headers: { "Content-Type": "application/json" },
   });
 
-  const payload: ApiResponse<resetPasswordStepResponse> = await response.json();
+  const payload: ApiResponse<ResetPasswordStepResponse> = await response.json();
 
   return payload;
 }

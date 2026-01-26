@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@/i18n/navigation";
 import { toast } from "sonner";
-import { resetPasswordStepFields } from "@/lib/types/auth.type";
 import { useTranslations } from "next-intl";
 import { resetPasswordAction } from "../_actions/reset-password.action";
+import { ResetPasswordStepFields } from "@/lib/types/auth.type";
 
 export default function useResetPassword() {
   //Translation
@@ -14,7 +14,7 @@ export default function useResetPassword() {
 
   //Mutation
   const { isPending, error, mutate } = useMutation({
-    mutationFn: async (fields: resetPasswordStepFields & { email: string }) => {
+    mutationFn: async (fields: ResetPasswordStepFields & { email: string }) => {
       const response = await resetPasswordAction({
         email: fields.email,
         newPassword: fields.password,
