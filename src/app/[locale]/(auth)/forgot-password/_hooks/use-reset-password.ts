@@ -9,7 +9,7 @@ export default function useResetPassword() {
   //Translation
   const t = useTranslations("auth.forgot-password.reset-password-step");
 
-  //Router
+  //Navigation
   const router = useRouter();
 
   //Mutation

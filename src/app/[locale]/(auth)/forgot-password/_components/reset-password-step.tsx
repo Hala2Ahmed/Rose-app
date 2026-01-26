@@ -50,7 +50,6 @@ export default function ResetPasswordStep({ email }: NewPasswordProps) {
   };
 
   return (
-    <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           {/* Password */}
@@ -115,6 +114,5 @@ export default function ResetPasswordStep({ email }: NewPasswordProps) {
           />
         </form>
       </Form>
-    </>
   );
 }

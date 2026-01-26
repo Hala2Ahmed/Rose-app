@@ -60,7 +60,6 @@ export default function EmailStep({
   };
 
   return (
-    <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           {/* Email */}
@@ -107,6 +106,5 @@ export default function EmailStep({
           />
         </form>
       </Form>
-    </>
   );
 }
