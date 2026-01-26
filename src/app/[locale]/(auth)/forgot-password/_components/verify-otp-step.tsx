@@ -87,7 +87,7 @@ export default function VerifyOtpStep({setStep, email}: VerifyOtpStep) {
                 <Button
                     type="submit"
                     loading={isPending}
-                    variant={"destructive"}
+                    variant={"primary"}
                     className="w-full mt-10 dark:text-zinc-800 dark:bg-softPink-300 dark:hover:bg-softPink-400"
                     disabled={!form.formState.isValid && form.formState.isSubmitted}
                 >
