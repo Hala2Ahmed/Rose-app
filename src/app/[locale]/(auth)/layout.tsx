@@ -1,11 +1,8 @@
 import React from "react";
-
 import AuthLanguageSwitcher from "./_components/auth-language-switcher";
-
 import FormDecoration, {
   FormDecorationInverted,
 } from "@/components/layout/auth/form-decoration";
-
 import FormHeroImage from "@/components/layout/auth/form-hero-image";
 
 type LayoutProps = {

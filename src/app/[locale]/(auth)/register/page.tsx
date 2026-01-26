@@ -1,11 +1,7 @@
 import React from "react";
-
 import GreetingTitle from "../_components/greeting-title";
-
 import FormFooter from "../_components/form-footer";
-
 import RegisterForm from "./_components/register-form";
-
 import { useTranslations } from "next-intl";
 
 export default function RegisterPage() {

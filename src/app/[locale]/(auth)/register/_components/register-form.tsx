@@ -1,11 +1,8 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-
 import { SubmitHandler, useForm } from "react-hook-form";
-
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import {
   Form,
   FormControl,
@@ -14,25 +11,15 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
 import { RegisterFields } from "@/lib/types/auth.type";
-
 import { PhoneInput } from "@/components/ui/phone-input";
-
 import { registerSchema } from "@/lib/schemes/auth.schema";
-
 import { useTranslations } from "next-intl";
-
 import { Button } from "@/components/ui/button";
-
 import { InputPassword } from "@/components/ui/input-password";
-
 import useRegister from "../_hooks/use-register";
-
 import SubmissionError from "@/components/shared/submission-error";
-
 import { useState } from "react";
-
 import {
   Select,
   SelectContent,
@@ -51,7 +38,7 @@ export default function RegisterForm() {
   //hooks
   const { register, isPending } = useRegister();
 
-  const form = useForm({
+  const form = useForm<RegisterFields>({
     resolver: zodResolver(registerSchema(t)),
     defaultValues: {
       firstName: "",
@@ -65,40 +52,13 @@ export default function RegisterForm() {
   });
 
   //variables
-  const formState = form.formState;
+  const { formState } = form;
 
   //function
-  const onSubmit: SubmitHandler<RegisterFields> = async (values) => {
+  const onSubmit: SubmitHandler<RegisterFields> = (values) => {
     register(values, {
       onError: (error) => {
-        const errorFieldMap = {
-          email: "email",
-          phone: "phone",
-          firstName: "firstName",
-          lastName: "lastName",
-          password: "password",
-        } as const;
-
-        type ErrorKeyword = keyof typeof errorFieldMap;
-        const matchedField = (
-          Object.keys(errorFieldMap) as ErrorKeyword[]
-        ).find((keyword) => error.message.toLowerCase().includes(keyword));
-
-        //to set matched error to its adjacent input
-        if (matchedField) {
-          form.setError(
-            errorFieldMap[matchedField],
-            {
-              type: "custom",
-              message: error.message,
-            },
-            {
-              shouldFocus: true,
-            },
-          );
-        } else {
-          setGeneralErrorMessage(error.message);
-        }
+        setGeneralErrorMessage(error.message);
       },
     });
   };
