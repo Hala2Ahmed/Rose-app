@@ -9,6 +9,7 @@ import {
   MoreHorizontal,
 } from "lucide-react";
 import { cn } from "@/lib/utils/tailwind-merge";
+import { usePagination } from "@/hooks/usePagination";
 
 // ==================== Types
 type PaginationProps = {
@@ -66,7 +67,7 @@ const PaginationLink = React.forwardRef<HTMLButtonElement, PaginationLinkProps>(
       className={cn(
         "flex h-9 w-9 items-center justify-center rounded-xl  text-sm transition-colors",
         isActive
-          ? "bg-maroon-600 text-white  dark:bg-softPink-300 dark:text-zinc-700"
+          ? "bg-maroon-600 text-white dark:bg-softPink-300 dark:text-zinc-700"
           : "bg-white text-zinc-800 border border-zinc-200 hover:bg-zinc-100  dark:bg-zinc-700 dark:text-zinc-50 ",
         className,
       )}
@@ -109,38 +110,16 @@ const PaginationEllipsis = () => (
     <MoreHorizontal className="h-4 w-4 text-zinc-500" />
   </span>
 );
-// ====================  AppPagination
+// ====================  AppPagination =====================
 export function AppPagination({
   page,
   totalPages,
   onPageChange,
 }: PaginationProps) {
-  if (totalPages <= 1) return null;
+  const pages = usePagination({ page, totalPages });
 
-  const siblingCount = 2;
-  const pages: (number | "dots")[] = [];
+  if (pages.length === 0) return null;
 
-  const left = Math.max(page - siblingCount, 2);
-  const right = Math.min(page + siblingCount, totalPages - 1);
-
-  // First page
-  pages.push(1);
-
-  //  Dots before
-  if (left > 2) {
-    pages.push("dots");
-  }
-
-  //  Middle pages
-  pages.push(...range(left, right));
-
-  //  Dots after
-  if (right < totalPages - 1) {
-    pages.push("dots");
-  }
-
-  //  Last page
-  pages.push(totalPages);
   const handleClick = (p: number) => {
     if (p < 1 || p > totalPages || p === page) return;
     onPageChange(p);
@@ -166,20 +145,24 @@ export function AppPagination({
         </PaginationItem>
 
         {/* Pages */}
-        {pages.map((item, idx) => (
-          <PaginationItem key={idx}>
-            {item === "dots" ? (
-              <PaginationEllipsis />
-            ) : (
-              <PaginationLink
-                isActive={item === page}
-                onClick={() => handleClick(item)}
-              >
-                {item}
-              </PaginationLink>
-            )}
-          </PaginationItem>
-        ))}
+        {pages.map((item, idx) => {
+          const key = item === "dots" ? `dots-${idx}` : `page-${item}`;
+
+          return (
+            <PaginationItem key={key}>
+              {item === "dots" ? (
+                <PaginationEllipsis />
+              ) : (
+                <PaginationLink
+                  isActive={item === page}
+                  onClick={() => handleClick(item)}
+                >
+                  {item}
+                </PaginationLink>
+              )}
+            </PaginationItem>
+          );
+        })}
 
         {/* Next */}
         <PaginationItem>
@@ -188,6 +171,7 @@ export function AppPagination({
             onClick={() => handleClick(page + 1)}
           />
         </PaginationItem>
+
         {/* Last */}
         <PaginationItem>
           <PaginationLast
