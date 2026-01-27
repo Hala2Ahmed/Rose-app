@@ -1,26 +1,21 @@
-import { useState } from "react";
-import { signIn, useSession } from "next-auth/react";
+'use client'
+
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema, defaultValue, LoginSchemaType } from "@/lib/schemes/login.schema";
+import { toast } from "sonner";
 
-
-export function useLogin() {
-    const session = useSession();
-    console.log("session in useLogin =", session);
+export function useLoginHook() {
     // navigation
-    const route = useRouter()
-
-    // state
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const router = useRouter()
 
     // hook
     const form = useForm<LoginSchemaType>({
         resolver: zodResolver(LoginSchema),
         defaultValues: defaultValue,
     })
-    console.log("errors", form.formState.errors);
 
     // handle submit
     const onSubmit = async (data: LoginSchemaType) => {
@@ -33,10 +28,15 @@ export function useLogin() {
                 redirect: false,
             });
 
-            if (response?.error) {
-                console.log("Login failed:", response.error);
+            if (response?.status === 200) {
+                toast.success("Login successful!", {
+                    duration: 2000,
+                    onAutoClose: () => {
+                        router.push("/dashboard");
+                    }
+                });
             } else {
-                console.log("Login successful!", response);
+                toast.error(response?.error);
             }
         } catch (err) {
             console.error("Unexpected error:", err);
@@ -45,8 +45,6 @@ export function useLogin() {
 
     return {
         form,
-        onSubmit, 
-        showConfirmPassword, 
-        setShowConfirmPassword
+        onSubmit,
     }
 }

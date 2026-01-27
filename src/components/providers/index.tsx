@@ -5,9 +5,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <>
       {/* Providers */}
-      <NextAuthProvider>
+      {/* <NextAuthProvider> */}
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
-      </NextAuthProvider>
+      {/* </NextAuthProvider> */}
     </>
   );
 }

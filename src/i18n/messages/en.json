@@ -40,5 +40,38 @@
   "companies": {
     "header": "Trusted by over <span>4.5k+</span> companies"
   },
-  "auth": {}
+  "home": {
+    "shop": "Shop Now",
+    "buy": "I'm buying!",
+    "benefit_title_1": "Free Delivery",
+    "benefit_title_2": "Get Refund",
+    "benefit_title_3": "Safe Payment",
+    "benefit_title_4": "24/7 Support",
+    "benefit_desc_1": "For orders above 120 EGP",
+    "benefit_desc_2": "Refunds within 30 days",
+    "benefit_desc_3": "100% Secure Payment",
+    "benefit_desc_4": "Contact us at any time",
+    "occasion_badge_1": "Wedding",
+    "occasion_badge_2": "Engagement",
+    "occasion_badge_3": "Anniversary",
+    "occasion_title_1": "Celebrate Her Forever with a Gift She’ll Always Remember",
+    "occasion_title_2": "Honor the Beginning of a Beautiful Journey Together",
+    "occasion_title_3": "Mark Every Year of Love with a Meaningful Surprise",
+    "occasions_slider_title": "Say It with Flowers",
+    "occasions_slider_desc": "Elegant gifts for every special moment..",
+    "occasion_badge": "Staring from 10.99 EGP",
+    "occasion_title": "Special Gifts For The People You Love"
+  },
+  "auth": {
+    "login": {
+      "Email": "Email",
+      "Password": "Password",
+      "forgot_password": "Forgot your password?",
+      "remember": "Remember Me",
+      "Login": "Login",
+      "welcome": "welcome back!",
+      "create": "Create one now!",
+      "account": "Don’t have an account yet? "
+    }
+  }
 }

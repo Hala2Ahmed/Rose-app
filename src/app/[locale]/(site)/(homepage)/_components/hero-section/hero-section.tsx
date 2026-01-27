@@ -1,9 +1,14 @@
+'use client'
+
 import Link from 'next/link';
 import { occasion } from '@/lib/constants/homepage.constant';
 import OccasionCard from '../occasions-section/occasion-card';
 import OccasionsSlider from '../occasions-section/occasions-slider';
+import { useTranslations } from 'next-intl';
+import { Button } from '@/components/ui/button';
 
-function HeroSection() {
+export default function HeroSection() {
+    const t = useTranslations("home");
 
     return (
         <section className="grid grid-cols-7 gap-x-6">
@@ -12,9 +17,9 @@ function HeroSection() {
                 <OccasionCard occasion={occasion} height={440}>
                     <Link href="/products">
                         {/* shop now button */}
-                        <button className='bg-maroon-50 rounded-md p-2 text-maroon-600 mt-2'>
-                            Shop Now
-                        </button>
+                        <Button>
+                            {t("shop")}
+                        </Button>
                     </Link>
                 </OccasionCard>
             </div>
@@ -25,5 +30,3 @@ function HeroSection() {
         </section>
     )
 }
-
-export default HeroSection

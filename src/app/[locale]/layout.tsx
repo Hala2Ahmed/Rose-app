@@ -79,12 +79,12 @@ export default function LocaleLayout({
           enableSystem
           disableTransitionOnChange>
           <ReactQueryProvider>
-            
-            <Providers>
-              <main>{children}</main>
 
-              <Toaster richColors />
-            </Providers>
+              <Providers>
+                <main>{children}</main>
+
+                <Toaster richColors />
+              </Providers>
           </ReactQueryProvider>
         </ThemeProvider>
       </body>

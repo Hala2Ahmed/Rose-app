@@ -10,8 +10,11 @@ import { SwiperSlide } from 'swiper/react';
 import ControlSlider from './control-slider';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { occasionsSliderData } from '@/lib/constants/homepage.constant';
+import { useTranslations } from 'next-intl';
 
 const OccasionsSlider = () => {
+  const t = useTranslations("home");
+
   // states
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const swiperRef = useRef<any>(null);
@@ -50,7 +53,7 @@ const OccasionsSlider = () => {
             {/* slider item */}
             <OccasionCard occasion={occasion} height={440} >
               {/* button */}
-              <button className='bg-maroon-50 rounded-md p-2 text-maroon-600 mt-2'>I'm buying!</button>
+              <button className='bg-maroon-50 rounded-md p-2 text-maroon-600 mt-2'>{t("buy")}</button>
             </OccasionCard>
           </SwiperSlide>
         ))}

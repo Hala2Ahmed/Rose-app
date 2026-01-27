@@ -40,7 +40,38 @@
   "companies": {
     "header": "موثوق به من قبل أكثر من <span>+4.5k</span> شركة"
   },
+  "home": {
+    "shop": "تسوق الآن",
+    "buy": "أريد الشراء!",
+    "benefit_title_1": "توصيل مجاني",
+    "benefit_title_2": "استرداد الأموال",
+    "benefit_title_3": "دفع آمن",
+    "benefit_title_4": "دعم 24/7",
+    "benefit_desc_1": "للطلبات الأكثر من 120 ج.م",
+    "benefit_desc_2": "استرجاع خلال 30 يوماً",
+    "benefit_desc_3": "عملية دفع آمنة 100%",
+    "benefit_desc_4": "تواصل معنا في أي وقت",
+    "occasion_badge_1": "زفاف",
+    "occasion_badge_2": "خطوبة",
+    "occasion_badge_3": "ذكرى سنوية",
+    "occasion_title_1": "احتفل بها للأبد بهدية ستتذكرها دائماً",
+    "occasion_title_2": "احتف بزيجة مباركة لبداية رحلة جميلة معاً",
+    "occasion_title_3": "وثق كل عام من الحب بمفاجأة ذات معنى",
+    "occasions_slider_title": "عبر عن مشاعرك بالزهور",
+    "occasions_slider_desc": "هدايا راقية لكل لحظة مميزة.",
+    "occasion_badge": "تبدأ من 10.99 ج.م",
+    "occasion_title": "هدايا خاصة للأشخاص الذين تحبهم"
+  },
   "auth": {
-    
+    "login": {
+      "Email": "الايميل",
+      "Password": "الباسورد",
+      "forgot_password": "نسيت كلمة المرور؟",
+      "remember": "تذكرني",
+      "Login": "تسجيل الدخول",
+      "welcome": "مرحباً بعودتك!",
+      "account": "ليس لديك حساب بعد؟ ",
+      "create": "أنشئ حساباً الآن!"
+    }
   }
 }
