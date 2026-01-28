@@ -19,7 +19,9 @@
     "title": "Most Popular"
   },
   "common": {
-    "view-more": "View More"
+    "view-more": "View More",
+    "search-country": "Search country...",
+    "no-country-found": "No country found."
   },
   "about": {
     "title": "About",
@@ -40,5 +42,50 @@
   "companies": {
     "header": "Trusted by over <span>4.5k+</span> companies"
   },
-  "auth": {}
+  "auth": {
+    "register": {
+      "form-footer": "Already have an account?",
+      "form-footer-link": "Login",
+      "greeting-title": "Become part of our family!",
+      "create-account": "Create Account",
+      "register-success": "Your account has been created successfully."
+    },
+    "validations": {
+      "firstname-required": "First name is required",
+      "firstname-min": "First name must be at least 2 characters long",
+      "firstname-max": "First name must be maximum 20 characters",
+
+      "lastname-required": "Last name is required",
+      "lastname-min": "Last name must be at least 2 characters long",
+      "lastname-max": "Last name must be maximum 20 characters",
+
+      "username-required": "Username is required",
+      "username-min": "Username must be at least 2 characters long",
+      "username-max": "Username must be maximum 20 characters",
+
+      "email-required": "Please enter a valid email",
+
+      "phonenumber-min": "Please enter a phone number",
+      "phonenumber-valid": "Please enter a valid Egyptian phone number (01[0125]XXXXXXXX)",
+
+      "password-required": "Please enter your password",
+      "password-pattern": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character",
+
+      "confirmpassword-required": "Please confirm your password",
+      "confirmpassword-error": "Passwords do not match",
+
+      "gender-required": "Please choose right gender"
+    },
+    "firstname-label": "First Name",
+    "lastname-label": "Last Name",
+    "email-label": "Email",
+    "phone-label": "Phone",
+    "gender-label": "Gender",
+    "phone-placeholder": "01234567890",
+    "male-gender": "Male",
+    "female-gender": "Female",
+    "gender-palceholder": "Gender",
+    "password-label": "Password",
+    "confirmpassword-label": "Confirm Password"
+  }
 }
