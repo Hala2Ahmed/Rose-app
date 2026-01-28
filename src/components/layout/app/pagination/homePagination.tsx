@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AppPagination } from "@/components/ui/Pagination";
 
 export default function HomePagination() {
+  // Example state for current page
   const [page, setPage] = useState(5);
   const totalPages = 10;
   return (

@@ -17,10 +17,7 @@ type PaginationProps = {
   totalPages: number;
   onPageChange: (page: number) => void;
 };
-
-
-
-// ====================  Containers
+// ====================  Containers ====================
 const PaginationWrapper = ({
   className,
   ...props
