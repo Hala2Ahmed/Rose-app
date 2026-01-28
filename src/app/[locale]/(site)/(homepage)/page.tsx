@@ -44,7 +44,7 @@ export default function Home({ searchParams }: HomeProps) {
 
       {/* Companies Section */}
       <Companies />
-
+      {/* pagination */}
       <HomePagination />
     </>
   );
