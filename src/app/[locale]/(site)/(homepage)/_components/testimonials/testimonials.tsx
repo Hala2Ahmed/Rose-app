@@ -10,7 +10,7 @@ export default function Testimonials() {
     const t = useTranslations("testimonials");
 
     return (
-        <section className='flex flex-col gap-10 -mx-20 my-36'>
+        <section className='flex flex-col gap-10 -mx-20'>
             {/* Title */}
             <Title title={t("title")} heading={t("heading")} />
 

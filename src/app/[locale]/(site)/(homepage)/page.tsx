@@ -15,7 +15,7 @@ interface HomeProps {
 
 export default function Home({ searchParams }: HomeProps) {
   return (
-    <>
+    <div className="flex flex-col gap-16">
       <div className="flex flex-col gap-8">
         {/* Hero section */}
         <HeroSection />
@@ -45,7 +45,7 @@ export default function Home({ searchParams }: HomeProps) {
       {/* Companies Section */}
       <Companies />
       {/* pagination */}
-      <HomePagination />
-    </>
+      {/* <HomePagination /> */}
+    </div>
   );
 }
