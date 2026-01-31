@@ -19,10 +19,10 @@ export default function OccasionCard ({ occasion, height, children }: IOccasionC
                 className="object-cover" />
             {/* text overlay */}
             <div className='bg-black/20 absolute bottom-0 left-0 right-0 h-full'>
-                <div className={cn('absolute  bottom-0 p-6', locale === "ar"? "right-0" : "left-0" )}>
+                <div className={cn('absolute bottom-0 p-6', locale === "ar"? "right-0" : "left-0" )}>
                     {/* badge */}
                     
-                    {occasion.badge && <Badge>{t(occasion.badge)}</Badge>}
+                    {occasion.badge && <Badge variant="primary">{t(occasion.badge)}</Badge>}
                     {/* title */}
                     <p className='text-white font-semibold text-2xl leading-6'>{t(occasion.title)}</p>
                     {/* description */}

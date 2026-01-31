@@ -6,6 +6,7 @@ import OccasionCard from '../occasions-section/occasion-card';
 import OccasionsSlider from '../occasions-section/occasions-slider';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 export default function HeroSection() {
     const t = useTranslations("home");
@@ -17,8 +18,9 @@ export default function HeroSection() {
                 <OccasionCard occasion={occasion} height={440}>
                     <Link href="/products">
                         {/* shop now button */}
-                        <Button>
+                        <Button variant="primary">
                             {t("shop")}
+                            <ArrowRight  />
                         </Button>
                     </Link>
                 </OccasionCard>
