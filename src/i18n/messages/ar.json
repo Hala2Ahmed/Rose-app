@@ -19,7 +19,9 @@
     "title": "الأكثر شهرة"
   },
   "common": {
-    "view-more": "مشاهدة المزيد"
+    "view-more": "مشاهدة المزيد",
+    "search-country": "ابحث عن الدولة...",
+    "no-country-found": "لم يتم العثور على دولة."
   },
   "about": {
     "title": "من نحن",
@@ -63,6 +65,7 @@
     "occasion_title": "هدايا خاصة للأشخاص الذين تحبهم"
   },
   "auth": {
+
     "login": {
       "Email": "الايميل",
       "Password": "الباسورد",
@@ -72,6 +75,53 @@
       "welcome": "مرحباً بعودتك!",
       "account": "ليس لديك حساب بعد؟ ",
       "create": "أنشئ حساباً الآن!"
-    }
+    },
+
+    "register": {
+      "form-footer": "لديك حساب بالفعل؟",
+      "form-footer-link": "سجل دخول",
+
+      "greeting-title": "انضم إلى عائلتنا!",
+      "create-account": "قم بإنشاء حساب",
+      "register-success": "تم إنشاء حسابك بنجاح"
+    },
+    "validations": {
+      "firstname-required": "الاسم الأول مطلوب",
+      "firstname-min": "يجب أن يكون الاسم الأول مكونًا من حرفين على الأقل",
+      "firstname-max": "يجب أن يكون الاسم الأول بحد أقصى 20 حرفًا",
+
+      "lastname-required": "اسم العائلة مطلوب",
+      "lastname-min": "يجب أن يكون اسم العائلة مكونًا من حرفين على الأقل",
+      "lastname-max": "يجب أن يكون اسم العائلة بحد أقصى 20 حرفًا",
+
+      "username-required": "اسم المستخدم مطلوب",
+      "username-min": "يجب أن يكون اسم المستخدم مكونًا من حرفين على الأقل",
+      "username-max": "يجب أن يكون اسم المستخدم بحد أقصى 20 حرفًا",
+
+      "email-required": "يرجى إدخال بريد إلكتروني صحيح",
+
+      "phonenumber-min": "يرجى إدخال رقم الهاتف",
+      "phonenumber-valid": "يرجى إدخال رقم هاتف مصري صحيح (01[0125]XXXXXXXX)",
+
+      "password-required": " يرجى ادخال كلمة المرور ",
+      "password-pattern": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل وحرف صغير ورقم ورمز خاص",
+
+      "confirmpassword-required": "يرجى تأكيد كلمة المرور",
+      "confirmpassword-error": "كلمات المرور غير متطابقة",
+
+      "gender-required": "برجاء ادخال النوع الصحيح"
+    },
+    "firstname-label": "الأسم الأول",
+    "lastname-label": "اسم العائلة",
+    "email-label": "البريد الألكتروني",
+    "phone-label": "رقم الهاتف",
+    "gender-label": "النوع",
+    "phone-placeholder": "٠١٢٣٤٥٦٧٨٩٠",
+    "male-gender": "ذكر",
+    "female-gender": "أنثى",
+    "gender-palceholder": "النوع",
+    "password-label": "الرقم السري",
+    "confirmpassword-label": "تأكيد الرقم السري"
+
   }
 }
