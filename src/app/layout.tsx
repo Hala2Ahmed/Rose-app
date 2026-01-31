@@ -1,3 +1,4 @@
+import NextAuthProvider from "@/components/providers/shared/components/next-auth.provider";
 import "./globals.css";
 
 export default function RootLayout({
@@ -5,5 +6,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return <NextAuthProvider>{children}</NextAuthProvider>
 }
