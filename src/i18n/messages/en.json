@@ -82,6 +82,28 @@
       "create-account": "Create Account",
       "register-success": "Your account has been created successfully."
     },
+    "forgot-password": {
+      "email-step": {
+        "email-required": "Your email is required",
+        "email-validate": "Please enter a valid email",
+        "button": "Continue",
+        "footer": "Don’t have an account yet?",
+        "footer-link": "Create one now!",
+        "label": "Email",
+        "success-toast": "OTP has been sent to your email!"
+      },
+      "reset-password-step": {
+        "password-required": "Your password is required",
+        "password-password-pattern": "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character",
+        "re-password-mismatch": "Password and confirm password must match",
+        "password-label": "Password",
+        "re-password-label": "Confirm Password",
+        "button": "Reset Password",
+        "footer-link": "Contact us",
+        "footer": "Need help?",
+        "success-toast": "Your password has been successfully reset."
+      }
+    },
     "validations": {
       "firstname-required": "First name is required",
       "firstname-min": "First name must be at least 2 characters long",

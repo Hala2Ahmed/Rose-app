@@ -66,7 +66,7 @@ export default function About() {
         <Link href="/products">
           <Button className="my-6 bg-maroon-600 hover:bg-maroon-700 dark:bg-softPink-200 dark:text-zinc-800">
             {t("button")}
-            <ArrowRight size={16} />
+            <ArrowRight size={16} className="rtl:rotate-180" />
           </Button>
         </Link>
 
