@@ -1,6 +1,8 @@
 "use client";
 
-//    Imports
+/* =========================
+   Imports
+========================= */
 import * as React from "react";
 import { CheckIcon, ChevronsUpDown } from "lucide-react";
 import * as RPNInput from "react-phone-number-input";
@@ -23,8 +25,9 @@ import {
 } from "@/components/ui/popover";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils/tailwind-merge";
+import { useTranslations } from "next-intl";
 
-  //  Types
+//  Types
 type Status = "default" | "error" | "disabled";
 
 interface PhoneInputProps
@@ -35,7 +38,7 @@ interface PhoneInputProps
   status?: Status;
 }
 
-  //  Phone Input Component
+//  Phone Input Component
 const PhoneInput = React.forwardRef<
   React.ElementRef<typeof RPNInput.default>,
   PhoneInputProps
@@ -54,7 +57,9 @@ const PhoneInput = React.forwardRef<
     const InputWithStatus = React.useMemo(
       () =>
         React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
-          (props, ref) => <InputComponent {...props} ref={ref} status={status} />,
+          (props, ref) => (
+            <InputComponent {...props} ref={ref} status={status} />
+          ),
         ),
       [status],
     );
@@ -103,7 +108,7 @@ const PhoneInput = React.forwardRef<
 
 PhoneInput.displayName = "PhoneInput";
 
-  //  Input Field
+//  Input Field
 const InputComponent = React.forwardRef<
   HTMLInputElement,
   React.ComponentProps<"input"> & { status?: Status }
@@ -125,7 +130,7 @@ const InputComponent = React.forwardRef<
 
 InputComponent.displayName = "InputComponent";
 
-  //  Country Select Dropdown
+//  Country Select Dropdown
 type CountrySelectProps = {
   disabled?: boolean;
   value: RPNInput.Country;
@@ -142,6 +147,7 @@ const CountrySelect = ({
   status,
 }: CountrySelectProps) => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const t = useTranslations("common");
 
   const countryLabel = selectedCountry
     ? `${selectedCountry} (+${RPNInput.getCountryCallingCode(selectedCountry)})`
@@ -184,11 +190,11 @@ const CountrySelect = ({
         align="start"
         className="w-[300px] p-0 shadow-xl border-zinc-200 dark:border-zinc-800">
         <Command>
-          <CommandInput placeholder="Search country..." className="h-10" />
+          <CommandInput placeholder={t("search-country")} className="h-10" />
 
           <CommandList>
             <ScrollArea className="h-72">
-              <CommandEmpty>No country found.</CommandEmpty>
+              <CommandEmpty>{t("no-country-found")}</CommandEmpty>
 
               <CommandGroup>
                 {countryList.map(
@@ -229,7 +235,7 @@ const CountrySelect = ({
   );
 };
 
-  //  Country Flag
+//  Country Flag
 const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
   const Flag = flags[country];
 
@@ -244,5 +250,5 @@ const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
   );
 };
 
-  //  Export
+//  Export
 export { PhoneInput };

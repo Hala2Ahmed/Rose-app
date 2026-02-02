@@ -33,19 +33,37 @@ type LayoutProps = {
   params: { locale: Locale };
 };
 
-export async function generateMetadata({
-  params: { locale },
-}: LayoutProps): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+
+  const params = await props.params;
+  const locale = params.locale;
+
   const t = await getTranslations({
     locale,
-    namespace: "metadata.root",
   });
 
   return {
-    title: t("title"),
-    description: t("description"),
+    title: (t as any)('metadata.root.title'),
+    description: (t as any)('metadata.root.description'),
   };
 }
+
+
+// export async function generateMetadata({
+//   params: { locale },
+// }: LayoutProps): Promise<Metadata> {
+//   const t = await getTranslations({
+//     locale,
+//     namespace: "metadata.root",
+//   });
+
+//   return {
+//     title: t("title"),
+//     description: t("description"),
+//   };
+// }
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -79,6 +97,7 @@ export default function LocaleLayout({
           enableSystem
           disableTransitionOnChange>
           <ReactQueryProvider>
+
             <Providers>
               <main>{children}</main>
 

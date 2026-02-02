@@ -1,25 +1,13 @@
 "use client";
 
 import React from "react";
-
-import { usePathname } from "@/i18n/navigation";
-
 import LanguageSwitcher from "@/components/layout/app/language-switcher";
-
 import { cn } from "@/lib/utils/tailwind-merge";
+import useCaluclateMargins from "@/components/layout/auth/hooks/use-calculate-margins";
 
 export default function AuthLanguageSwitcher() {
-  const pathname = usePathname();
-
-  const getMarginTop = () => {
-    switch (true) {
-      case pathname.includes("/register"):
-        return "mt-28";
-      default:
-        return "mt-20";
-    }
-  };
-
+  //hooks
+  const { getMarginTop } = useCaluclateMargins();
   return (
     <LanguageSwitcher className={cn("mb-10 ms-auto block", getMarginTop())} />
   );
