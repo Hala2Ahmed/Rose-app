@@ -10,7 +10,7 @@ type InputProps = React.ComponentProps<"input"> & {
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, status = "default", type = "text", ...props }, ref) => {
     const statusClasses = {
-     default: `
+      default: `
   border-zinc-300 hover:border-zinc-400
   focus-visible:border-maroon-600
   focus-visible:ring-1 focus-visible:ring-maroon-600

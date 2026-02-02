@@ -1,3 +1,4 @@
+import HomePagination from "@/components/features/HomePagination";
 import About from "./_components/about/about-section";
 import BenefitsSection from "./_components/benefits-section/benefits-section";
 import BestSellingIndex from "./_components/best-selling";
@@ -14,7 +15,7 @@ interface HomeProps {
 
 export default function Home({ searchParams }: HomeProps) {
   return (
-    <>
+    <div className="flex flex-col gap-16">
       <div className="flex flex-col gap-8">
         {/* Hero section */}
         <HeroSection />
@@ -43,6 +44,8 @@ export default function Home({ searchParams }: HomeProps) {
 
       {/* Companies Section */}
       <Companies />
-    </>
+      {/* pagination */}
+      {/* <HomePagination /> */}
+    </div>
   );
 }
