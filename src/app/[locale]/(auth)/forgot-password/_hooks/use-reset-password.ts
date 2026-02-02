@@ -17,7 +17,7 @@ export default function useResetPassword() {
     mutationFn: async (fields: ResetPasswordStepFields & { email: string }) => {
       const response = await resetPasswordAction({
         email: fields.email,
-        newPassword: fields.password,
+        newPassword: fields.newPassword,
       });
 
       if ("error" in response) {

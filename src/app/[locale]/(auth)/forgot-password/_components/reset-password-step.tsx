@@ -20,11 +20,13 @@ import { InputPassword } from "@/components/ui/input-password";
 import { ErrorMessage } from "@/components/shared/forms-error-message";
 import { ResetPasswordStepFields } from "@/lib/types/auth.type";
 
-interface NewPasswordProps {
-  email: string | null;
-}
+// interface NewPasswordProps {
+//   email: string | null;
+// }
 
-export default function ResetPasswordStep({ email }: NewPasswordProps) {
+export default function ResetPasswordStep(
+  // { email }: NewPasswordProps
+) {
   // Translation
   const t = useTranslations("auth.forgot-password.reset-password-step");
 
