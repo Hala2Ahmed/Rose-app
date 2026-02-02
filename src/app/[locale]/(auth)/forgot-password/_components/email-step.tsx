@@ -20,6 +20,8 @@ import useSendOtp from "../_hooks/use-send-otp";
 import FormFooter from "../../_components/form-footer";
 // import { FORGOT_PASSWORD_STEPS } from "@/lib/constants/global.constant";
 import { ErrorMessage } from "@/components/shared/forms-error-message";
+import { OTP_COUNTDOWN_KEY, OTP_COUNTDOWN_TIME } from "@/lib/constants/auth.constant";
+import { useLocalStorage } from "@/hooks/shared/use-local-storage";
 
 // interface EmailStepProps {
 //   setStep: Dispatch<React.SetStateAction<ForgotPasswordSteps>>;
@@ -28,17 +30,24 @@ import { ErrorMessage } from "@/components/shared/forms-error-message";
 // }
 
 export default function EmailStep(
-//   {
-//   setStep,
-//   email,
-//   setEmail,
-// }: EmailStepProps
+  //   {
+  //   setStep,
+  //   email,
+  //   setEmail,
+  // }: EmailStepProps
 ) {
   //Translation
   const t = useTranslations("auth.forgot-password.email-step");
 
   //Mutation
   const { isPending, error, sendOtp } = useSendOtp();
+
+
+  // Hooks 
+  const {
+    storedValue: otpCountdown,
+    setValue,
+  } = useLocalStorage(OTP_COUNTDOWN_KEY, null);
 
   //Form
   const form = useForm<EmailStepFields>({
@@ -50,14 +59,21 @@ export default function EmailStep(
 
   //function
   const onSubmit: SubmitHandler<EmailStepFields> = (values) => {
+    if (otpCountdown) {
+      // setStep(FORGOT_PASSWORD_STEPS.OTP);
+      return;
+    }
+
     sendOtp(values, {
       onSuccess: () => {
+        const nextAllowedTime = new Date(Date.now() + OTP_COUNTDOWN_TIME);
+        setValue(nextAllowedTime.toISOString());
         // store email in the state of the parent component
         // setEmail(values.email);
 
         // go to the next step
         // setStep(FORGOT_PASSWORD_STEPS.OTP);
-      },
+      }
     });
   };
 

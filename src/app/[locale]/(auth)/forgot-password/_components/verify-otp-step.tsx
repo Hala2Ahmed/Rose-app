@@ -28,7 +28,7 @@ type VerifyOtpStep = {
     email: string,
 }
 
-export default function VerifyOtpStep({setStep, email}: VerifyOtpStep) {
+export default function VerifyOtpStep({ setStep, email }: VerifyOtpStep) {
     //Translation
     const t = useTranslations("auth.forgot-password.otp-step");
 
@@ -120,7 +120,6 @@ function ResendOTP({ email }: { email: string | null }) {
     });
 
     // Mutation
-    {/* //TODO: Use Hala's hook */ }
     const { sendOtp, isPending } = useSendOtp();
 
     //Functions 
