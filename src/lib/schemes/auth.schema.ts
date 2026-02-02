@@ -56,3 +56,11 @@ export const resetPasswordStepSchema = (t: Translations) =>
       message: t("re-password-mismatch"),
       path: ["reNewPassword"],
     });
+
+// Schema for the OTP step in forgot password flow.
+export const otpStepSchema = (t: Translations) => z.object({
+  resetCode: z
+    .string()
+    .regex(/^\d*$/, t("otp-regex"))
+    .length(6, t("otp-length")),
+});
