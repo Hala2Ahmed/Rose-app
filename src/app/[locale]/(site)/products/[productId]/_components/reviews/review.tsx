@@ -1,5 +1,5 @@
 import { renderStars } from '@/lib/utils/render-stars';
-import { Review as ReviewType } from '../../../../../../lib/types/reviews.js';
+import { Review as ReviewType } from '@/lib/types/reviews';
 import { useFormatter } from 'next-intl';
 
 type ReviewProps = {

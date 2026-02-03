@@ -1,4 +1,4 @@
-import ProductReviews from "./_components/product-reviews";
+import ProductReviews from "./_components/reviews/product-reviews";
 
 type PageProps = {
     params: {

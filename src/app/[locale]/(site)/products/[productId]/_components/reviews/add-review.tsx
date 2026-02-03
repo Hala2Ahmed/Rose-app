@@ -16,9 +16,9 @@ import { useTranslations } from 'next-intl';
 import { Input } from '@/components/ui/input';
 import { AddReviewFields } from '@/lib/types/reviews';
 import { addReviewSchema } from '@/lib/schemes/reviews.schema';
-import useAddReview from '../_hooks/use-add-review';
 import { Textarea } from '@/components/ui/textarea';
 import { StarRating } from './star-rating';
+import useAddReview from '../../_hooks/reviews/use-add-review';
 
 type AddReviewProps = {
     productId: string;

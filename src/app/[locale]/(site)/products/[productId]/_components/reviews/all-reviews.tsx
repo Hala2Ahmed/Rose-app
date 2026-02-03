@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
-import { getProductsReviewService } from "../_services/get-product-reviews.service";
 import Review from "./review";
+import { getProductsReviewService } from "../../_services/reviews/get-product-reviews.service";
 
 type AllReviewsProps = {
     productId: string;

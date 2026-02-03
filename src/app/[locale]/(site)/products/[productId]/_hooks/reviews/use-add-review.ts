@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { AddReviewFields } from "@/lib/types/reviews";
-import { AddReviewAction } from "../_actions/add-review.action";
+import { AddReviewAction } from "../../_actions/reviews/add-review.action";
 
 type AddReview = {
     product: string;
