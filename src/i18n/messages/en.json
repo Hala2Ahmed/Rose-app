@@ -147,5 +147,22 @@
     "gender-palceholder": "Gender",
     "password-label": "Password",
     "confirmpassword-label": "Confirm Password"
+  },
+  "review": {
+    "your-rating": "Your rating",
+    "title-label": "Title",
+    "title-placeholder": "Enter review title",
+    "review-label": "Review",
+    "review-placeholder": "What do you think of this product?",
+    "add-review": "Add Review",
+    "reviews-empty": "No Reviews Available",
+    "title": "Product Reviews",
+    "general-rating": "General rating",
+    "ratings": "ratings",
+    "title-required": "Title is required",
+    "title-max-length": "Title max length is 10",
+    "comment-required": "The comment is required",
+    "rating-min-length": "Min rate must be one star",
+    "rating-max-length": "The number of stars must not exceed 5"
   }
 }

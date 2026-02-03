@@ -109,6 +109,7 @@ const config: Config = {
       },
       lineHeight: {
         "100": "100%",
+        "125": "125%",
       },
       fontSize: {
         xs12: "12px",
