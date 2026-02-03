@@ -6,7 +6,7 @@ export default function page() {
     <div className="flex gap-5 ">
       {/* Filters */}
       <div className="w-filtersCard border-e pe-24">
-        <div className="w-72">
+        <div className="w-[277px]">
           {/* Occasions Filter */}
           <OccasionsFilter />
           {/* Prices Filter */}
