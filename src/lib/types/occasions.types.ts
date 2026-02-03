@@ -6,7 +6,13 @@ export type Occasion = {
 
   productsCount: number;
 };
-
 export type OccasionResponse = {
+  message: string;
+  metadata: {
+    currentPage: number;
+    limit: number;
+    totalPages: number;
+    totalItems: number;
+  };
   occasions: Occasion[];
 };

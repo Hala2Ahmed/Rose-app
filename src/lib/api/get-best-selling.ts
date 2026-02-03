@@ -15,6 +15,7 @@ type BestSellingResult =
 interface GetBestSellingParams {
   occasion?: string;
   limit?: number;
+  price?: number;
 }
 
 export async function getBestSelling(

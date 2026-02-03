@@ -21,7 +21,8 @@
   "common": {
     "view-more": "مشاهدة المزيد",
     "search-country": "ابحث عن الدولة...",
-    "no-country-found": "لم يتم العثور على دولة."
+    "no-country-found": "لم يتم العثور على دولة.",
+    "reset": "إعادة ضبط"
   },
   "about": {
     "title": "من نحن",
@@ -65,7 +66,6 @@
     "occasion_title": "هدايا خاصة للأشخاص الذين تحبهم"
   },
   "auth": {
-
     "login": {
       "Email": "الايميل",
       "Password": "الباسورد",
@@ -122,6 +122,20 @@
     "gender-palceholder": "النوع",
     "password-label": "الرقم السري",
     "confirmpassword-label": "تأكيد الرقم السري"
-
+  },
+  "products": {
+    "filters": {
+      "occasion-title": "مناسبة",
+      "end-of-occasions": "لا توجد مناسابات اخرى",
+      "occasions-error": "حدث خطأ أثناء تحميل المناسبات",
+      "price-title": "السعر",
+      "price-from-label": "من",
+      "price-to-label": "الى",
+      "price-to-max": "برجاء ادخال رقم اقل من 10000",
+      "price-from-max": "برجاء ادخال رقم اقل من 1000",
+      "price-valid": "برجاء ادخال رقم صحيح",
+      "price-from-less-than-to": "يجب أن يكون السعر 'من' أقل من السعر 'إلى'",
+      "price-to-greater-than-from": "يجب أن يكون السعر 'إلى' أكبر من السعر 'من'"
+    }
   }
 }

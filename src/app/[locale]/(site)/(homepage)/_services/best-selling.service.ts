@@ -5,7 +5,7 @@ import {
 } from "@/lib/types/best-selling.types";
 
 export async function bestSellingService(
-  params?: GetBestSellingParams
+  params?: GetBestSellingParams,
 ): Promise<BestSellingProduct[]> {
   const url = new URL(`${process.env.API_URL}/products`);
 

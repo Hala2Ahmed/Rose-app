@@ -1,6 +1,7 @@
 "use client";
 
 import MainTitle from "@/components/shared/main-title";
+import { useUrlParams } from "@/hooks/use-url-params";
 
 import { Occasion } from "@/lib/types/occasions.types";
 
@@ -8,7 +9,7 @@ import { cn } from "@/lib/utils/tailwind-merge";
 
 import { useTranslations } from "next-intl";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 import React from "react";
 
@@ -19,37 +20,23 @@ interface MostPopularHeaderProps {
 export default function MostPopularHeader({
   occasions,
 }: MostPopularHeaderProps) {
-  //Navigation
-  const router = useRouter();
-
+  //hooks
   const searchParams = useSearchParams();
+  const { toggleParam } = useUrlParams();
 
   //translations
   const t = useTranslations("most-popular");
 
   const activeOccasion = searchParams.get("occasion");
 
-  //get products upon occasion click function
-  const handleOccasionClick = (occasionId: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-
-    if (activeOccasion === occasionId) {
-      params.delete("occasion");
-    } else {
-      params.set("occasion", occasionId);
-    }
-
-    router.push(`?${params.toString()}`, { scroll: false });
-  };
-
   return (
     <div className="flex items-center justify-between mb-10">
       <MainTitle title={t("title")} />
       <ul className="flex gap-6">
-        {occasions.map((occasion) => (
+        {occasions?.map((occasion: Occasion) => (
           <li key={occasion._id}>
             <button
-              onClick={() => handleOccasionClick(occasion._id)}
+              onClick={() => toggleParam("occasion", occasion._id)}
               //toggle active occasion class
               className={cn(
                 "transition-colors",
