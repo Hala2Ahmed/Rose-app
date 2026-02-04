@@ -11,7 +11,7 @@ export default function Review({ review }: ReviewProps) {
     const format = useFormatter();
 
     return (
-        <div className='flex flex-col gap-2.5 pb-4 border-b border-zinc-100 px-2 pt-2'>
+        <div className='flex flex-col gap-2.5 pb-4 border-b border-zinc-200 dark:border-zinc-700 px-2 pt-2'>
             {/*User Info */}
             <div className='flex gap-2.5'>
                 <div className="w-11 h-11 rounded-full bg-maroon-600 flex flex-col items-center justify-center font-semibold text-xl leading-100 text-white">

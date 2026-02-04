@@ -39,7 +39,7 @@ export default async function ProductReviews({ productId, rateAvg, rateCount }: 
                 <span className="flex gap-1">{renderStars(4)}</span>
             </div>
 
-            <div className="flex gap-5 mt-4 pt-4 border-t dark:border-zinc-100">
+            <div className="flex gap-5 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-700">
                 {/* All product reviews*/}
                 <div className="
                     flex flex-col gap-2.5 pt-4 pe-5
