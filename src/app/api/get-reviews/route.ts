@@ -1,6 +1,10 @@
-import { Reviews } from "@/lib/types/reviews.js";
+import { NextRequest, NextResponse } from "next/server";
+import { Reviews } from "@/lib/types/reviews";
 
-export async function getProductsReviewService(productId: string) {
+export async function GET(req: NextRequest) {
+    const { searchParams } = new URL(req.url);
+    const productId = searchParams.get("productId") ?? "1";
+
     const response = await fetch(`${process.env.API_URL!}/products/${productId}/reviews`, {
         method: "GET",
         headers: {
@@ -14,5 +18,5 @@ export async function getProductsReviewService(productId: string) {
         throw new Error(data.error);
     }
 
-    return data;
+    return NextResponse.json(data, { status: response.status });
 }

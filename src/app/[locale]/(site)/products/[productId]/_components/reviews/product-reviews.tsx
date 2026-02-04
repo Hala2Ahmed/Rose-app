@@ -50,9 +50,7 @@ export default async function ProductReviews({ productId, rateAvg, rateCount }: 
                     [scrollbar-width:thin]
                     [scrollbar-color:#a1a1aa_transparent]
                 ">
-                    <Suspense fallback={<AllReviewsSkeleton />} >
-                        <AllReviews productId={productId} />
-                    </Suspense>
+                    <AllReviews productId={productId} />
                 </div>
 
                 {/* Add review */}
