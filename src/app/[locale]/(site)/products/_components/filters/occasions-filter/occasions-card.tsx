@@ -24,7 +24,7 @@ export default function OccasionsCard({
   return (
     <div
       onClick={() => appendParam("occasion", occasionId)}
-      className="w-full h-20 relative rounded-lg overflow-hidden  cursor-pointer group">
+      className="w-full h-20 relative rounded-lg overflow-hidden  cursor-pointer group mt-2">
       {/* Occasion Image */}
       <Image
         src={`${process.env.NEXT_PUBLIC_IMAGE_API_URL}/${imageSrc}`}

@@ -37,7 +37,12 @@ export default function OccasionsFilter() {
   if (isLoading) {
     return (
       <div className="w-full">
-        <div className="grid grid-cols-2 gap-2">
+        <FilterTitle
+          title={t("occasion-title")}
+          isFilterSelected={hasOccasionFilter}
+          paramsToReset={["occasion"]}
+        />
+        <div className="grid grid-cols-2 gap-2 mb-4">
           {Array.from({ length: SKELETON_ITEMS_COUNT }).map((_, index) => (
             <OccasionsCardSkeleton key={index} />
           ))}
@@ -60,11 +65,13 @@ export default function OccasionsFilter() {
       />
 
       <InfiniteScroll
+        height={296}
         dataLength={allOccasions.length}
         next={fetchNextPage}
         hasMore={hasNextPage ?? false}
+        className="scrollbar-hide"
         loader={
-          <div className="grid grid-cols-2 gap-2 mt-2">
+          <div className="grid grid-cols-2 gap-2 mt-4">
             {Array.from({ length: SKELETON_ITEMS_COUNT }).map((_, index) => (
               <OccasionsCardSkeleton key={`loader-${index}`} />
             ))}
@@ -75,7 +82,7 @@ export default function OccasionsFilter() {
             {t("end-of-occasions")}
           </p>
         }>
-        <div className="grid grid-cols-2 gap-2 ">
+        <div className="grid grid-cols-2 gap-2  ">
           {allOccasions.map((occ: Occasion) => (
             <OccasionsCard
               imageSrc={occ.image}
