@@ -1,34 +1,30 @@
-"use client";
-
-import { useProductReviews } from "../../_hooks/reviews/use-get-reviews";
+import { getTranslations } from "next-intl/server";
+import { getProductsReviewService } from "../../_services/reviews/get-reviews.services";
 import Review from "./review";
-import ReviewSkeleton from "@/components/skeletons/product-review/review.skeleton";
 
-type AllReviewsProps = { productId: string };
+type AllReviewsProps = {
+    productId: string
+};
 
-export default function AllReviews({ productId }: AllReviewsProps) {
-    // Mutation
-    const { payload, isLoading } = useProductReviews(productId);
+export default async function AllReviews({ productId }: AllReviewsProps) {
+    //Translation
+    const t = await getTranslations("review");
 
-    // Loading
-    if (isLoading) return (
-        <>
-            {
-                Array.from({ length: 3 }).map((_, index) => (
-                    <ReviewSkeleton key={index} />
-                ))
-            }
-        </>
-    );
+    // Services 
+    const payload = await getProductsReviewService(productId);
 
     // Empty reviews
-    if (!payload || payload.reviews.length === 0) {
+    if (!payload || payload.reviews.length == 0) {
         return (
             <p className="flex flex-col justify-center items-center w-full h-full">
-                No Reviews Available
+                {t('reviews-empty')}
             </p>
         );
     }
 
-    return <>{payload.reviews.map((r) => <Review key={r._id} review={r} />)}</>;
+    return (
+        <>
+            {payload.reviews.map((r) => <Review key={r._id} review={r} />)}
+        </>
+    );
 }

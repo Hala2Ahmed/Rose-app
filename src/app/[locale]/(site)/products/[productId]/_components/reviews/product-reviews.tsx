@@ -1,12 +1,12 @@
 import { Suspense } from "react";
 import AddReview from "./add-review";
 import AllReviews from "./all-reviews";
-import AllReviewsSkeleton from "@/components/skeletons/product-review/all-reviews.skeleton";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/auth";
 import MainTitle from "@/components/shared/main-title";
 import { renderStars } from "@/lib/utils/render-stars";
 import { getTranslations } from "next-intl/server";
+import AllReviewsSkeleton from "@/components/skeletons/product-review/all-reviews.skeleton";
 
 type ProductReviewsProps = {
     productId: string;
@@ -50,7 +50,9 @@ export default async function ProductReviews({ productId, rateAvg, rateCount }: 
                     [scrollbar-width:thin]
                     [scrollbar-color:#a1a1aa_transparent]
                 ">
-                    <AllReviews productId={productId} />
+                    <Suspense fallback={<AllReviewsSkeleton />} >
+                        <AllReviews productId={productId} />
+                    </Suspense>
                 </div>
 
                 {/* Add review */}
@@ -62,7 +64,7 @@ export default async function ProductReviews({ productId, rateAvg, rateCount }: 
                     {!session && (
                         <div className="absolute rounded-md left-0 right-0 top-0 bottom-0 flex items-center justify-center bg-white/60 dark:bg-black/60 backdrop-blur-[0.1px]">
                             <p className="text-center font-semibold text-base leading-100 text-zinc-800 dark:text-zinc-100">
-                                Please login to be able to review the product
+                                {t('unauthorized-add-review')}
                             </p>
                         </div>
                     )}

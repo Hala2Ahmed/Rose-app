@@ -164,7 +164,8 @@
     "comment-required": "التعليق اجباري",
     "rating-min-length": "يجب ان يبدأ التقييم من نجمة واحدة",
     "rating-max-length": "يجب ان لا يتجاوز التقييم الخمس نجوم",
-    "success-add-review": "تم اضافة المراجعة بنجاح"
+    "success-add-review": "تم اضافة المراجعة بنجاح",
+    "unauthorized-add-review": "يرجى تسجيل الدخول لإضافة تقييم للمنتج"
   },
   "related-products": {
     "title": "منتجات ذات صلة "

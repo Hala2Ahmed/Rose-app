@@ -6,10 +6,10 @@ import { Suspense } from "react";
 import { SingleCardSkeleton } from "@/components/skeletons/product-card.skeleton";
 
 type RelatedProductsProps = {
-    productId: string,
+    categoryId: string,
 }
 
-export default function RelatedProducts({ productId }: RelatedProductsProps) {
+export default function RelatedProducts({ categoryId }: RelatedProductsProps) {
     // Translation
     const t = useTranslations("related-products");
 
@@ -20,15 +20,15 @@ export default function RelatedProducts({ productId }: RelatedProductsProps) {
 
             {/* Carousel */}
             <RelatedProductsCarousel>
-                <Suspense 
-                fallback={
-                    <div className="flex gap-4">
-                        {Array.from({ length: 4 }).map((_, index) => (
-                            <SingleCardSkeleton key={index} />
-                        ))}
-                    </div>
-                } >
-                    <RelatedProductsContent productId={productId} />
+                <Suspense
+                    fallback={
+                        <div className="flex gap-4">
+                            {Array.from({ length: 4 }).map((_, index) => (
+                                <SingleCardSkeleton key={index} />
+                            ))}
+                        </div>
+                    } >
+                    <RelatedProductsContent categoryId={categoryId} />
                 </Suspense>
             </RelatedProductsCarousel>
         </div>

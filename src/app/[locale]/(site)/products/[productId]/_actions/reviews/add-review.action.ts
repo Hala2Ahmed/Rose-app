@@ -2,6 +2,7 @@
 
 import { AddReview, AddReviewFields } from "@/lib/types/reviews";
 import { getToken } from "@/lib/utils/manage-token";
+import { revalidateTag } from "next/cache";
 
 export async function AddReviewAction(fields: {
     product: string;
@@ -28,6 +29,8 @@ export async function AddReviewAction(fields: {
     });
 
     const payload: ApiResponse<AddReview> = await response.json();
+
+    revalidateTag("reviews");
 
     return payload;
 }

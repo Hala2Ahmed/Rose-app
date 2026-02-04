@@ -164,7 +164,8 @@
     "comment-required": "The comment is required",
     "rating-min-length": "Min rate must be one star",
     "rating-max-length": "The number of stars must not exceed 5",
-    "success-add-review": "Review added successfully"
+    "success-add-review": "Review added successfully",
+    "unauthorized-add-review": "Please login to be able to review the product"
   },
   "related-products": {
     "title": "Related Products"

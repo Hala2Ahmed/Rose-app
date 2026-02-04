@@ -1,14 +1,13 @@
-import { NextRequest, NextResponse } from "next/server";
 import { Reviews } from "@/lib/types/reviews";
 
-export async function GET(req: NextRequest) {
-    const { searchParams } = new URL(req.url);
-    const productId = searchParams.get("productId") ?? "1";
-
+export async function getProductsReviewService(productId: string) {
     const response = await fetch(`${process.env.API_URL!}/products/${productId}/reviews`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
+        },
+        next: {
+            tags: ["reviews"],
         },
     });
 
@@ -18,5 +17,5 @@ export async function GET(req: NextRequest) {
         throw new Error(data.error);
     }
 
-    return NextResponse.json(data, { status: response.status });
+    return data;
 }

@@ -1,7 +1,7 @@
 "use client";
 
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { AddReviewFields, Reviews } from "@/lib/types/reviews";
+import { useMutation } from "@tanstack/react-query";
+import { AddReviewFields } from "@/lib/types/reviews";
 import { AddReviewAction } from "../../_actions/reviews/add-review.action";
 import { toast } from "sonner";
 import { useTranslations } from "next-intl";
@@ -14,9 +14,6 @@ type AddReview = {
 export default function useAddReview() {
     //Translation
     const t = useTranslations("review");
-
-    // query client
-    const queryClient = useQueryClient();
 
     const { isPending, mutate, error } = useMutation({
         mutationFn: async ({
@@ -33,18 +30,7 @@ export default function useAddReview() {
             {/* Success */ }
             return response;
         },
-        onSuccess: (response, variables) => {
-
-            queryClient.setQueryData<Reviews>(["product-reviews", variables.product], (old) => {
-                if (!old) return old;
-
-                const newReview = response.review ?? response;
-
-                return {
-                    ...old,
-                    reviews: [newReview, ...old.reviews],
-                };
-            });
+        onSuccess: () => {
             toast.success(t("success-add-review"))
         }
     });

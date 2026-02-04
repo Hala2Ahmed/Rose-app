@@ -15,6 +15,7 @@ export default function page({ params }: PageProps) {
             <ProductReviews productId={params.productId} rateAvg={3.5} rateCount={2} />
 
             {/* Related Products */}
-            <RelatedProducts productId={params.productId} />
+            {/* //TODO: pass real categoryId */}
+            <RelatedProducts categoryId={"673c46fd1159920171827c85"} />
         </>)
 }

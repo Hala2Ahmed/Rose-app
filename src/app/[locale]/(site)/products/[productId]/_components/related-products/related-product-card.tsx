@@ -2,10 +2,10 @@
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { renderStars } from "@/lib/utils/render-stars";
-import { SimilarProduct } from "@/lib/types/similar-products";
+import { Product } from "@/lib/types/products";
 
 type BestSellingCardProps = {
-    data: SimilarProduct;
+    data: Product;
 };
 
 export default function RelatedProductCard({ data }: BestSellingCardProps) {
@@ -13,7 +13,7 @@ export default function RelatedProductCard({ data }: BestSellingCardProps) {
         <article className="w-full relative">
             <div className="relative h-72 rounded-2xl overflow-hidden">
                 <Image
-                    src={`https://flower.elevateegy.com/uploads/${data.imgCover}`}
+                    src={data.imgCover}
                     alt={data.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -24,12 +24,12 @@ export default function RelatedProductCard({ data }: BestSellingCardProps) {
                 />
 
                 {/* Out Of stock state */}
-
-                {/* {data.quantity <= 0 && (
+                {data.quantity <= 0 && (
                     <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-medium">
                         OUT OF STOCK
                     </div>
-                )} */}
+                )}
+
             </div>
             <h3 className="mt-2 text-maroon-700 text-lg font-medium">
                 {data.title.split(" ").slice(0, 4).join(" ")}

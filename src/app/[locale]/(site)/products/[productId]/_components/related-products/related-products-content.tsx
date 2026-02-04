@@ -3,14 +3,14 @@ import { getSimilarProductService } from '../../_services/similar-products/simil
 import Content from './carousel-content';
 
 type RelatedProductsContentProps = {
-    productId: string,
+    categoryId: string,
 }
 
-export default async function RelatedProductsContent({productId}: RelatedProductsContentProps) {
+export default async function RelatedProductsContent({categoryId}: RelatedProductsContentProps) {
     // services
-    const data = await getSimilarProductService(productId);
+    const data = await getSimilarProductService(categoryId);
 
     return (
-        <Content items={data.similarProducts} />
+        <Content items={data.products} />
     )
 }

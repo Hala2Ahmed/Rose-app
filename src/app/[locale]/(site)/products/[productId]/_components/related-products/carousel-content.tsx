@@ -6,11 +6,11 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
-import { SimilarProduct } from "@/lib/types/similar-products";
 import RelatedProductCard from "./related-product-card";
+import { Product } from "@/lib/types/products";
 
 type TestimonialsCarouselProps = {
-    items: SimilarProduct[];
+    items: Product[];
 };
 
 export default function Content({
