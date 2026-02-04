@@ -93,10 +93,12 @@ const config: Config = {
       height: {
         30: "120px",
         80: "320px",
+        367: "367px",
       },
       width: {
         30: "120px",
         101.5: "406px",
+        742: "742px",
       },
       maxWidth: {
         303: "1212px",

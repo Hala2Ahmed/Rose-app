@@ -162,7 +162,11 @@
     "title-required": "عنوان المراجعة اجباري",
     "title-max-length": "يجب ان لا يتجاوز العنوان عن 10 خانات",
     "comment-required": "التعليق اجباري",
-    "rating-min-length": "يجب ان يبدأ التقييم من نجمة 1",
-    "rating-max-length": "يجب ان لا يتجاوز التقييم الخمس نجوم"
+    "rating-min-length": "يجب ان يبدأ التقييم من نجمة واحدة",
+    "rating-max-length": "يجب ان لا يتجاوز التقييم الخمس نجوم",
+    "success-add-review": "تم اضافة المراجعة بنجاح"
+  },
+  "related-products": {
+    "title": "منتجات ذات صلة "
   }
 }

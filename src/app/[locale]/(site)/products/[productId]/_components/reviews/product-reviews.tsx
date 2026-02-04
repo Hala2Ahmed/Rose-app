@@ -42,8 +42,8 @@ export default async function ProductReviews({ productId, rateAvg, rateCount }: 
             <div className="flex gap-5 mt-4 pt-4 border-t dark:border-zinc-100">
                 {/* All product reviews*/}
                 <div className="
-                    flex flex-col gap-2.5 pt-4 pr-5
-                    h-[367px] w-[742px] overflow-y-auto
+                    flex flex-col gap-2.5 pt-4 pe-5
+                    h-367 w-742 overflow-y-auto
                     scrollbar-thin
                     scrollbar-thumb-zinc-400
                     scrollbar-track-transparent

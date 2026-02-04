@@ -13,8 +13,13 @@ export default async function AllReviews({ productId }: AllReviewsProps) {
     // Services 
     const data = await getProductsReviewService(productId);
 
+    // No data found
     if (data.reviews.length == 0) {
-        return <p className="flex flex-col justify-center items-center w-full h-full">{t("reviews-empty")}</p>
+        return <p
+            className="flex flex-col justify-center items-center w-full h-full"
+        >
+            {t("reviews-empty")}
+        </p>
     }
 
     return (
