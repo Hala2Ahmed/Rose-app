@@ -1,8 +1,8 @@
 "use client";
 
-import AllReviewsSkeleton from "@/components/skeletons/product-review/all-reviews.skeleton";
 import { useProductReviews } from "../../_hooks/reviews/use-get-reviews";
 import Review from "./review";
+import ReviewSkeleton from "@/components/skeletons/product-review/review.skeleton";
 
 type AllReviewsProps = { productId: string };
 
@@ -11,7 +11,15 @@ export default function AllReviews({ productId }: AllReviewsProps) {
     const { payload, isLoading } = useProductReviews(productId);
 
     // Loading
-    if (isLoading) return <AllReviewsSkeleton />;
+    if (isLoading) return (
+        <>
+            {
+                Array.from({ length: 3 }).map((_, index) => (
+                    <ReviewSkeleton key={index} />
+                ))
+            }
+        </>
+    );
 
     // Empty reviews
     if (!payload || payload.reviews.length === 0) {
