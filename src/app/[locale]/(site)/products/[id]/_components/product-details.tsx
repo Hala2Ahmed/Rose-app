@@ -1,36 +1,20 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import useProductDetails from "../_hooks/use-product-details";
 import ProductGallery from "./product-gallery";
 import { useFormatter } from "next-intl";
-import { HeartPlus, Package, ShoppingCart, Star } from "lucide-react";
+import { HeartPlus, Package, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useCart } from "@/components/providers/cart.provider";
 import ProductDetailsSkeleton from "@/components/skeletons/product-details/product-details.skeleton";
+import AddToCartButton from "./add-to-cart-btn";
 
 export default function ProductDetails({ id }: { id: string }) {
   //Translation
   const format = useFormatter();
 
-  //State
-  const [loading, setLoading] = useState(false);
-
-  //Context
-  const { addToCart } = useCart();
-
   //Hook
   const { isLoading, product, error } = useProductDetails(id);
-
-  //Functions to handle add to cart
-  const handleAdd = async () => {
-    try {
-      setLoading(true);
-      await addToCart(product, 1);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   // Loading skeleton
   if (isLoading) return <ProductDetailsSkeleton />;
@@ -114,18 +98,7 @@ export default function ProductDetails({ id }: { id: string }) {
             <HeartPlus className="w-6 h-6" />
           </Button>
           
-          <Button
-            className="w-full"
-            onClick={handleAdd}
-            disabled={loading || product?.quantity === -1}
-          >
-            <ShoppingCart className="w-6 h-6 mr-2.5" />
-            {product?.quantity === -1
-              ? "Out of Stock"
-              : loading
-                ? "Adding..."
-                : "Add to Cart"}
-          </Button>
+            <AddToCartButton product={product!} />
         </div>
       </div>
     </div>

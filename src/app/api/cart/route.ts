@@ -11,8 +11,8 @@ async function fetchServerCart(token: string): Promise<CartResponse> {
     cache: "no-store",
   });
 
-  const data: CartResponse = await res.json();
-  if (!res.ok) throw new Error(data.message || "Failed to fetch cart");
+  const data: ApiResponse<CartResponse> = await res.json();
+  if ("error" in data) throw new Error(data.error || "Failed to fetch cart");
   return data;
 }
 
@@ -30,8 +30,8 @@ async function addToServerCart(
     body: JSON.stringify(body),
   });
 
-  const data: CartResponse = await res.json();
-  if (!res.ok) throw new Error(data.message || "Failed to add product");
+  const data: ApiResponse<CartResponse> = await res.json();
+  if ("error" in data) throw new Error(data.error || "Failed to fetch cart");
   return data;
 }
 
