@@ -1,75 +1,161 @@
+"use client";
 
-import { useQueryClient } from "@tanstack/react-query"; 
-import { toast } from "sonner"; 
-const WISHLIST_KEY = "guest_wishlist"; 
-// Key used in localStorage for guest wishlist
-// Helper function to get wishlist from localStorage
-function getGuestWishlist(): string[] { 
-  if (typeof window === "undefined") return []; 
-  // Prevents SSR errors (window is not defined on server)
+import { useEffect } from "react";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
+import { useSession } from "next-auth/react";
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from "@/app/[locale]/(site)/(homepage)/_services/wishlist.service";
 
-  try { 
-    const data = localStorage.getItem(WISHLIST_KEY); 
-    return data ? JSON.parse(data) : []; 
-    // Parse JSON or return empty array if not found
-  } catch { 
-    return []; 
-    // Return empty array if parsing fails
-  } 
-} 
+const WISHLIST_KEY = "guest_wishlist";
 
-// Helper function to save wishlist to localStorage
-function setGuestWishlist(wishlist: string[]) { 
-  if (typeof window === "undefined") return; 
-  // Prevents SSR errors
-  localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist)); 
-} 
+/* ================= Cookies Helpers ================= */
 
-// Custom hook to manage guest wishlist
-export function useWishlist() { 
-  const queryClient = useQueryClient(); 
-  // Get React Query client to update cached product data
-  // Optimistic update: immediately update product cache
-  const optimisticUpdate = (productId: string, value: boolean) => { 
-    queryClient.setQueriesData( 
-      { queryKey: ["products"], exact: false }, 
-      (old: any) => { 
-        if (!old) return old; 
-        // Map through products and update isInWishlist for target product
-        return { 
-          ...old, 
-          products: old.products.map((p: any) => 
-            p._id === productId ? { ...p, isInWishlist: value } : p, 
-          ), 
-        }; 
-      }, 
-    ); 
-  }; 
+function getGuestWishlist(): string[] {
+  if (typeof document === "undefined") return [];
 
-  // Toggle product in guest wishlist
-  const toggleWishlist = (productId: string) => { 
-    const wishlist = getGuestWishlist(); 
-    const isInWishlist = wishlist.includes(productId); 
+  const match = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith(`${WISHLIST_KEY}=`));
 
-    if (isInWishlist) { 
-      // Remove from wishlist
-      const newWishlist = wishlist.filter((id) => id !== productId); 
-      setGuestWishlist(newWishlist); 
-      optimisticUpdate(productId, false); 
-      toast("Removed from wishlist", { 
-        description: "Your wishlist is saved locally", 
-      }); 
-    } else { 
-      // Add to wishlist
-      wishlist.push(productId); 
-      setGuestWishlist(wishlist); 
-      optimisticUpdate(productId, true); 
-      toast("Saved for later ", { 
-        description: "Your wishlist is saved locally", 
-      }); 
-    } 
-  }; 
+  if (!match) return [];
 
-  return { toggleWishlist, getGuestWishlist }; 
-  // Expose functions to use in components
+  try {
+    return JSON.parse(decodeURIComponent(match.split("=")[1]));
+  } catch {
+    return [];
+  }
+}
+
+function setGuestWishlist(wishlist: string[]) {
+  if (typeof document === "undefined") return;
+
+  const expires = new Date();
+  expires.setDate(expires.getDate() + 7);
+
+  document.cookie = `${WISHLIST_KEY}=${encodeURIComponent(
+    JSON.stringify(wishlist),
+  )}; expires=${expires.toUTCString()}; path=/`;
+}
+
+function clearGuestWishlist() {
+  if (typeof document === "undefined") return;
+
+  document.cookie = `${WISHLIST_KEY}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+}
+
+/* ================= Hook ================= */
+
+export function useWishlist() {
+  const queryClient = useQueryClient();
+  const { data: session } = useSession();
+  const isAuthenticated = !!session?.user;
+
+  /* ---------- Optimistic Update ---------- */
+  const optimisticUpdate = (productId: string, value: boolean) => {
+    queryClient.setQueriesData(
+      { queryKey: ["products"], exact: false },
+      (old: any) => {
+        if (!old) return old;
+
+        return {
+          ...old,
+          products: old.products.map((p: any) =>
+            p._id === productId ? { ...p, isInWishlist: value } : p,
+          ),
+        };
+      },
+    );
+  };
+
+  /* ---------- Mutations ---------- */
+  const addMutation = useMutation({
+    mutationFn: (productId: string) =>
+      addToWishlist(productId, session?.accessToken!),
+    onMutate: (productId: string) => {
+      optimisticUpdate(productId, true);
+    },
+    onError: (_err, productId) => {
+      optimisticUpdate(productId, false);
+      toast("Something went wrong", { description: "Please try again" });
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["wishlist"] });
+      queryClient.invalidateQueries({ queryKey: ["products"] });
+    },
+  });
+
+  const removeMutation = useMutation({
+    mutationFn: (productId: string) =>
+      removeFromWishlist(productId, session?.accessToken!),
+    onMutate: (productId: string) => {
+      optimisticUpdate(productId, false);
+    },
+    onError: (_err, productId) => {
+      optimisticUpdate(productId, true);
+      toast("Something went wrong", { description: "Please try again" });
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["wishlist"] });
+      queryClient.invalidateQueries({ queryKey: ["products"] });
+    },
+  });
+
+  /* ---------- Merge Guest Wishlist ---------- */
+  const mergeGuestWishlist = async () => {
+    const guestWishlist = getGuestWishlist();
+    if (!guestWishlist.length || !session?.accessToken) return;
+
+    try {
+      await Promise.all(
+        guestWishlist.map((id) => addToWishlist(id, session.accessToken!)),
+      );
+      clearGuestWishlist();
+      queryClient.invalidateQueries({ queryKey: ["wishlist"] });
+      queryClient.invalidateQueries({ queryKey: ["products"] });
+      toast("Wishlist synced ❤️", {
+        description: "Your saved items are now in your account",
+      });
+    } catch {
+      toast("Couldn't sync wishlist", { description: "We'll try again later" });
+    }
+  };
+
+  useEffect(() => {
+    if (session) mergeGuestWishlist();
+  }, [session]);
+
+  /* ---------- Toggle Wishlist ---------- */
+  const toggleWishlist = (productId: string) => {
+    if (isAuthenticated && session?.accessToken) {
+      const wishlist = queryClient.getQueryData<string[]>(["wishlist"]) ?? [];
+      const isInWishlist = wishlist.includes(productId);
+
+      if (isInWishlist) removeMutation.mutate(productId);
+      else addMutation.mutate(productId);
+
+      return;
+    }
+
+    // Guest
+    const wishlist = getGuestWishlist();
+    const isInWishlist = wishlist.includes(productId);
+
+    if (isInWishlist) {
+      setGuestWishlist(wishlist.filter((id) => id !== productId));
+      optimisticUpdate(productId, false);
+      toast("Removed from wishlist", { description: "Saved in cookies" });
+    } else {
+      setGuestWishlist([...wishlist, productId]);
+      optimisticUpdate(productId, true);
+      toast("Saved for later ❤️", { description: "Saved in cookies" });
+    }
+  };
+
+  return {
+    toggleWishlist,
+    getGuestWishlist,
+  };
 }
