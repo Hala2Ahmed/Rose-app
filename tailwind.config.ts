@@ -96,6 +96,7 @@ const config: Config = {
       },
       width: {
         30: "120px",
+        101.5: "406px",
       },
       maxWidth: {
         303: "1212px",

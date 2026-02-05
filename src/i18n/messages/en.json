@@ -19,7 +19,9 @@
     "title": "Most Popular"
   },
   "common": {
-    "view-more": "View More"
+    "view-more": "View More",
+    "search-country": "Search country...",
+    "no-country-found": "No country found."
   },
   "about": {
     "title": "About",
@@ -40,5 +42,110 @@
   "companies": {
     "header": "Trusted by over <span>4.5k+</span> companies"
   },
-  "auth": {}
+  "home": {
+    "shop": "Shop Now",
+    "buy": "I'm buying!",
+    "benefit_title_1": "Free Delivery",
+    "benefit_title_2": "Get Refund",
+    "benefit_title_3": "Safe Payment",
+    "benefit_title_4": "24/7 Support",
+    "benefit_desc_1": "For orders above 120 EGP",
+    "benefit_desc_2": "Refunds within 30 days",
+    "benefit_desc_3": "100% Secure Payment",
+    "benefit_desc_4": "Contact us at any time",
+    "occasion_badge_1": "Wedding",
+    "occasion_badge_2": "Engagement",
+    "occasion_badge_3": "Anniversary",
+    "occasion_title_1": "Celebrate Her Forever with a Gift She’ll Always Remember",
+    "occasion_title_2": "Honor the Beginning of a Beautiful Journey Together",
+    "occasion_title_3": "Mark Every Year of Love with a Meaningful Surprise",
+    "occasions_slider_title": "Say It with Flowers",
+    "occasions_slider_desc": "Elegant gifts for every special moment..",
+    "occasion_badge": "Staring from 10.99 EGP",
+    "occasion_title": "Special Gifts For The People You Love"
+  },
+  "auth": {
+    "login": {
+      "Email": "Email",
+      "Password": "Password",
+      "forgot_password": "Forgot your password?",
+      "remember": "Remember Me",
+      "Login": "Login",
+      "welcome": "welcome back!",
+      "create": "Create one now!",
+      "account": "Don’t have an account yet? "
+    },
+    "register": {
+      "form-footer": "Already have an account?",
+      "form-footer-link": "Login",
+      "greeting-title": "Become part of our family!",
+      "create-account": "Create Account",
+      "register-success": "Your account has been created successfully."
+    },
+    "forgot-password": {
+      "email-step": {
+        "email-required": "Your email is required",
+        "email-validate": "Please enter a valid email",
+        "button": "Continue",
+        "footer": "Don’t have an account yet?",
+        "footer-link": "Create one now!",
+        "label": "Email",
+        "success-toast": "OTP has been sent to your email!"
+      },
+      "otp-step": {
+        "title": "Enter the OTP Code",
+        "description": "We have sent a 6-digit code to",
+        "label": "OTP Label",
+        "new-code": "Send a new code",
+        "help": "Need help?",
+        "contact": "Contact us",
+        "verify-otp": "Verify OTP",
+        "otp-length": "OTP must be 6 digits",
+        "otp-regex": "OTP must contain only numbers",
+        "otp-resend-countdown": "request another code in: {seconds, plural, =0 {0 second} =1 {1 second} other {# seconds}}",
+        "otp-toast": "A new OTP code has been sent"
+      },
+      "reset-password-step": {
+        "password-required": "Your password is required",
+        "password-password-pattern": "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character",
+        "re-password-mismatch": "Password and confirm password must match",
+        "password-label": "Password",
+        "re-password-label": "Confirm Password",
+        "button": "Reset Password",
+        "footer-link": "Contact us",
+        "footer": "Need help?",
+        "success-toast": "Your password has been successfully reset."
+      }
+    },
+    "validations": {
+      "firstname-required": "First name is required",
+      "firstname-min": "First name must be at least 2 characters long",
+      "firstname-max": "First name must be maximum 20 characters",
+      "lastname-required": "Last name is required",
+      "lastname-min": "Last name must be at least 2 characters long",
+      "lastname-max": "Last name must be maximum 20 characters",
+      "username-required": "Username is required",
+      "username-min": "Username must be at least 2 characters long",
+      "username-max": "Username must be maximum 20 characters",
+      "email-required": "Please enter a valid email",
+      "phonenumber-min": "Please enter a phone number",
+      "phonenumber-valid": "Please enter a valid Egyptian phone number (01[0125]XXXXXXXX)",
+      "password-required": "Please enter your password",
+      "password-pattern": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character",
+      "confirmpassword-required": "Please confirm your password",
+      "confirmpassword-error": "Passwords do not match",
+      "gender-required": "Please choose right gender"
+    },
+    "firstname-label": "First Name",
+    "lastname-label": "Last Name",
+    "email-label": "Email",
+    "phone-label": "Phone",
+    "gender-label": "Gender",
+    "phone-placeholder": "01234567890",
+    "male-gender": "Male",
+    "female-gender": "Female",
+    "gender-palceholder": "Gender",
+    "password-label": "Password",
+    "confirmpassword-label": "Confirm Password"
+  }
 }

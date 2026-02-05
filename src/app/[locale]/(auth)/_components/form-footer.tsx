@@ -1,7 +1,5 @@
 import { Link } from "@/i18n/navigation";
-
 import { cn } from "@/lib/utils/tailwind-merge";
-
 import React from "react";
 type Props = {
   text: string;
@@ -9,6 +7,7 @@ type Props = {
   linkHref: string;
   className?: string;
 };
+
 export default function FormFooter({ text, link, linkHref, className }: Props) {
   return (
     <div

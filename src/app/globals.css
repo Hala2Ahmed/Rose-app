@@ -2,20 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
 
-body {
+/* body {
   background-color: white;
   @apply font-sarabun;
-}
+} */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: #ffffff;
     --foreground: 224 71.4% 4.1%;
     --card: 0 0% 100%;
     --card-foreground: 224 71.4% 4.1%;
@@ -43,7 +44,7 @@ body {
   }
 
   .dark {
-    --background: 224 71.4% 4.1%;
+    --background: #27272A;
     --foreground: 210 20% 98%;
     --card: 224 71.4% 4.1%;
     --card-foreground: 210 20% 98%;
@@ -88,4 +89,20 @@ body {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
+}
+
+
+
+/* Swiper pagination customization */
+.swiper-pagination-custom .swiper-pagination-bullet {
+  background-color: #FBEAEA;
+  width: 10px; 
+  height: 10px;
+  opacity: 1; 
+}
+
+.swiper-pagination-custom .swiper-pagination-bullet-active {
+  background-color: #A6252A;
+  width: 30px;
+  border-radius: 12px; 
 }
