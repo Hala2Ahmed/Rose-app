@@ -147,5 +147,18 @@
     "gender-palceholder": "Gender",
     "password-label": "Password",
     "confirmpassword-label": "Confirm Password"
+  },
+  "products": {
+    "filters": {
+      "category-title": "Categories",
+      "rating-title": "Rating",
+      "price-title": "Price",
+
+      "reset-all": "Reset All",
+
+      "loading": "Loading...",
+      "end-of-list": "No more results",
+      "error": "Something went wrong"
+    }
   }
 }

@@ -147,5 +147,18 @@
     "gender-palceholder": "النوع",
     "password-label": "الرقم السري",
     "confirmpassword-label": "تأكيد الرقم السري"
+  },
+  "products": {
+    "filters": {
+      "category-title": "الفئات",
+      "rating-title": "التقييم",
+      "price-title": "السعر",
+
+      "reset-all": "إعادة تعيين الكل",
+
+      "loading": "جاري التحميل...",
+      "end-of-list": "لا توجد نتائج أخرى",
+      "error": "حدث خطأ ما"
+    }
   }
 }
