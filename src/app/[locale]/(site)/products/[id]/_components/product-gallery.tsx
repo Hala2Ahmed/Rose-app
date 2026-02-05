@@ -27,7 +27,7 @@ export default function ProductGallery({
       <div className="grid grid-cols-6 gap-x-2.5">
         {images.map((img) => (
           <button
-            key={'thumbnail-' + _id + img}
+            key={"thumbnail-" + _id + img}
             onClick={() => setActive(img)}
             className={cn(
               "relative cursor-pointer rounded-md overflow-hidden",

@@ -1,23 +1,51 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import useProductDetails from "../_hooks/use-product-details";
 import ProductGallery from "./product-gallery";
 import { useFormatter } from "next-intl";
 import { HeartPlus, Package, ShoppingCart, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useCart } from "@/components/providers/cart.provider";
+import ProductDetailsSkeleton from "@/components/skeletons/product-details/product-details.skeleton";
 
 export default function ProductDetails({ id }: { id: string }) {
-  const { isLoading, product, error } = useProductDetails(id);
+  //Translation
   const format = useFormatter();
 
-  console.log(product);
+  //State
+  const [loading, setLoading] = useState(false);
 
-  if (isLoading) return <p>Loading...</p>;
+  //Context
+  const { addToCart } = useCart();
+
+  //Hook
+  const { isLoading, product, error } = useProductDetails(id);
+
+  //Functions to handle add to cart
+  const handleAdd = async () => {
+    try {
+      setLoading(true);
+      await addToCart(product, 1);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Loading skeleton
+  if (isLoading) return <ProductDetailsSkeleton />;
+
+  // Error state
   if (error)
-    return <p className="text-red-600">Error loading product details.</p>;
+    return (
+      <p className="flex justify-center mx-auto text-red-600 p-10">
+        Error loading product details.
+      </p>
+    );
+
   return (
     <div className="flex gap-16 my-12">
+      {/* Product images */}
       <div>
         {product?.images && product?.imgCover && (
           <ProductGallery
@@ -28,6 +56,7 @@ export default function ProductDetails({ id }: { id: string }) {
         )}
       </div>
 
+      {/* Product info */}
       <div className="flex flex-col max-h-[523px]">
         <h1 className="text-3xl font-semibold text-zinc-800 pb-2">
           {product?.title}
@@ -75,7 +104,7 @@ export default function ProductDetails({ id }: { id: string }) {
             <span className="text-sm text-zinc-400">No ratings yet</span>
           )}
         </div>
-        
+
         <p className="text-zinc-600 max-w-[605px] overflow-y-auto mb-4">
           {product?.description}
         </p>
@@ -84,9 +113,18 @@ export default function ProductDetails({ id }: { id: string }) {
           <Button variant="ghost" className="bg-zinc-100 text-zinc-800">
             <HeartPlus className="w-6 h-6" />
           </Button>
-          <Button className="w-full">
+          
+          <Button
+            className="w-full"
+            onClick={handleAdd}
+            disabled={loading || product?.quantity === -1}
+          >
             <ShoppingCart className="w-6 h-6 mr-2.5" />
-            Add to Cart
+            {product?.quantity === -1
+              ? "Out of Stock"
+              : loading
+                ? "Adding..."
+                : "Add to Cart"}
           </Button>
         </div>
       </div>

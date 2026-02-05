@@ -1,6 +1,7 @@
 
 import Footer from "@/components/layout/app/Footer";
 import Header from "@/components/layout/app/Header";
+import { CartProvider } from "@/components/providers/cart.provider";
 
 type LayoutProps = {
     children: React.ReactNode;
@@ -13,6 +14,8 @@ export default function SiteLayout({
     return (
         <>
             {/** Header */}
+            <CartProvider>
+
             <Header />
 
             {/** main component */}
@@ -22,6 +25,9 @@ export default function SiteLayout({
 
             {/** Footer */}
             <Footer />
+            
+            </CartProvider>
+
         </>
     );
 }

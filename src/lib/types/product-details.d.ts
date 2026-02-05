@@ -1,4 +1,4 @@
-export type ProductDetails= {
+export type ProductDetails = {
   _id: string;
   title: string;
   slug: string;
@@ -12,4 +12,4 @@ export type ProductDetails= {
   rateAvg: number;
   rateCount: number;
   isInWishlist: boolean;
-}
+};

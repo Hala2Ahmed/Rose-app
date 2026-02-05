@@ -19,6 +19,7 @@ import {
 import { cn } from "@/lib/utils/tailwind-merge";
 import Notifications from "./notifications/index";
 import LanguageSwitcher from "./language-switcher";
+import { useCart } from "@/components/providers/cart.provider";
 
 /* -------------------------------------------------------------------------- */
 /*                                   Header                                   */
@@ -26,6 +27,9 @@ import LanguageSwitcher from "./language-switcher";
 
 function Header() {
   const pathname = usePathname();
+
+  // Context
+  const { cartCount } = useCart();
 
   const navLinks = [
     { href: "/", label: "Home", icon: <Home className="h-5 w-5" /> },
@@ -89,7 +93,14 @@ function Header() {
 
           <div className="flex items-center gap-4 px-4 border-x border-zinc-200">
             <Heart className="h-5 w-5 cursor-pointer" />
-            <ShoppingCart className="h-5 w-5 cursor-pointer" />
+            <Link href="/cart" className="relative">
+              <ShoppingCart className="h-5 w-5 cursor-pointer" />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-maroon-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </Link>{" "}
             <Notifications notificationCount={5} />
           </div>
 
@@ -113,7 +124,8 @@ function Header() {
                     isActive
                       ? "text-softPink-200 dark:text-maroon-800 after:absolute after:left-0 after:bottom-0 after:h-[0.125rem] after:w-full after:bg-softPink-300 dark:after:bg-maroon-800"
                       : "text-zinc-50 dark:text-zinc-800 hover:text-softPink-100 dark:hover:text-maroon-700",
-                  )}>
+                  )}
+                >
                   {link.icon}
                   {link.label}
                 </Link>
