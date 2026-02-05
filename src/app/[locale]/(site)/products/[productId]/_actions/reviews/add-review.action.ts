@@ -13,7 +13,7 @@ export async function AddReviewAction(fields: {
     if (!token) {
         throw new Error("No token available")
     }
-    // Send PUT request to reset password endpoint
+    // Send POST request to add review endpoint
     const response = await fetch(`${process.env.API_URL}/reviews`, {
         method: "POST",
         body: JSON.stringify({
