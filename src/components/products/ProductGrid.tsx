@@ -20,11 +20,9 @@ export default function ProductGrid({ initialPage, initialData }: Props) {
   const searchParams = useSearchParams();
   const queryClient = useQueryClient();
 
-  const { toggleWishlist, getGuestWishlist } = useWishlist();
-
   const page = Number(searchParams.get("page") ?? initialPage);
   const filters = Object.fromEntries(
-    [...searchParams.entries()].filter(([k]) => k !== "page")
+    [...searchParams.entries()].filter(([k]) => k !== "page"),
   );
 
   const { data, isLoading, isFetching, error } = useProducts({
@@ -36,27 +34,13 @@ export default function ProductGrid({ initialPage, initialData }: Props) {
   const products = data?.products ?? [];
   const totalPages = data?.metadata?.totalPages ?? 1;
 
-  /* ================= Apply Cookies Wishlist ================= */
+  const { toggleWishlist, isInWishlist, togglingId, mergeGuestWishlist } =
+    useWishlist(products);
+
+  // Sync guest wishlist on login
   useEffect(() => {
-    const guestWishlist = getGuestWishlist();
-    if (!guestWishlist.length) return;
-
-    queryClient.setQueriesData(
-      { queryKey: ["products"], exact: false },
-      (old: any) => {
-        if (!old) return old;
-
-        return {
-          ...old,
-          products: old.products.map((p: any) => ({
-            ...p,
-            isInWishlist: guestWishlist.includes(p._id),
-          })),
-        };
-      }
-    );
-  }, [queryClient, getGuestWishlist]);
-  /* ========================================================== */
+    mergeGuestWishlist();
+  }, [mergeGuestWishlist]);
 
   const handlePageChange = (p: number) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -65,11 +49,7 @@ export default function ProductGrid({ initialPage, initialData }: Props) {
   };
 
   if (error)
-    return (
-      <p className="text-center text-red-500">
-        Failed to load products
-      </p>
-    );
+    return <p className="text-center text-red-500">Failed to load products</p>;
 
   return (
     <div className="space-y-10">
@@ -82,6 +62,8 @@ export default function ProductGrid({ initialPage, initialData }: Props) {
               <BestSellingCard
                 key={product._id}
                 data={product}
+                isInWishlist={isInWishlist(product._id)}
+                togglingId={togglingId}
                 onWishlistToggle={() => toggleWishlist(product._id)}
               />
             ))}

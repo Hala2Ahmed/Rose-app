@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { ShoppingCart, HeartPlus, HeartMinus } from "lucide-react";
 import Image from "next/image";
 import { BestSellingProduct } from "@/lib/types/best-selling.types";
@@ -8,12 +9,26 @@ import { renderStars } from "@/lib/utils/render-stars";
 type BestSellingCardProps = {
   data: BestSellingProduct;
   onWishlistToggle?: () => void;
+  isInWishlist?: boolean;
 };
 
 export default function BestSellingCard({
   data,
   onWishlistToggle,
+  isInWishlist = false,
 }: BestSellingCardProps) {
+  const [isToggling, setIsToggling] = useState(false);
+
+  const handleToggle = async () => {
+    if (!onWishlistToggle || isToggling) return;
+    setIsToggling(true);
+    try {
+      await onWishlistToggle();
+    } finally {
+      setIsToggling(false);
+    }
+  };
+
   return (
     <article className="w-full relative group">
       <div className="relative h-72 rounded-2xl overflow-hidden">
@@ -23,7 +38,7 @@ export default function BestSellingCard({
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           placeholder="blur"
-          blurDataURL="data:image/svg+xml;base64,..."
+          blurDataURL="data:image/svg+xml;base64,..." 
           quality={85}
           className="object-cover"
         />
@@ -31,28 +46,20 @@ export default function BestSellingCard({
         {onWishlistToggle && (
           <button
             type="button"
-            onClick={onWishlistToggle}
+            disabled={isToggling}
+            onClick={handleToggle}
             className={`group absolute top-4 left-4 h-9 rounded-full flex items-center gap-2 overflow-hidden
               transition-all duration-300 ease-in-out
-              ${
-                data.isInWishlist
-                  ? "bg-black text-white"
-                  : "bg-white/90 text-maroon-600 hover:bg-white"
-              }
-              w-9 hover:w-44`}
+              ${isInWishlist ? "bg-black text-white" : "bg-white/90 text-maroon-600 hover:bg-white"}
+              ${isToggling ? "w-9" : "w-9 hover:w-44"}
+              disabled:opacity-70`}
           >
             <span className="w-9 h-9 flex items-center justify-center shrink-0">
-              {data.isInWishlist ? (
-                <HeartMinus className="w-5 h-5" />
-              ) : (
-                <HeartPlus className="w-5 h-5" />
-              )}
+              {isInWishlist ? <HeartMinus className="w-5 h-5" /> : <HeartPlus className="w-5 h-5" />}
             </span>
 
             <span className="whitespace-nowrap text-xs font-medium opacity-0 translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-              {data.isInWishlist
-                ? "Remove from wishlist"
-                : "Add to wishlist"}
+              {isToggling ? "Updating..." : isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
             </span>
           </button>
         )}
@@ -70,18 +77,13 @@ export default function BestSellingCard({
 
       <div className="flex items-center justify-between">
         <div>
-          <div className="flex gap-1 my-1">
-            {renderStars(data.rateAvg)}
-          </div>
+          <div className="flex gap-1 my-1">{renderStars(data.rateAvg)}</div>
 
           <p className="text-maroon-700 font-medium mb-2">
-            {data.priceAfterDiscount &&
-            data.priceAfterDiscount < data.price ? (
+            {data.priceAfterDiscount && data.priceAfterDiscount < data.price ? (
               <>
                 {data.priceAfterDiscount.toFixed(2)} EGP{" "}
-                <span className="text-zinc-400 line-through">
-                  {data.price.toFixed(2)} EGP
-                </span>
+                <span className="text-zinc-400 line-through">{data.price.toFixed(2)} EGP</span>
               </>
             ) : (
               `${data.price.toFixed(2)} EGP`

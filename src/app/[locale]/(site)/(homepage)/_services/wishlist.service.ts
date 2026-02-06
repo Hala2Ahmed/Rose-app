@@ -1,41 +1,40 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = "https://flower.elevateegy.com/api/v1";
 
-/* ================= Wishlist API ================= */
-
-export async function addToWishlist(
-  productId: string,
-  accessToken: string
-) {
-  const res = await fetch(`${API_URL}/wishlist/add`, {
+// add product to wishlist
+export async function addToWishlist(productId: string, accessToken: string) {
+  const response = await fetch(`${API_URL}/wishlist`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${accessToken}`,
     },
-    body: JSON.stringify({ productId }),
+    body: JSON.stringify({
+      productId,
+    }),
   });
-
-  if (!res.ok) {
+  if (!response.ok) {
     throw new Error("Failed to add to wishlist");
   }
+  const payload = await response.json();
 
-  return res.json();
+  return payload;
 }
 
+// remove product from wishlist
 export async function removeFromWishlist(
   productId: string,
-  accessToken: string
+  accessToken: string,
 ) {
-  const res = await fetch(`${API_URL}/wishlist/${productId}`, {
+  const response = await fetch(`${API_URL}/wishlist/${productId}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
   });
 
-  if (!res.ok) {
+  if (!response.ok) {
     throw new Error("Failed to remove from wishlist");
   }
-
-  return true;
+  const payload = await response.json();
+  return payload;
 }
