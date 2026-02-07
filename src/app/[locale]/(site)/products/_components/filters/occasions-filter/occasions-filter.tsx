@@ -1,6 +1,6 @@
 "use client";
 
-import { Occasion } from "@/lib/types/occasions.types";
+import { Occasion, OccasionResponse } from "@/lib/types/occasions.types";
 import FilterTitle from "../../filter-title";
 import OccasionsCard from "./occasions-card";
 import { useSearchParams } from "next/navigation";
@@ -10,6 +10,7 @@ import OccasionsCardSkeleton from "@/components/skeletons/occasions-card.skeleto
 import { useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { SKELETON_ITEMS_COUNT } from "@/lib/constants/occasions-filter.constant";
+import EmptyProductState from "@/components/shared/empty-products";
 
 export default function OccasionsFilter() {
   //translations
@@ -20,7 +21,9 @@ export default function OccasionsFilter() {
     useOccasions();
 
   const allOccasions = useMemo(
-    () => occasions?.pages?.flatMap((page) => page.occasions) ?? [],
+    () =>
+      occasions?.pages?.flatMap((page: OccasionResponse) => page.occasions) ??
+      [],
     [occasions],
   );
 
@@ -54,6 +57,11 @@ export default function OccasionsFilter() {
   //Error state
   if (error) {
     return <div>{t("occasions-error")}</div>;
+  }
+
+  //empty state
+  if (allOccasions?.length === 0) {
+    return <EmptyProductState />;
   }
 
   return (
