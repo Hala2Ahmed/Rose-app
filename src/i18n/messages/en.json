@@ -168,6 +168,7 @@
     "unauthorized-add-review": "Please login to be able to review the product"
   },
   "related-products": {
-    "title": "Related Products"
+    "title": "Related Products",
+    "related-products-empty": "There are no related products"
   }
 }

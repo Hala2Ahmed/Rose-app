@@ -168,6 +168,7 @@
     "unauthorized-add-review": "يرجى تسجيل الدخول لإضافة تقييم للمنتج"
   },
   "related-products": {
-    "title": "منتجات ذات صلة "
+    "title": "منتجات ذات صلة ",
+    "related-products-empty": "لا يوجد هناك منتجات ذات صلة"
   }
 }
