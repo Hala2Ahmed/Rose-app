@@ -3,18 +3,18 @@
 
 "use client";
 
-import { useCart } from "@/components/providers/cart.provider";
+import { useCartQuery } from "@/hooks/use-cart";
 import Image from "next/image";
 
 export default function CartPage() {
-  const { cart, cartCount } = useCart();
+  const { data: cart = [] } = useCartQuery();
 
   return (
     <div className="p-8 max-w-4xl mx-auto space-y-6">
       <h1 className="text-2xl font-bold">Cart (Debug Page)</h1>
 
       <div className="text-sm text-zinc-600">
-        Total items: <span className="font-semibold">{cartCount}</span>
+        Total items: <span className="font-semibold">{cart.length}</span>
       </div>
 
       {cart.length === 0 ? (

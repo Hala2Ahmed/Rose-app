@@ -19,7 +19,7 @@ import {
 import { cn } from "@/lib/utils/tailwind-merge";
 import Notifications from "./notifications/index";
 import LanguageSwitcher from "./language-switcher";
-import { useCart } from "@/components/providers/cart.provider";
+import { useCartQuery, useSyncGuestCart } from "@/hooks/use-cart";
 
 /* -------------------------------------------------------------------------- */
 /*                                   Header                                   */
@@ -28,8 +28,11 @@ import { useCart } from "@/components/providers/cart.provider";
 function Header() {
   const pathname = usePathname();
 
-  // Context
-  const { cartCount } = useCart();
+  const { data: cart = [] } = useCartQuery();
+
+  const cartCount = cart.reduce((sum, i) => sum + i.quantity, 0);
+
+  useSyncGuestCart();
 
   const navLinks = [
     { href: "/", label: "Home", icon: <Home className="h-5 w-5" /> },
@@ -100,7 +103,7 @@ function Header() {
                   {cartCount}
                 </span>
               )}
-            </Link>{" "}
+            </Link>
             <Notifications notificationCount={5} />
           </div>
 

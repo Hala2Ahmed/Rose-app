@@ -1,16 +1,7 @@
 export type CartItem = {
+  _id?: string;
   product: ProductDetails;
-  quantity: number;
-};
-
-export type CartContextType = {
-  cart: CartItem[];
-  cartCount: number;
-  addToCart: (product: ProductDetails, quantity?: number) => Promise<void>;
-};
-
-type AddToCartBody = {
-  product: string;
+  price?: number;
   quantity: number;
 };
 

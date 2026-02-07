@@ -41,7 +41,7 @@ export default function ProductDetails({ id }: { id: string }) {
       </div>
 
       {/* Product info */}
-      <div className="flex flex-col max-h-[523px]">
+      <div className="flex flex-col max-h-[32.6875rem]">
         <h1 className="text-3xl font-semibold text-zinc-800 pb-2">
           {product?.title}
         </h1>
@@ -89,7 +89,7 @@ export default function ProductDetails({ id }: { id: string }) {
           )}
         </div>
 
-        <p className="text-zinc-600 max-w-[605px] overflow-y-auto mb-4">
+        <p className="text-zinc-600 max-w-[37.8125rem] overflow-y-auto mb-4">
           {product?.description}
         </p>
 
