@@ -13,7 +13,6 @@ export default function SiteLayout({
     return (
         <>
             {/** Header */}
-
             <Header />
 
             {/** main component */}
@@ -23,7 +22,6 @@ export default function SiteLayout({
 
             {/** Footer */}
             <Footer />
-            
         </>
     );
 }
