@@ -19,9 +19,9 @@ export default function Content({
     return (
         <div className="relative">
             <CarouselContent className="flex gap-4 p-2.5">
-                {items.map((item, index) => (
+                {items.map((item) => (
                     <CarouselItem
-                        key={index}
+                        key={item._id}
                         className="basis-full sm:basis-1/2 lg:basis-1/4"
                     >
                         {/* //TODO: use shared component */}
