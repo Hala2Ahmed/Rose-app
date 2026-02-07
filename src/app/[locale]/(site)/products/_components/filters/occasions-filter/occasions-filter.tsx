@@ -10,7 +10,7 @@ import OccasionsCardSkeleton from "@/components/skeletons/occasions-card.skeleto
 import { useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { SKELETON_ITEMS_COUNT } from "@/lib/constants/occasions-filter.constant";
-import EmptyProductState from "@/components/shared/empty-products";
+import EmptyState from "@/components/shared/empty-products";
 
 export default function OccasionsFilter() {
   //translations
@@ -61,7 +61,7 @@ export default function OccasionsFilter() {
 
   //empty state
   if (allOccasions?.length === 0) {
-    return <EmptyProductState />;
+    return <EmptyState title="occasions" />;
   }
 
   return (
