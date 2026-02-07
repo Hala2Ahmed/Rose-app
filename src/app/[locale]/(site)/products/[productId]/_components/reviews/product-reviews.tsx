@@ -36,7 +36,7 @@ export default async function ProductReviews({ productId, rateAvg, rateCount }: 
                     <span className="font-medium text-sm text-zinc-500"> ({rateCount} {t("ratings")})</span>
                 </div>
                 {/** Rating stars */}
-                <span className="flex gap-1">{renderStars(4)}</span>
+                <span className="flex gap-1">{renderStars(rateAvg)}</span>
             </div>
 
             <div className="flex gap-5 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-700">
