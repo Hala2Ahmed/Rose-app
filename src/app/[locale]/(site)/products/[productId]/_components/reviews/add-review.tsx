@@ -122,7 +122,7 @@ export default function AddReview({ productId }: AddReviewProps) {
                     loading={isPending}
                     variant={"primary"}
                     className="w-full mt-10 dark:text-zinc-800 dark:bg-softPink-300 dark:hover:bg-softPink-400"
-                    disabled={!form.formState.isValid && form.formState.isSubmitted}
+                    disabled={isPending || !form.formState.isValid && form.formState.isSubmitted}
                 >
                     {t('add-review')}
                 </Button>

@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import { SingleCardSkeleton } from "@/components/skeletons/product-card.skeleton";
 
 type RelatedProductsProps = {
-    categoryId: string,
+    categoryId: string ,
 }
 
 export default function RelatedProducts({ categoryId }: RelatedProductsProps) {
