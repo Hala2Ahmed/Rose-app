@@ -21,7 +21,8 @@
   "common": {
     "view-more": "View More",
     "search-country": "Search country...",
-    "no-country-found": "No country found."
+    "no-country-found": "No country found.",
+    "reset": "Reset"
   },
   "about": {
     "title": "About",
@@ -149,5 +150,20 @@
     "gender-palceholder": "Gender",
     "password-label": "Password",
     "confirmpassword-label": "Confirm Password"
+  },
+  "products": {
+    "filters": {
+      "occasion-title": "Occasion",
+      "end-of-occasions": "No more occasions",
+      "occasions-error": "Error loading occasions",
+      "price-title": "Price",
+      "price-from-label": "From",
+      "price-to-label": "To",
+      "price-to-max": "please enter a number less than 10000",
+      "price-from-max": "please enter a number less than 1000",
+      "price-valid": "please enter a valid number",
+      "price-from-less-than-to": "Price 'from' must be less than price 'to'",
+      "price-to-greater-than-from": "Price 'to' must be greater than price 'from'"
+    }
   }
 }
