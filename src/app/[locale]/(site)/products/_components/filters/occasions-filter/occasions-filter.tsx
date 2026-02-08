@@ -4,7 +4,7 @@ import { Occasion, OccasionResponse } from "@/lib/types/occasions.types";
 import FilterTitle from "../../filter-title";
 import OccasionsCard from "./occasions-card";
 import { useSearchParams } from "next/navigation";
-import { useOccasions } from "./hooks/useOccasions";
+import { useOccasions } from "./hooks/use-occasions";
 import InfiniteScroll from "react-infinite-scroll-component";
 import OccasionsCardSkeleton from "@/components/skeletons/occasions-card.skeleton";
 import { useMemo } from "react";

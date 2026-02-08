@@ -25,6 +25,7 @@ export default function FilterTitle({
 
   //hooks
   const searchParams = useSearchParams();
+
   //navigation
   const router = useRouter();
 

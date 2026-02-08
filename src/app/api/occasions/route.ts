@@ -19,7 +19,6 @@ export async function GET(request: NextRequest) {
     }
 
     const data: OccasionResponse = await response.json();
-    console.log(data, "ddd");
 
     return NextResponse.json(data);
   } catch (error) {
