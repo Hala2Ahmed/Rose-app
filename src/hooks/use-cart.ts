@@ -30,13 +30,13 @@ function clearGuestCart() {
 
 // fetch the user's cart.
 export function useCartQuery() {
-  const { status } = useSession();
+  const { status, data: session } = useSession();
 
   return useQuery<CartItem[]>({
     queryKey: CART_KEY,
     enabled: status !== "loading",
     queryFn: async () => {
-      if (status === "authenticated") return fetchCart();
+      if (session?.user) return fetchCart();
       return readGuestCart();
     },
     staleTime: 1000 * 30,
@@ -46,7 +46,7 @@ export function useCartQuery() {
 // Add a product to the cart.
 export function useAddToCart() {
   const qc = useQueryClient();
-  const { status } = useSession();
+  const { data: session } = useSession();
 
   return useMutation({
     mutationFn: async ({
@@ -56,7 +56,7 @@ export function useAddToCart() {
       product: ProductDetails;
       quantity: number;
     }) => {
-      if (status === "authenticated") {
+      if (session?.user) {
         return addToCartAction(product._id, quantity);
       }
 
@@ -82,12 +82,12 @@ export function useAddToCart() {
 
 // sync the guest cart to the server after the user logs in.
 export function useSyncGuestCart() {
-  const { status } = useSession();
+  const { data: session } = useSession();
   const qc = useQueryClient();
   const syncedRef = useRef(false);
 
   useEffect(() => {
-    if (status !== "authenticated" || syncedRef.current) return;
+    if (!session?.user || syncedRef.current) return;
 
     syncedRef.current = true;
     const guestCart = readGuestCart();
@@ -111,5 +111,5 @@ export function useSyncGuestCart() {
         clearGuestCart();
       }
     })();
-  }, [status, qc]);
+  }, [session?.user, qc]);
 }
