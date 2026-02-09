@@ -1,7 +1,6 @@
 import { ProductsResponse } from "@/lib/types/products";
 
-// const BASE_AUTH_URL = `${process.env.API_URL!}/products`;
-const BASE_AUTH_URL = `https://flower.elevateegy.com/api/v1/products`;
+const BASE_AUTH_URL = `${process.env.NEXT_PUBLIC_API_URL!}/products`;
 
 export async function getProducts(
   page: number,
@@ -23,6 +22,7 @@ export async function getProducts(
     },
   });
   const payload = await response.json();
-    if (!response.ok) throw new Error(payload.message || "Failed to fetch products");
+  if (!response.ok)
+    throw new Error(payload.message || "Failed to fetch products");
   return payload;
 }

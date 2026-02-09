@@ -6,7 +6,7 @@ import { getProducts } from "@/app/[locale]/(site)/(homepage)/_services/products
 interface ProductsParams {
   page: number; // Current page number for pagination
   limit?: number; // Number of products per page (optional, default will be set)
-  filters?: Record<string, any>; // Optional filters to apply (e.g., category, brand, price)
+  filters?: Record<string, string>;
   initialData?: ProductsResponse; // Optional initial data for SSR or prefetching
 }
 // Custom hook to fetch products using React Query

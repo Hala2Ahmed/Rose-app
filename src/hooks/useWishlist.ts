@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
@@ -9,9 +9,7 @@ import {
   removeFromWishlist,
 } from "@/app/[locale]/(site)/(homepage)/_services/wishlist.service";
 
-
 const WISHLIST_KEY = "guest_wishlist";
-
 
 /* ===== localStorage Helpers ===== */
 function getGuestWishlist(): string[] {
@@ -37,13 +35,13 @@ export function useWishlist(products: { _id: string }[] = []) {
   const isAuthenticated = !!session?.user;
 
   const [wishlist, setWishlist] = useState<string[]>([]);
+  const [togglingId, setTogglingId] = useState<string | null>(null);
   const syncedRef = useRef(false);
 
-  // فقط IDs لتجنب rerender متكرر
   const productIds = useMemo(() => products.map((p) => p._id), [products]);
 
   /* ---------- Merge Guest Wishlist on Login ---------- */
-  const mergeGuestWishlist = async () => {
+  const mergeGuestWishlist = useCallback(async () => {
     if (!accessToken) return;
 
     const guestWishlist = getGuestWishlist();
@@ -51,7 +49,7 @@ export function useWishlist(products: { _id: string }[] = []) {
 
     const toAdd = guestWishlist.filter((id) => productIds.includes(id));
     const remainingGuestWishlist = guestWishlist.filter(
-      (id) => !toAdd.includes(id),
+      (id) => !toAdd.includes(id)
     );
 
     if (toAdd.length > 0) {
@@ -60,13 +58,13 @@ export function useWishlist(products: { _id: string }[] = []) {
         toast.success("Wishlist synced ❤️");
       } catch (err: any) {
         console.error("Failed to merge wishlist:", err);
-        toast.error("Couldn't sync wishlist ");
+        toast.error("Couldn't sync wishlist");
       }
     }
 
     setWishlist((prev) => {
       const combined = Array.from(
-        new Set([...prev, ...toAdd, ...remainingGuestWishlist]),
+        new Set([...prev, ...toAdd, ...remainingGuestWishlist])
       );
       const isSame =
         prev.length === combined.length &&
@@ -75,7 +73,7 @@ export function useWishlist(products: { _id: string }[] = []) {
     });
 
     setGuestWishlist(remainingGuestWishlist);
-  };
+  }, [accessToken, productIds]);
 
   /* ---------- Load Initial Wishlist ---------- */
   useEffect(() => {
@@ -97,11 +95,11 @@ export function useWishlist(products: { _id: string }[] = []) {
     },
     onSuccess: (_, productId) => {
       setWishlist((prev) => Array.from(new Set([...prev, productId])));
-      toast.success("Added to wishlist ");
+      toast.success("Added to wishlist");
     },
     onError: (err: any, productId) => {
       setWishlist((prev) => prev.filter((id) => id !== productId));
-      toast.error(err?.message || "Failed to add to wishlist ");
+      toast.error(err?.message || "Failed to add to wishlist");
     },
   });
 
@@ -112,11 +110,11 @@ export function useWishlist(products: { _id: string }[] = []) {
     },
     onSuccess: (_, productId) => {
       setWishlist((prev) => prev.filter((id) => id !== productId));
-      toast.success("Removed from wishlist ");
+      toast.success("Removed from wishlist");
     },
     onError: (err: any, productId) => {
       setWishlist((prev) => Array.from(new Set([...prev, productId])));
-      toast.error(err?.message || "Failed to remove from wishlist ");
+      toast.error(err?.message || "Failed to remove from wishlist");
     },
   });
 
@@ -124,15 +122,16 @@ export function useWishlist(products: { _id: string }[] = []) {
   const toggleWishlist = (productId: string) => {
     const isIn = wishlist.includes(productId);
 
+    setTogglingId(productId);
+
     // Optimistic UI
     setWishlist((prev) =>
-      isIn ? prev.filter((id) => id !== productId) : [...prev, productId],
+      isIn ? prev.filter((id) => id !== productId) : [...prev, productId]
     );
 
     if (isAuthenticated && accessToken) {
       isIn ? removeMutation.mutate(productId) : addMutation.mutate(productId);
     } else {
-      // Guest → localStorage
       const updated = isIn
         ? wishlist.filter((id) => id !== productId)
         : Array.from(new Set([...wishlist, productId]));
@@ -140,6 +139,8 @@ export function useWishlist(products: { _id: string }[] = []) {
       setGuestWishlist(updated);
       toast.success(isIn ? "Removed from wishlist" : "Added to wishlist");
     }
+
+    setTogglingId(null);
   };
 
   /* ---------- Helpers ---------- */
@@ -152,5 +153,6 @@ export function useWishlist(products: { _id: string }[] = []) {
     toggleWishlist,
     isInWishlist,
     mergeGuestWishlist,
+    togglingId, 
   };
 }

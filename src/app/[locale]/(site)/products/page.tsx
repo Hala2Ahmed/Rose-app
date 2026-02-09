@@ -1,45 +1,72 @@
+import { Suspense } from "react";
+import { redirect } from "next/navigation";
 import ProductGrid from "@/components/products/ProductGrid";
+import ProductCardSkeleton from "@/components/skeletons/product-card.skeleton";
 import { ProductsResponse } from "@/lib/types/products";
 import { getProducts } from "../(homepage)/_services/products.service";
+
 interface PageProps {
   searchParams?: Record<string, string | string[]>;
 }
 
+interface ProductFilters {
+  [key: string]: string;
+}
+
 export const revalidate = 0;
-// No caching for SSR, ensures fresh data on every request
 
 export default async function ProductsPage({ searchParams }: PageProps) {
-  // Default page number from searchParams or fallback to 1
   const initialPage = Number(searchParams?.page ?? 1);
 
-  // Extract filters from searchParams, ignoring "page"
-  const filters: Record<string, any> = {};
+  const filters: ProductFilters = {};
   if (searchParams) {
     Object.entries(searchParams).forEach(([key, value]) => {
       if (key !== "page") {
         filters[key] = Array.isArray(value) ? value[0] : value;
-        // If value is an array, take the first element
       }
     });
   }
 
-  // Fetch initial data from the server for SSR
+  // Fetch initial data
   let initialData: ProductsResponse | null = null;
   try {
     initialData = await getProducts(initialPage, 12, filters);
-    // Fetch 12 products for the current page with filters
   } catch (err) {
     console.error("Failed to fetch products:", err);
-    // Log error, but allow page to render without crashing
   }
+
+  // Handle invalid page numbers
+  if (initialData) {
+    const totalPages = initialData.metadata.totalPages;
+
+    if (initialPage < 1) {
+      // Redirect to page 1
+      const params = new URLSearchParams(searchParams as Record<string, string>);
+      params.set("page", "1");
+      redirect(`?${params.toString()}`);
+    }
+
+    if (initialPage > totalPages && totalPages > 0) {
+      // Redirect to last valid page
+      const params = new URLSearchParams(searchParams as Record<string, string>);
+      params.set("page", String(totalPages));
+      redirect(`?${params.toString()}`);
+    }
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      {/* Page title */}
-      <ProductGrid
-        initialPage={initialPage}
-        initialData={initialData}
-        // Pass initial data and page to ProductGrid for client-side rendering
-      />
+      <Suspense
+        fallback={
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <ProductCardSkeleton key={i} />
+            ))}
+          </div>
+        }
+      >
+        <ProductGrid initialPage={initialPage} initialData={initialData} />
+      </Suspense>
     </div>
   );
 }

@@ -10,6 +10,8 @@ type BestSellingCardProps = {
   data: BestSellingProduct;
   onWishlistToggle?: () => void;
   isInWishlist?: boolean;
+  onCartToggle?: () => void;
+  isInCart?: boolean;
 };
 
 export default function BestSellingCard({
@@ -38,7 +40,7 @@ export default function BestSellingCard({
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           placeholder="blur"
-          blurDataURL="data:image/svg+xml;base64,..." 
+          blurDataURL="data:image/svg+xml;base64,..."
           quality={85}
           className="object-cover"
         />
@@ -55,11 +57,19 @@ export default function BestSellingCard({
               disabled:opacity-70`}
           >
             <span className="w-9 h-9 flex items-center justify-center shrink-0">
-              {isInWishlist ? <HeartMinus className="w-5 h-5" /> : <HeartPlus className="w-5 h-5" />}
+              {isInWishlist ? (
+                <HeartMinus className="w-5 h-5" />
+              ) : (
+                <HeartPlus className="w-5 h-5" />
+              )}
             </span>
 
             <span className="whitespace-nowrap text-xs font-medium opacity-0 translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-              {isToggling ? "Updating..." : isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
+              {isToggling
+                ? "Updating..."
+                : isInWishlist
+                  ? "Remove from wishlist"
+                  : "Add to wishlist"}
             </span>
           </button>
         )}
@@ -83,7 +93,9 @@ export default function BestSellingCard({
             {data.priceAfterDiscount && data.priceAfterDiscount < data.price ? (
               <>
                 {data.priceAfterDiscount.toFixed(2)} EGP{" "}
-                <span className="text-zinc-400 line-through">{data.price.toFixed(2)} EGP</span>
+                <span className="text-zinc-400 line-through">
+                  {data.price.toFixed(2)} EGP
+                </span>
               </>
             ) : (
               `${data.price.toFixed(2)} EGP`
@@ -91,12 +103,7 @@ export default function BestSellingCard({
           </p>
         </div>
 
-        <button
-          disabled={data.quantity <= 0}
-          className="bg-maroon-600 hover:bg-maroon-700 transition-colors text-white w-10 h-10 rounded-full flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <ShoppingCart className="w-5 h-5" />
-        </button>
+      
       </div>
     </article>
   );
