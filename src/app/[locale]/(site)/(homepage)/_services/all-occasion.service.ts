@@ -5,15 +5,11 @@ interface AllOccasionsParams {
   limit?: number;
 }
 
-export async function allOccasionsService(
-  params: AllOccasionsParams = {},
-): Promise<OccasionResponse> {
-  const { page = 1, limit = 10 } = params;
-  const baseUrl = "http://localhost:3000";
-
+export async function allOccasionsService(): Promise<Occasion[]> {
   const response = await fetch(
-    `${baseUrl}/api/occasions?limit=${limit}&page=${page}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/occasions?limit=4`,
   );
+
   const data: OccasionResponse = await response.json();
 
   return data;
