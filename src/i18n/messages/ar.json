@@ -147,5 +147,12 @@
     "gender-palceholder": "النوع",
     "password-label": "الرقم السري",
     "confirmpassword-label": "تأكيد الرقم السري"
+  },
+  "product": {
+    "rate": "التقييم",
+    "rate-count": "تقييمات",
+    "no-ratings-yet": "لا توجد تقييمات بعد",
+    "out-stock": "غير متوفر في المخزون",
+    "left-in-stock": "متبقي في المخزون"
   }
 }

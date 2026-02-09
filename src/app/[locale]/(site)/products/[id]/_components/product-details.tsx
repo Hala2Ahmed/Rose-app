@@ -8,9 +8,11 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import ProductDetailsSkeleton from "@/components/skeletons/product-details/product-details.skeleton";
 import AddToCartButton from "./add-to-cart-btn";
+import { useTranslations } from "next-intl";
 
 export default function ProductDetails({ id }: { id: string }) {
   //Translation
+  const t = useTranslations("product");
   const format = useFormatter();
 
   //Hook
@@ -67,8 +69,8 @@ export default function ProductDetails({ id }: { id: string }) {
           >
             <Package className="w-5 h-5" />
             {product!.quantity > 0
-              ? `${product?.quantity} left in stock`
-              : "Out of stock"}
+              ? `${product?.quantity} ${t("left-in-stock")}`
+              : t("out-stock")}
           </Badge>
         </div>
 
@@ -76,16 +78,16 @@ export default function ProductDetails({ id }: { id: string }) {
           <Star className="w-5 h-5 fill-yellow-400 stroke-yellow-400" />
           {product!.rateCount > 0 ? (
             <span className="text-sm text-zinc-700">
-              Rating:{" "}
+              {t("rate")}:{" "}
               <span className="font-medium">
                 {product?.rateAvg.toFixed(1)}/5
               </span>{" "}
               <span className="font-medium text-blue-600">
-                ({product?.rateCount} ratings )
+                ({product?.rateCount} {t("rate-count")} )
               </span>
             </span>
           ) : (
-            <span className="text-sm text-zinc-400">No ratings yet</span>
+            <span className="text-sm text-zinc-400">{t("no-ratings-yet")}</span>
           )}
         </div>
 
@@ -97,8 +99,8 @@ export default function ProductDetails({ id }: { id: string }) {
           <Button variant="ghost" className="bg-zinc-100 text-zinc-800">
             <HeartPlus className="w-6 h-6" />
           </Button>
-          
-            <AddToCartButton product={product!} />
+
+          <AddToCartButton product={product!} />
         </div>
       </div>
     </div>

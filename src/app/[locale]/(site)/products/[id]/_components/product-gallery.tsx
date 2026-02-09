@@ -25,7 +25,7 @@ export default function ProductGallery({
 
       {/* Thumbnails */}
       <div className="grid grid-cols-6 gap-x-2.5">
-        {images.map((img) => (
+        {images.map((img, i) => (
           <button
             key={"thumbnail-" + _id + img}
             onClick={() => setActive(img)}
@@ -33,7 +33,7 @@ export default function ProductGallery({
               "relative cursor-pointer rounded-md overflow-hidden",
               "before:absolute before:inset-0 before:bg-black/30 before:transition-colors before:duration-200",
               "hover:before:bg-black/10",
-              active === img &&
+              (active === img || (active === imgCover && i === 0)) &&
                 "ring-2 rounded-md ring-maroon-600 before:bg-black/10 max-w-[5.6875rem] max-h-[6.9375rem]",
             )}
           >

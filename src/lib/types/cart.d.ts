@@ -1,6 +1,8 @@
+import type { ProductDetails } from "@/lib/types/product-details";
+
 export type CartItem = {
-  _id?: string;
-  product: ProductDetails;
+  productId: string;
+  product?: ProductDetails;
   price?: number;
   quantity: number;
 };

@@ -11,19 +11,19 @@ export default function AddToCartButton({
   product: ProductDetails;
 }) {
   //Mutation
-  const addToCart = useAddToCart();
-  const isLoading = addToCart.isPending;
+    const { mutate, isPending } = useAddToCart();
+
 
   return (
     <Button
       className="w-full"
-      onClick={() => addToCart.mutate({ product, quantity: 1 })}
-      disabled={isLoading || product.quantity <= 0}
+      onClick={() => mutate({ product, quantity: 1 })}
+      disabled={isPending || product.quantity <= 0}
     >
       <ShoppingCart className="w-6 h-6 mr-2.5" />
       {product.quantity <= 0
         ? "Out of Stock"
-        : isLoading
+        : isPending
           ? "Adding..."
           : "Add to Cart"}
     </Button>
