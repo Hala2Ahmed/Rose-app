@@ -34,10 +34,10 @@ export default function CategoryList({
       <div className="space-y-1">
         {categories.map((category) => (
           <CategoryItem
-            key={category.id}
+            key={category._id}
             category={category}
-            isActive={selectedCategory === category.id}
-            onClick={() => onSelect(category.id)}
+            isActive={selectedCategory === category._id}
+            onClick={() => onSelect(category._id)}
           />
         ))}
       </div>

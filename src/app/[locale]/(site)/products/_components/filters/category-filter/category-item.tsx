@@ -1,3 +1,4 @@
+// category-item.tsx - No changes needed to this file
 import Image from "next/image";
 import { Category } from "@/lib/types/categories";
 import { cn } from "@/lib/utils/tailwind-merge";
