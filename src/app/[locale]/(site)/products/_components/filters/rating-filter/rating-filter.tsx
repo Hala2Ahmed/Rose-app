@@ -1,10 +1,14 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import RatingStars from "./rating-stars";
 import { useRouter } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+
+import RatingStars from "./rating-stars";
+import FilterTitle from "../../filter-title";
 
 export default function RatingFilter() {
+  const t = useTranslations("products.filters");
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -19,15 +23,22 @@ export default function RatingFilter() {
     router.replace(`?${params.toString()}`, { scroll: false });
   };
 
-  return (
-    <>
-    {/* header to do */}
+  const isFilterSelected = selectedRating !== null;
 
-    {/* rating stars */}
+  return (
+    <div className="mb-5">
+      {/*  Filter header */}
+      <FilterTitle
+        title={t("rating-title")}
+        isFilterSelected={isFilterSelected}
+        paramsToReset={["rating"]}
+      />
+
+      {/*  Rating stars */}
       <RatingStars
         selectedRating={selectedRating}
         onSelect={updateRating}
       />
-    </>
+    </div>
   );
 }

@@ -24,7 +24,7 @@ export default function ResetAllButton() {
       variant="secondary"
       onClick={handleResetAll}
       disabled={isDisabled}
-      className="w-full flex items-center gap-2"
+      className="w-full flex items-center gap-2 mt-4"
     >
       <RotateCcwIcon size={18} />
       {t("reset-all")}

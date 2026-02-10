@@ -12,15 +12,21 @@ type OccasionResult =
       data: [];
     };
 
-export async function getAllOccasions(): Promise<OccasionResult> {
+interface GetOccasionsParams {
+  limit?: number;
+}
+
+export async function getAllOccasions(
+  params: GetOccasionsParams = {},
+): Promise<OccasionResult> {
   try {
-    const data = await allOccasionsService();
-    return { success: true, data };
+    const data = await allOccasionsService(params);
+    return { success: true, data: data.occasions };
   } catch (error) {
-    console.error("Error fetching best selling products:", error);
+    console.error("Error fetching occasions:", error);
     return {
       success: false,
-      error: "Failed to fetch best selling items",
+      error: "Failed to fetch occasions",
       data: [],
     };
   }

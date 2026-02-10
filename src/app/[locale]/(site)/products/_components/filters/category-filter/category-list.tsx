@@ -5,7 +5,7 @@ import CategoryItem from "./category-item";
 type Props = {
   categories: Category[];
   selectedCategory: string | null;
-  onSelect: (name: string) => void;
+  onSelect: (id: string) => void;
   fetchNextPage: () => void;
   hasNextPage: boolean;
   loadingLabel: string;
@@ -34,10 +34,10 @@ export default function CategoryList({
       <div className="space-y-1">
         {categories.map((category) => (
           <CategoryItem
-            key={category._id}
+            key={category.id}
             category={category}
-            isActive={selectedCategory === category.name}
-            onClick={() => onSelect(category.name)}
+            isActive={selectedCategory === category.id}
+            onClick={() => onSelect(category.id)}
           />
         ))}
       </div>

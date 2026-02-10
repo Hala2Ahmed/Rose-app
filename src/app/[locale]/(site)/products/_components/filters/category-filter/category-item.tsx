@@ -29,7 +29,8 @@ export default function CategoryItem({ category, isActive, onClick }: Props) {
           src={category?.image || ""}
           alt={category?.name}
           fill
-          className="object-contain"
+          sizes="36px"
+          className="object-contain brightness-0 invert"
         />
       </div>
 

@@ -12,7 +12,7 @@ import BestSellingCard from "./best-selling-card";
 
 import { getBestSelling } from "@/lib/api/get-best-selling";
 
-import EmptyProductState from "@/components/shared/empty-products";
+import EmptyState from "@/components/shared/empty-products";
 interface BestSellingCarouselProps {
   params: { locale: string };
 }
@@ -25,7 +25,7 @@ export async function BestSellingCarousel({
 
   //handling empty state
   if (!result?.data || result.data.length === 0) {
-    return <EmptyProductState />;
+    return <EmptyState />;
   }
 
   //locale direction

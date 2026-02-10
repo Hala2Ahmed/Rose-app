@@ -5,7 +5,7 @@ export async function GET(request: Request) {
     // Take whatever query params came from the frontend
     const { searchParams } = new URL(request.url);
 
-    const url = `${process.env.API_URL}/categories?${searchParams.toString()}`;
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/categories?${searchParams.toString()}`;
 
     const res = await fetch(url, { cache: "no-store" });
 

@@ -7,6 +7,7 @@ import { useCategories } from "../../../_hooks/use-category";
 import { Category } from "@/lib/types/categories";
 import CategoryList from "./category-list";
 import CategorySkeleton from "@/components/skeletons/category-filter.skeleton";
+import FilterTitle from "../../filter-title";
 
 export default function CategoryFilter() {
   //Translation
@@ -27,11 +28,13 @@ export default function CategoryFilter() {
     [categories],
   );
 
+  const isFilterSelected = selectedCategory !== null;
+
   //Function
-  const updateCategory = (name?: string) => {
+  const updateCategory = (id?: string) => {
     const params = new URLSearchParams(searchParams.toString());
 
-    if (name) params.set("category", name);
+    if (id) params.set("category", id);
     else params.delete("category");
 
     router.replace(`?${params.toString()}`, { scroll: false });
@@ -41,8 +44,13 @@ export default function CategoryFilter() {
   if (error) return <p className="text-sm text-red-500">{t("error")}</p>;
 
   return (
-    <>
-      {/* header to do */}
+    <div className="border-b mb-5">
+      {/*  Filter header */}
+      <FilterTitle
+        title={t("category-title")}
+        isFilterSelected={isFilterSelected}
+        paramsToReset={["category"]}
+      />
 
       {/* categories list */}
       <CategoryList
@@ -54,6 +62,6 @@ export default function CategoryFilter() {
         loadingLabel={t("loading")}
         endLabel={t("end-of-list")}
       />
-    </>
+    </div>
   );
 }

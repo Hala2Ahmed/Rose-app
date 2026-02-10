@@ -21,7 +21,8 @@
   "common": {
     "view-more": "مشاهدة المزيد",
     "search-country": "ابحث عن الدولة...",
-    "no-country-found": "لم يتم العثور على دولة."
+    "no-country-found": "لم يتم العثور على دولة.",
+    "reset": "إعادة ضبط"
   },
   "about": {
     "title": "من نحن",
@@ -71,6 +72,8 @@
       "forgot_password": "نسيت كلمة المرور؟",
       "remember": "تذكرني",
       "Login": "تسجيل الدخول",
+      "Register": "تسجيل حساب",
+      "Hello": "مرحبا",
       "welcome": "مرحباً بعودتك!",
       "account": "ليس لديك حساب بعد؟ ",
       "create": "أنشئ حساباً الآن!"
@@ -152,13 +155,21 @@
     "filters": {
       "category-title": "الفئات",
       "rating-title": "التقييم",
-      "price-title": "السعر",
-
       "reset-all": "إعادة تعيين الكل",
-
       "loading": "جاري التحميل...",
       "end-of-list": "لا توجد نتائج أخرى",
-      "error": "حدث خطأ ما"
+      "error": "حدث خطأ ما",
+      "occasion-title": "مناسبة",
+      "end-of-occasions": "لا توجد مناسابات اخرى",
+      "occasions-error": "حدث خطأ أثناء تحميل المناسبات",
+      "price-title": "السعر",
+      "price-from-label": "من",
+      "price-to-label": "الى",
+      "price-to-max": "برجاء ادخال رقم اقل من 10000",
+      "price-from-max": "برجاء ادخال رقم اقل من 1000",
+      "price-valid": "برجاء ادخال رقم صحيح",
+      "price-from-less-than-to": "يجب أن يكون السعر 'من' أقل من السعر 'إلى'",
+      "price-to-greater-than-from": "يجب أن يكون السعر 'إلى' أكبر من السعر 'من'"
     }
   }
 }

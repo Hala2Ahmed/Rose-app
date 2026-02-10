@@ -11,7 +11,6 @@ export default function Login() {
     
     return (
         <>
-            <AuthLanguageSwitcher />
             <GreetingTitle title={t("welcome")} />
             <LoginForm />
             <FormFooter link={t("create")} text={t("account")} linkHref="/register" />
