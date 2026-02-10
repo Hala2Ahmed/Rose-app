@@ -160,6 +160,12 @@
   },
   "products": {
     "filters": {
+      "category-title": "الفئات",
+      "rating-title": "التقييم",
+      "reset-all": "إعادة تعيين الكل",
+      "loading": "جاري التحميل...",
+      "end-of-list": "لا توجد نتائج أخرى",
+      "error": "حدث خطأ ما",
       "occasion-title": "مناسبة",
       "end-of-occasions": "لا توجد مناسابات اخرى",
       "occasions-error": "حدث خطأ أثناء تحميل المناسبات",
