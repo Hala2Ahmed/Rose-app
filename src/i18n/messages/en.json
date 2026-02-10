@@ -151,6 +151,13 @@
     "password-label": "Password",
     "confirmpassword-label": "Confirm Password"
   },
+  "product": {
+    "rate": "Rating",
+    "rate-count": "ratings",
+    "no-ratings-yet": "No ratings yet",
+    "out-stock": "Out of stock",
+    "left-in-stock": "left in stock"
+  },
   "products": {
     "filters": {
       "category-title": "Categories",
