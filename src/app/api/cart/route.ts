@@ -1,12 +1,10 @@
-// This code for my next task (not for this sprint)
-
 import {CartResponse } from "@/lib/types/cart";
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
 // Fetch the user's cart.
 async function fetchServerCart(token: string): Promise<CartResponse> {
-  const res = await fetch(`${process.env.API_URL}/cart`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cart`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

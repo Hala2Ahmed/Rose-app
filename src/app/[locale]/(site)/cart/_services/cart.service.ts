@@ -1,4 +1,3 @@
-// This code for my next task (not for this sprint)
 import { CartResponse } from "@/lib/types/cart";
 
 export async function fetchCart() {

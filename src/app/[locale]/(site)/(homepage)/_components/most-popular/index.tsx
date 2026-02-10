@@ -11,7 +11,7 @@ interface MostPopularIndexProps {
 export default async function MostPopularIndex({
   searchParams,
 }: MostPopularIndexProps) {
-  const allOccasions = await getAllOccasions();
+  const allOccasions = await getAllOccasions({ limit: 4 });
 
   return (
     <div className="my-36">

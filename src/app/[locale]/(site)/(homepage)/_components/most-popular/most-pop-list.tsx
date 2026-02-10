@@ -2,8 +2,6 @@ import { getBestSelling } from "@/lib/api/get-best-selling";
 
 import React from "react";
 
-import EmptyProductState from "@/components/shared/empty-products";
-
 import { ArrowRight } from "lucide-react";
 
 import BestSellingCard from "../best-selling/best-selling-card";
@@ -11,6 +9,7 @@ import BestSellingCard from "../best-selling/best-selling-card";
 import { getTranslations } from "next-intl/server";
 
 import { Link } from "@/i18n/navigation";
+import EmptyState from "@/components/shared/empty-products";
 
 interface MostPopularListProps {
   searchParams?: { occasion?: string; limit?: number };
@@ -27,7 +26,7 @@ export default async function MostPopularList({
 
   //Empty state
   if (results.data.length == 0) {
-    return <EmptyProductState />;
+    return <EmptyState />;
   }
 
   return (

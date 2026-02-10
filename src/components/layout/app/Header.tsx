@@ -19,6 +19,8 @@ import {
 import { cn } from "@/lib/utils/tailwind-merge";
 import Notifications from "./notifications/index";
 import LanguageSwitcher from "./language-switcher";
+import { useSession } from "next-auth/react";
+import InfoUser from "./info-user";
 import { useCartQuery, useSyncGuestCart } from "@/hooks/use-cart";
 
 /* -------------------------------------------------------------------------- */
@@ -27,6 +29,9 @@ import { useCartQuery, useSyncGuestCart } from "@/hooks/use-cart";
 
 function Header() {
   const pathname = usePathname();
+  const session = useSession();
+  const token = session?.data?.accessToken;
+  const firstName = session?.data?.user.firstName;
 
   const { data: cart = [] } = useCartQuery();
 
@@ -89,10 +94,8 @@ function Header() {
 
         {/* User Actions */}
         <div className="flex items-center gap-6 text-gray-700 dark:text-zinc-50">
-          <Link href="/login" className="flex items-center gap-1 text-sm">
-            <User className="h-5 w-5" />
-            Login
-          </Link>
+
+       <InfoUser />
 
           <div className="flex items-center gap-4 px-4 border-x border-zinc-200">
             <Heart className="h-5 w-5 cursor-pointer" />

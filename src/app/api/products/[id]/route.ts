@@ -9,7 +9,7 @@ export async function GET(
   const { id } = params; // Extract product ID from route params
 
   try {
-    const res = await fetch(`${process.env.API_URL}/products/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
