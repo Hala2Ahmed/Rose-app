@@ -3,6 +3,9 @@ import { redirect } from "next/navigation";
 
 import OccasionsFilter from "./_components/filters/occasions-filter/occasions-filter";
 import PriceFilter from "./_components/filters/price-filter";
+import CategoryFilter from "./_components/filters/category-filter/category-filter";
+import RatingFilter from "./_components/filters/rating-filter/rating-filter";
+import ResetAllButton from "./_components/filters/reset-all-btn";
 
 import ProductGrid from "@/components/products/ProductGrid";
 import ProductCardSkeleton from "@/components/skeletons/product-card.skeleton";
@@ -42,25 +45,33 @@ export default async function ProductsPage({ searchParams }: PageProps) {
     const totalPages = initialData.metadata.totalPages;
 
     if (initialPage < 1) {
-      const params = new URLSearchParams(searchParams as Record<string, string>);
+      const params = new URLSearchParams(
+        searchParams as Record<string, string>,
+      );
       params.set("page", "1");
       redirect(`?${params.toString()}`);
     }
 
     if (initialPage > totalPages && totalPages > 0) {
-      const params = new URLSearchParams(searchParams as Record<string, string>);
+      const params = new URLSearchParams(
+        searchParams as Record<string, string>,
+      );
       params.set("page", String(totalPages));
       redirect(`?${params.toString()}`);
     }
   }
 
   return (
-    <div className="flex gap-5 max-w-7xl mx-auto px-4 py-8">
+    <div className="flex gap-12 max-w-7xl mx-auto px-4 py-8">
+
       {/* Filters */}
       <div className="w-filtersCard border-e pe-24">
         <div className="w-[277px]">
+          <CategoryFilter />
           <OccasionsFilter />
+          <RatingFilter />
           <PriceFilter />
+          <ResetAllButton />
         </div>
       </div>
 
@@ -74,10 +85,7 @@ export default async function ProductsPage({ searchParams }: PageProps) {
           </div>
         }
       >
-        <ProductGrid
-          initialPage={initialPage}
-          initialData={initialData}
-        />
+        <ProductGrid initialPage={initialPage} initialData={initialData} />
       </Suspense>
     </div>
   );
