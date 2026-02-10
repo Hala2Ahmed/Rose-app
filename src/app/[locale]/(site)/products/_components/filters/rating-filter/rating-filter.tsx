@@ -1,7 +1,8 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import RatingStars from "./rating-stars";
+import { useRouter } from "@/i18n/navigation";
 
 export default function RatingFilter() {
   const router = useRouter();

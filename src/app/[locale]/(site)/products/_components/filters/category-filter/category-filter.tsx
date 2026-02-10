@@ -9,9 +9,13 @@ import CategoryList from "./category-list";
 import CategorySkeleton from "@/components/skeletons/category-filter.skeleton";
 
 export default function CategoryFilter() {
+  //Translation
   const t = useTranslations("products.filters");
 
+  //Navigation
   const router = useRouter();
+
+  //Hooks
   const searchParams = useSearchParams();
   const selectedCategory = searchParams.get("category");
 
@@ -23,6 +27,7 @@ export default function CategoryFilter() {
     [categories],
   );
 
+  //Function
   const updateCategory = (name?: string) => {
     const params = new URLSearchParams(searchParams.toString());
 
@@ -37,9 +42,9 @@ export default function CategoryFilter() {
 
   return (
     <>
-    {/* header to do */}
+      {/* header to do */}
 
-    {/* categories list */}
+      {/* categories list */}
       <CategoryList
         categories={allCategories}
         selectedCategory={selectedCategory}
