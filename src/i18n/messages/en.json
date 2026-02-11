@@ -178,5 +178,14 @@
       "price-from-less-than-to": "Price 'from' must be less than price 'to'",
       "price-to-greater-than-from": "Price 'to' must be greater than price 'from'"
     }
+  },
+  "cart": {
+    "cart-header": "Cart",
+    "products-count": "products",
+    "clean-cart-btn": "Clean Cart",
+    "clean-cart-btn-loading": "Cleaning...",
+    "cart-empty": "Your cart is empty, wanna try shopping?",
+    "remove-btn": "Remove",
+    "continue-shopping-btn": "Continue Shopping"
   }
 }

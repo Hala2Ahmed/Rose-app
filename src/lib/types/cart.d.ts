@@ -1,9 +1,17 @@
 import type { ProductDetails } from "@/lib/types/product-details";
 
 export type CartItem = {
-  productId: string;
-  product?: ProductDetails;
-  price?: number;
+  product: Pick<
+    ProductDetails,
+    | "title"
+    | "imgCover"
+    | "price"
+    | "priceAfterDiscount"
+    | "rateAvg"
+    | "rateCount"
+    | "_id"
+    | "quantity"
+  >;
   quantity: number;
 };
 
@@ -23,4 +31,10 @@ export type CartResponse = {
   message: string;
   numOfCartItems: number;
   cart: Cart;
+};
+
+export type UpdaterProps = {
+  productId: string;
+  stock: number;
+  initialQty: number;
 };

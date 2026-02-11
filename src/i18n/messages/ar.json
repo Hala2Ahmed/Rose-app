@@ -178,5 +178,14 @@
       "price-from-less-than-to": "يجب أن يكون السعر 'من' أقل من السعر 'إلى'",
       "price-to-greater-than-from": "يجب أن يكون السعر 'إلى' أكبر من السعر 'من'"
     }
+  },
+  "cart": {
+    "cart-header": "عربة التسوق",
+    "products-count": "منتجات",
+    "clean-cart-btn": "تفريغ العربة",
+    "clean-cart-btn-loading": "جارٍ تفريغ العربة...",
+    "cart-empty": "عربة التسوق فارغة، هل ترغب في التسوق؟",
+    "remove-btn": "إزالة",
+    "continue-shopping-btn": "متابعة التسوق"
   }
 }

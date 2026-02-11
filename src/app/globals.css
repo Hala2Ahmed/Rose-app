@@ -106,3 +106,27 @@
   width: 30px;
   border-radius: 12px; 
 }
+
+/* Scrollbar Style */
+.cart-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.cart-scroll::-webkit-scrollbar-track {
+  background: #f4f4f5;
+  border-radius: 10px;
+}
+
+.cart-scroll::-webkit-scrollbar-thumb {
+  background: #a61e4d;
+  border-radius: 10px;
+}
+
+.cart-scroll::-webkit-scrollbar-thumb:hover {
+  background: #7f163a;
+}
+
+.cart-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #a61e4d #f4f4f5;
+}

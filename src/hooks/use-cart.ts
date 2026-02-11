@@ -8,25 +8,12 @@ import type { ProductDetails } from "@/lib/types/product-details";
 import type { CartItem } from "@/lib/types/cart";
 import { fetchCart } from "@/app/[locale]/(site)/cart/_services/cart.service";
 import { addToCartAction } from "@/app/[locale]/(site)/cart/actions/cart.action";
-
-const CART_KEY = ["cart"];
-const GUEST_KEY = "guest_cart";
-
-// Reads the guest cart from localStorage.
-function readGuestCart(): CartItem[] {
-  if (typeof window === "undefined") return [];
-  return JSON.parse(localStorage.getItem(GUEST_KEY) || "[]");
-}
-
-// Saves the guest cart to localStorage.
-function writeGuestCart(cart: CartItem[]) {
-  localStorage.setItem(GUEST_KEY, JSON.stringify(cart));
-}
-
-// Clears the guest cart from localStorage.
-function clearGuestCart() {
-  localStorage.removeItem(GUEST_KEY);
-}
+import {
+  CART_KEY,
+  clearGuestCart,
+  readGuestCart,
+  writeGuestCart,
+} from "@/lib/utils/cart-storage";
 
 // fetch the user's cart.
 export function useCartQuery() {
@@ -62,10 +49,24 @@ export function useAddToCart() {
 
       // Guest cart
       const cart = readGuestCart();
-      const existing = cart.find((i) => i.productId === product._id);
+      const existing = cart.find((i) => i.product._id === product._id);
 
       if (existing) existing.quantity += quantity;
-      else cart.push({ productId: product._id, quantity });
+      else
+        cart.push({
+          // productId: product._id,
+          quantity,
+          product: {
+            title: product.title,
+            imgCover: product.imgCover,
+            price: product.price,
+            priceAfterDiscount: product.priceAfterDiscount,
+            rateAvg: product.rateAvg,
+            rateCount: product.rateCount,
+            _id: product._id,
+            quantity: product.quantity,
+          },
+        });
 
       writeGuestCart(cart);
       return cart;
@@ -100,8 +101,8 @@ export function useSyncGuestCart() {
         }
 
         for (const item of guestCart) {
-          if (!item.productId) continue;
-          await addToCartAction(item.productId, item.quantity);
+          if (!item.product._id) continue;
+          await addToCartAction(item.product._id, item.quantity);
         }
 
         clearGuestCart();
