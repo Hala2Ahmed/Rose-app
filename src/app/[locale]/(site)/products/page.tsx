@@ -55,7 +55,7 @@ export default async function ProductsPage({ searchParams }: PageProps) {
   }
 
   return (
-    <div className="flex gap-5 max-w-7xl mx-auto px-4 py-8">
+    <div className="flex gap-3 max-w-7xl mx-auto px-4 py-8">
       {/* Filters */}
       <div className="w-filtersCard border-e pe-24">
         <div className="w-[277px]">

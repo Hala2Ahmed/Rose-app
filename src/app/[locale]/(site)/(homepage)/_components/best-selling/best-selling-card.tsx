@@ -103,7 +103,9 @@ export default function BestSellingCard({
           </p>
         </div>
 
-      
+      <button className="bg-maroon-600 hover:bg-maroon-700 transition-colors text-white w-10 h-10 rounded-full flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed">
+          <ShoppingCart className="w-5 h-5" />
+        </button>
       </div>
     </article>
   );
