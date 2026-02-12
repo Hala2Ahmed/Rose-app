@@ -1,8 +1,12 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { SubmitHandler, useForm } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
+import { updateProfileSchema } from "@/lib/schemes/auth.schema";
+
 import {
   Form,
   FormControl,
@@ -11,14 +15,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { useEffect, useState } from "react";
+import { DeleteConfirmation } from "@/components/shared/delete-confirmation";
+import { UpdateProfileFields } from "@/lib/types/auth";
 import { PhoneInput } from "@/components/ui/phone-input";
-import { registerSchema } from "@/lib/schemes/auth.schema";
 import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
-import { InputPassword } from "@/components/ui/input-password";
-import useRegister from "../_hooks/use-register";
-import SubmissionError from "@/components/shared/submission-error";
-import { useState } from "react";
 import {
   Select,
   SelectContent,
@@ -26,48 +27,100 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { RegisterFields } from "@/lib/types/auth";
+import useUpdateProfile from "../_hooks/use-update-profile";
+import SubmissionError from "@/components/shared/submission-error";
+import useDeleteAccount from "../_hooks/use-delete-profile";
+import UpdatePhoto from "./update-photo";
+import useGetProfileData from "../_hooks/use-get-user-data";
+import { ProfileFormSkeleton } from "@/components/skeletons/profile-form.skeleton";
+import { useSession } from "next-auth/react";
 
-export default function RegisterForm() {
+const defaultFormValues: UpdateProfileFields = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+};
+
+export default function ProfileForm() {
   //state
-  const [generalErrorMessage, setGeneralErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   //translations
   const t = useTranslations("auth");
 
   //hooks
-  const { register, isPending } = useRegister();
+  const { updateProfile, isPending } = useUpdateProfile();
+  const {
+    deleteAccount,
+    deleteErrorMessage,
+    isPending: isDeleting,
+    clearError,
+  } = useDeleteAccount();
+  const { profileData, refetch, isLoading, error } = useGetProfileData();
 
-  const form = useForm<RegisterFields>({
-    resolver: zodResolver(registerSchema(t)),
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      gender: undefined,
-      password: "",
-      rePassword: "",
-    },
+  const { data, update } = useSession();
+
+  //form
+  const form = useForm({
+    resolver: zodResolver(updateProfileSchema(t)),
+    defaultValues: defaultFormValues,
   });
 
-  //variables
-  const { formState } = form;
+  //effect
+  useEffect(() => {
+    if (!profileData?.user) return;
 
-  //function
-  const onSubmit: SubmitHandler<RegisterFields> = (values) => {
-    register(values, {
+    form.reset({
+      firstName: profileData?.user.firstName || "",
+      lastName: profileData?.user.lastName || "",
+      email: profileData?.user.email || "",
+      phone: profileData?.user.phone || "",
+      gender: profileData?.user.gender,
+    });
+  }, [profileData?.user, form]);
+
+  const onSubmit: SubmitHandler<UpdateProfileFields> = (values) => {
+    updateProfile(values, {
       onError: (error) => {
-        setGeneralErrorMessage(error.message);
+        setErrorMessage(error.message);
+      },
+      onSuccess: async () => {
+        setErrorMessage("");
+        await refetch();
+
+        //to update values on dropdown menu header
+        await update({
+          user: {
+            ...data?.user,
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            phone: values.phone,
+          },
+        });
       },
     });
   };
 
+  //Loading state
+  if (isLoading) {
+    return <ProfileFormSkeleton />;
+  }
+
+  //error state
+  if (error) {
+    return <SubmissionError errorMessage={error.message} />;
+  }
+
   return (
     <Form {...form}>
       <form
-        className="mt-6 grid grid-cols-2 gap-x-5"
+        className=" grid grid-cols-2 gap-x-5"
         onSubmit={form.handleSubmit(onSubmit)}>
+        {/* Profile Photo */}
+        <UpdatePhoto />
+
         {/* First Name */}
         <FormField
           control={form.control}
@@ -155,15 +208,16 @@ export default function RegisterForm() {
         <FormField
           control={form.control}
           name="gender"
+          disabled
           render={({ field }) => (
-            <FormItem className="mt-4 col-span-2">
+            <FormItem className="mt-4 col-span-2" aria-disabled>
               {/* Label */}
               <FormLabel>{t("gender-label")}</FormLabel>
 
               {/* Input */}
               <FormControl>
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger className="">
+                <Select disabled value={field.value || ""}>
+                  <SelectTrigger status="disabled">
                     <SelectValue placeholder={t("gender-palceholder")} />
                   </SelectTrigger>
                   <SelectContent>
@@ -179,68 +233,36 @@ export default function RegisterForm() {
           )}
         />
 
-        {/* Password */}
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem className="mt-4 col-span-2">
-              {/* Label */}
-              <FormLabel>{t("password-label")}</FormLabel>
-
-              {/* Input */}
-              <FormControl>
-                <InputPassword
-                  {...field}
-                  type="password"
-                  placeholder="********"
-                />
-              </FormControl>
-
-              {/* Error Message */}
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Confirm Password */}
-        <FormField
-          control={form.control}
-          name="rePassword"
-          render={({ field }) => (
-            <FormItem className="mt-4 col-span-2">
-              {/* Label */}
-              <FormLabel>{t("confirmpassword-label")}</FormLabel>
-
-              {/* Input */}
-              <FormControl>
-                <InputPassword
-                  {...field}
-                  type="password"
-                  placeholder="********"
-                />
-              </FormControl>
-
-              {/* Error Message */}
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* General Submisson Error */}
-        {generalErrorMessage && (
+        {/* Submisson Error */}
+        {errorMessage && (
           <SubmissionError
             className="col-span-2 h-20"
-            errorMessage={generalErrorMessage}
+            errorMessage={errorMessage}
           />
         )}
 
         {/* Submission Button */}
-        <Button
-          disabled={isPending || formState.isSubmitting}
-          className="w-full mt-10 col-span-2">
-          {t("register.create-account")}
-        </Button>
+        <div className="form-buttons flex justify-between col-span-2 mt-20">
+          <DeleteConfirmation
+            cancelButtonText={t("cancel-button")}
+            confirmButtonText={t("confirm-button")}
+            deleteContent={t("delete-confirm")}
+            deleteFn={deleteAccount}
+            error={deleteErrorMessage}
+            deleteTitle={t("delete-account")}
+            deleteSubtitle={t("delete-subtitle")}
+            isDeleting={isDeleting}
+            onOpenChange={(open) => {
+              if (!open) clearError();
+            }}
+          />
+          <Button
+            disabled={form.formState.isSubmitting || isPending}
+            type="submit"
+            className="w-56">
+            {t("save-changes")}
+          </Button>
+        </div>
       </form>
     </Form>
   );
