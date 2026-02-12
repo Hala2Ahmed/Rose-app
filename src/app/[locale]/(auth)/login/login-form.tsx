@@ -50,7 +50,7 @@ export default function LoginForm() {
                     <p className="text-red-500 text-sm mt-1">{form.formState.errors.password?.message}</p>
                 </div>
 
-                <Link href="/forgot-password" className="mt-2 flex justify-end text-maroon-700 text-sm font-semibold">
+                <Link href="/forgot-password" className="mt-2 flex justify-end text-maroon-700 dark:text-softPink-300 text-sm font-semibold">
                     {t("forgot_password")}
                 </Link>
             </div>

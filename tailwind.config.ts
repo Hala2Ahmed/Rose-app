@@ -100,6 +100,7 @@ const config: Config = {
         101.5: "406px",
         121: "484px",
         742: "742px",
+        filtersCard: "301px",
       },
       maxWidth: {
         303: "1212px",

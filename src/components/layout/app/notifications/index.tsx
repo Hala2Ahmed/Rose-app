@@ -27,7 +27,6 @@ import { Notification, NotificationsResponse } from "@/lib/types/notifications";
 import InfiniteScroll from "react-infinite-scroll-component";
 import EmptyNotifications from "./empty-notifications";
 
-
 // Props type
 interface NotificationsProps {
   notificationCount?: number;
@@ -52,7 +51,7 @@ export default function Notifications({
 
   // current notifications state
   const [notifications, setNotifications] = useState<Notification[]>(
-    MOCK_RESPONSE.data.slice(0, PAGE_SIZE)
+    MOCK_RESPONSE.data.slice(0, PAGE_SIZE),
   );
 
   // whether there are more notifications to load
@@ -63,7 +62,7 @@ export default function Notifications({
     const currentLength = notifications.length;
     const nextItems = MOCK_RESPONSE.data.slice(
       currentLength,
-      currentLength + PAGE_SIZE
+      currentLength + PAGE_SIZE,
     );
 
     // simulate API delay
@@ -84,7 +83,7 @@ export default function Notifications({
           size="icon"
           className="relative h-8 w-8 rounded-full"
         >
-            <Bell className="h-5 w-5 cursor-pointer" />
+          <Bell className="h-5 w-5 cursor-pointer" />
 
           {notificationCount > 0 && (
             <Badge
@@ -152,11 +151,13 @@ export default function Notifications({
               {notifications.map((item) => (
                 <DropdownMenuItem
                   key={item.id}
-                  className={cn(`flex justify-between items-start rounded-none px-4 py-3 border-b border-zinc-300 dark:border-zinc-600 ${
-                    !item.read
-                      ? "bg-zinc-200 dark:bg-zinc-600"
-                      : "dark:bg-zinc-900"
-                  }`)}
+                  className={cn(
+                    `flex justify-between items-start rounded-none px-4 py-3 border-b border-zinc-300 dark:border-zinc-600 ${
+                      !item.read
+                        ? "bg-zinc-200 dark:bg-zinc-600"
+                        : "dark:bg-zinc-900"
+                    }`,
+                  )}
                 >
                   <div className="flex flex-col gap-1">
                     <p className="text-md text-zinc-800 font-semibold dark:text-zinc-50">

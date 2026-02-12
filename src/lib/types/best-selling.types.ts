@@ -23,4 +23,6 @@ export interface GetBestSellingParams {
   filter?: string;
   occasion?: string;
   limit?: number;
+  "price[lte]"?: string | number;
+  "price[gte]"?: string | number;
 }

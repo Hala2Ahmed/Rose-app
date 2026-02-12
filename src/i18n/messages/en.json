@@ -21,7 +21,8 @@
   "common": {
     "view-more": "View More",
     "search-country": "Search country...",
-    "no-country-found": "No country found."
+    "no-country-found": "No country found.",
+    "reset": "Reset"
   },
   "about": {
     "title": "About",
@@ -71,6 +72,8 @@
       "forgot_password": "Forgot your password?",
       "remember": "Remember Me",
       "Login": "Login",
+      "Register": "Register",
+      "Hello": "Hello",
       "welcome": "welcome back!",
       "create": "Create one now!",
       "account": "Don’t have an account yet? "
@@ -170,5 +173,33 @@
   "related-products": {
     "title": "Related Products",
     "related-products-empty": "There are no related products"
+  },
+  "product": {
+    "rate": "Rating",
+    "rate-count": "ratings",
+    "no-ratings-yet": "No ratings yet",
+    "out-stock": "Out of stock",
+    "left-in-stock": "left in stock"
+  },
+  "products": {
+    "filters": {
+      "category-title": "Categories",
+      "rating-title": "Rating",
+      "reset-all": "Reset All",
+      "loading": "Loading...",
+      "end-of-list": "No more results",
+      "error": "Something went wrong",
+      "occasion-title": "Occasion",
+      "end-of-occasions": "No more occasions",
+      "occasions-error": "Error loading occasions",
+      "price-title": "Price",
+      "price-from-label": "From",
+      "price-to-label": "To",
+      "price-to-max": "please enter a number less than 10000",
+      "price-from-max": "please enter a number less than 1000",
+      "price-valid": "please enter a valid number",
+      "price-from-less-than-to": "Price 'from' must be less than price 'to'",
+      "price-to-greater-than-from": "Price 'to' must be greater than price 'from'"
+    }
   }
 }
