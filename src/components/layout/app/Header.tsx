@@ -118,7 +118,7 @@ async function Header() {
                 <DropdownMenuContent className="w-56">
                   <DropdownMenuGroup>
                     <DropdownMenuLabel>
-                      <p className="capitalize text-maroon-700 font-semibold text-sm">
+                      <p className="capitalize text-maroon-700 dark:text-softPink-200 font-semibold text-sm">
                         {session.user.firstName} {session.user.lastName}
                       </p>
                     </DropdownMenuLabel>
