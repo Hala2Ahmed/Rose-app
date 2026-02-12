@@ -121,7 +121,7 @@ export default function AddReview({ productId }: AddReviewProps) {
                     type="submit"
                     loading={isPending}
                     variant={"primary"}
-                    className="w-full mt-10 dark:text-zinc-800 dark:bg-softPink-300 dark:hover:bg-softPink-400"
+                    className="w-full mt-2.5 dark:text-zinc-800 dark:bg-softPink-300 dark:hover:bg-softPink-400"
                     disabled={isPending || !form.formState.isValid && form.formState.isSubmitted}
                 >
                     {t('add-review')}

@@ -7,6 +7,7 @@ import MainTitle from "@/components/shared/main-title";
 import { renderStars } from "@/lib/utils/render-stars";
 import { getTranslations } from "next-intl/server";
 import AllReviewsSkeleton from "@/components/skeletons/product-review/all-reviews.skeleton";
+import { cn } from "@/lib/utils/tailwind-merge";
 
 type ProductReviewsProps = {
     productId: string;
@@ -43,7 +44,7 @@ export default async function ProductReviews({ productId, rateAvg, rateCount }: 
                 {/* All product reviews*/}
                 <div className="
                     flex flex-col gap-2.5 pt-4 pe-5
-                    h-367 w-742 overflow-y-auto
+                    h-357 w-742 overflow-y-auto
                     scrollbar-thin
                     scrollbar-thumb-zinc-400
                     scrollbar-track-transparent
@@ -56,8 +57,8 @@ export default async function ProductReviews({ productId, rateAvg, rateCount }: 
                 </div>
 
                 {/* Add review */}
-                <div className="relative p-4 w-[484px]">
-                    <div className={`${!session ? "blur-sm pointer-events-none select-none" : ""}`}>
+                <div className="relative p-4 pb-0 w-121">
+                    <div className={cn(`${!session ? "blur-sm pointer-events-none select-none" : ""}`)}>
                         <AddReview productId={productId} />
                     </div>
 

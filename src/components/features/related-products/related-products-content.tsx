@@ -1,6 +1,6 @@
 import React from 'react';
-import { getSimilarProductService } from '../../_services/similar-products/similar-products.service';
-import Content from './carousel-content';
+import { getSimilarProductService } from '../../../lib/services/similar-products/similar-products.service';
+import ContentCarousel from './carousel-content';
 import { getTranslations } from 'next-intl/server';
 
 type RelatedProductsContentProps = {
@@ -22,6 +22,6 @@ export default async function RelatedProductsContent({ categoryId }: RelatedProd
         );
     }
     return (
-        <Content items={data.products} />
+        <ContentCarousel items={data.products} />
     )
 }

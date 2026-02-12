@@ -13,7 +13,7 @@ type TestimonialsCarouselProps = {
     items: Product[];
 };
 
-export default function Content({
+export default function ContentCarousel({
     items,
 }: TestimonialsCarouselProps) {
     return (
