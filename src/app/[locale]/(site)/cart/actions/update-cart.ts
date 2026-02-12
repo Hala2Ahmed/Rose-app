@@ -1,14 +1,12 @@
 "use server";
 
-import { getServerSession } from "next-auth";
 import type { CartResponse } from "@/lib/types/cart";
-import { authOptions } from "@/auth";
+import { getToken } from "@/lib/utils/manage-token";
 
 export async function updateCartAction(productId: string, quantity: number) {
-  const session = await getServerSession(authOptions);
-  const { accessToken } = session || {};
+  const token = await getToken();
 
-  if (!session || !accessToken) {
+  if (!token || !token?.accessToken) {
     throw new Error("Unauthorized");
   }
 
@@ -19,7 +17,7 @@ export async function updateCartAction(productId: string, quantity: number) {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer ${token.accessToken}`,
       },
       body: JSON.stringify({ quantity }),
     },

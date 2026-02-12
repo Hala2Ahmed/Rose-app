@@ -33,9 +33,9 @@ function Header() {
   const token = session?.data?.accessToken;
   const firstName = session?.data?.user.firstName;
 
-  const { data: cart = [] } = useCartQuery();
+  const { data: cart  } = useCartQuery();
 
-  const cartCount = cart.reduce((sum, i) => sum + i.quantity, 0);
+  const cartCount: number = cart?.cartItems?.reduce((sum, i) => sum + i.quantity, 0) ?? 0;
 
   useSyncGuestCart();
 

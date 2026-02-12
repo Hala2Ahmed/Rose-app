@@ -187,5 +187,8 @@
     "cart-empty": "Your cart is empty, wanna try shopping?",
     "remove-btn": "Remove",
     "continue-shopping-btn": "Continue Shopping"
+  },
+  "product-may-like": {
+    "title": "Products You May Like"
   }
 }

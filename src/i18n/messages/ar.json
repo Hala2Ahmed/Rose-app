@@ -187,5 +187,8 @@
     "cart-empty": "عربة التسوق فارغة، هل ترغب في التسوق؟",
     "remove-btn": "إزالة",
     "continue-shopping-btn": "متابعة التسوق"
-  }
+  },
+  "product-may-like": {
+  "title": "منتجات قد تُعجبك"
+}
 }

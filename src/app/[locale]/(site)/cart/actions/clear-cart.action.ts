@@ -1,13 +1,11 @@
 "use server";
 
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/auth";
+import { getToken } from "@/lib/utils/manage-token";
 
 export async function deleteCartAction() {
-  const session = await getServerSession(authOptions);
-  const { accessToken } = session || {};
+  const token = await getToken();
 
-  if (!session || !accessToken) {
+  if (!token || !token?.accessToken) {
     throw new Error("Unauthorized");
   }
 
@@ -16,7 +14,7 @@ export async function deleteCartAction() {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${token.accessToken}`,
     },
   });
 

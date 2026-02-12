@@ -5,8 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
 import type { ProductDetails } from "@/lib/types/product-details";
-import type { CartItem } from "@/lib/types/cart";
-import { fetchCart } from "@/app/[locale]/(site)/cart/_services/cart.service";
+import type { Cart } from "@/lib/types/cart";
 import { addToCartAction } from "@/app/[locale]/(site)/cart/actions/cart.action";
 import {
   CART_KEY,
@@ -14,17 +13,18 @@ import {
   readGuestCart,
   writeGuestCart,
 } from "@/lib/utils/cart-storage";
+import { fetchCart } from "@/app/[locale]/(site)/cart/actions/fetch-cart.action";
 
 // fetch the user's cart.
 export function useCartQuery() {
   const { status, data: session } = useSession();
 
-  return useQuery<CartItem[]>({
+  return useQuery<Cart>({
     queryKey: CART_KEY,
     enabled: status !== "loading",
     queryFn: async () => {
       if (session?.user) return fetchCart();
-      return readGuestCart();
+      return { cartItems: readGuestCart(), totalPrice: 0 } as Cart;
     },
     staleTime: 1000 * 30,
   });
@@ -54,7 +54,6 @@ export function useAddToCart() {
       if (existing) existing.quantity += quantity;
       else
         cart.push({
-          // productId: product._id,
           quantity,
           product: {
             title: product.title,

@@ -19,19 +19,19 @@ export default function CartPage() {
   const { data: cart, isPending } = useCartQuery();
 
   if (isPending) return <CartSkeleton />;
-  if (!cart || cart.length === 0) return <EmptyCart />;
+  if (!cart || cart.cartItems.length === 0) return <EmptyCart />;
 
   return (
     <div className="max-w-[782px] mb-12">
       {/*Cart Header */}
       <CartHeader
-        cartLength={cart.length}
-        disabled={!cart || cart.length === 0}
+        cartLength={cart.cartItems.length}
+        disabled={!cart || cart.cartItems.length === 0}
       />
 
       {/* Cart Items */}
       <div className="border border-zinc-200 p-5 rounded-xl max-h-[50rem] overflow-y-auto cart-scroll">
-        {cart.map((item) => (
+        {cart.cartItems.map((item) => (
           <div
             key={item.product._id}
             className="flex justify-between border-b last:border-b-0 border-zinc-200 py-5"
@@ -76,9 +76,11 @@ export default function CartPage() {
                     <span className="text-sm font-medium text-maroon-600">
                       ({item.quantity})
                     </span>{" "}
-                    {(
-                      item.product?.priceAfterDiscount ?? item.product?.price
-                    )?.toFixed(2) || 0}{" "}
+                    {(item.product?.priceAfterDiscount &&
+                    item.product?.priceAfterDiscount > 0
+                      ? item.product.priceAfterDiscount
+                      : item.product?.price
+                    )?.toFixed(2)}{" "}
                     <span className="text-sm font-medium text-zinc-800">
                       EGP
                     </span>

@@ -1,3 +1,4 @@
+import ProductMayLike from "@/components/shared/product-may-like";
 import React from "react";
 
 export default function CartLayout({
@@ -8,9 +9,14 @@ export default function CartLayout({
   summary: React.ReactNode;
 }) {
   return (
-    <div className="flex gap-12">
-      {children}
-      {summary}
-    </div>
+    <>
+      <div className="flex gap-12">
+        {children}
+        {summary}
+      </div>
+
+      {/* Product May Like */}
+      <ProductMayLike />
+    </>
   );
 }
