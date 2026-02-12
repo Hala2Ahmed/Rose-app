@@ -6,18 +6,13 @@ import { getProducts } from "@/app/[locale]/(site)/(homepage)/_services/products
 export function useSearch(open: boolean, keyword: string) {
   return useInfiniteQuery({
     queryKey: ["search-products", keyword || "all"],
-
     queryFn: ({ pageParam = 1 }) =>
       getProducts(pageParam, 10, {
         ...(keyword ? { keyword } : {}),
       }),
-
     initialPageParam: 1,
-
-    enabled: open, // ✅ يشتغل أول ما search يفتح
-
+    enabled: open, 
     staleTime: 1000 * 60 * 5,
-
     getNextPageParam: (lastPage) => {
       const { currentPage, totalPages } = lastPage.metadata;
       return currentPage < totalPages ? currentPage + 1 : undefined;
