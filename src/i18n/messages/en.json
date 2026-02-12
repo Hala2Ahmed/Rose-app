@@ -178,5 +178,16 @@
       "price-from-less-than-to": "Price 'from' must be less than price 'to'",
       "price-to-greater-than-from": "Price 'to' must be greater than price 'from'"
     }
+  },
+  "address": {
+    "add-address": "Add address",
+    "next": "next",
+    "street_min": "Street must be at least 2 characters long.",
+    "phone_invalid": "Please enter a valid phone number.",
+    "city_min": "City is required.",
+    "username_min": "Username must be at least 3 characters.",
+    "username_max": "Username must not exceed 20 characters.",
+    "lat_invalid": "Please select a valid location on the map.",
+    "long_invalid": "Please select a valid location on the map."
   }
 }
