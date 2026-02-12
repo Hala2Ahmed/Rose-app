@@ -6,8 +6,8 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
-import RelatedProductCard from "./related-product-card";
 import { Product } from "@/lib/types/products";
+import BestSellingCard from "../../../app/[locale]/(site)/(homepage)/_components/best-selling/best-selling-card";
 
 type TestimonialsCarouselProps = {
     items: Product[];
@@ -24,8 +24,7 @@ export default function ContentCarousel({
                         key={item._id}
                         className="basis-full sm:basis-1/2 lg:basis-1/4"
                     >
-                        {/* //TODO: use shared component */}
-                        <RelatedProductCard
+                        <BestSellingCard
                             data={item}
                             key={item._id}
                         />

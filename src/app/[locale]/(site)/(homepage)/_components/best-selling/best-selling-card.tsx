@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ShoppingCart, HeartPlus, HeartMinus } from "lucide-react";
+import { HeartPlus, HeartMinus } from "lucide-react";
 import Image from "next/image";
 import { BestSellingProduct } from "@/lib/types/best-selling.types";
 import { renderStars } from "@/lib/utils/render-stars";
