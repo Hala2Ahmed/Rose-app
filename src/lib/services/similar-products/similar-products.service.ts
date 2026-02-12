@@ -1,7 +1,7 @@
 import { Products } from "@/lib/types/products.js";
 
 export async function getSimilarProductService(categoryId: string) {
-    const response = await fetch(`${process.env.API_URL!}/products?category=${categoryId}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL!}/products?category=${categoryId}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
