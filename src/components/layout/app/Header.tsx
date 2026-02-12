@@ -21,6 +21,7 @@ import Notifications from "./notifications/index";
 import LanguageSwitcher from "./language-switcher";
 import { useSession } from "next-auth/react";
 import InfoUser from "./info-user";
+import ModeToggle from "./mode-toggle";
 
 /* -------------------------------------------------------------------------- */
 /*                                   Header                                   */
@@ -94,6 +95,7 @@ function Header() {
             <Heart className="h-5 w-5 cursor-pointer" />
             <ShoppingCart className="h-5 w-5 cursor-pointer" />
             <Notifications notificationCount={5} />
+            <ModeToggle />
           </div>
 
           {/* Language Switcher */}

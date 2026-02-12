@@ -165,5 +165,26 @@
       "price-from-less-than-to": "يجب أن يكون السعر 'من' أقل من السعر 'إلى'",
       "price-to-greater-than-from": "يجب أن يكون السعر 'إلى' أكبر من السعر 'من'"
     }
+  },
+  "order": {
+    "order": "طلب",
+    "orders": "الطلبات",
+    "created": "تم الإنشاء في",
+    "canceled": "ملغي",
+    "done": "مكتمل",
+    "delivered": "تم التسليم",
+    "in_progress": "قيد التنفيذ",
+    "pending": "قيد الانتظار",
+    "total_price": "إجمالي السعر",
+    "paid": "مدفوع",
+    "status": "الحالة",
+    "payment_method": "طريقة الدفع",
+    "delivery_status": "حالة التوصيل",
+    "order_items": "عناصر الطلب",
+    "less": "عرض أقل",
+    "all": "عرض الكل",
+    "rating": "تقييم",
+    "ratings": "التقييمات"
   }
+
 }

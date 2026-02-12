@@ -21,7 +21,7 @@ export default function InfoUser() {
     const firstName = user?.firstName;
 
     return (
-        <HoverCard openDelay={100} closeDelay={40000}>
+        <HoverCard openDelay={100}>
             <div className="inline-block cursor-pointer">
                 {!token ? (
                     <HoverCardTrigger asChild>

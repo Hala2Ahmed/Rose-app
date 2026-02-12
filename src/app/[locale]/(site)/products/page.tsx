@@ -1,7 +1,13 @@
 import OccasionsFilter from "./_components/filters/occasions-filter/occasions-filter";
 import PriceFilter from "./_components/filters/price-filter";
+import Orders from "./_components/orders/orders";
 
 export default function page() {
+  return (
+    <>
+      <Orders />
+    </>
+  )
   return (
     <div className="flex gap-5 ">
       {/* Filters */}

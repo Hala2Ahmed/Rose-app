@@ -165,5 +165,25 @@
       "price-from-less-than-to": "Price 'from' must be less than price 'to'",
       "price-to-greater-than-from": "Price 'to' must be greater than price 'from'"
     }
+  },
+  "order": {
+    "order": "Order",
+    "orders": "Orders",
+    "created": "Created in",
+    "canceled":"Canceled",
+    "done": "Done",
+    "delivered":"Delivered",
+    "in_progress":"In Progress",
+    "pending":"Pending",
+    "total_price":"Total Price",
+    "paid":"Paid",
+    "status":"Status",
+    "payment_method":"Payment Method",
+    "delivery_status": "Delivery Status",
+    "order_items":"Order Items",
+    "less":"Show Less",
+    "all":"Show All",
+    "rating":"Rating",
+    "ratings":"Ratings"
   }
 }
