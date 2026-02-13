@@ -40,13 +40,15 @@ export default function UserDropDown({ initialData }: InitialDataProps) {
 
   return (
     <>
-      <div className="flex items-center">
-        <p className="text-xs text-zinc-500 m-0 p-0 font-normal">
-          {t("hello")}
-          <span className="text-maroon-700 dark:text-softPink-200 font-medium text-base">
+      <div className="flex items-center justify-between">
+        <div className="font-sarabun">
+          <p className="text-xs text-zinc-500 m-0 p-0 font-normal">
+            {t("hello")}
+          </p>
+          <span className="text-maroon-700 dark:text-softPink-200 font-medium text-base capitalize">
             {userData?.user.firstName}
           </span>
-        </p>
+        </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <ChevronDown className="cursor-pointer" />
