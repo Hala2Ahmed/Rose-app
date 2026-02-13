@@ -1,15 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Addresses, AddressFields } from "@/lib/types/addresses";
-import { addAddressAction } from "../../lib/actions/address/add-address.action";
+import { updateAddressAction } from "../../lib/actions/address/update-address.action";
 
-export default function useAddAddress() {
+export default function useUpdateAddress(id: string) {
     // query client
     const queryClient = useQueryClient();
 
     const { isPending, mutate, error } = useMutation({
         mutationFn: async (fields: AddressFields) => {
-            console.log("🚀 ~ useAddAddress ~ fields:", fields)
-            const response = await addAddressAction({...fields, phone: fields.phone.replace("+", "")});
+            const response = await updateAddressAction({...fields, phone: fields.phone.replace("+", "")}, id);
 
             {/* Error */ }
             if ("error" in response) {
@@ -20,14 +19,9 @@ export default function useAddAddress() {
             return response;
         },
         onSuccess: (response) => {
-            queryClient.setQueryData<Addresses>(["addresses"], () => {
-                return {
-                    ...response,
-                    addresses: response.address,
-                };
-            });
+            queryClient.setQueryData<Addresses>(["addresses"], () => response);
         }
     });
 
-    return { isPending, error, addAddress: mutate };
+    return { isPending, error, updateAddress: mutate };
 }

@@ -8,19 +8,29 @@ import FormLayout from "./form-layout";
 
 export default function AddressesLayout() {
     //States
-    const [step, setStep] = useState<AddressOperations>(ADDRESS_OPERATIONS.ADD);
+    const [operation, setOperation] = useState<AddressOperations>(ADDRESS_OPERATIONS.GET);
+    const [addressId, setAddressId] = useState("");
 
     // Variables
     const operations = {
         [ADDRESS_OPERATIONS.GET]: {
-            component: <AllAddresses setOperationStep={setStep} />,
+            component: <AllAddresses setOperationStep={setOperation} setAddressId={setAddressId} />,
         },
         [ADDRESS_OPERATIONS.ADD]: {
-            component: <FormLayout />,
+            component: <FormLayout
+                operation={operation}
+                setOperation={setOperation}
+                title={"Add a New Address"}
+            />,
         },
         [ADDRESS_OPERATIONS.UPDATE]: {
-            component: <></>,
+            component: <FormLayout
+                id={addressId}
+                operation={operation}
+                setOperation={setOperation}
+                title={"Update Address Info"}
+            />,
         }
     }
-    return operations[step].component;
+    return operations[operation].component;
 }

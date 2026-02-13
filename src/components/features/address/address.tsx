@@ -2,15 +2,39 @@
 
 import { MapPin, PenLine, Phone, Trash2 } from "lucide-react";
 import type { Address, AddressOperations } from "@/lib/types/addresses";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { ADDRESS_OPERATIONS } from "../../../lib/constants/address.constants";
+import { DeleteAddressDialog } from "../../shared/confirmation-dialog";
+import useDeleteAddress from "@/hooks/addresses/use-delete-address";
+import { toast } from "sonner";
 
 type AddressProps = {
     address: Address,
     setOperationStep: Dispatch<SetStateAction<AddressOperations>>;
+    setAddressId: Dispatch<SetStateAction<string>>;
 }
 
-export default function Address({ address, setOperationStep }: AddressProps) {
+export default function Address({ address, setOperationStep, setAddressId }: AddressProps) {
+    // states 
+    const [open, setOpen] = useState(false);
+
+    // mutation 
+    const { deleteAddress, isPending } = useDeleteAddress();
+
+    // Functions
+
+    function confirmDeleteAddress() {
+        deleteAddress(address._id, {
+            onSuccess: () => {
+                setOpen(false);
+                toast.success("Address deleted successfully")
+            },
+            onError: () => {
+                toast.error("Something happened error")
+            }
+        })
+    }
+
     return (
         <div className="flex flex-col gap-4 rounded-md border border-zinc-300 ps-4 pe-7 pb-5 relative">
             {/* Street */}
@@ -46,7 +70,10 @@ export default function Address({ address, setOperationStep }: AddressProps) {
             <div className="flex flex-col gap-1.5 mt-6 absolute end-0 translate-x-1/2">
                 {/*Update address */}
                 <span
-                    onClick={() => setOperationStep(ADDRESS_OPERATIONS.UPDATE)}
+                    onClick={() => {
+                        setOperationStep(ADDRESS_OPERATIONS.UPDATE)
+                        setAddressId(address._id);
+                    }}
                     className="flex flex-col items-center justify-center w-9 h-9 rounded-full border border-zinc-400 cursor-pointer"
                 >
                     <PenLine
@@ -56,15 +83,24 @@ export default function Address({ address, setOperationStep }: AddressProps) {
                 </span>
 
                 {/* Delete address */}
-                <span
-                    className="flex flex-col items-center justify-center w-9 h-9 rounded-full border border-red-600 bg-red-600 cursor-pointer"
-                >
-                    <Trash2
-                        width={"1.125rem"}
-                        height={"1.125rem"}
-                        className="text-white"
-                    />
-                </span>
+                <DeleteAddressDialog
+                    onConfirm={confirmDeleteAddress}
+                    isPending={isPending}
+                    open={open}
+                    setOpen={setOpen}
+                    trigger={
+                        <span
+                            className="flex flex-col items-center justify-center w-9 h-9 
+                    rounded-full border border-red-600 bg-red-600 cursor-pointer"
+                        >
+                            <Trash2
+                                width={"1.125rem"}
+                                height={"1.125rem"}
+                                className="text-white"
+                            />
+                        </span>
+                    }
+                />
             </div>
         </div>
     )

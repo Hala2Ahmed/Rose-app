@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import type { AddressFields, FormSteps } from "@/lib/types/addresses";
-import { FORM_STEPS } from "../../../lib/constants/address.constants";
+import { Dispatch, SetStateAction, useState } from "react";
+import type { Addresses, AddressFields, AddressOperations, FormSteps } from "@/lib/types/addresses";
+import { ADDRESS_OPERATIONS, FORM_STEPS } from "../../../lib/constants/address.constants";
 import AddressDetailsForm from "./address-details-step";
 import FormHeader from "./form-header";
 import AddressLocationStep from "./address-location-step";
@@ -11,43 +11,82 @@ import useAddAddress from "../../../hooks/addresses/use-add-address";
 import { AddressSchema } from "../../../lib/schemes/address.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
+import { toast } from "sonner";
+import useUpdateAddress from "../../../hooks/addresses/use-update-address";
+import { useQueryClient } from "@tanstack/react-query";
 
-export default function FormLayout() {
+type FormLayoutProps = {
+    title: string;
+    id?: string;
+    operation: AddressOperations;
+    setOperation: Dispatch<SetStateAction<AddressOperations>>,
+}
+
+export default function FormLayout({ title, id, operation, setOperation }: FormLayoutProps) {
     //Translation
     const t = useTranslations("address");
+
+    // Query client
+    const queryClient = useQueryClient();
 
     // States
     const [step, setStep] = useState<FormSteps>(FORM_STEPS.DETAILS);
 
+    // Variables
+    const defaultValues: AddressFields =
+        queryClient.getQueryData<Addresses>(["addresses"])?.addresses.find(add => add._id == id) ??
+        {} as AddressFields;
+
+    // Mutation
+    const { isPending: isAdding, addAddress } = useAddAddress();
+    const { isPending: isUpdating, updateAddress } = useUpdateAddress(id || "");
+
     // variables
     const steps = {
         [FORM_STEPS.DETAILS]: {
-            header: <FormHeader header={"Add a New Address"} description={"Enter address details"} />,
+            header: <FormHeader
+                header={title}
+                description={"Enter address details"}
+                step={step}
+                setStep={setStep}
+            />,
             component: <AddressDetailsForm setStep={setStep} />,
         },
         [FORM_STEPS.LOCATION]: {
-            header: <FormHeader header={"Add a New Address"} description={"Find Your Location"} />,
-            component: <AddressLocationStep />,
+            header: <FormHeader
+                header={title}
+                description={"Find Your Location"}
+                step={step}
+                setStep={setStep}
+            />,
+            component: <AddressLocationStep isPending={isAdding ?? isUpdating} />,
         },
     }
 
-    // Mutation
-    const { isPending, error, addAddress } = useAddAddress();
-
     // Form
     const form = useForm<AddressFields>({
-        defaultValues: {
-            resetCode: '',
-        },
+        defaultValues,
         resolver: zodResolver(AddressSchema(t)),
         mode: 'onSubmit',
     });
 
     //Functions
     const onSubmit: SubmitHandler<AddressFields> = async (values) => {
-        console.log("object")
-        console.log("🚀 ~ onSubmit ~ values:", values)
-        addAddress(values);
+        if (operation === ADDRESS_OPERATIONS.ADD) {
+            addAddress(values, {
+                onSuccess: () => {
+                    toast.success("Address added successfully");
+                    setOperation(ADDRESS_OPERATIONS.GET);
+                }
+            });
+        } else {
+            updateAddress(values, {
+                onSuccess: () => {
+                    toast.success("Address updated successfully");
+                    setOperation(ADDRESS_OPERATIONS.GET);
+                }
+            })
+        }
     };
 
     return (

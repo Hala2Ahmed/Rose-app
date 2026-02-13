@@ -1,16 +1,16 @@
 import { Dialog, DialogContent,  DialogTrigger } from '@/components/ui/dialog';
-import { ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
 type AddressModalProps = {
-    trigger: string;
+    trigger: ReactElement;
     children: ReactNode;
 }
 
 export default function AddressModal({trigger, children}: AddressModalProps) {
     return (
         <Dialog>
-            <DialogTrigger>{trigger}</DialogTrigger>
-            <DialogContent>
+            <DialogTrigger asChild>{trigger}</DialogTrigger>
+            <DialogContent className='w-850'>
                 {children}
             </DialogContent>
         </Dialog>

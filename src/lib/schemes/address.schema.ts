@@ -15,15 +15,11 @@ export const AddressSchema = (t: Translations) => z.object({
         .string()
         .min(1, t("city_min")),
 
-    username: z
-        .string()
-        .min(3, t("username_min"))
-        .max(20, t("username_max")),
-            lat: z
-        .string()
-        .refine((val) => !isNaN(Number(val)), t("lat_invalid")),
-
     long: z
         .string()
         .refine((val) => !isNaN(Number(val)), t("long_invalid")),
+
+    lat: z
+        .string()
+        .refine((val) => !isNaN(Number(val)), t("long_invalid"))
 });

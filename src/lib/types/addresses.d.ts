@@ -15,6 +15,10 @@ export type Addresses = {
     addresses: Address[],
 };
 
+export type AddAddress = {
+    address: Address[],
+};
+
 export type AddressOperations = (typeof ADDRESS_OPERATIONS)[keyof typeof ADDRESS_OPERATIONS];
 
 export type FormSteps = (typeof FORM_STEPS)[keyof typeof FORM_STEPS];

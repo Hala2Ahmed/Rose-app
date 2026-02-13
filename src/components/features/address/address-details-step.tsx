@@ -25,10 +25,10 @@ export default function AddressDetailsForm({ setStep }: AddressDetailsFormProps)
 
     // functions
     async function onSubmit() {
-        const valid = await form.trigger(["city", "address", "phone"]);
+        const valid = await form.trigger(["city", "street", "phone"]);
         if (valid) setStep(FORM_STEPS.LOCATION);
     }
-    
+
     return (
         <>
             {/* City */}
@@ -52,7 +52,7 @@ export default function AddressDetailsForm({ setStep }: AddressDetailsFormProps)
             {/* Address */}
             <FormField
                 control={form.control}
-                name="address"
+                name="street"
                 render={({ field }) => (
                     <FormItem>
                         {/* Label */}
@@ -77,7 +77,7 @@ export default function AddressDetailsForm({ setStep }: AddressDetailsFormProps)
                         <FormLabel >Phone</FormLabel>
                         { /* Field */}
                         <FormControl>
-                            <PhoneInput  {...field} />
+                            <PhoneInput defaultCountry="EG" {...field} />
                         </FormControl>
                         {/* Feedback */}
                         <FormMessage />
