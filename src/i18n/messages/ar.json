@@ -217,6 +217,7 @@
     "my-profile": " حسابي الشخصي",
     "addresses": "العناوين",
     "orders": "الطلبات",
-    "dashboard": "لوحة التحكم"
+    "dashboard": "لوحة التحكم",
+    "hello": "مرحبا "
   }
 }

@@ -175,7 +175,7 @@
     "confirm-button": "Yes, Delete",
     "cancel-button": "Nope, not doing it",
     "change-password-button": "Change Password",
-    "password-changed-success" : "Your Password Changed Successfully!"
+    "password-changed-success": "Your Password Changed Successfully!"
   },
   "product": {
     "rate": "Rating",
@@ -216,6 +216,7 @@
     "my-profile": " My Profile",
     "addresses": "My Addresses",
     "orders": "My Orders",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "hello": "Hello"
   }
 }

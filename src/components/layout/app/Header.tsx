@@ -11,11 +11,6 @@ import {
   ClipboardList,
   PartyPopper,
   Headset,
-  ChevronDown,
-  UserRound,
-  MapPinHouse,
-  ScrollText,
-  Settings,
 } from "lucide-react";
 import Notifications from "./notifications/index";
 import LanguageSwitcher from "./language-switcher";
@@ -23,29 +18,17 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/auth";
 import InfoUser from "./info-user";
 import NavigationMenu from "./navigation-menu";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+
 import CartItems from "./cart-items";
-import LogOutButton from "@/components/shared/logout-button";
-import { getTranslations } from "next-intl/server";
+import UserDropDown from "@/components/shared/user-dropdown";
 
 /* -------------------------------------------------------------------------- */
 /*                                   Header                                   */
 /* -------------------------------------------------------------------------- */
 
 async function Header() {
-  //get user info from server insetad of client
+  //get user info from server side on first page loading to avoid flashing of info
   const session = await getServerSession(authOptions);
-
-  //translations
-  const t = await getTranslations("header");
 
   //Nav Links
   const navLinks = [
@@ -104,51 +87,7 @@ async function Header() {
         {/* User Actions */}
         <div className="flex items-center gap-6 text-gray-700 dark:text-zinc-50">
           {session?.user ? (
-            <div className="flex items-center">
-              <p className="text-xs text-zinc-500 m-0 p-0 font-normal">
-                Hello{" "}
-                <span className="text-maroon-700 dark:text-softPink-200 font-medium text-base">
-                  {session.user.firstName}
-                </span>
-              </p>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <ChevronDown className="cursor-pointer" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56">
-                  <DropdownMenuGroup>
-                    <DropdownMenuLabel>
-                      <p className="capitalize text-maroon-700 dark:text-softPink-200 font-semibold text-sm">
-                        {session.user.firstName} {session.user.lastName}
-                      </p>
-                    </DropdownMenuLabel>
-                    <DropdownMenuSeparator className="bg-zinc-100" />
-
-                    <Link href={"/profile"}>
-                      <DropdownMenuItem className="cursor-pointer">
-                        <UserRound />
-                        {t("my-profile")}
-                      </DropdownMenuItem>
-                    </Link>
-                    <DropdownMenuItem>
-                      <MapPinHouse />
-                      {t("addresses")}
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <ScrollText /> {t("orders")}
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                  <DropdownMenuSeparator className="bg-zinc-100" />
-                  <DropdownMenuItem>
-                    <Settings /> {t("dashboard")}
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator className="bg-zinc-100" />
-
-                  {/* separated for client side functionality */}
-                  <LogOutButton />
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+            <UserDropDown initialData={session} />
           ) : (
             <InfoUser />
           )}
