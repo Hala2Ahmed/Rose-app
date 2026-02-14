@@ -26,8 +26,6 @@ export default function AddressDetailsForm({ setStep }: AddressDetailsFormProps)
     // functions
     async function onSubmit() {
         const valid = await form.trigger(["city", "street", "phone"]);
-        console.log("🚀 ~ onSubmit ~ valid:", valid)
-        console.log("🚀 ~ onSubmit ~ valid:", form.formState.errors)
         if (valid) setStep(FORM_STEPS.LOCATION);
     }
 
