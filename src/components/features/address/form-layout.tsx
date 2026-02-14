@@ -35,7 +35,13 @@ export default function FormLayout({ title, id, operation, setOperation }: FormL
     // Variables
     const defaultValues: AddressFields =
         queryClient.getQueryData<Addresses>(["addresses"])?.addresses.find(add => add._id == id) ??
-        {} as AddressFields;
+        {
+            city: "",
+            street: "",
+            phone: "",
+            lat: "",
+            long: "",
+        };
 
     // Mutation
     const { isPending: isAdding, addAddress } = useAddAddress();
