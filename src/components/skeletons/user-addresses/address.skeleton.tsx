@@ -27,7 +27,8 @@ export default function AddressSkeleton() {
             <div className="h-6 w-72 bg-zinc-200 rounded-full mt-2" />
 
             {/* Mutation operations */}
-            <div className="flex flex-col gap-1.5 mt-6 absolute end-0 translate-x-1/2">
+            <div className="flex flex-col gap-1.5 mt-6 absolute ltr:right-0 ltr:translate-x-1/2
+                            rtl:left-0  rtl:-translate-x-1/2">
                 <div className="w-9 h-9 rounded-full border border-zinc-300 bg-zinc-200" />
                 <div className="w-9 h-9 rounded-full bg-zinc-300" />
             </div>

@@ -4,7 +4,7 @@ import { Button } from "../../../../components/ui/button";
 
 export default function Page() {
     return (
-        <AddressModal trigger={<Button variant="outline">Open</Button>}>
+        <AddressModal trigger={<Button className="my-7" variant="outline">Open</Button>}>
             <AddressesLayout />
         </AddressModal>
     )

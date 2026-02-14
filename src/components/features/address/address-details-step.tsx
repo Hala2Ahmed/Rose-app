@@ -1,15 +1,15 @@
 "use client";
 
-import { useFormContext } from "react-hook-form";
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "../../ui/form";
-import { Button } from "../../ui/button";
-import { Input } from "../../ui/input";
-import type { FormSteps } from "../../../lib/types/addresses";
-import { useTranslations } from "next-intl";
-import { Textarea } from "../../ui/textarea";
-import { PhoneInput } from "../../ui/phone-input";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { FORM_STEPS } from "@/lib/constants/address.constants";
+import { PhoneInput } from "@/components/ui/phone-input";
+import type { FormSteps } from "@/lib/types/addresses";
+import { Textarea } from "@/components/ui/textarea";
 import { Dispatch, SetStateAction } from "react";
-import { FORM_STEPS } from "../../../lib/constants/address.constants";
+import { useFormContext } from "react-hook-form";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useTranslations } from "next-intl";
 
 //Props
 type AddressDetailsFormProps = {
@@ -26,6 +26,8 @@ export default function AddressDetailsForm({ setStep }: AddressDetailsFormProps)
     // functions
     async function onSubmit() {
         const valid = await form.trigger(["city", "street", "phone"]);
+        console.log("🚀 ~ onSubmit ~ valid:", valid)
+        console.log("🚀 ~ onSubmit ~ valid:", form.formState.errors)
         if (valid) setStep(FORM_STEPS.LOCATION);
     }
 
@@ -38,10 +40,14 @@ export default function AddressDetailsForm({ setStep }: AddressDetailsFormProps)
                 render={({ field }) => (
                     <FormItem>
                         {/* Label */}
-                        <FormLabel >City</FormLabel>
+                        <FormLabel >{t("city-label")}</FormLabel>
                         { /* Field */}
                         <FormControl>
-                            <Input type='text' placeholder='Enter city name' {...field} />
+                            <Input
+                                className="text-black dark:text-zinc-50"
+                                type='text'
+                                placeholder={t('city-placeholder')}
+                                {...field} />
                         </FormControl>
                         {/* Feedback */}
                         <FormMessage />
@@ -56,10 +62,13 @@ export default function AddressDetailsForm({ setStep }: AddressDetailsFormProps)
                 render={({ field }) => (
                     <FormItem>
                         {/* Label */}
-                        <FormLabel >Address</FormLabel>
+                        <FormLabel >{t("address-label")}</FormLabel>
                         { /* Field */}
                         <FormControl>
-                            <Textarea placeholder='Enter your full address' {...field} />
+                            <Textarea
+                                className="text-black dark:text-zinc-50"
+                                placeholder={t('address-placeholder')}
+                                {...field} />
                         </FormControl>
                         {/* Feedback */}
                         <FormMessage />
@@ -74,10 +83,14 @@ export default function AddressDetailsForm({ setStep }: AddressDetailsFormProps)
                 render={({ field }) => (
                     <FormItem>
                         {/* Label */}
-                        <FormLabel >Phone</FormLabel>
+                        <FormLabel >{t("phone-label")}</FormLabel>
                         { /* Field */}
                         <FormControl>
-                            <PhoneInput defaultCountry="EG" {...field} />
+                            <PhoneInput
+                                className="text-black dark:text-zinc-50"
+                                defaultCountry="EG"
+                                {...field}
+                                placeholder={t("phone-placeholder")} />
                         </FormControl>
                         {/* Feedback */}
                         <FormMessage />

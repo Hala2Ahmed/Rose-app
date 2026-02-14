@@ -1,45 +1,58 @@
 "use client";
 
-import { MapPin, PenLine, Phone, Trash2 } from "lucide-react";
+import { DeleteAddressDialog } from "@/components/shared/confirmation-dialog";
 import type { Address, AddressOperations } from "@/lib/types/addresses";
-import { Dispatch, SetStateAction, useState } from "react";
-import { ADDRESS_OPERATIONS } from "../../../lib/constants/address.constants";
-import { DeleteAddressDialog } from "../../shared/confirmation-dialog";
+import { ADDRESS_OPERATIONS } from "@/lib/constants/address.constants";
 import useDeleteAddress from "@/hooks/addresses/use-delete-address";
+import { MapPin, PenLine, Phone, Trash2 } from "lucide-react";
+import { Dispatch, SetStateAction, useState } from "react";
+import { cn } from "@/lib/utils/tailwind-merge";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 type AddressProps = {
+    selectedAddressId: AddressOperations;
     address: Address,
     setOperationStep: Dispatch<SetStateAction<AddressOperations>>;
     setAddressId: Dispatch<SetStateAction<string>>;
 }
 
-export default function Address({ address, setOperationStep, setAddressId }: AddressProps) {
+export default function Address({ selectedAddressId, address, setOperationStep, setAddressId }: AddressProps) {
     // states 
     const [open, setOpen] = useState(false);
 
     // mutation 
     const { deleteAddress, isPending } = useDeleteAddress();
 
-    // Functions
+    // Translation
+    const t = useTranslations("address");
 
+    // Functions
     function confirmDeleteAddress() {
         deleteAddress(address._id, {
             onSuccess: () => {
                 setOpen(false);
-                toast.success("Address deleted successfully")
+                toast.success(t("success-delete"))
             },
             onError: () => {
-                toast.error("Something happened error")
+                toast.error(t("error"))
             }
         })
     }
 
     return (
-        <div className="flex flex-col gap-4 rounded-md border border-zinc-300 ps-4 pe-7 pb-5 relative">
+        <div
+            data-id={address._id}
+            className={cn(
+                "flex flex-col gap-4 rounded-md border ps-4 pe-7 pb-5 relative cursor-pointer",
+                selectedAddressId === address._id
+                    ? "border-maroon-600"
+                    : "border-zinc-300"
+            )}
+        >
             {/* Street */}
-
-            <div className="font-semibold text-2xl leading-100 text-maroon-600 bg-white p-2.5 absolute top-0 -translate-y-1/2">
+            <div className="font-semibold text-2xl leading-100 text-maroon-600
+            bg-white dark:bg-zinc-900 p-2.5 absolute top-0 -translate-y-1/2">
                 {address.street}
             </div>
 
@@ -56,25 +69,31 @@ export default function Address({ address, setOperationStep, setAddressId }: Add
                 {/* Phone */}
                 <div className="flex gap-2.5">
                     <Phone />
-                    <span className="font-medium text-lg leading-100 text-zinc-600">+{address.phone}</span>
+                    <span className="font-medium text-lg leading-100 text-zinc-600">{address.phone}</span>
                 </div>
             </div>
 
             {/* address */}
             {/* //TODO: */}
-            <div className="w-fit font-medium text-base leading-100 text-zinc-800 bg-zinc-100 rounded-full py-1 px-3">
-                21 Ahmed Mohamed St., King Faisal St., Giza
+            <div className="w-fit font-medium text-base leading-100 text-zinc-800 dark:text-zinc-50 bg-zinc-100 dark:bg-zinc-800 rounded-full py-1 px-3">
+                {t.rich("address-format", {
+                    username: address.username,
+                    street: address.street,
+                    city: address.city,
+                })}
             </div>
 
             {/*Mutation operations */}
-            <div className="flex flex-col gap-1.5 mt-6 absolute end-0 translate-x-1/2">
+            <div className="flex flex-col gap-1.5 mt-6 absolute ltr:right-0 ltr:translate-x-1/2
+                            rtl:left-0  rtl:-translate-x-1/2">
                 {/*Update address */}
                 <span
                     onClick={() => {
                         setOperationStep(ADDRESS_OPERATIONS.UPDATE)
                         setAddressId(address._id);
                     }}
-                    className="flex flex-col items-center justify-center w-9 h-9 rounded-full border border-zinc-400 cursor-pointer"
+                    className="flex flex-col items-center justify-center w-9 h-9 rounded-full border
+                            border-zinc-400 cursor-pointer"
                 >
                     <PenLine
                         width={"1.125rem"}
@@ -85,13 +104,14 @@ export default function Address({ address, setOperationStep, setAddressId }: Add
                 {/* Delete address */}
                 <DeleteAddressDialog
                     onConfirm={confirmDeleteAddress}
+                    confirmMessage={t("confirm-delete")}
                     isPending={isPending}
                     open={open}
                     setOpen={setOpen}
                     trigger={
                         <span
                             className="flex flex-col items-center justify-center w-9 h-9 
-                    rounded-full border border-red-600 bg-red-600 cursor-pointer"
+                            rounded-full border border-red-600 bg-red-600 cursor-pointer"
                         >
                             <Trash2
                                 width={"1.125rem"}

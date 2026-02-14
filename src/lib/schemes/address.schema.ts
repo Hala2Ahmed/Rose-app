@@ -8,8 +8,8 @@ export const AddressSchema = (t: Translations) => z.object({
         .min(2, t("street_min")),
 
     phone: z
-        .string(),
-        // .regex(/^01[0-9]{9}$/, t("phone_invalid")),
+        .string()
+        .regex(/^(?:\+20|20|0)1[0125][0-9]{8}$/, t("phone_invalid")),
 
     city: z
         .string()

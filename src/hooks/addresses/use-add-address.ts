@@ -8,8 +8,7 @@ export default function useAddAddress() {
 
     const { isPending, mutate, error } = useMutation({
         mutationFn: async (fields: AddressFields) => {
-            console.log("🚀 ~ useAddAddress ~ fields:", fields)
-            const response = await addAddressAction({...fields, phone: fields.phone.replace("+", "")});
+            const response = await addAddressAction(fields);
 
             {/* Error */ }
             if ("error" in response) {

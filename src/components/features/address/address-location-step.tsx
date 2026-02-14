@@ -1,19 +1,24 @@
 "use client";
 
+import { APIProvider, Map, AdvancedMarker, MapMouseEvent } from "@vis.gl/react-google-maps";
+import { ADDRESS_OPERATIONS, CAIRO_CENTER } from "@/lib/constants/address.constants";
+import type { AddressFields, AddressOperations } from "@/lib/types/addresses";
 import { useCallback, useMemo, useState } from "react";
 import { useFormContext } from "react-hook-form";
-import { APIProvider, Map, AdvancedMarker, MapMouseEvent } from "@vis.gl/react-google-maps";
 import { Button } from "@/components/ui/button";
-import type { AddressFields } from "@/lib/types/addresses";
+import { useTranslations } from "next-intl";
 
-const DEFAULT_CENTER = { lat: 30.0444, lng: 31.2357 };
+const DEFAULT_CENTER = CAIRO_CENTER;
 
 type Props = {
-    editingAddressId?: string | null;
+    operation: AddressOperations;
     isPending: boolean;
 };
 
-export default function AddressLocationStep({ isPending, editingAddressId }: Props) {
+export default function AddressLocationStep({ operation, isPending }: Props) {
+    // Translation 
+    const t = useTranslations("address");
+    
     // Form context
     const form = useFormContext<AddressFields>();
     const latStr = form.watch("lat");
@@ -33,7 +38,7 @@ export default function AddressLocationStep({ isPending, editingAddressId }: Pro
         zoom: 14,
     });
 
-    //variables
+    // Functions
     const setLocation = useCallback(
         (lat: number, lng: number) => {
             form.setValue("lat", String(lat), { shouldValidate: true, shouldDirty: true });
@@ -43,7 +48,6 @@ export default function AddressLocationStep({ isPending, editingAddressId }: Pro
         [form]
     );
 
-    // Functions
     const handleMapClick = useCallback(
         (e: MapMouseEvent) => {
             if (!e.detail.latLng) return;
@@ -59,6 +63,7 @@ export default function AddressLocationStep({ isPending, editingAddressId }: Pro
         []
     );
 
+    // Variables
     const selectedLocation = useMemo(() => {
         const lat = Number(latStr);
         const lng = Number(lngStr);
@@ -68,7 +73,7 @@ export default function AddressLocationStep({ isPending, editingAddressId }: Pro
 
     return (
         <>
-            <div className="relative h-[349px] rounded-xl overflow-hidden my-4 border border-gray-200 dark:border-zinc-600">
+            <div className="relative h-349 rounded-xl overflow-hidden my-4 border border-gray-200 dark:border-zinc-600">
                 <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}>
                     <Map
                         style={{ width: "100%", height: "100%" }}
@@ -88,8 +93,9 @@ export default function AddressLocationStep({ isPending, editingAddressId }: Pro
                 type="submit"
                 disabled={isPending}
                 className="w-full h-12 rounded-lg"
+                loading={isPending}
             >
-                {isPending ? "saving" : editingAddressId ? "update" : "add"}
+                {operation === ADDRESS_OPERATIONS.UPDATE ? t("update") : t("add")}
             </Button>
         </>
     );

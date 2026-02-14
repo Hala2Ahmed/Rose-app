@@ -22,7 +22,9 @@
     "view-more": "مشاهدة المزيد",
     "search-country": "ابحث عن الدولة...",
     "no-country-found": "لم يتم العثور على دولة.",
-    "reset": "إعادة ضبط"
+    "reset": "إعادة ضبط",
+    "confirm": "تأكيد",
+    "cancel": "الغاء"
   },
   "about": {
     "title": "من نحن",
@@ -180,7 +182,25 @@
     }
   },
   "address": {
-    "add-address": "اضافة موقع",
+    "add-address-title": "إضافة عنوان جديد",
+    "update-address-title": "تحديث معلومات العنوان",
+    "my-addresses": "عناويني",
+    "success-delete": "تم حذف العنوان بنجاح",
+    "error": "حدث خطأ ما",
+    "address-format": "شارع {username}، شارع {street}، {city}",
+    "address-details": "ادخل تفاصيل العنوان",
+    "address-location": "ابحث عن موقعك",
+    "success-add": "تم اضافة العنوان بنجاح",
+    "success-update": "تم تحديث الموقع بنجاح",
+    "city-label": "المدينة",
+    "city-placeholder": "ادخل اسم المدينة",
+    "address-label": "العنوان",
+    "address-placeholder": "ادخل عنوانك كامل",
+    "phone-label": "الهاتف",
+    "phone-placeholder": "رقم الهاتف",
+    "update": "تحديث",
+    "add": "اضافة",
+    "confirm-delete": "هل أنت متأكد انك تريد حذف هذا العنوان؟",
     "next": "التالي",
     "street_min": "يجب أن يتكون الشارع من حرفين على الأقل.",
     "phone_invalid": "يرجى إدخال رقم هاتف صحيح.",

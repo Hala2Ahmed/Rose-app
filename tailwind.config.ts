@@ -44,6 +44,9 @@ const config: Config = {
           foreground: "hsl(var(--destructive-foreground))",
         },
         "dark-gray": "#2E2E30",
+        "dark-gray-5": "#2E2E300D",
+        "dark-gray-15": "#2E2E3026",
+        "gray-opacity": "#969697",
         maroon: {
           50: "#FBEAEA",
           100: "#F3C5C7",
@@ -92,14 +95,21 @@ const config: Config = {
         edwardian: ["var(--font-edwardian)", "edwardian"],
       },
       height: {
+        18: "70px",
+        26: "105px",
         30: "120px",
         80: "320px",
-        567: "567px"
+        567: "567px",
+        474: "474px",
+        349: "349px",
       },
       width: {
+        18: "70px",
+        26: "105px",
         30: "120px",
         101.5: "406px",
-        850:"850px",
+        474: "474px",
+        850: "850px",
         filtersCard: "301px",
       },
       maxWidth: {

@@ -22,7 +22,9 @@
     "view-more": "View More",
     "search-country": "Search country...",
     "no-country-found": "No country found.",
-    "reset": "Reset"
+    "reset": "Reset",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
   },
   "about": {
     "title": "About",
@@ -180,7 +182,25 @@
     }
   },
   "address": {
-    "add-address": "Add address",
+    "add-address-title": "Add a New Address",
+    "update-address-title": "Update Address Info",
+    "my-addresses": "My Addresses",
+    "success-delete": "Address deleted successfully",
+    "error": "Something happened error",
+    "address-format": "{username} St., {street} St., {city}",
+    "address-details": "Enter address details",
+    "address-location": "Find Your Location",
+    "success-add": "Address added successfully",
+    "success-update": "Address updated successfully",
+    "city-label": "City",
+    "city-placeholder": "Enter city name",
+    "address-label": "Address",
+    "address-placeholder": "Enter your full address",
+    "phone-label": "Phone",
+    "phone-placeholder": "Phone number",
+    "update": "Update",
+    "add": "Add",
+    "confirm-delete": "Are you sure you want to delete this address?",
     "next": "next",
     "street_min": "Street must be at least 2 characters long.",
     "phone_invalid": "Please enter a valid phone number.",

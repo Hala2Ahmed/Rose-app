@@ -8,7 +8,7 @@ export default function useUpdateAddress(id: string) {
 
     const { isPending, mutate, error } = useMutation({
         mutationFn: async (fields: AddressFields) => {
-            const response = await updateAddressAction({...fields, phone: fields.phone.replace("+", "")}, id);
+            const response = await updateAddressAction(fields, id);
 
             {/* Error */ }
             if ("error" in response) {

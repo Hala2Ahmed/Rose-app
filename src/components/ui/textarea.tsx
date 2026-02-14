@@ -24,6 +24,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   dark:focus-visible:border-softPink-400
   dark:focus-visible:ring-1
   dark:focus-visible:ring-softPink-400
+  resize-none
 `,
 
       error:

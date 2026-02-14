@@ -12,6 +12,7 @@ import {
 
 import { Button } from "@/components/ui/button"
 import { Trash, X } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { Dispatch, SetStateAction } from "react"
 
 type Props = {
@@ -20,23 +21,26 @@ type Props = {
     onConfirm: () => void;
     open: boolean,
     setOpen: Dispatch<SetStateAction<boolean>>,
+    confirmMessage: string,
 }
 
-export function DeleteAddressDialog({ open, isPending, trigger, onConfirm, setOpen }: Props) {
+export function DeleteAddressDialog({ confirmMessage,open, isPending, trigger, onConfirm, setOpen }: Props) {
+    //Translation 
+    const t = useTranslations("common");
+
     return (
         <AlertDialog open={open} onOpenChange={setOpen}>
             <AlertDialogTrigger asChild>
                 {trigger}
             </AlertDialogTrigger>
-
-            <AlertDialogContent className="max-w-[474px] rounded-2xl bg-white">
+            <AlertDialogContent className="w-474 rounded-2xl bg-white">
                 {/* X icon */}
                 <div className="flex justify-end pb-6">
                     <AlertDialogCancel
                         asChild
                         onClick={() => setOpen(false)}
                     >
-                        <button className="text-[#969697] hover:opacity-70">
+                        <button className="text-gray-opacity hover:opacity-70">
                             <X size={20} />
                         </button>
                     </AlertDialogCancel>
@@ -45,15 +49,15 @@ export function DeleteAddressDialog({ open, isPending, trigger, onConfirm, setOp
                 {/* Header */}
                 <AlertDialogHeader className="items-center text-center">
                     {/* Icon */}
-                    <div className="mb-8 flex h-[105px] w-[105px] items-center justify-center rounded-full bg-[#2E2E300D]">
-                        <div className="flex h-[70px] w-[70px] items-center justify-center rounded-full bg-[#2E2E3026]">
+                    <div className="mb-8 flex h-26 w-26 items-center justify-center rounded-full bg-dark-gray-5">
+                        <div className="flex h-18 w-18 items-center justify-center rounded-full bg-dark-gray-15">
                             <Trash size={29} />
                         </div>
                     </div>
 
                     {/*Description */}
                     <AlertDialogTitle className="font-semibold text-5 leading-100 text-dark-gray">
-                        Are you sure you want to delete this address?
+                        {confirmMessage}
                     </AlertDialogTitle>
                 </AlertDialogHeader>
 
@@ -66,7 +70,7 @@ export function DeleteAddressDialog({ open, isPending, trigger, onConfirm, setOp
                         <Button
                             variant="subtle"
                         >
-                            Cancel
+                            {t("cancel")}
                         </Button>
                     </AlertDialogCancel>
 
@@ -77,7 +81,7 @@ export function DeleteAddressDialog({ open, isPending, trigger, onConfirm, setOp
                         disabled={isPending}
                         loading={isPending}
                     >
-                        Confirm
+                        {t("confirm")}
                     </Button>
                 </AlertDialogFooter>
             </AlertDialogContent>

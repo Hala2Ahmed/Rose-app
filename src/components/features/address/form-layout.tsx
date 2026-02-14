@@ -2,17 +2,17 @@
 
 import { Dispatch, SetStateAction, useState } from "react";
 import type { Addresses, AddressFields, AddressOperations, FormSteps } from "@/lib/types/addresses";
-import { ADDRESS_OPERATIONS, FORM_STEPS } from "../../../lib/constants/address.constants";
+import { ADDRESS_OPERATIONS, FORM_STEPS } from "@/lib/constants/address.constants";
 import AddressDetailsForm from "./address-details-step";
 import FormHeader from "./form-header";
 import AddressLocationStep from "./address-location-step";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import useAddAddress from "../../../hooks/addresses/use-add-address";
-import { AddressSchema } from "../../../lib/schemes/address.schema";
+import useAddAddress from "@/hooks/addresses/use-add-address";
+import { AddressSchema } from "@/lib/schemes/address.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
-import useUpdateAddress from "../../../hooks/addresses/use-update-address";
+import useUpdateAddress from "@/hooks/addresses/use-update-address";
 import { useQueryClient } from "@tanstack/react-query";
 
 type FormLayoutProps = {
@@ -46,7 +46,7 @@ export default function FormLayout({ title, id, operation, setOperation }: FormL
         [FORM_STEPS.DETAILS]: {
             header: <FormHeader
                 header={title}
-                description={"Enter address details"}
+                description={t("address-details")}
                 step={step}
                 setStep={setStep}
             />,
@@ -55,11 +55,13 @@ export default function FormLayout({ title, id, operation, setOperation }: FormL
         [FORM_STEPS.LOCATION]: {
             header: <FormHeader
                 header={title}
-                description={"Find Your Location"}
+                description={t("address-location")}
                 step={step}
                 setStep={setStep}
             />,
-            component: <AddressLocationStep isPending={isAdding ?? isUpdating} />,
+            component: <AddressLocationStep
+                isPending={isAdding == true ? isAdding : isUpdating}
+                operation={operation} />,
         },
     }
 
@@ -75,14 +77,14 @@ export default function FormLayout({ title, id, operation, setOperation }: FormL
         if (operation === ADDRESS_OPERATIONS.ADD) {
             addAddress(values, {
                 onSuccess: () => {
-                    toast.success("Address added successfully");
+                    toast.success(t("success-add"));
                     setOperation(ADDRESS_OPERATIONS.GET);
                 }
             });
         } else {
             updateAddress(values, {
                 onSuccess: () => {
-                    toast.success("Address updated successfully");
+                    toast.success(t("success-update"));
                     setOperation(ADDRESS_OPERATIONS.GET);
                 }
             })

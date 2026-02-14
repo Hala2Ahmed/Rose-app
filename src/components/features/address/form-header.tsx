@@ -1,7 +1,7 @@
 import { ArrowLeft } from "lucide-react";
-import { FormSteps } from "../../../lib/types/addresses.js";
-import { DialogDescription, DialogHeader, DialogTitle } from "../../ui/dialog";
-import { FORM_STEPS } from "../../../lib/constants/address.constants";
+import { FormSteps } from "@/lib/types/addresses.js";
+import { DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { FORM_STEPS } from "@/lib/constants/address.constants";
 import { Dispatch, SetStateAction } from "react";
 
 type FormHeaderProps = {
@@ -16,7 +16,7 @@ export default function FormHeader({ step, header, description, setStep }: FormH
         <DialogHeader className="flex flex-col gap-6 pb-3 border-b border-zinc-200">
 
             {/* Header */}
-            <DialogTitle className="font-bold text-3xl leading-100 text-zinc-800">
+            <DialogTitle className="font-bold text-3xl leading-100 text-zinc-800 dark:text-zinc-50">
                 {header}
             </DialogTitle>
 
@@ -36,8 +36,6 @@ export default function FormHeader({ step, header, description, setStep }: FormH
                     {description}
                 </span>
             </DialogDescription>
-
-
         </DialogHeader>
     )
 }

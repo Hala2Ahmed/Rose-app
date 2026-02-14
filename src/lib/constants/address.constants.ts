@@ -8,3 +8,8 @@ export const FORM_STEPS = {
     DETAILS: "details",
     LOCATION: "location",
 }
+
+export const CAIRO_CENTER = {
+    lat: 30.0444,
+    lng: 31.2357,
+} as const;
