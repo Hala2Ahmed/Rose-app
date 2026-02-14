@@ -1,6 +1,6 @@
 "use client";
 
-import { Dispatch, MouseEvent, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import useUserAddresses from "@/hooks/addresses/use-user-addresses";
 import AddressSkeleton from "@/components/skeletons/user-addresses/address.skeleton";
 import Address from "./address";
@@ -12,31 +12,16 @@ import { ADDRESS_OPERATIONS } from "@/lib/constants/address.constants";
 import { useTranslations } from "next-intl";
 
 type UserAddresses = {
-    selectedAddressId: AddressOperations;
     setOperationStep: Dispatch<SetStateAction<AddressOperations>>;
     setAddressId: Dispatch<SetStateAction<string>>;
-    setSelectedAddressId: Dispatch<SetStateAction<string>>;
 }
 
-export default function AllAddresses({ selectedAddressId, setOperationStep, setAddressId, setSelectedAddressId }: UserAddresses) {
+export default function AllAddresses({ setOperationStep, setAddressId }: UserAddresses) {
     //Hooks
     const { addresses, isLoading } = useUserAddresses();
 
     // Translation
     const t = useTranslations("address");
-
-    // Functions
-    function selectAddress(e: MouseEvent<HTMLDivElement>) {
-        const target = e.target as HTMLElement;
-        const address = target.closest("[data-id]") as HTMLElement | null;
-
-        if (address) {
-            const id = address.dataset.id;
-            if (id) {
-                setSelectedAddressId(id);
-            }
-        }
-    }
 
     return (
         <div className="flex flex-col gap-9">
@@ -57,9 +42,7 @@ export default function AllAddresses({ selectedAddressId, setOperationStep, setA
             </DialogHeader>
 
             {/*Addresses */}
-            <div
-                className="flex flex-col gap-9"
-                onClick={e => selectAddress(e)}>
+            <div className="flex flex-col gap-9">
                 {isLoading ? (
                     // Skeleton
                     Array.from({ length: 3 }).map((_, index) => (
@@ -73,7 +56,6 @@ export default function AllAddresses({ selectedAddressId, setOperationStep, setA
                             setAddressId={setAddressId}
                             key={address._id}
                             address={address}
-                            selectedAddressId={selectedAddressId}
                         />
                     ))
                 )}

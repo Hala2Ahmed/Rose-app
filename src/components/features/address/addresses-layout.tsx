@@ -14,8 +14,6 @@ export default function AddressesLayout() {
     //States
     const [operation, setOperation] = useState<AddressOperations>(ADDRESS_OPERATIONS.GET);
     const [addressId, setAddressId] = useState("");
-    //TODO: Passed from the previous task
-    const [selectedAddressId, setSelectedAddressId] = useState("");
 
     // Variables
     const operations = {
@@ -23,8 +21,6 @@ export default function AddressesLayout() {
             component: <AllAddresses
                 setOperationStep={setOperation}
                 setAddressId={setAddressId}
-                setSelectedAddressId={setSelectedAddressId}
-                selectedAddressId={selectedAddressId}
             />,
         },
         [ADDRESS_OPERATIONS.ADD]: {

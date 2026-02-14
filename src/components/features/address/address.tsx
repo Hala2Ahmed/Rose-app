@@ -6,18 +6,16 @@ import { ADDRESS_OPERATIONS } from "@/lib/constants/address.constants";
 import useDeleteAddress from "@/hooks/addresses/use-delete-address";
 import { MapPin, PenLine, Phone, Trash2 } from "lucide-react";
 import { Dispatch, SetStateAction, useState } from "react";
-import { cn } from "@/lib/utils/tailwind-merge";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 type AddressProps = {
-    selectedAddressId: AddressOperations;
     address: Address,
     setOperationStep: Dispatch<SetStateAction<AddressOperations>>;
     setAddressId: Dispatch<SetStateAction<string>>;
 }
 
-export default function Address({ selectedAddressId, address, setOperationStep, setAddressId }: AddressProps) {
+export default function Address({ address, setOperationStep, setAddressId }: AddressProps) {
     // states 
     const [open, setOpen] = useState(false);
 
@@ -42,14 +40,7 @@ export default function Address({ selectedAddressId, address, setOperationStep, 
 
     return (
         <div
-            data-id={address._id}
-            className={cn(
-                "flex flex-col gap-4 rounded-md border ps-4 pe-7 pb-5 relative cursor-pointer",
-                selectedAddressId === address._id
-                    ? "border-maroon-600"
-                    : "border-zinc-300"
-            )}
-        >
+            className = "flex flex-col gap-4 rounded-md border ps-4 pe-7 pb-5 relative transition-colors duration-300 border-zinc-300 hover:border-maroon-600">
             {/* Street */}
             <div className="font-semibold text-2xl leading-100 text-maroon-600
             bg-white dark:bg-zinc-900 p-2.5 absolute top-0 -translate-y-1/2">

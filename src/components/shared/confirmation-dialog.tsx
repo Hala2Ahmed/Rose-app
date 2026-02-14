@@ -33,7 +33,7 @@ export function DeleteAddressDialog({ confirmMessage,open, isPending, trigger, o
             <AlertDialogTrigger asChild>
                 {trigger}
             </AlertDialogTrigger>
-            <AlertDialogContent className="w-474 rounded-2xl bg-white">
+            <AlertDialogContent className="w-474 rounded-2xl bg-white dark:bg-zinc-800">
                 {/* X icon */}
                 <div className="flex justify-end pb-6">
                     <AlertDialogCancel
@@ -49,14 +49,14 @@ export function DeleteAddressDialog({ confirmMessage,open, isPending, trigger, o
                 {/* Header */}
                 <AlertDialogHeader className="items-center text-center">
                     {/* Icon */}
-                    <div className="mb-8 flex h-26 w-26 items-center justify-center rounded-full bg-dark-gray-5">
-                        <div className="flex h-18 w-18 items-center justify-center rounded-full bg-dark-gray-15">
-                            <Trash size={29} />
+                    <div className="mb-8 flex h-26 w-26 items-center justify-center rounded-full bg-dark-gray-5 dark:bg-zinc-50">
+                        <div className="flex h-18 w-18 items-center justify-center rounded-full bg-dark-gray-15 dark:bg-zinc-200">
+                            <Trash size={29}  className="dark:text-zinc-800"/>
                         </div>
                     </div>
 
                     {/*Description */}
-                    <AlertDialogTitle className="font-semibold text-5 leading-100 text-dark-gray">
+                    <AlertDialogTitle className="font-semibold text-5 leading-100 text-dark-gray dark:text-zinc-50">
                         {confirmMessage}
                     </AlertDialogTitle>
                 </AlertDialogHeader>
