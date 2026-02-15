@@ -65,7 +65,6 @@ export default function Address({ address, setOperationStep, setAddressId }: Add
             </div>
 
             {/* address */}
-            {/* //TODO: */}
             <div className="w-fit font-medium text-base leading-100 text-zinc-800 dark:text-zinc-50 bg-zinc-100 dark:bg-zinc-800 rounded-full py-1 px-3">
                 {t.rich("address-format", {
                     username: address.username,
