@@ -14,6 +14,7 @@ import {
   writeGuestCart,
 } from "@/lib/utils/cart-storage";
 import { fetchCart } from "@/app/[locale]/(site)/cart/actions/fetch-cart.action";
+import { updateCartAction } from "@/app/[locale]/(site)/cart/actions/update-cart";
 
 // fetch the user's cart.
 export function useCartQuery() {
@@ -90,25 +91,60 @@ export function useSyncGuestCart() {
     if (!session?.user || syncedRef.current) return;
 
     syncedRef.current = true;
+
     const guestCart = readGuestCart();
+    if (!guestCart.length) return;
 
     (async () => {
       try {
-        if (guestCart.length === 0) {
+        const serverCart = await fetchCart();
+
+        const serverMap = new Map(
+          serverCart.cartItems.map((item) => [item.product._id, item.quantity]),
+        );
+
+        const actions = guestCart
+          .filter((item) => item.product?._id)
+          .map((item) => {
+            const productId = item.product._id;
+            const guestQty = item.quantity;
+            const serverQty = serverMap.get(productId);
+
+            if (serverQty === undefined) {
+              return addToCartAction(productId, guestQty);
+            }
+
+            if (serverQty !== guestQty) {
+              return updateCartAction(productId, guestQty);
+            }
+
+            return null;
+          })
+          .filter(Boolean);
+
+        if (actions.length === 0) {
           clearGuestCart();
           return;
         }
 
-        for (const item of guestCart) {
-          if (!item.product._id) continue;
-          await addToCartAction(item.product._id, item.quantity);
+        const results = await Promise.allSettled(actions);
+
+        const hasFailure = results.some(
+          (result) => result.status === "rejected",
+        );
+
+        if (hasFailure) {
+          console.error("Some cart items failed to sync:", results);
+          syncedRef.current = false;
+          return;
         }
 
         clearGuestCart();
-        qc.invalidateQueries({ queryKey: ["cart"] });
-      } catch (err) {
-        console.error("Failed to sync guest cart:", err);
-        clearGuestCart();
+
+        await qc.invalidateQueries({ queryKey: CART_KEY });
+      } catch (error) {
+        console.error("Failed to sync guest cart:", error);
+        syncedRef.current = false;
       }
     })();
   }, [session?.user, qc]);
