@@ -7,25 +7,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
-import { fetchRecommendations } from "@/lib/actions/recommendations.action";
+import { RecommendedProduct } from "@/lib/types/recommendations";
 
-export default async function ProductMayLikeContent() {
-  // Fetch data directly in Server Component
-  const data = await fetchRecommendations();
-
-  if (!data?.recommendations?.length) {
-    return null;
-  }
-
+export default function ProductMayLikeContent({
+  data,
+}: {
+  data: RecommendedProduct[];
+}) {
   return (
-    <Carousel
-      opts={{
-        align: "start",
-      }}
-      className="w-full"
-    >
+    <Carousel opts={{ align: "start" }} className="w-full">
       <CarouselContent className="-ms-6 my-10">
-        {data.recommendations.map((product) => (
+        {data.map((product) => (
           <CarouselItem
             key={product._id}
             className="ps-6 md:basis-1/3 lg:basis-1/4"

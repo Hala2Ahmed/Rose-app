@@ -6,31 +6,49 @@ import { authOptions } from "@/auth";
 import { RecommendationsResponse } from "../types/recommendations";
 
 export async function fetchRecommendations() {
-  const session = await getServerSession(authOptions);
+  try {
+    const session = await getServerSession(authOptions);
 
-  const token = await getToken();
+    if (!session || !session?.user?._id) {
+      console.warn("No session or userId found");
+      return null;
+    }
 
-  if (!token || !token?.accessToken) {
+    const token = await getToken();
+
+    if (!token || !token?.accessToken) {
+      console.warn("No access token found");
+      return null;
+    }
+
+    const userId = session.user._id;
+
+    if (!process.env.API_URL) {
+      console.error("NEXT_PUBLIC_API_URL is not defined");
+      return null;
+    }
+
+    const res = await fetch(
+      `${process.env.API_URL}/related/recommendations/${userId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token.accessToken}`,
+        },
+      },
+    );
+
+    const payload: ApiResponse<RecommendationsResponse> = await res.json();
+
+    if ("error" in payload) {
+      console.error("API Error:", payload.error);
+      return null;
+    }
+
+    return payload;
+  } catch (error) {
+    console.error("Error fetching recommendations:", error);
     return null;
   }
-
-  const userId = session?.user._id;
-
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/related/recommendations/${userId}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token.accessToken}`,
-      },
-    },
-  );
-
-  const payload: ApiResponse<RecommendationsResponse> = await res.json();
-
-  if ("error" in payload) {
-    throw new Error(payload.error);
-  }
-  return payload;
 }

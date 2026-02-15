@@ -11,7 +11,7 @@ export async function deleteProductAction(productId: string) {
 
   // Delete a specific product from the user's cart
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/cart/${productId}`,
+    `${process.env.API_URL}/cart/${productId}`,
     {
       method: "DELETE",
       headers: {

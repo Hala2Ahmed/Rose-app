@@ -11,7 +11,7 @@ export async function addToCartAction(productId: string, quantity: number) {
   }
 
   // Add a product to the user's cart
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cart`, {
+  const res = await fetch(`${process.env.API_URL}/cart`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

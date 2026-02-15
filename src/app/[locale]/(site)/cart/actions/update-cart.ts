@@ -12,7 +12,7 @@ export async function updateCartAction(productId: string, quantity: number) {
 
   // Update a product
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/cart/${productId}`,
+    `${process.env.API_URL}/cart/${productId}`,
     {
       method: "PUT",
       headers: {

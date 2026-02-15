@@ -10,7 +10,7 @@ export async function fetchCart() {
     return { cartItems: [], totalPrice: 0 };
   }
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cart`, {
+  const res = await fetch(`${process.env.API_URL}/cart`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

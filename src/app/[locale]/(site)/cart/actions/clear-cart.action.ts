@@ -10,7 +10,7 @@ export async function deleteCartAction() {
   }
 
   // delete all products from the cart
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cart`, {
+  const res = await fetch(`${process.env.API_URL}/cart`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
