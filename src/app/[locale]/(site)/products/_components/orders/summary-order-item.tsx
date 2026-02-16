@@ -26,6 +26,7 @@ export default function SummaryOrderItem({ price, orderStatus, paid, t }: Props)
             colorDelivery = "text-maroon-500"
             iconDelivery = <TriangleAlert />
             break;
+
         case "done":
             bg = "bg-emerald-500"
             status = "done"
@@ -33,6 +34,7 @@ export default function SummaryOrderItem({ price, orderStatus, paid, t }: Props)
             colorDelivery = "text-emerald-600"
             iconDelivery = <CheckCheck />
             break;
+            
         default:
             bg = "bg-blue-500"
             status = "in_progress"
