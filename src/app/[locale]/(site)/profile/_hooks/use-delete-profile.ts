@@ -1,13 +1,18 @@
-"use client";
 import { useMutation } from "@tanstack/react-query";
 import { signOut } from "next-auth/react";
 import { toast } from "sonner";
 import { useState } from "react";
 import { DeleteAccountAction } from "../_actions/delete-account.action";
+import { useTranslations } from "next-intl";
 
 export default function useDeleteAccount() {
+  //translations
+  const t = useTranslations("profile");
+
+  //state
   const [deleteErrorMessage, setDeleteErrorMessage] = useState("");
 
+  //mutation
   const { mutate, isPending } = useMutation({
     mutationFn: async () => {
       const response = await DeleteAccountAction();
@@ -17,7 +22,7 @@ export default function useDeleteAccount() {
       return response;
     },
     onSuccess: async () => {
-      toast.success("Account deleted successfully");
+      toast.success(t("delete-success"));
       await signOut({
         callbackUrl: "/",
         redirect: true,

@@ -1,4 +1,3 @@
-"use client";
 import { updateSessionToken } from "@/lib/utils/manage-token";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
@@ -7,7 +6,10 @@ import { ChangePasswordFields } from "@/lib/types/auth";
 import { useTranslations } from "next-intl";
 
 export default function useChangePassword() {
+  //tranlsations
   const t = useTranslations("auth");
+
+  //mutation
   const {
     error,
     mutate: changePassword,

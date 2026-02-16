@@ -1,4 +1,3 @@
-"use client";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { updateUserProfileAction } from "../_actions/update-profile.action";
@@ -9,6 +8,7 @@ export default function useUpdateProfile() {
   //translations
   const t = useTranslations("profile");
 
+  //mutation
   const {
     error,
     mutate: updateProfile,

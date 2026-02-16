@@ -177,7 +177,9 @@
     "confirm-button": "نعم, قم بالحذف",
     "cancel-button": "لا لن أقوم بالحذف",
     "change-password-button": "تغيير كلمة السر",
-    "password-changed-success": "تم تغيير كلمة السر بنجاح!"
+    "password-changed-success": "تم تغيير كلمة السر بنجاح!",
+    "upload-photo-pending": "يتم التحميل ... ",
+    "save-photo": "احفظ الصورة"
   },
   "product": {
     "rate": "التقييم",
@@ -211,7 +213,10 @@
     "update-profile": "تحديث الحساب",
     "my-account": "حسابي الشخصي",
     "change-password": "تغيير كلمة السر",
-    "logout": "تسجيل خروج"
+    "logout": "تسجيل خروج",
+    "photo-success": "تم تحميل الصورة بنجاح",
+    "photo-error": "حدث خطأ اثناء تحميل الصورة",
+    "delete-success": "تم حذف الحساب الخاص بك"
   },
   "header": {
     "my-profile": " حسابي الشخصي",

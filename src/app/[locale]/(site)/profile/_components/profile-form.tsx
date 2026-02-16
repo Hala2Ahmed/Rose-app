@@ -43,11 +43,12 @@ const defaultFormValues: UpdateProfileFields = {
 };
 
 export default function ProfileForm() {
+  //translations
+
+  const t = useTranslations("auth");
+
   //state
   const [errorMessage, setErrorMessage] = useState("");
-
-  //translations
-  const t = useTranslations("auth");
 
   //hooks
   const { updateProfile, isPending } = useUpdateProfile();
@@ -67,18 +68,7 @@ export default function ProfileForm() {
     defaultValues: defaultFormValues,
   });
 
-  //effect
-  useEffect(() => {
-    if (!profileData?.user) return;
-
-    form.reset({
-      firstName: profileData?.user.firstName || "",
-      lastName: profileData?.user.lastName || "",
-      email: profileData?.user.email || "",
-      phone: profileData?.user.phone || "",
-      gender: profileData?.user.gender,
-    });
-  }, [profileData?.user, form]);
+  //functions
 
   const onSubmit: SubmitHandler<UpdateProfileFields> = (values) => {
     updateProfile(values, {
@@ -88,7 +78,6 @@ export default function ProfileForm() {
       onSuccess: async () => {
         setErrorMessage("");
         await refetch();
-
         //to update values on dropdown menu header
         await update({
           user: {
@@ -102,6 +91,18 @@ export default function ProfileForm() {
       },
     });
   };
+  //effect
+  useEffect(() => {
+    if (!profileData?.user) return;
+
+    form.reset({
+      firstName: profileData?.user.firstName || "",
+      lastName: profileData?.user.lastName || "",
+      email: profileData?.user.email || "",
+      phone: profileData?.user.phone || "",
+      gender: profileData?.user.gender,
+    });
+  }, [profileData?.user, form]);
 
   //Loading state
   if (isLoading) {

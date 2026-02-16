@@ -1,10 +1,10 @@
-"use client";
-
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { changePhotoAction } from "../_actions/change-photo.action";
+import { useTranslations } from "next-intl";
 
 export default function useChangePhoto() {
+  const t = useTranslations("profile");
   const {
     error,
     mutate: changePhoto,
@@ -23,10 +23,10 @@ export default function useChangePhoto() {
       return response;
     },
     onSuccess: () => {
-      toast.success("Your photo successfully uploaded");
+      toast.success(t("photo-success"));
     },
     onError: (error) => {
-      toast.error(error.message || "Failed to upload photo");
+      toast.error(error.message || t("photo-error"));
     },
   });
 

@@ -175,7 +175,9 @@
     "confirm-button": "Yes, Delete",
     "cancel-button": "Nope, not doing it",
     "change-password-button": "Change Password",
-    "password-changed-success": "Your Password Changed Successfully!"
+    "password-changed-success": "Your Password Changed Successfully!",
+    "upload-photo-pending": "Uploading...",
+    "save-photo": "Save Photo"
   },
   "product": {
     "rate": "Rating",
@@ -210,7 +212,10 @@
     "my-account": "My Account",
     "change-password": "Change Password",
     "logout": "Logout",
-    "update-success": "Your account successfully updated !"
+    "update-success": "Your account successfully updated !",
+    "photo-success": "Your photo successfully uploaded",
+    "photo-error": "Failed to upload photo",
+    "delete-success": "Account deleted successfully"
   },
   "header": {
     "my-profile": " My Profile",

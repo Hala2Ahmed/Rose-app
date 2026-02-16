@@ -151,7 +151,9 @@ export default function UpdatePhoto() {
                     onClick={handleSavePhoto}
                     disabled={isPending}
                     className="w-fit">
-                    {isPending ? "Uploading..." : "Save Photo"}
+                    {isPending
+                      ? `${t("upload-photo-pending")}`
+                      : `${t("save-photo")}`}
                   </Button>
                 )}
               </div>
