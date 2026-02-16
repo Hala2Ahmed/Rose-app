@@ -40,7 +40,7 @@ export default function Address({ address, setOperationStep, setAddressId }: Add
 
     return (
         <div
-            className = "flex flex-col gap-4 rounded-md border ps-4 pe-7 pb-5 relative transition-colors duration-300 border-zinc-300 hover:border-maroon-600">
+            className="flex flex-col gap-4 rounded-md border ps-4 pe-7 pb-5 relative transition-colors duration-300 border-zinc-300 hover:border-maroon-600">
             {/* Street */}
             <div className="font-semibold text-2xl leading-100 text-maroon-600
             bg-white dark:bg-zinc-900 p-2.5 absolute top-0 -translate-y-1/2">

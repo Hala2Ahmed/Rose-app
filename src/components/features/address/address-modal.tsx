@@ -1,4 +1,4 @@
-import { Dialog, DialogContent,  DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { ReactElement, ReactNode } from 'react';
 
 type AddressModalProps = {
@@ -6,7 +6,7 @@ type AddressModalProps = {
     children: ReactNode;
 }
 
-export default function AddressModal({trigger, children}: AddressModalProps) {
+export default function AddressModal({ trigger, children }: AddressModalProps) {
     return (
         <Dialog>
             <DialogTrigger asChild>{trigger}</DialogTrigger>

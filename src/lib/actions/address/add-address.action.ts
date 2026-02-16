@@ -15,7 +15,7 @@ export async function addAddressAction(fields: AddressFields) {
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL!}/addresses`, {
         method: "PATCH",
-        body: JSON.stringify({...fields, username: session?.user.firstName}),
+        body: JSON.stringify({ ...fields, username: session?.user.firstName }),
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token.accessToken}`,

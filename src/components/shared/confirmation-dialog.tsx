@@ -24,7 +24,7 @@ type Props = {
     confirmMessage: string,
 }
 
-export function DeleteAddressDialog({ confirmMessage,open, isPending, trigger, onConfirm, setOpen }: Props) {
+export function DeleteAddressDialog({ confirmMessage, open, isPending, trigger, onConfirm, setOpen }: Props) {
     //Translation 
     const t = useTranslations("common");
 
@@ -51,7 +51,7 @@ export function DeleteAddressDialog({ confirmMessage,open, isPending, trigger, o
                     {/* Icon */}
                     <div className="mb-8 flex h-26 w-26 items-center justify-center rounded-full bg-dark-gray-5 dark:bg-zinc-50">
                         <div className="flex h-18 w-18 items-center justify-center rounded-full bg-dark-gray-15 dark:bg-zinc-200">
-                            <Trash size={29}  className="dark:text-zinc-800"/>
+                            <Trash size={29} className="dark:text-zinc-800" />
                         </div>
                     </div>
 

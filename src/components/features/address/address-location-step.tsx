@@ -18,7 +18,7 @@ type Props = {
 export default function AddressLocationStep({ operation, isPending }: Props) {
     // Translation 
     const t = useTranslations("address");
-    
+
     // Form context
     const form = useFormContext<AddressFields>();
     const latStr = form.watch("lat");

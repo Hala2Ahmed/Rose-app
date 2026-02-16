@@ -26,7 +26,7 @@ export default function FormHeader({ step, header, description, setStep }: FormH
             <DialogDescription className="flex items-center gap-4">
                 {step === FORM_STEPS.LOCATION &&
                     <span
-                    onClick={() => setStep(FORM_STEPS.DETAILS)}
+                        onClick={() => setStep(FORM_STEPS.DETAILS)}
                         className="flex flex-col items-center justify-center w-9 h-9 rounded-full bg-maroon-600 cursor-pointer"
                     >
                         <ArrowLeft color="white" size={16} />
