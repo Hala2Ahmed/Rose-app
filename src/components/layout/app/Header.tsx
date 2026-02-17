@@ -102,7 +102,7 @@ function Header() {
             <Link href="/cart" className="relative">
               <ShoppingCart className="h-5 w-5 cursor-pointer" />
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-maroon-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-maroon-600 text-white dark:bg-softPink-300 dark:text-black text-xs w-4 h-4 rounded-full flex items-center justify-center">
                   {cartCount}
                 </span>
               )}

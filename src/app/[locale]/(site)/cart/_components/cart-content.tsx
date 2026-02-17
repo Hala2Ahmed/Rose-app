@@ -8,13 +8,30 @@ import CartQuantityControl from "./update-cart";
 import CartProductDetails from "./cart-product-details";
 import { useCartQuery } from "@/hooks/use-cart";
 import CartSkeleton from "@/components/skeletons/cart.skeleton";
+import { Button } from "@/components/ui/button";
+import { AlertCircle } from "lucide-react";
 
 export default function CartContent() {
   //Hooks
-  const { data: cart, isPending } = useCartQuery();
+  const { data: cart, isPending, isError, error, refetch } = useCartQuery();
 
   if (isPending) return <CartSkeleton />;
 
+  if (isError) {
+    return (
+      <div className="max-w-[782px] mb-12">
+        <div className="border border-red-200 bg-red-50 p-8 rounded-xl text-center">
+          <AlertCircle className="size-12 text-red-500 mx-auto mb-4" />
+          <p className="text-red-700 mb-4">
+            {error ? error.message : "Something went wrong"}
+          </p>
+          <Button onClick={() => refetch()} variant="outline">
+            Try Again
+          </Button>
+        </div>
+      </div>
+    );
+  }
   if (!cart || cart.cartItems.length === 0) return <EmptyCart />;
 
   return (

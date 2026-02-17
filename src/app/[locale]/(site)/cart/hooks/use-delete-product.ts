@@ -1,14 +1,18 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteProductAction } from "../actions/delete-product";
+import { deleteProductAction } from "../actions/delete-product.action";
 import { toast } from "sonner";
 import {
   CART_KEY,
   readGuestCart,
   writeGuestCart,
 } from "@/lib/utils/cart-storage";
+import { useTranslations } from "next-intl";
 
 // Custom hook to remove a single product from the cart (works for both logged-in and guest users)
 export function useDeleteProductFromCart(isAuthenticated: boolean) {
+  //Translation
+  const t = useTranslations("cart");
+
   const qc = useQueryClient();
 
   return useMutation({
@@ -25,11 +29,11 @@ export function useDeleteProductFromCart(isAuthenticated: boolean) {
 
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: CART_KEY });
-      toast.success("Product removed from cart successfully");
+      toast.success(t("product-removed-successfully"));
     },
 
-    onError: () => {
-      toast.error("Failed to remove product");
+    onError: (error) => {
+      toast.error(error.message);
     },
   });
 }

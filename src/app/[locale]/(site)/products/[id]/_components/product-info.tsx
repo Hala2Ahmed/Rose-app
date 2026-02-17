@@ -27,22 +27,22 @@ export default function ProductInfo({ product }: { product: ProductDetails }) {
 
       {/* Product info */}
       <div className="flex flex-col max-h-[32.6875rem]">
-        <h1 className="text-3xl font-semibold text-zinc-800 pb-2">
+        <h1 className="text-3xl font-semibold text-zinc-800 pb-2 dark:text-white">
           {product.title}
         </h1>
         {/* Price */}
-        <div className="flex gap-2 border-b border-zinc-100 mb-4 py-4">
+        <div className="flex gap-2 border-b border-zinc-100 dark:text-white mb-4 py-4">
           {product.priceAfterDiscount ? (
             <>
-              <span className="text-3xl font-bold line-through text-zinc-300">
+              <span className="text-3xl font-bold line-through text-zinc-300 dark:text-white">
                 {product.price}
               </span>
-              <span className="text-3xl font-semibold text-zinc-800">
+              <span className="text-3xl font-semibold text-zinc-800 dark:text-white">
                 {format.number(product.priceAfterDiscount, "currency")}
               </span>
             </>
           ) : (
-            <span className="text-3xl font-semibold text-zinc-800">
+            <span className="text-3xl font-semibold text-zinc-800 dark:text-white">
               {format.number(product.price, "currency")}
             </span>
           )}
@@ -75,7 +75,7 @@ export default function ProductInfo({ product }: { product: ProductDetails }) {
           )}
         </div>
 
-        <p className="text-zinc-600 max-w-[37.8125rem] overflow-y-auto mb-4">
+        <p className="text-zinc-600 dark:text-zinc-400 max-w-[37.8125rem] overflow-y-auto mb-4">
           {product.description}
         </p>
 

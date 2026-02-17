@@ -10,7 +10,7 @@ export default function CartProductDetails({item}:{item:CartItem}) {
   return (
     <div className="flex flex-col justify-between h-full">
       <div>
-        <h2 className="text-maroon-700 text-lg font-semibold">
+        <h2 className="text-maroon-700 text-lg font-semibold dark:text-softPink-200">
           {item.product?.title}
         </h2>
         <div className="flex gap-1 mt-1">
@@ -18,7 +18,7 @@ export default function CartProductDetails({item}:{item:CartItem}) {
           {item.product?.rateAvg > 0 ? (
             <span className="text-sm text-zinc-700">
               <span className="font-medium">
-                {item.product?.rateAvg.toFixed(1)}/5
+               {t('rating')} {item.product?.rateAvg.toFixed(1)}/5
               </span>{" "}
               <span className="font-medium text-blue-600">
                 ({item.product?.rateCount} {t("rate-count")} )
@@ -32,8 +32,8 @@ export default function CartProductDetails({item}:{item:CartItem}) {
 
       <div>
         <p className="text-2xl font-bold">
-          <span className="text-sm font-medium text-maroon-600">
-            ({item.quantity})
+          <span className="text-sm font-medium text-maroon-600 dark:text-softPink-200">
+            (x{item.quantity})
           </span>{" "}
           {(item.product?.priceAfterDiscount &&
           item.product?.priceAfterDiscount > 0

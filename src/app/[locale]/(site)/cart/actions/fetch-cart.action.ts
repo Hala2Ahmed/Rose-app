@@ -19,10 +19,6 @@ export async function fetchCart() {
     cache: "no-store",
   });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch cart");
-  }
-
   const payload: ApiResponse<CartResponse> = await res.json();
 
   if ("error" in payload) {

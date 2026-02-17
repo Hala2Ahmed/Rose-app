@@ -1,16 +1,10 @@
-import { Suspense } from "react";
-import CartSkeleton from "@/components/skeletons/cart.skeleton";
-import ContinueShopping from "./continue-shopping-btn";
 import CartContent from "./cart-content";
+import ContinueShopping from "./continue-shopping-btn";
 
-export default function CartPage() {
+export default function Cart() {
   return (
     <div className="max-w-[782px] mb-12">
-      <Suspense fallback={<CartSkeleton />}>
-        <CartContent />
-      </Suspense>
-
-      {/* Continue Shopping btn */}
+      <CartContent />
       <ContinueShopping />
     </div>
   );

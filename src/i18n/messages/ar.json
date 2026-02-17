@@ -156,7 +156,8 @@
     "rate-count": "تقييمات",
     "no-ratings-yet": "لا توجد تقييمات بعد",
     "out-stock": "غير متوفر في المخزون",
-    "left-in-stock": "متبقي في المخزون"
+    "left-in-stock": "متبقي في المخزون",
+    "rating": "التقييم:"
   },
   "products": {
     "filters": {
@@ -186,9 +187,13 @@
     "clean-cart-btn-loading": "جارٍ تفريغ العربة...",
     "cart-empty": "عربة التسوق فارغة، هل ترغب في التسوق؟",
     "remove-btn": "إزالة",
-    "continue-shopping-btn": "متابعة التسوق"
+    "continue-shopping-btn": "متابعة التسوق",
+    "clear-cart-successfully": "تم تفريغ السلة بنجاح",
+    "product-removed-successfully": "تم إزالة المنتج من السلة بنجاح",
+    "quantity-updated-successfully": "تم تحديث الكمية بنجاح",
+    "product-added-successfully": "تمت إضافة المنتج إلى السلة بنجاح"
   },
   "product-may-like": {
-  "title": "منتجات قد تُعجبك"
-}
+    "title": "منتجات قد تُعجبك"
+  }
 }

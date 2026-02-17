@@ -1,17 +1,28 @@
 import type { ProductDetails } from "@/lib/types/product-details";
 
+export type CartProduct = Omit<ProductDetails, "isInWishlist"> & {
+  id?: string;
+  slug: string;
+  description: string;
+  images: string[];
+  sold: number;
+  category?: string;
+  occasion?: string;
+  isSuperAdmin?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+  __v?: number;
+};
+
+export type GuestCartProduct = Pick<
+  ProductDetails,
+  "_id" | "title" | "imgCover" | "price" | "priceAfterDiscount" | "rateAvg" | "rateCount" | "quantity"
+>;
+
 export type CartItem = {
-  product: Pick<
-    ProductDetails,
-    | "title"
-    | "imgCover"
-    | "price"
-    | "priceAfterDiscount"
-    | "rateAvg"
-    | "rateCount"
-    | "_id"
-    | "quantity"
-  >;
+  _id?: string;
+  product: CartProduct | GuestCartProduct;
+  price?: number;
   quantity: number;
 };
 
@@ -25,6 +36,7 @@ export type Cart = {
   appliedCoupons?: string[];
   createdAt?: string;
   updatedAt?: string;
+  __v?: number;
 };
 
 export type CartResponse = {

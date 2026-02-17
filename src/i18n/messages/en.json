@@ -156,7 +156,8 @@
     "rate-count": "ratings",
     "no-ratings-yet": "No ratings yet",
     "out-stock": "Out of stock",
-    "left-in-stock": "left in stock"
+    "left-in-stock": "left in stock",
+    "rating": "Rating:"
   },
   "products": {
     "filters": {
@@ -186,7 +187,11 @@
     "clean-cart-btn-loading": "Cleaning...",
     "cart-empty": "Your cart is empty, wanna try shopping?",
     "remove-btn": "Remove",
-    "continue-shopping-btn": "Continue Shopping"
+    "continue-shopping-btn": "Continue Shopping",
+    "clear-cart-successfully": "Cart cleared successfully",
+    "product-removed-successfully": "Product removed from cart successfully",
+    "quantity-updated-successfully": "Quantity updated successfully",
+    "product-added-successfully": "Product added to cart successfully"
   },
   "product-may-like": {
     "title": "Products You May Like"

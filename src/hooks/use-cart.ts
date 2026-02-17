@@ -14,7 +14,8 @@ import {
   writeGuestCart,
 } from "@/lib/utils/cart-storage";
 import { fetchCart } from "@/app/[locale]/(site)/cart/actions/fetch-cart.action";
-import { updateCartAction } from "@/app/[locale]/(site)/cart/actions/update-cart";
+import { updateCartAction } from "@/app/[locale]/(site)/cart/actions/update-cart.action";
+import { useTranslations } from "next-intl";
 
 // fetch the user's cart.
 export function useCartQuery() {
@@ -25,7 +26,16 @@ export function useCartQuery() {
     enabled: status !== "loading",
     queryFn: async () => {
       if (session?.user) return fetchCart();
-      return { cartItems: readGuestCart(), totalPrice: 0 } as Cart;
+      const guestCartItems = readGuestCart();
+
+      const totalPrice = guestCartItems.reduce((sum, item) => {
+        const itemPrice =
+          item.product.priceAfterDiscount && item.product.priceAfterDiscount > 0
+            ? item.product.priceAfterDiscount
+            : item.product.price;
+        return sum + itemPrice * item.quantity;
+      }, 0);
+      return { cartItems: guestCartItems, totalPrice } as Cart;
     },
     staleTime: 1000 * 30,
   });
@@ -33,6 +43,9 @@ export function useCartQuery() {
 
 // Add a product to the cart.
 export function useAddToCart() {
+  //Translation
+  const t = useTranslations("cart");
+
   const qc = useQueryClient();
   const { data: session } = useSession();
 
@@ -71,12 +84,13 @@ export function useAddToCart() {
       writeGuestCart(cart);
       return cart;
     },
+    retry: 2,
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: CART_KEY });
-      toast.success("Product added to cart successfully");
+      toast.success(t("product-added-successfully"));
     },
-    onError: () => {
-      toast.error("Failed to add product");
+    onError: (error) => {
+      toast.error(error.message);
     },
   });
 }

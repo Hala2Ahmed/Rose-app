@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import CartHeader from "./cart-header";
-import ContinueShopping from "./continue-shopping-btn";
 import { useTranslations } from "next-intl";
 
 export default function EmptyCart() {
@@ -24,8 +23,6 @@ export default function EmptyCart() {
           {t('cart-empty')}
         </p>
       </div>
-
-      <ContinueShopping />
     </div>
   );
 }
