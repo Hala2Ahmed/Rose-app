@@ -36,6 +36,7 @@ export async function fetchRecommendations() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token.accessToken}`,
         },
+        next: { revalidate: 60 },
       },
     );
 

@@ -26,6 +26,7 @@ export function useDeleteProductFromCart(isAuthenticated: boolean) {
       writeGuestCart(updatedCart);
       return updatedCart;
     },
+    retry: 2,
 
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: CART_KEY });

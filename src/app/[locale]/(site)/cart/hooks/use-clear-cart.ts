@@ -19,7 +19,7 @@ export function useClearCart(isAuthenticated: boolean) {
         localStorage.removeItem("guest_cart");
       }
     },
-
+    retry: 2,
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: CART_KEY });
       toast.success(t('clear-cart-successfully'));

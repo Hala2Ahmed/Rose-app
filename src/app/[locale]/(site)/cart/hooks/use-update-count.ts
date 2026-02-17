@@ -36,6 +36,7 @@ export function useUpdateCart(
         return cart;
       }
     },
+    retry: 2,
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: CART_KEY });
       toast.success(t('quantity-updated-successfully'));
