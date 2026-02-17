@@ -1,6 +1,7 @@
 import { CartResponse } from "@/lib/types/cart";
 
-export async function fetchCartResponse(): Promise<CartResponse> {
+export async function fetchCart() {
+  // Fetch the current user's cart items (GET request)
   const res = await fetch("/api/cart", { cache: "no-store" });
   const payload: ApiResponse<CartResponse> = await res.json();
 
@@ -8,5 +9,5 @@ export async function fetchCartResponse(): Promise<CartResponse> {
     throw new Error(payload.error);
   }
 
-  return payload;
+  return payload.cart.cartItems || [];
 }

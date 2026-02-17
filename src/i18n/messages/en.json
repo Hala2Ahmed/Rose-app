@@ -178,5 +178,38 @@
       "price-from-less-than-to": "Price 'from' must be less than price 'to'",
       "price-to-greater-than-from": "Price 'to' must be greater than price 'from'"
     }
+  },
+  "cart": {
+  "summary": {
+    "title": "Summary",
+    "coupon-placeholder": "Coupon Code",
+    "apply": "Apply Coupon",
+    "no-coupons": "No coupons applied",
+    "total": "Total",
+    "checkout": "Checkout",
+    "currency": "EGP"
+  },
+  "address": {
+    "title": "Shipping Address",
+    "add": "Add New Address",
+    "next": "Next",
+    "error": "Failed to load addresses",
+    "empty": "No saved addresses found"
+},
+"payment": {
+  "title": "Payment Method",
+  "back": "Back",
+  "checkout": "Checkout",
+  "methods": {
+    "cash": {
+      "title": "Cash on Delivery",
+      "description": "You'll pay in cash when your order is delivered."
+    },
+    "card": {
+      "title": "Credit Card",
+      "description": "You'll be securely redirected to Stripe to complete your payment."
+    }
   }
+}
+}
 }

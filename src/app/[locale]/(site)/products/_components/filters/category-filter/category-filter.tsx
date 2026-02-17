@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useCategories } from "../../../_hooks/use-category";
 import { Category } from "@/lib/types/categories";

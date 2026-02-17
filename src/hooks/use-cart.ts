@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { toast } from "sonner";
 import type { ProductDetails } from "@/lib/types/product-details";
 import type { CartItem } from "@/lib/types/cart";
-import { fetchCart } from "@/app/[locale]/(site)/cart/_services/cart.service";
+import { fetchCart } from "@/app/[locale]/(site)/cart/_services/cart-item.service";
 import { addToCartAction } from "@/app/[locale]/(site)/cart/actions/cart.action";
 
 const CART_KEY = ["cart"];
