@@ -24,7 +24,7 @@ export type CreateCashOrderResponse = {
 };
 
 //Card checkout types
-export type createCardOrderPayload = {
+export type CreateCardOrderPayload = {
   shippingAddress: Omit<Address, "_id" | "username">;
   clientToken?: string;
 };
@@ -38,7 +38,7 @@ export type StripeCheckoutSession = {
   cancel_url: string;
 };
 
-export type createCardOrderResponse = {
+export type CreateCardOrderResponse = {
   message: string;
   session: StripeCheckoutSession;
 };

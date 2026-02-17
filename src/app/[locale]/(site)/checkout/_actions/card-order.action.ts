@@ -1,18 +1,16 @@
 "use server";
 
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/auth";
 import {
-  createCardOrderPayload,
-  createCardOrderResponse,
+  CreateCardOrderPayload,
+  CreateCardOrderResponse,
 } from "@/lib/types/address";
+import getToken from "@/lib/utils/manage-token";
 
 export const createCardOrder = async ({
   shippingAddress,
   clientToken,
-}: createCardOrderPayload): Promise<createCardOrderResponse> => {
-  const session = await getServerSession(authOptions);
-  const token = session?.accessToken || clientToken;
+}: CreateCardOrderPayload): Promise<CreateCardOrderResponse> => {
+  const token = await getToken();
 
   if (!token) throw new Error("Not logged in");
 
@@ -21,7 +19,7 @@ export const createCardOrder = async ({
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token?.accessToken || clientToken}`,
       },
       body: JSON.stringify({ shippingAddress }),
       cache: "no-store",
