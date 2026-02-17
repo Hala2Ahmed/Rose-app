@@ -1,6 +1,6 @@
 "use server";
 
-import { getToken } from "@/lib/utils/manage-token";
+import getToken from "@/lib/utils/manage-token";
 import type { CartResponse } from "@/lib/types/cart";
 
 export async function fetchCart() {

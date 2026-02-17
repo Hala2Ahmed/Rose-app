@@ -1,7 +1,7 @@
 "use server";
 
 import type { CartResponse } from "@/lib/types/cart";
-import { getToken } from "@/lib/utils/manage-token";
+import getToken from "@/lib/utils/manage-token";
 
 export async function updateCartAction(productId: string, quantity: number) {
   const token = await getToken();

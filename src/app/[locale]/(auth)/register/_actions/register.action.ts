@@ -1,6 +1,7 @@
 "use server";
 
-import { RegisterFields, RegisterResponse } from "@/lib/types/auth.type";
+import { RegisterFields } from "@/lib/types/auth";
+import { RegisterResponse } from "@/lib/types/auth.type";
 
 export async function registerAction(
   data: RegisterFields,

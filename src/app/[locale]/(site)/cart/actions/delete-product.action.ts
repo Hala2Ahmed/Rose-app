@@ -1,6 +1,6 @@
 "use server";
 
-import { getToken } from "@/lib/utils/manage-token";
+import getToken from "@/lib/utils/manage-token";
 
 export async function deleteProductAction(productId: string) {
   const token = await getToken();

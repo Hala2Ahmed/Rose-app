@@ -1,7 +1,7 @@
 "use server";
 
 import { getServerSession } from "next-auth";
-import { getToken } from "../utils/manage-token";
+import getToken from "../utils/manage-token";
 import { authOptions } from "@/auth";
 import { RecommendationsResponse } from "../types/recommendations";
 

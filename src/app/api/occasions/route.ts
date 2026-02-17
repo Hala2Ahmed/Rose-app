@@ -1,4 +1,3 @@
-// app/api/occasions/route.ts
 import { OccasionResponse } from "@/lib/types/occasions.types";
 import { NextRequest, NextResponse } from "next/server";
 
