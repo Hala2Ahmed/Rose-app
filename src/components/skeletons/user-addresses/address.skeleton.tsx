@@ -5,7 +5,7 @@ export default function AddressSkeleton() {
         <div className="flex flex-col gap-4 rounded-md border border-zinc-300 p-5 relative">
 
             {/* Street */}
-            <div className="absolute top-0 -translate-y-1/2 bg-white p-2.5">
+            <div className="absolute top-0 -translate-y-1/2 bg-white dark:bg-zinc-900 p-2.5">
                 <Skeleton className="h-7 w-48" />
             </div>
 
