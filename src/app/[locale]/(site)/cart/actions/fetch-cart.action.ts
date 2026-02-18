@@ -1,23 +1,22 @@
 "use server";
 
-import type { CartResponse } from "@/lib/types/cart";
 import getToken from "@/lib/utils/manage-token";
+import type { CartResponse } from "@/lib/types/cart";
 
-export async function addToCartAction(productId: string, quantity: number) {
+export async function fetchCart() {
   const token = await getToken();
 
-  if (!token || !token?.accessToken) {
-    throw new Error("Unauthorized");
+  if (!token?.accessToken) {
+    return { cartItems: [], totalPrice: 0 };
   }
 
-  // Add a product to the user's cart
   const res = await fetch(`${process.env.API_URL}/cart`, {
-    method: "POST",
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token.accessToken}`,
     },
-    body: JSON.stringify({ product: productId, quantity }),
+    cache: "no-store",
   });
 
   const payload: ApiResponse<CartResponse> = await res.json();

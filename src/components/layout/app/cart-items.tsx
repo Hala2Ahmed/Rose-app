@@ -4,9 +4,10 @@ import { useCartQuery, useSyncGuestCart } from "@/hooks/use-cart";
 import React from "react";
 
 export default function CartItems() {
-  const { data: cart = [] } = useCartQuery();
+  const { data: cart } = useCartQuery();
 
-  const cartCount = cart.reduce((sum, i) => sum + i.quantity, 0);
+  const cartCount: number =
+    cart?.cartItems?.reduce((sum, i) => sum + i.quantity, 0) ?? 0;
 
   useSyncGuestCart();
   return (
