@@ -1,5 +1,6 @@
-import React from "react";
+import RelatedProducts from "@/components/features/related-products/related-products";
 import { getProductDetails } from "../_actions/product-content.action";
+import ProductReviews from "./reviews/product-reviews";
 import ProductInfo from "./product-info";
 
 export default async function ProductContent({ id }: { id: string }) {
@@ -11,5 +12,16 @@ export default async function ProductContent({ id }: { id: string }) {
     return null;
   }
 
-  return <ProductInfo product={product} />;
+  return (
+    <div className="flex flex-col gap-12">
+      {/* Product details */}
+      < ProductInfo product={product} />;
+
+      {/* Product's reviews */}
+      <ProductReviews productId={id} rateAvg={product.rateAvg} rateCount={product.rateCount} />
+
+      {/* Related products */}
+      <RelatedProducts categoryId={product.category} />
+    </div>
+  )
 }
