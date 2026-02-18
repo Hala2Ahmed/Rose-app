@@ -15,7 +15,7 @@ export default async function ProductContent({ id }: { id: string }) {
   return (
     <div className="flex flex-col gap-12">
       {/* Product details */}
-      < ProductInfo product={product} />;
+      < ProductInfo product={product} />
 
       {/* Product's reviews */}
       <ProductReviews productId={id} rateAvg={product.rateAvg} rateCount={product.rateCount} />
