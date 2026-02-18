@@ -5,6 +5,8 @@ import { HeartPlus, HeartMinus } from "lucide-react";
 import Image from "next/image";
 import { BestSellingProduct } from "@/lib/types/best-selling.types";
 import { renderStars } from "@/lib/utils/render-stars";
+import { useAddToCart } from "@/hooks/use-cart";
+import { Button } from "@/components/ui/button";
 
 type BestSellingCardProps = {
   data: BestSellingProduct;
@@ -20,6 +22,7 @@ export default function BestSellingCard({
   isInWishlist = false,
 }: BestSellingCardProps) {
   const [isToggling, setIsToggling] = useState(false);
+  const { mutate, isPending } = useAddToCart();
 
   const handleToggle = async () => {
     if (!onWishlistToggle || isToggling) return;
@@ -103,7 +106,13 @@ export default function BestSellingCard({
           </p>
         </div>
 
-      
+        <Button
+          onClick={() => mutate({ product: data, quantity: 1 })}
+          disabled={isPending || data.quantity <= 0}
+          className="w-10 h-10 rounded-full flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <ShoppingCart className="w-5 h-5" />
+        </Button>
       </div>
     </article>
   );

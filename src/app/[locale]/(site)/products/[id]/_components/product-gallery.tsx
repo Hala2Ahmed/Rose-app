@@ -34,7 +34,7 @@ export default function ProductGallery({
               "before:absolute before:inset-0 before:bg-black/30 before:transition-colors before:duration-200",
               "hover:before:bg-black/10",
               (active === img || (active === imgCover && i === 0)) &&
-                "ring-2 rounded-md ring-maroon-600 before:bg-black/10 max-w-[5.6875rem] max-h-[6.9375rem]",
+                "ring-2 rounded-md ring-maroon-600 dark:ring-softPink-400 before:bg-black/10 max-w-[5.6875rem] max-h-[6.9375rem]",
             )}
           >
             <Image

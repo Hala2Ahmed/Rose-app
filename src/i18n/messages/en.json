@@ -22,7 +22,8 @@
     "view-more": "View More",
     "search-country": "Search country...",
     "no-country-found": "No country found.",
-    "reset": "Reset"
+    "reset": "Reset",
+    "logout": "Log Out"
   },
   "about": {
     "title": "About",
@@ -137,8 +138,22 @@
       "password-pattern": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character",
       "confirmpassword-required": "Please confirm your password",
       "confirmpassword-error": "Passwords do not match",
-      "gender-required": "Please choose right gender"
+      "gender-required": "Please choose right gender",
+      "new-password-required": "New password is required",
+      "confirm-new-password-required": "Please confirm your new password",
+      "confirm-new-password-error": "New passwords do not match",
+      "current-password-required": "Current password is required",
+      "photo-required": "Please select a photo to upload",
+      "invalid-file-type": "Only .jpg, .png, and .gif files are allowed",
+      "file-too-large": "File size must not exceed 5MB",
+      "file-read-error": "Error reading file. Please try again",
+      "photo-updated": "Photo updated successfully",
+      "upload-failed": "Failed to upload photo",
+      "uploading": "Uploading...",
+      "save-photo": "Save Photo"
     },
+    "upload": "Upload Photo",
+    "photo-upload-hint": "You can upload a .jpg, .png, or .gif photo with max size of 5MB",
     "firstname-label": "First Name",
     "lastname-label": "Last Name",
     "email-label": "Email",
@@ -149,7 +164,20 @@
     "female-gender": "Female",
     "gender-palceholder": "Gender",
     "password-label": "Password",
-    "confirmpassword-label": "Confirm Password"
+    "confirmpassword-label": "Confirm Password",
+    "oldpassword-label": "Old Password",
+    "newpassword-label": "New Password",
+    "confirm-newpassword-label": "Confrim New Password",
+    "save-changes": "Save Changes",
+    "delete-account": "Delete My Account",
+    "delete-confirm": "Are you sure you want to delete your account?",
+    "delete-subtitle": "This action is permanent and cannot be undone.",
+    "confirm-button": "Yes, Delete",
+    "cancel-button": "Nope, not doing it",
+    "change-password-button": "Change Password",
+    "password-changed-success": "Your Password Changed Successfully!",
+    "upload-photo-pending": "Uploading...",
+    "save-photo": "Save Photo"
   },
   "review": {
     "your-rating": "Your rating",
@@ -179,7 +207,8 @@
     "rate-count": "ratings",
     "no-ratings-yet": "No ratings yet",
     "out-stock": "Out of stock",
-    "left-in-stock": "left in stock"
+    "left-in-stock": "left in stock",
+    "rating": "Rating:"
   },
   "products": {
     "filters": {
@@ -201,5 +230,38 @@
       "price-from-less-than-to": "Price 'from' must be less than price 'to'",
       "price-to-greater-than-from": "Price 'to' must be greater than price 'from'"
     }
+  },
+  "profile": {
+    "update-profile": "Update Profile",
+    "my-account": "My Account",
+    "change-password": "Change Password",
+    "logout": "Logout",
+    "update-success": "Your account successfully updated !",
+    "photo-success": "Your photo successfully uploaded",
+    "photo-error": "Failed to upload photo",
+    "delete-success": "Account deleted successfully"
+  },
+  "header": {
+    "my-profile": " My Profile",
+    "addresses": "My Addresses",
+    "orders": "My Orders",
+    "dashboard": "Dashboard",
+    "hello": "Hello"
+  },
+  "cart": {
+    "cart-header": "Cart",
+    "products-count": "products",
+    "clean-cart-btn": "Clean Cart",
+    "clean-cart-btn-loading": "Cleaning...",
+    "cart-empty": "Your cart is empty, wanna try shopping?",
+    "remove-btn": "Remove",
+    "continue-shopping-btn": "Continue Shopping",
+    "clear-cart-successfully": "Cart cleared successfully",
+    "product-removed-successfully": "Product removed from cart successfully",
+    "quantity-updated-successfully": "Quantity updated successfully",
+    "product-added-successfully": "Product added to cart successfully"
+  },
+  "product-may-like": {
+    "title": "Products You May Like"
   }
 }
