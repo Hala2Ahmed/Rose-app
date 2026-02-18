@@ -42,24 +42,28 @@ export default function AllAddresses({ setOperationStep, setAddressId }: UserAdd
             </DialogHeader>
 
             {/*Addresses */}
-            <div className="flex flex-col gap-9">
-                {isLoading ? (
-                    // Skeleton
-                    Array.from({ length: 3 }).map((_, index) => (
-                        <AddressSkeleton key={index} />
-                    ))
-                ) : (
-                    // User addresses
-                    addresses?.addresses?.slice(-3).map((address) => (
-                        <Address
-                            setOperationStep={setOperationStep}
-                            setAddressId={setAddressId}
-                            key={address._id}
-                            address={address}
-                        />
-                    ))
-                )}
-            </div>
+            {!addresses || addresses?.addresses.length == 0 ? (
+                <p className="flex flex-col justify-center items-center text-zinc-800 dark:text-zinc-50"> {t("empty-addresses")}</p>
+            ) : (
+                <div className="flex flex-col gap-9">
+                    {isLoading ? (
+                        // Skeleton
+                        Array.from({ length: 3 }).map((_, index) => (
+                            <AddressSkeleton key={index} />
+                        ))
+                    ) : (
+                        // User addresses
+                        addresses?.addresses?.slice(-3).map((address) => (
+                            <Address
+                                setOperationStep={setOperationStep}
+                                setAddressId={setAddressId}
+                                key={address._id}
+                                address={address}
+                            />
+                        ))
+                    )}
+                </div>
+            )}
         </div>
     );
 }

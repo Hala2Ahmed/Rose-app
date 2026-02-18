@@ -185,6 +185,7 @@
     "add-address-title": "Add a New Address",
     "update-address-title": "Update Address Info",
     "my-addresses": "My Addresses",
+    "empty-addresses": "No addresses attached",
     "success-delete": "Address deleted successfully",
     "error": "Something happened error",
     "address-format": "{username} St., {street} St., {city}",

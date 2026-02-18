@@ -188,6 +188,7 @@
     "success-delete": "تم حذف العنوان بنجاح",
     "error": "حدث خطأ ما",
     "address-format": "شارع {username}، شارع {street}، {city}",
+    "empty-addresses": "لم يتم اضافة اي عنوان",
     "address-details": "ادخل تفاصيل العنوان",
     "address-location": "ابحث عن موقعك",
     "success-add": "تم اضافة العنوان بنجاح",
