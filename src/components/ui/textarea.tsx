@@ -12,7 +12,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, status = "default", ...props }, ref) => {
     const statusStyles = {
       default: `
-  border-zinc-300 hover:border-zinc-400
+  resize-none border-zinc-300 hover:border-zinc-400
 
   focus-visible:border-maroon-600
   focus-visible:ring-1

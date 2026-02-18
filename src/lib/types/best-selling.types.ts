@@ -10,11 +10,11 @@ export type BestSellingProduct = {
   quantity: number;
   category: string;
   occasion: string;
-
   sold: number;
   rateAvg: number;
   rateCount: number;
 };
+
 export type BestSellingResponse = {
   products: BestSellingProduct[];
 };

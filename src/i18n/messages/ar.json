@@ -181,6 +181,29 @@
     "upload-photo-pending": "يتم التحميل ... ",
     "save-photo": "احفظ الصورة"
   },
+  "review": {
+    "your-rating": "تقييمك",
+    "title-label": "العنوان",
+    "title-placeholder": "ادخل عنوان التقييم",
+    "review-label": "عنوان المراجعة",
+    "review-placeholder": "ماذا تعتقد عن هذا المنتج؟",
+    "add-review": "اضافة مراجعة",
+    "reviews-empty": "لا يوجد مراجعات",
+    "title": "مراجعات المنتج",
+    "general-rating": "التقييم العام",
+    "ratings": "تقييمات",
+    "title-required": "عنوان المراجعة اجباري",
+    "title-max-length": "يجب ان لا يتجاوز العنوان عن 10 خانات",
+    "comment-required": "التعليق اجباري",
+    "rating-min-length": "يجب ان يبدأ التقييم من نجمة واحدة",
+    "rating-max-length": "يجب ان لا يتجاوز التقييم الخمس نجوم",
+    "success-add-review": "تم اضافة المراجعة بنجاح",
+    "unauthorized-add-review": "يرجى تسجيل الدخول لإضافة تقييم للمنتج"
+  },
+  "related-products": {
+    "title": "منتجات ذات صلة ",
+    "related-products-empty": "لا يوجد هناك منتجات ذات صلة"
+  },
   "product": {
     "rate": "التقييم",
     "rate-count": "تقييمات",

@@ -179,6 +179,29 @@
     "upload-photo-pending": "Uploading...",
     "save-photo": "Save Photo"
   },
+  "review": {
+    "your-rating": "Your rating",
+    "title-label": "Title",
+    "title-placeholder": "Enter review title",
+    "review-label": "Review",
+    "review-placeholder": "What do you think of this product?",
+    "add-review": "Add Review",
+    "reviews-empty": "No Reviews Available",
+    "title": "Product Reviews",
+    "general-rating": "General rating",
+    "ratings": "ratings",
+    "title-required": "Title is required",
+    "title-max-length": "Title max length is 10",
+    "comment-required": "The comment is required",
+    "rating-min-length": "Min rate must be one star",
+    "rating-max-length": "The number of stars must not exceed 5",
+    "success-add-review": "Review added successfully",
+    "unauthorized-add-review": "Please login to be able to review the product"
+  },
+  "related-products": {
+    "title": "Related Products",
+    "related-products-empty": "There are no related products"
+  },
   "product": {
     "rate": "Rating",
     "rate-count": "ratings",
