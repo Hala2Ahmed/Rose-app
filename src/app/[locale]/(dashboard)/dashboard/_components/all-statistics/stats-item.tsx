@@ -5,7 +5,7 @@ import {
   ReceiptText,
 } from "lucide-react";
 import { LucideIcon } from "lucide-react";
-import { useFormatter, useTranslations } from "next-intl";
+import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { useCallback } from "react";
 
 interface StatItemProps {
@@ -49,19 +49,23 @@ export default function StatisticsItem({ stats }: { stats: Stats }) {
   //Translations
   const t = useTranslations("dashboard.overview");
   const format = useFormatter();
+  const locale = useLocale();
 
+  //format currency code to be after number instead of before it.
   const formatCurrency = useCallback(
     (value: number) => {
-      return format
-        .number(value, {
-          style: "currency",
-          currency: "EGP",
-          maximumFractionDigits: 0,
-        })
-        .replace(/^([A-Z]{3})\s*(.+)$/, "$2 $1")
-        .trim();
+      const formatted = format.number(value, "currency", {
+        maximumFractionDigits: 0,
+        minimumFractionDigits: 0,
+      });
+
+      if (locale.startsWith("ar")) {
+        return formatted;
+      }
+
+      return formatted.replace(/^([A-Z]{3})\s*(.+)$/, "$2 $1").trim();
     },
-    [format],
+    [format, locale],
   );
 
   //Variables
