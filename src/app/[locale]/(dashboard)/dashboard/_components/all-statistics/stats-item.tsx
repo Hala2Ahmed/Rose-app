@@ -72,7 +72,7 @@ export default function StatisticsItem({ stats }: { stats: Stats }) {
         <>
           {sorted.map((part, i) =>
             part.type === "currency" ? (
-              <span key={i} className="text-sm font-normal">
+              <span key={i} className="text-sm font-medium">
                 {" "}
                 {part.value}
               </span>
