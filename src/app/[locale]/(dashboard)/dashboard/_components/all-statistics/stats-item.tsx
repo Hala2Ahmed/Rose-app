@@ -10,7 +10,7 @@ import { useCallback } from "react";
 
 interface StatItemProps {
   icon: LucideIcon;
-  value: string | number;
+  value: React.ReactNode;
   label: string;
   iconClassName: string;
   bgClassName: string;
@@ -54,18 +54,36 @@ export default function StatisticsItem({ stats }: { stats: Stats }) {
   //format currency code to be after number instead of before it.
   const formatCurrency = useCallback(
     (value: number) => {
-      const formatted = format.number(value, "currency", {
+      const parts = new Intl.NumberFormat(locale, {
+        style: "currency",
+        currency: "EGP",
         maximumFractionDigits: 0,
         minimumFractionDigits: 0,
-      });
+        numberingSystem: locale === "ar" ? "arab" : "latn",
+        currencyDisplay: locale === "ar" ? "symbol" : "code",
+      }).formatToParts(value);
 
-      if (locale.startsWith("ar")) {
-        return formatted;
-      }
+      const sorted = [
+        ...parts.filter((p) => p.type !== "currency"),
+        ...parts.filter((p) => p.type === "currency"),
+      ];
 
-      return formatted.replace(/^([A-Z]{3})\s*(.+)$/, "$2 $1").trim();
+      return (
+        <>
+          {sorted.map((part, i) =>
+            part.type === "currency" ? (
+              <span key={i} className="text-sm font-normal">
+                {" "}
+                {part.value}
+              </span>
+            ) : (
+              part.value
+            ),
+          )}
+        </>
+      );
     },
-    [format, locale],
+    [locale],
   );
 
   //Variables
