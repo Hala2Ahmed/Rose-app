@@ -5,8 +5,7 @@ import {
   ReceiptText,
 } from "lucide-react";
 import { LucideIcon } from "lucide-react";
-import { useFormatter, useLocale, useTranslations } from "next-intl";
-import { useCallback } from "react";
+import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 
 interface StatItemProps {
   icon: LucideIcon;
@@ -45,46 +44,43 @@ type Stats = {
   totalRevenue: number;
 };
 
-export default function StatisticsItem({ stats }: { stats: Stats }) {
+export default async function StatisticsItem({ stats }: { stats: Stats }) {
   //Translations
-  const t = useTranslations("dashboard.overview");
-  const format = useFormatter();
-  const locale = useLocale();
+  const t = await getTranslations("dashboard.overview");
+  const format = await getFormatter();
+  const locale = await getLocale();
 
   //format currency code to be after number instead of before it.
-  const formatCurrency = useCallback(
-    (value: number) => {
-      const parts = new Intl.NumberFormat(locale, {
-        style: "currency",
-        currency: "EGP",
-        maximumFractionDigits: 0,
-        minimumFractionDigits: 0,
-        numberingSystem: locale === "ar" ? "arab" : "latn",
-        currencyDisplay: locale === "ar" ? "symbol" : "code",
-      }).formatToParts(value);
+  const formatCurrency = (value: number) => {
+    const parts = new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency: "EGP",
+      maximumFractionDigits: 0,
+      minimumFractionDigits: 0,
+      numberingSystem: locale === "ar" ? "arab" : "latn",
+      currencyDisplay: locale === "ar" ? "symbol" : "code",
+    }).formatToParts(value);
 
-      const sorted = [
-        ...parts.filter((p) => p.type !== "currency"),
-        ...parts.filter((p) => p.type === "currency"),
-      ];
+    const sorted = [
+      ...parts.filter((p) => p.type !== "currency"),
+      ...parts.filter((p) => p.type === "currency"),
+    ];
 
-      return (
-        <>
-          {sorted.map((part, i) =>
-            part.type === "currency" ? (
-              <span key={i} className="text-sm font-medium">
-                {" "}
-                {part.value}
-              </span>
-            ) : (
-              part.value
-            ),
-          )}
-        </>
-      );
-    },
-    [locale],
-  );
+    return (
+      <>
+        {sorted.map((part, i) =>
+          part.type === "currency" ? (
+            <span key={i} className="text-sm font-medium">
+              {" "}
+              {part.value}
+            </span>
+          ) : (
+            part.value
+          ),
+        )}
+      </>
+    );
+  };
 
   //Variables
   const STAT_CONFIGS = [
