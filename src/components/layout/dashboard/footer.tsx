@@ -1,0 +1,55 @@
+import { EllipsisVertical } from "lucide-react";
+import { SidebarFooter, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components//ui/sidebar";
+import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import Image from "next/image";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/auth";
+import CustomDropDownMenu from "./drop-down-menu";
+import { generateBackground } from "@/lib/utils/generate-background";
+
+export default async function Footer() {
+    const session = await getServerSession(authOptions);
+
+    return (
+        <SidebarFooter className="mx-6 py-6 border-t border-black/5">
+            <SidebarMenu>
+                <SidebarMenuItem>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <SidebarMenuButton
+                                className="flex items-center justify-center pt-4 pb-6 
+                            overflow-visible hover:bg-transparent active:bg-transparent 
+                            data-[state=open]:bg-transparent">
+                                {session?.user?.photo ? (
+                                    <Image
+                                        src={session?.user.photo || ""}
+                                        alt="Avatar"
+                                        width={54}
+                                        height={54}
+                                        className="rounded-full"
+                                    />
+                                ) : (
+                                    <div
+                                        className="w-12 h-12 rounded-full
+                                    flex flex-col flex-shrink-0 items-center justify-center 
+                                    text-lg font-bold"
+                                        style={{ backgroundColor: generateBackground(session?.user.firstName || "U") }}
+                                    >
+                                        {session?.user.firstName.charAt(0).toUpperCase()}
+                                    </div>
+                                )}
+                                <div className="flex flex-col gap-1">
+                                    <span className="font-bold text-sm text-zinc-800 dark:text-zinc-200 leading-100">{session?.user.firstName} {session?.user.lastName}</span>
+                                    <span className="text-softGray dark:text-zinc-500 text-sm font-semibold leading-100">{session?.user.email}</span>
+                                </div>
+                                <EllipsisVertical className="ml-auto" size={18} />
+                            </SidebarMenuButton>
+                        </DropdownMenuTrigger>
+
+                        <CustomDropDownMenu />
+                    </DropdownMenu>
+                </SidebarMenuItem>
+            </SidebarMenu>
+        </SidebarFooter>
+    )
+}
