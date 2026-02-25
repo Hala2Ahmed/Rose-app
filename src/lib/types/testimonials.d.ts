@@ -24,3 +24,4 @@ export type Testimonial = {
 export type Testimonials = {
     testimonials: Testimonial[]
 }
+

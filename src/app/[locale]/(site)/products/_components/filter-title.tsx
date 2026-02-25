@@ -41,7 +41,7 @@ export default function FilterTitle({
     });
   };
   return (
-    <div className="flex justify-between items-center  border-t mb-2">
+    <div className="flex justify-between items-center border-t mb-2">
       {/* Filter Title */}
       <h3 className="font-semibold text-lg mt-2">{title}</h3>
 

@@ -7,7 +7,7 @@ import {
 export async function bestSellingService(
   params?: GetBestSellingParams,
 ): Promise<BestSellingProduct[]> {
-  const url = new URL(`${process.env.API_URL}/products`);
+  const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}/products`);
 
   if (params) {
     Object.entries(params).forEach(([key, value]) => {

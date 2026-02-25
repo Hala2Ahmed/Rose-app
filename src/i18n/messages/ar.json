@@ -22,7 +22,8 @@
     "view-more": "مشاهدة المزيد",
     "search-country": "ابحث عن الدولة...",
     "no-country-found": "لم يتم العثور على دولة.",
-    "reset": "إعادة ضبط"
+    "reset": "إعادة ضبط",
+    "logout": "تسجيل خروج"
   },
   "about": {
     "title": "من نحن",
@@ -137,8 +138,23 @@
       "password-pattern": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل وحرف صغير ورقم ورمز خاص",
       "confirmpassword-required": "يرجى تأكيد كلمة المرور",
       "confirmpassword-error": "كلمات المرور غير متطابقة",
-      "gender-required": "برجاء ادخال النوع الصحيح"
+      "gender-required": "برجاء ادخال النوع الصحيح",
+      "new-password-required": "كلمة المرور الجديدة مطلوبة",
+      "confirm-new-password-required": "يرجى تأكيد كلمة المرور الجديدة",
+      "confirm-new-password-error": "كلمات المرور الجديدة غير متطابقة",
+      "current-password-required": "كلمة المرور الحالية مطلوبة",
+      "photo-required": "يرجى اختيار صورة للرفع",
+      "invalid-file-type": "يُسمح فقط بملفات .jpg و .png و .gif",
+      "file-too-large": "يجب ألا يتجاوز حجم الملف 5 ميجابايت",
+      "file-read-error": "خطأ في قراءة الملف. يرجى المحاولة مرة أخرى",
+      "photo-updated": "تم تحديث الصورة بنجاح",
+      "upload-failed": "فشل رفع الصورة",
+      "uploading": "جاري الرفع...",
+      "save-photo": "حفظ الصورة"
     },
+    "update-success": "تم تحديث حسابك بنجاح!",
+    "upload": "حمل صورتك",
+    "photo-upload-hint": "يمكنك رفع صورة بصيغة .jpg أو .png أو .gif بحجم أقصى 5 ميجابايت",
     "firstname-label": "الأسم الأول",
     "lastname-label": "اسم العائلة",
     "email-label": "البريد الألكتروني",
@@ -149,10 +165,61 @@
     "female-gender": "أنثى",
     "gender-palceholder": "النوع",
     "password-label": "الرقم السري",
-    "confirmpassword-label": "تأكيد الرقم السري"
+    "confirmpassword-label": "تأكيد الرقم السري",
+    "oldpassword-label": "كلمة السر القديمة",
+    "newpassword-label": "كلمة السر الجديدة",
+    "confirm-newpassword-label": "تأكيد كلمة السر الجديدة",
+    "save-changes": "حفظ التغييرات",
+    "delete-account": "حذف الحساب الشخصي",
+    "delete-confirm": "هل أنت متأكد أنك تريد حذف هذا الحساب؟",
+    "delete-subtitle": "هذا الإجراء دائم ولا يمكن التراجع عنه.",
+
+    "confirm-button": "نعم, قم بالحذف",
+    "cancel-button": "لا لن أقوم بالحذف",
+    "change-password-button": "تغيير كلمة السر",
+    "password-changed-success": "تم تغيير كلمة السر بنجاح!",
+    "upload-photo-pending": "يتم التحميل ... ",
+    "save-photo": "احفظ الصورة"
+  },
+  "review": {
+    "your-rating": "تقييمك",
+    "title-label": "العنوان",
+    "title-placeholder": "ادخل عنوان التقييم",
+    "review-label": "عنوان المراجعة",
+    "review-placeholder": "ماذا تعتقد عن هذا المنتج؟",
+    "add-review": "اضافة مراجعة",
+    "reviews-empty": "لا يوجد مراجعات",
+    "title": "مراجعات المنتج",
+    "general-rating": "التقييم العام",
+    "ratings": "تقييمات",
+    "title-required": "عنوان المراجعة اجباري",
+    "title-max-length": "يجب ان لا يتجاوز العنوان عن 10 خانات",
+    "comment-required": "التعليق اجباري",
+    "rating-min-length": "يجب ان يبدأ التقييم من نجمة واحدة",
+    "rating-max-length": "يجب ان لا يتجاوز التقييم الخمس نجوم",
+    "success-add-review": "تم اضافة المراجعة بنجاح",
+    "unauthorized-add-review": "يرجى تسجيل الدخول لإضافة تقييم للمنتج"
+  },
+  "related-products": {
+    "title": "منتجات ذات صلة ",
+    "related-products-empty": "لا يوجد هناك منتجات ذات صلة"
+  },
+  "product": {
+    "rate": "التقييم",
+    "rate-count": "تقييمات",
+    "no-ratings-yet": "لا توجد تقييمات بعد",
+    "out-stock": "غير متوفر في المخزون",
+    "left-in-stock": "متبقي في المخزون",
+    "rating": "التقييم:"
   },
   "products": {
     "filters": {
+      "category-title": "الفئات",
+      "rating-title": "التقييم",
+      "reset-all": "إعادة تعيين الكل",
+      "loading": "جاري التحميل...",
+      "end-of-list": "لا توجد نتائج أخرى",
+      "error": "حدث خطأ ما",
       "occasion-title": "مناسبة",
       "end-of-occasions": "لا توجد مناسابات اخرى",
       "occasions-error": "حدث خطأ أثناء تحميل المناسبات",
@@ -166,6 +233,7 @@
       "price-to-greater-than-from": "يجب أن يكون السعر 'إلى' أكبر من السعر 'من'"
     }
   },
+
   "order": {
     "order": "طلب",
     "orders": "الطلبات",
@@ -185,6 +253,39 @@
     "all": "عرض الكل",
     "rating": "تقييم",
     "ratings": "التقييمات"
+  },
+  "profile": {
+    "update-profile": "تحديث الحساب",
+    "my-account": "حسابي الشخصي",
+    "change-password": "تغيير كلمة السر",
+    "logout": "تسجيل خروج",
+    "photo-success": "تم تحميل الصورة بنجاح",
+    "photo-error": "حدث خطأ اثناء تحميل الصورة",
+    "delete-success": "تم حذف الحساب الخاص بك"
+  },
+  "header": {
+    "my-profile": " حسابي الشخصي",
+    "addresses": "العناوين",
+    "orders": "الطلبات",
+    "dashboard": "لوحة التحكم",
+    "hello": "مرحبا "
+  },
+  "cart": {
+    "cart-header": "عربة التسوق",
+    "products-count": "منتجات",
+    "clean-cart-btn": "تفريغ العربة",
+    "clean-cart-btn-loading": "جارٍ تفريغ العربة...",
+    "cart-empty": "عربة التسوق فارغة، هل ترغب في التسوق؟",
+    "remove-btn": "إزالة",
+    "continue-shopping-btn": "متابعة التسوق",
+    "clear-cart-successfully": "تم تفريغ السلة بنجاح",
+    "product-removed-successfully": "تم إزالة المنتج من السلة بنجاح",
+    "quantity-updated-successfully": "تم تحديث الكمية بنجاح",
+    "product-added-successfully": "تمت إضافة المنتج إلى السلة بنجاح"
+  },
+  "product-may-like": {
+    "title": "منتجات قد تُعجبك"
+
   }
 
 }

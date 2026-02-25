@@ -93,10 +93,13 @@ const config: Config = {
       height: {
         30: "120px",
         80: "320px",
+        357: "357px",
       },
       width: {
         30: "120px",
         101.5: "406px",
+        121: "484px",
+        742: "742px",
         filtersCard: "301px",
       },
       maxWidth: {
@@ -110,6 +113,7 @@ const config: Config = {
       },
       lineHeight: {
         "100": "100%",
+        "125": "125%",
       },
       fontSize: {
         xs12: "12px",

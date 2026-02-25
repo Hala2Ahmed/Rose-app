@@ -1,9 +1,9 @@
-import { RegisterFields } from "@/lib/types/auth.type";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { registerAction } from "../_actions/register.action";
 import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { RegisterFields } from "@/lib/types/auth";
 
 export default function useRegister() {
   //translations
