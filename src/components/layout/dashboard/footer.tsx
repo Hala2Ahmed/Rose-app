@@ -4,10 +4,11 @@ import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/dropdown-menu
 import Image from "next/image";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/auth";
-import CustomDropDownMenu from "./drop-down-menu";
 import { generateBackground } from "@/lib/utils/generate-background";
+import { CustomDropDownMenu } from "./drop-down-menu";
 
 export default async function Footer() {
+    //user data
     const session = await getServerSession(authOptions);
 
     return (

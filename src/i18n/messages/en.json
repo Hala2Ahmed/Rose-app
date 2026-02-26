@@ -263,5 +263,14 @@
   },
   "product-may-like": {
     "title": "Products You May Like"
+  },
+  "dashboard-layout": {
+    "preview": "Preview Website",
+    "overview": "Overview",
+    "categories": "Categories",
+    "occasions": "Occasions",
+    "products": "Products",
+    "account": "Account",
+    "logout": "Log out"
   }
 }

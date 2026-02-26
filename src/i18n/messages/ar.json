@@ -173,7 +173,6 @@
     "delete-account": "حذف الحساب الشخصي",
     "delete-confirm": "هل أنت متأكد أنك تريد حذف هذا الحساب؟",
     "delete-subtitle": "هذا الإجراء دائم ولا يمكن التراجع عنه.",
-
     "confirm-button": "نعم, قم بالحذف",
     "cancel-button": "لا لن أقوم بالحذف",
     "change-password-button": "تغيير كلمة السر",
@@ -264,5 +263,14 @@
   },
   "product-may-like": {
     "title": "منتجات قد تُعجبك"
+  },
+  "dashboard-layout": {
+    "preview": "عرض الموقع",
+    "overview": "نظرة عامة",
+    "categories": "التصنيفات",
+    "occasions": "المناسبات",
+    "products": "المنتجات",
+    "account": "الحساب",
+    "logout": "تسجيل خروج"
   }
 }

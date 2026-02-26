@@ -5,30 +5,34 @@ import { CalendarHeart, ClipboardList, LayoutDashboard, Package } from "lucide-r
 import Link from "next/link";
 import { usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils/tailwind-merge";
+import { useTranslations } from "next-intl";
 
 export default function SidebarContentMenu() {
     //routes 
     const pathName = usePathname();
 
+    //Translation
+    const t = useTranslations("dashboard-layout");
+
     //variables 
     const menus = [
         {
-            name: "Overview",
+            name: t("overview"),
             icon: LayoutDashboard,
             url: "/dashboard",
         },
         {
-            name: "Categories",
+            name: t("categories"),
             icon: ClipboardList,
             url: "/dashboard/categories",
         },
         {
-            name: "Occasions",
+            name: t("occasions"),
             icon: CalendarHeart,
             url: "/dashboard/occasions",
         },
         {
-            name: "Products",
+            name: t("products"),
             icon: Package,
             url: "/dashboard/products",
         }

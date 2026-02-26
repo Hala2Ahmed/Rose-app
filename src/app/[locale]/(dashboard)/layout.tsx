@@ -9,14 +9,15 @@ type DashboardLayoutProps = {
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
     return (
         <DashboardProvider>
+            {/* Side menu */}
             <aside>
                 <AppSidebar />
                 <SidebarTrigger />
             </aside>
 
-            <main>
+            <div className="ms-14">
                 {children}
-            </main>
+            </div>
         </DashboardProvider>
     );
 }

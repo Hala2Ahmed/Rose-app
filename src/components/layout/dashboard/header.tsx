@@ -5,10 +5,14 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Flower } from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 export default function Header() {
     //router 
     const router = useRouter();
+
+    //translation 
+    const t = useTranslations("dashboard-layout");
 
     return (
         <SidebarHeader className="pt-6 px-8">
@@ -30,7 +34,7 @@ export default function Header() {
                 onClick={() => router.push("/dashboard")}
             >
                 <Flower width={25} height={25} />
-                <span className="font-semibold text-base ms-2">Preview Website</span>
+                <span className="font-semibold text-base ms-2">{t("preview")}</span>
             </Button>
         </SidebarHeader>
     )
