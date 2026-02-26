@@ -23,6 +23,8 @@
     "search-country": "ابحث عن الدولة...",
     "no-country-found": "لم يتم العثور على دولة.",
     "reset": "إعادة ضبط",
+    "confirm": "تأكيد",
+    "cancel": "الغاء",
     "logout": "تسجيل خروج"
   },
   "about": {
@@ -173,7 +175,6 @@
     "delete-account": "حذف الحساب الشخصي",
     "delete-confirm": "هل أنت متأكد أنك تريد حذف هذا الحساب؟",
     "delete-subtitle": "هذا الإجراء دائم ولا يمكن التراجع عنه.",
-
     "confirm-button": "نعم, قم بالحذف",
     "cancel-button": "لا لن أقوم بالحذف",
     "change-password-button": "تغيير كلمة السر",
@@ -233,7 +234,6 @@
       "price-to-greater-than-from": "يجب أن يكون السعر 'إلى' أكبر من السعر 'من'"
     }
   },
-
   "order": {
     "order": "طلب",
     "orders": "الطلبات",
@@ -285,7 +285,35 @@
   },
   "product-may-like": {
     "title": "منتجات قد تُعجبك"
-
+  },
+  "address": {
+    "add-address-title": "إضافة عنوان جديد",
+    "update-address-title": "تحديث معلومات العنوان",
+    "my-addresses": "عناويني",
+    "success-delete": "تم حذف العنوان بنجاح",
+    "error": "حدث خطأ ما",
+    "address-format": "شارع {username}، شارع {street}، {city}",
+    "empty-addresses": "لم يتم اضافة اي عنوان",
+    "address-details": "ادخل تفاصيل العنوان",
+    "address-location": "ابحث عن موقعك",
+    "success-add": "تم اضافة العنوان بنجاح",
+    "success-update": "تم تحديث الموقع بنجاح",
+    "city-label": "المدينة",
+    "city-placeholder": "ادخل اسم المدينة",
+    "address-label": "العنوان",
+    "address-placeholder": "ادخل عنوانك كامل",
+    "phone-label": "الهاتف",
+    "phone-placeholder": "رقم الهاتف",
+    "update": "تحديث",
+    "add": "اضافة",
+    "confirm-delete": "هل أنت متأكد انك تريد حذف هذا العنوان؟",
+    "next": "التالي",
+    "street_min": "يجب أن يتكون الشارع من حرفين على الأقل.",
+    "phone_invalid": "يرجى إدخال رقم هاتف صحيح.",
+    "city_min": "المدينة مطلوبة.",
+    "username_min": "يجب أن يتكون اسم المستخدم من 3 أحرف على الأقل.",
+    "username_max": "يجب ألا يتجاوز اسم المستخدم 20 حرفًا.",
+    "lat_invalid": "يرجى اختيار موقع صالح من الخريطة.",
+    "long_invalid": "يرجى اختيار موقع صالح من الخريطة."
   }
-
 }
