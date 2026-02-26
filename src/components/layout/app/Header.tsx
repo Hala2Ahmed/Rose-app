@@ -1,14 +1,10 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
   Home,
   Info,
   Search,
-  User,
   Heart,
   ShoppingCart,
   Gift,
@@ -16,29 +12,29 @@ import {
   PartyPopper,
   Headset,
 } from "lucide-react";
-import { cn } from "@/lib/utils/tailwind-merge";
 import Notifications from "./notifications/index";
 import LanguageSwitcher from "./language-switcher";
-import { useSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/auth";
 import InfoUser from "./info-user";
-import { useCartQuery, useSyncGuestCart } from "@/hooks/use-cart";
+
+import ModeToggle from "./mode-toggle";
+
+import NavigationMenu from "./navigation-menu";
+
+import CartItems from "./cart-items";
+import UserDropDown from "@/components/shared/user-dropdown";
+
 
 /* -------------------------------------------------------------------------- */
 /*                                   Header                                   */
 /* -------------------------------------------------------------------------- */
 
-function Header() {
-  const pathname = usePathname();
-  const session = useSession();
-  const token = session?.data?.accessToken;
-  const firstName = session?.data?.user.firstName;
+async function Header() {
+  //get user info from server side on first page loading to avoid flashing of info
+  const session = await getServerSession(authOptions);
 
-  const { data: cart = [] } = useCartQuery();
-
-  const cartCount = cart.reduce((sum, i) => sum + i.quantity, 0);
-
-  useSyncGuestCart();
-
+  //Nav Links
   const navLinks = [
     { href: "/", label: "Home", icon: <Home className="h-5 w-5" /> },
     {
@@ -94,20 +90,20 @@ function Header() {
 
         {/* User Actions */}
         <div className="flex items-center gap-6 text-gray-700 dark:text-zinc-50">
-
-       <InfoUser />
+          {session?.user ? (
+            <UserDropDown initialData={session} />
+          ) : (
+            <InfoUser />
+          )}
 
           <div className="flex items-center gap-4 px-4 border-x border-zinc-200">
             <Heart className="h-5 w-5 cursor-pointer" />
             <Link href="/cart" className="relative">
               <ShoppingCart className="h-5 w-5 cursor-pointer" />
-              {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-maroon-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
+              <CartItems />
             </Link>
             <Notifications notificationCount={5} />
+            <ModeToggle />
           </div>
 
           {/* Language Switcher */}
@@ -115,31 +111,8 @@ function Header() {
         </div>
       </div>
 
-      {/* ==================== Navigation Menu ==================== */}
-      <nav className="flex justify-center bg-maroon-700 text-zinc-50 dark:bg-softPink-200 dark:text-zinc-800">
-        <ul className="flex items-center text-sm">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={cn(
-                    "flex items-center justify-center gap-2 px-3 py-3 text-base font-medium font-primary relative",
-                    isActive
-                      ? "text-softPink-200 dark:text-maroon-800 after:absolute after:left-0 after:bottom-0 after:h-[0.125rem] after:w-full after:bg-softPink-300 dark:after:bg-maroon-800"
-                      : "text-zinc-50 dark:text-zinc-800 hover:text-softPink-100 dark:hover:text-maroon-700",
-                  )}
-                >
-                  {link.icon}
-                  {link.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+      {/* Navigation Menu */}
+      <NavigationMenu navLinks={navLinks} />
     </header>
   );
 }

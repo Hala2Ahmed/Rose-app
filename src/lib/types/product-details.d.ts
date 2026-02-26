@@ -12,4 +12,5 @@ export type ProductDetails = {
   rateAvg: number;
   rateCount: number;
   isInWishlist: boolean;
+  category: sting,
 };

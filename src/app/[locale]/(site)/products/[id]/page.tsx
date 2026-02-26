@@ -1,6 +1,11 @@
-import React from "react";
-import ProductDetails from "./_components/product-details";
+import ProductDetailsSkeleton from "@/components/skeletons/product-details/product-details.skeleton";
+import React, { Suspense } from "react";
+import ProductContent from "./_components/product-content";
 
 export default function Page({ params }: { params: { id: string } }) {
-  return <ProductDetails id={params.id} />;
+  return (
+    <Suspense fallback={<ProductDetailsSkeleton />}>
+      <ProductContent id={params.id} />
+    </Suspense>
+  );
 }
