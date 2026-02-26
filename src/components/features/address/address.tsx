@@ -24,6 +24,7 @@ export default function Address({ address, setOperationStep, setAddressId }: Add
 
     // Translation
     const t = useTranslations("address");
+    console.log(t("add-address-title"));
 
     // Functions
     function confirmDeleteAddress() {
@@ -83,7 +84,7 @@ export default function Address({ address, setOperationStep, setAddressId }: Add
                         setAddressId(address._id);
                     }}
                     className="flex flex-col items-center justify-center w-9 h-9 rounded-full border
-                            border-zinc-400 cursor-pointer"
+                            border-zinc-400 cursor-pointer bg-white dark:bg-zinc-800"
                 >
                     <PenLine
                         width={"1.125rem"}

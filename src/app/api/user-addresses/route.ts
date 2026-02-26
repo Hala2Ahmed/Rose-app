@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
         );
     }
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL!}/addresses`, {
+    const response = await fetch(`${process.env.API_URL!}/addresses`, {
         method: "GET",
         headers: {
             Authorization: `Bearer ${token.accessToken}`,
