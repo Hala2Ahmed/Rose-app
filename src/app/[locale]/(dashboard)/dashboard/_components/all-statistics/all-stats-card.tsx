@@ -14,7 +14,7 @@ export default async function AllStatsCard() {
   }
 
   //variable
-  const stats = result.data.statistics.overall;
+  const stats = result.data.statistics;
 
   return (
     <Card className="md:w-[500px] grid grid-cols-2 py-6 px-6 gap-4 shadow-none border-white  ms-4 ">

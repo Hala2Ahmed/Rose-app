@@ -1,10 +1,8 @@
 type Statistics = {
-  overall: {
-    totalProducts: number;
-    totalOrders: number;
-    totalCategories: number;
-    totalRevenue: number;
-  };
+  totalProducts: number;
+  totalOrders: number;
+  totalCategories: number;
+  totalRevenue: number;
 };
 
 export type StatisticsResponse = {
