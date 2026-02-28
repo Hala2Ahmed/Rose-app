@@ -29,7 +29,7 @@ export function CustomDropDownMenu() {
             </DropdownMenuItem>
             <Link href={"/dashboard/account"}>
                 <DropdownMenuItem className="h-11 border-y hover:rounded-lg rounded-none cursor-pointer rtl:flex-row-reverse">
-                    <UserRound className="" />
+                    <UserRound />
                     <span>{t("account")}</span>
                 </DropdownMenuItem>
             </Link>
