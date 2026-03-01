@@ -9,17 +9,14 @@ import { useLocale } from "next-intl";
 import InfiniteScroll from "react-infinite-scroll-component";
 import SearchBar from "./search-bar";
 import { useSearch } from "@/hooks/use-search";
+import { useKeyboardNavigation } from "@/hooks/useKeyboardNavigation";
+import type { SearchProduct } from "@/lib/types/search.types";
 import SearchDropdownSkeleton from "@/components/skeletons/search-item.skeleton";
 
-interface Product {
-  _id: string;
-  slug: string;
-  title: string;
-  imgCover: string;
-  price: number;
-  rateAvg: number;
-  rateCount: number;
-  quantity: number;
+const MIN_KEYWORD_LENGTH = 1;
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 export default function HeaderSearch() {
@@ -27,39 +24,35 @@ export default function HeaderSearch() {
   const locale = useLocale();
 
   const [searchValue, setSearchValue] = useState("");
-  const [debouncedValue, setDebouncedValue] = useState(searchValue);
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handler = setTimeout(() => setDebouncedValue(searchValue), 300);
-    return () => clearTimeout(handler);
-  }, [searchValue]);
+  const {
+    products,
+    debouncedKeyword,
+    hasEnoughChars,
+    isFetching,
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage,
+  } = useSearch({ open, keyword: searchValue });
 
-  const { data, isFetching, fetchNextPage, isFetchingNextPage, hasNextPage } =
-    useSearch(open, debouncedValue);
-
-  const products: Product[] = useMemo(
-    () => data?.pages.flatMap((page) => page.products) || [],
-    [data]
-  );
-
-  const escapeRegExp = (value: string) =>
-    value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
+  /* Highlight search keyword */
   const highlightRegex = useMemo(() => {
-    if (!debouncedValue) return null;
-    return new RegExp(`(${escapeRegExp(debouncedValue)})`, "gi");
-  }, [debouncedValue]);
+    if (!debouncedKeyword) return null;
+    return new RegExp(`(${escapeRegExp(debouncedKeyword)})`, "gi");
+  }, [debouncedKeyword]);
 
   const highlightText = useCallback(
     (text: string) => {
       if (!highlightRegex) return text;
-      return text.split(highlightRegex).map((part, i) =>
-        highlightRegex.test(part) ? (
-          <span key={i} className="text-maroon-500 font-semibold">
+
+      const parts = text.split(highlightRegex);
+      return parts.map((part, i) =>
+        part.toLowerCase() === debouncedKeyword?.toLowerCase() ? (
+          <span key={i} className="text-maroon-600 dark:text-maroon-400 font-semibold">
             {part}
           </span>
         ) : (
@@ -67,11 +60,12 @@ export default function HeaderSearch() {
         )
       );
     },
-    [highlightRegex]
+    [highlightRegex, debouncedKeyword]
   );
 
+  /* Navigation on click */
   const handleProductClick = useCallback(
-    (product: Product) => {
+    (product: SearchProduct) => {
       router.push(`/${locale}/products/${product.slug}`);
       setOpen(false);
       setActiveIndex(-1);
@@ -79,42 +73,41 @@ export default function HeaderSearch() {
     [router, locale]
   );
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!open) return;
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      setActiveIndex((prev) => Math.min(prev + 1, products.length - 1));
-    }
-    if (e.key === "ArrowUp") {
-      e.preventDefault();
-      setActiveIndex((prev) => Math.max(prev - 1, 0));
-    }
-    if (e.key === "Enter") {
-      e.preventDefault();
-      if (activeIndex >= 0 && activeIndex < products.length) {
-        handleProductClick(products[activeIndex]);
-      }
-    }
-    if (e.key === "Escape") {
-      setOpen(false);
-      setActiveIndex(-1);
-    }
-  };
+  const closeDropdown = useCallback(() => {
+    setOpen(false);
+    setActiveIndex(-1);
+  }, []);
 
+  const { onKeyDown: onKeyDownNav } = useKeyboardNavigation({
+    itemCount: products.length,
+    isOpen: open,
+    onSelect: (index) => handleProductClick(products[index]),
+    onClose: closeDropdown,
+    enabled: true,
+  });
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      onKeyDownNav(e, activeIndex, setActiveIndex);
+    },
+    [onKeyDownNav, activeIndex]
+  );
+
+  /* Close on outside click */
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        wrapperRef.current &&
-        !wrapperRef.current.contains(event.target as Node)
-      ) {
-        setOpen(false);
-        setActiveIndex(-1);
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        closeDropdown();
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () =>
-      document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [closeDropdown]);
+
+  const showMinCharsMessage = open && searchValue.trim().length > 0 && searchValue.trim().length < MIN_KEYWORD_LENGTH;
+  const showLoading = open && hasEnoughChars && isFetching && products.length === 0;
+  const showResults = open && hasEnoughChars;
+  const isSuggestions = !debouncedKeyword || debouncedKeyword.length < MIN_KEYWORD_LENGTH;
 
   return (
     <header className="relative w-full">
@@ -126,86 +119,89 @@ export default function HeaderSearch() {
           onKeyDown={handleKeyDown}
         />
 
-        {open && (
-          <>
-            {debouncedValue.length < 2 ? (
-              <div className="absolute mt-2 w-full rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-xl z-50 p-4 text-center">
-                <p className="text-sm text-zinc-500">
-                  Type at least 2 characters to search
+        {/* Min chars message */}
+        {showMinCharsMessage && (
+          <div className="absolute mt-2 w-full rounded-xl overflow-hidden shadow-xl z-50">
+            <div className="bg-white dark:bg-zinc-800 p-4 text-center">
+              <p className="text-sm text-zinc-500">
+                Type at least {MIN_KEYWORD_LENGTH} character to search
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Loading */}
+        {showLoading && (
+          <div className="absolute mt-2 w-full rounded-xl overflow-hidden shadow-xl z-50">
+            <div className="bg-white dark:bg-zinc-800">
+              <SearchDropdownSkeleton count={5} embedded />
+            </div>
+          </div>
+        )}
+
+        {/* Search results */}
+        {showResults && (
+          <div className="absolute mt-2 w-full rounded-xl overflow-hidden shadow-xl z-50 max-h-[420px] flex flex-col">
+            <div className="bg-white dark:bg-zinc-800 flex flex-col min-h-0">
+              {isSuggestions && (
+                <p className="px-4 pt-4 pb-2 font-primary font-semibold text-base text-maroon-600 dark:text-maroon-700 border-b border-zinc-200/80 dark:border-zinc-700">
+                  Products you may like:
                 </p>
-              </div>
-            ) : isFetching && products.length === 0 ? (
-              <SearchDropdownSkeleton count={5} />
-            ) : products.length === 0 ? (
-              <div className="absolute mt-2 w-full rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-xl z-50 p-4 text-center">
-                <p className="text-sm text-zinc-500">No products found</p>
-              </div>
-            ) : (
-              <div
-                id="scrollableSearchDropdown"
-                className="absolute mt-2 w-full rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-xl z-50 max-h-[400px] overflow-y-auto"
-              >
+              )}
+
+              <div id="scrollableSearchDropdown" className="overflow-y-auto max-h-[400px]">
                 <InfiniteScroll
                   dataLength={products.length}
-                  next={() => {
-                    if (hasNextPage && !isFetchingNextPage) fetchNextPage();
-                  }}
+                  next={() => { if (hasNextPage && !isFetchingNextPage) fetchNextPage(); }}
                   hasMore={!!hasNextPage}
-                  loader={
-                    isFetchingNextPage && (
-                      <p className="p-3 text-center text-xs text-zinc-400">
-                        Loading more...
-                      </p>
-                    )
-                  }
+                  loader={isFetchingNextPage && <p className="p-3 text-center text-xs text-zinc-500">Loading more...</p>}
                   scrollableTarget="scrollableSearchDropdown"
                 >
                   {products.map((product, index) => (
                     <div
                       key={product._id}
                       onClick={() => handleProductClick(product)}
-                      className={`flex items-center gap-4 p-4 border-b border-zinc-100 dark:border-zinc-800 last:border-none transition cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-800 ${
-                        index === activeIndex
-                          ? "bg-zinc-100 dark:bg-zinc-800"
-                          : ""
+                      className={`flex items-start gap-4 px-4 py-3 border-b border-zinc-200/80 dark:border-zinc-700 last:border-none cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-700/50 ${
+                        index === activeIndex ? "bg-zinc-100 dark:bg-zinc-700/50" : ""
                       }`}
                     >
-                      <div className="relative w-16 h-16 rounded-md overflow-hidden bg-zinc-100 dark:bg-zinc-800 flex-shrink-0">
-                        <Image
-                          src={product.imgCover}
-                          alt={product.title}
-                          fill
-                          className="object-cover"
-                        />
+                      {/* Image */}
+                      <div className="relative w-[80px] h-[80px] p-4 rounded-md overflow-hidden bg-zinc-200 dark:bg-zinc-700 flex-shrink-0">
+                        <Image src={product.imgCover} alt={product.title} fill className="object-cover rounded-sm" />
                       </div>
 
-                      <div className="flex-1 flex items-center justify-between w-full">
-                        <p className="text-sm font-medium text-zinc-800 dark:text-zinc-200 truncate">
-                          {highlightText(product.title)}
-                        </p>
-
-                        <div className="flex items-center gap-4">
-                          <span className="text-base font-semibold text-zinc-900 dark:text-white">
-                            {product.price} EGP
-                          </span>
-
-                          <div className="flex items-center text-sm whitespace-nowrap gap-1">
-                            <Star className="w-4 h-4 text-yellow-500 fill-yellow-500 flex-shrink-0" />
-                            <span className="text-sm font-semibold text-zinc-900 dark:text-white">
-                              {product.rateAvg?.toFixed(1) ?? "0.0"}/5
+                      {/* Info */}
+                      <div className="flex-1 min-w-0 flex flex-col justify-center">
+                        <div className="flex justify-between items-center">
+                          <p className="font-primary font-semibold text-sm text-zinc-800 dark:text-zinc-200 truncate">
+                            {highlightText(product.title)}
+                          </p>
+                          <div className="flex items-center gap-1">
+                            <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+                            <span className="font-primary font-normal text-sm text-zinc-800 dark:text-zinc-200">
+                              Rating: {(product.rateAvg ?? 0).toFixed(1)}/5
                             </span>
-                            <span className="text-xs text-blue-600 dark:text-blue-400">
-                              ({product.rateCount || 0})
+                            <span className="font-primary font-medium text-sm text-blue-600 dark:text-blue-400">
+                              ({product.rateCount ?? 0} ratings)
                             </span>
                           </div>
                         </div>
+
+                        <p className="mt-1 flex items-center gap-1">
+                          <span className="font-primary font-bold text-xl text-zinc-900 dark:text-white">
+                            {product.priceAfterDiscount ?? product.price}
+                          </span>
+                          <span className="font-primary font-normal text-base text-zinc-500">
+                            EGP
+                          </span>
+                        </p>
                       </div>
                     </div>
                   ))}
                 </InfiniteScroll>
               </div>
-            )}
-          </>
+            </div>
+          </div>
         )}
       </div>
     </header>

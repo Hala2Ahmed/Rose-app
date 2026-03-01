@@ -1,32 +1,42 @@
 
 
-// Skeleton for one search item
+// Skeleton for one search item (matches design: small image, name/price stack, rating)
 function SearchItemSkeleton() {
   return (
-    <div className="flex items-center justify-between gap-4 p-4 animate-pulse border-b last:border-b-0">
-      <div className="relative w-16 h-16 rounded-md bg-gray-200 flex-shrink-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 bg-[length:200%_100%] animate-shimmer" />
+    <div className="flex items-center gap-3 px-4 py-3 border-b border-zinc-200/80 dark:border-zinc-700 last:border-none animate-pulse">
+      <div className="w-12 h-12 rounded-lg bg-zinc-200 dark:bg-zinc-700 flex-shrink-0" />
+      <div className="flex-1 min-w-0 space-y-2">
+        <div className="h-3.5 bg-zinc-200 dark:bg-zinc-700 rounded w-3/4" />
+        <div className="h-3 bg-zinc-200 dark:bg-zinc-700 rounded w-16" />
       </div>
-      <div className="flex-1 flex flex-col gap-2">
-        <div className="h-4 bg-gray-200 rounded w-3/4" />
-        <div className="h-4 bg-gray-200 rounded w-1/2" />
-      </div>
-      <div className="flex items-center gap-1">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="w-4 h-4 bg-gray-200 rounded" />
-        ))}
+      <div className="flex items-center gap-1.5 flex-shrink-0">
+        <div className="w-4 h-4 rounded bg-zinc-200 dark:bg-zinc-700" />
+        <div className="h-3.5 w-20 bg-zinc-200 dark:bg-zinc-700 rounded" />
       </div>
     </div>
   );
 }
 
-// Skeleton for the full dropdown
-export default function SearchDropdownSkeleton({ count = 5 }: { count?: number }) {
-  return (
-    <div className="absolute mt-2 w-full rounded-xl border bg-white shadow-xl z-50 max-h-[400px] overflow-y-auto">
+interface SearchDropdownSkeletonProps {
+  count?: number;
+  /** When true, only render the list (no outer container); use when embedding in dropdown */
+  embedded?: boolean;
+}
+
+export default function SearchDropdownSkeleton({ count = 5, embedded = false }: SearchDropdownSkeletonProps) {
+  const list = (
+    <>
       {Array.from({ length: count }).map((_, i) => (
         <SearchItemSkeleton key={i} />
       ))}
+    </>
+  );
+
+  if (embedded) return list;
+
+  return (
+    <div className="absolute mt-2 w-full rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-xl z-50 max-h-[400px] overflow-y-auto">
+      {list}
     </div>
   );
 }

@@ -29,3 +29,24 @@ export async function getProducts(
 
   return payload;
 }
+
+export async function getProductBySlug(slug: string, token?: string) {
+  const response = await fetch(
+    `${BASE_AUTH_URL}/slug/${encodeURIComponent(slug)}`,
+    {
+      cache: "no-store",
+      headers: {
+        ...(token && { Authorization: `Bearer ${token}` }),
+      },
+    }
+  );
+
+  const payload = await response.json();
+
+  if (!response.ok) {
+    if (response.status === 404) return null;
+    throw new Error(payload.message || "Failed to fetch product");
+  }
+
+  return payload;
+}
