@@ -1,0 +1,60 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Pencil, Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { deleteOccasionAction } from "../_actions/delete-occasion.action";
+import { toast } from "sonner";
+import { useTransition } from "react";
+import { isRedirectError } from "next/dist/client/components/redirect";
+
+export default function ActionButtons({
+  occasionId,
+  currentPage,
+  totalItemsOnPage,
+}: {
+  occasionId: string;
+  currentPage: number;
+  totalItemsOnPage: number;
+}) {
+  const t = useTranslations("common");
+
+  const [isPending, startTransition] = useTransition();
+
+  async function handleDelete() {
+    startTransition(async () => {
+      try {
+        await deleteOccasionAction(occasionId, currentPage, totalItemsOnPage);
+        toast.success(t("occasion-success-delete"));
+      } catch (error) {
+        if (isRedirectError(error)) throw error;
+        toast.error(
+          error instanceof Error ? error.message : t("something-went-wrong"),
+        );
+      }
+    });
+  }
+  return (
+    <div className="flex justify-end gap-2 mx-5">
+      <Button className="bg-[#0063D01A] text-blue-600 hover:bg-[#004c9e1a]">
+        <Link
+          className="flex gap-1 items-center"
+          href={`/dashboard/occasions/${occasionId}`}>
+          <Pencil />
+          {t("edit")}
+        </Link>
+      </Button>
+
+      {/* Wait Until delete confirmation modal is ready */}
+
+      <Button
+        disabled={isPending}
+        className="bg-[#FF00001A] hover:bg-[#b400001a] text-red-600"
+        onClick={handleDelete}>
+        <Trash2 />
+        {isPending ? t("deleteing") : t("delete")}
+      </Button>
+    </div>
+  );
+}
