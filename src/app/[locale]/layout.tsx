@@ -100,7 +100,6 @@ export default function LocaleLayout({
 
             <Providers>
               <main>{children}</main>
-
               <Toaster richColors />
             </Providers>
           </ReactQueryProvider>

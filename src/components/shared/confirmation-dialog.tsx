@@ -21,10 +21,10 @@ type Props = {
     onConfirm: () => void;
     open: boolean,
     setOpen: Dispatch<SetStateAction<boolean>>,
-    confirmMessage: string,
+    category: string,
 }
 
-export function DeleteAddressDialog({ confirmMessage, open, isPending, trigger, onConfirm, setOpen }: Props) {
+export function DeleteAddressDialog({ category, open, isPending, trigger, onConfirm, setOpen }: Props) {
     //Translation 
     const t = useTranslations("common");
 
@@ -57,7 +57,7 @@ export function DeleteAddressDialog({ confirmMessage, open, isPending, trigger, 
 
                     {/*Description */}
                     <AlertDialogTitle className="font-semibold text-5 leading-100 text-dark-gray dark:text-zinc-50">
-                        {confirmMessage}
+                        {t("confirm-message", { item: category })}
                     </AlertDialogTitle>
                 </AlertDialogHeader>
 

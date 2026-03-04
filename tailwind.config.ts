@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      opacity: {
+        '8': '0.08',
+      },
       letterSpacing: {
         "extra-wide": "0.25em",
       },
@@ -88,6 +91,7 @@ const config: Config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xs: "10px",
       },
       fontFamily: {
         sarabun: ["var(--font-sarabun)", "sarabun"],
@@ -101,14 +105,17 @@ const config: Config = {
         80: "320px",
         567: "567px",
         474: "474px",
+        480: "480px",
         349: "349px",
         357: "357px",
+        690: "690px"
       },
       width: {
         18: "70px",
         26: "105px",
         30: "120px",
         101.5: "406px",
+        789: "789px",
         474: "474px",
         850: "850px",
         121: "484px",
@@ -116,6 +123,7 @@ const config: Config = {
         filtersCard: "301px",
       },
       maxWidth: {
+        248: "933px",
         303: "1212px",
         "3.5xl": "740px",
         "1.5xl": "406px",
@@ -125,7 +133,9 @@ const config: Config = {
         "1.5xl": "406px",
       },
       lineHeight: {
+        "60": "60%",
         "100": "100%",
+        "150": "150%",
         "125": "125%",
       },
       fontSize: {
