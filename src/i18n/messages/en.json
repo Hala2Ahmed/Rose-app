@@ -236,21 +236,21 @@
     "order": "Order",
     "orders": "Orders",
     "created": "Created in",
-    "canceled":"Canceled",
+    "canceled": "Canceled",
     "done": "Done",
-    "delivered":"Delivered",
-    "in_progress":"In Progress",
-    "pending":"Pending",
-    "total_price":"Total Price",
-    "paid":"Paid",
-    "status":"Status",
-    "payment_method":"Payment Method",
+    "delivered": "Delivered",
+    "in_progress": "In Progress",
+    "pending": "Pending",
+    "total_price": "Total Price",
+    "paid": "Paid",
+    "status": "Status",
+    "payment_method": "Payment Method",
     "delivery_status": "Delivery Status",
-    "order_items":"Order Items",
-    "less":"Show Less",
-    "all":"Show All",
-    "rating":"Rating",
-    "ratings":"Ratings"
+    "order_items": "Order Items",
+    "less": "Show Less",
+    "all": "Show All",
+    "rating": "Rating",
+    "ratings": "Ratings"
   },
   "profile": {
     "update-profile": "Update Profile",
@@ -284,6 +284,11 @@
   },
   "product-may-like": {
     "title": "Products You May Like"
-
-  }
+  },
+  "dashboard": {
+  "top_selling": "Top Selling Products",
+  "sales": "Sales",
+  "low_stock": "Low Stock Products",
+  "products": "Products"
+}
 }

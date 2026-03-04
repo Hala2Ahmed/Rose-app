@@ -16,7 +16,7 @@ export type Product = {
     sold: number,
     rateAvg: number,
     rateCount: number,
-    favoriteId: string,
+    favoriteId: string | null,
     isInWishlist: boolean
 }
 

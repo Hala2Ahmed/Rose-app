@@ -285,7 +285,11 @@
   },
   "product-may-like": {
     "title": "منتجات قد تُعجبك"
-
+  },
+  "dashboard": {
+    "top_selling": "الأكثر مبيعًا",
+    "sales": "مبيعات",
+    "low_stock": "المنتجات ذات المخزون المنخفض",
+    "products": "المنتجات"
   }
-
 }
