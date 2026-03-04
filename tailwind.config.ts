@@ -9,6 +9,9 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			opacity: {
+				'8': '0.08',
+			},
 			letterSpacing: {
 				'extra-wide': '0.25em'
 			},
