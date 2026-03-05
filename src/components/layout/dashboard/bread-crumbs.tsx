@@ -21,7 +21,7 @@ export function Breadcrumbs() {
         text.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
 
     return (
-        <Breadcrumb className="-ms-4 ps-4 py-6 border-b border-black/8 dark:border-zinc-50/8 dark:bg-zinc-900">
+        <Breadcrumb className="py-6 -ms-10 ps-14 border-b border-black/8 dark:border-zinc-50/8 bg-white dark:bg-zinc-900">
             <BreadcrumbList>
                 {pathSegments.map((segment, index) => {
                     const href = "/" + [locale, ...pathSegments.slice(0, index + 1)].join("/")
