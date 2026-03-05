@@ -14,8 +14,8 @@ export async function getAllOccasions({
     const data = await fetchOccasions({ limit, page, query });
     return { success: true, data };
     
-  } catch (error) {
-    console.error("Error fetching occasions:", error);
-    return { success: false, error: "Failed to fetch occasions", data: null };
+  } catch (err) {
+    console.error("Occasions load error:", err);
+    return { success: false, error: "Unable to load occasions", data: null };
   }
 }

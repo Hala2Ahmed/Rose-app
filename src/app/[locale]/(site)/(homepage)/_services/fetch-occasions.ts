@@ -10,13 +10,13 @@ export async function fetchOccasions({
   url.searchParams.append("page", String(page));
   url.searchParams.append("search", String(query));
 
-  const response = await fetch(url.toString(), {
+  const res = await fetch(url.toString(), {
     next: { tags: ["occasions"] },
   });
 
-  if (!response.ok) {
-    throw new Error(`API responded with status: ${response.status}`);
+  if (!res.ok) {
+    throw new Error(`Unexpected response status: ${res.status}`);
   }
 
-  return response.json();
+  return res.json();
 }

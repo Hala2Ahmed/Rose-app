@@ -52,7 +52,7 @@ export default function AddProduct({ occasions, categories }: Props) {
   };
 
   return (
-    <>
+    <div className="bg-zinc-50 px-7">
       {/* Page header */}
       <h3 className="text-zinc-800 text-2xl font-semibold py-6">
         {t("add-product-header")}
@@ -67,6 +67,6 @@ export default function AddProduct({ occasions, categories }: Props) {
         occasions={occasions}
         categories={categories}
       />
-    </>
+    </div>
   );
 }

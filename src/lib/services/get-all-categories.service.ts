@@ -14,8 +14,8 @@ export async function getAllCategories({
     const data = await fetchCategories({ limit, page, query });
     return { success: true, data };
     
-  } catch (error) {
-    console.error("Error fetching categories:", error);
-    return { success: false, error: "Failed to fetch categories", data: null };
+  } catch (err) {
+    console.error("Categories load error:", err);
+    return { success: false, error: "Unable to load categories", data: null };
   }
 }

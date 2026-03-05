@@ -1,6 +1,6 @@
-import { getAllOccasions } from "@/app/[locale]/(site)/(homepage)/_services/get-all-occasions-server";
+import { getAllOccasions } from "@/app/[locale]/(site)/(homepage)/_services/get-all-occasions.service";
 import AddProductForm from "./_components/add-product-form";
-import { getAllCategories } from "@/lib/services/get-all-categories-server";
+import { getAllCategories } from "@/lib/services/get-all-categories.service";
 
 export default async function Page() {
   const [occasionsResult, categoriesResult] = await Promise.all([
@@ -15,9 +15,5 @@ export default async function Page() {
     ? categoriesResult.data.categories
     : [];
 
-  return (
-    <div className="bg-zinc-50 px-7">
-      <AddProductForm occasions={occasions} categories={categories} />
-    </div>
-  );
+  return <AddProductForm occasions={occasions} categories={categories} />;
 }

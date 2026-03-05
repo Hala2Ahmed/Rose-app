@@ -50,7 +50,7 @@ export default function UpdateProduct({
   };
 
   return (
-    <>
+    <div className="bg-zinc-50 px-7">
       {/* Page header */}
       <h3 className="text-zinc-800 text-2xl font-semibold py-6 truncate">
         {t("update-product-header")}: {product.title}
@@ -65,6 +65,6 @@ export default function UpdateProduct({
         occasions={occasions}
         categories={categories}
       />
-    </>
+    </div>
   );
 }
