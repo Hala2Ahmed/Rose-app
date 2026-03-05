@@ -1,5 +1,4 @@
 import { Card } from "@/components/ui/card";
-
 import React from "react";
 import StatisticsItem from "./stats-item";
 import getOverallStatistics from "@/lib/api/get-statistics";
@@ -17,7 +16,7 @@ export default async function AllStatsCard() {
   const stats = result.data.statistics;
 
   return (
-    <Card className="md:w-[500px] grid grid-cols-2 py-6 px-6 gap-4 shadow-none border-white  ms-4 ">
+    <Card className="md:w-[31.25rem] grid grid-cols-2 py-6 px-6 gap-4 shadow-none border-white  ms-4 ">
       <StatisticsItem stats={stats} />
     </Card>
   );
