@@ -9,10 +9,9 @@ export default function useGetSingleOccasion(id?: string | string[]) {
   } = useQuery({
     queryFn: async () => {
       const response = await getOccasionById(id!);
-      if ("error" in response) {
-        throw new Error(response.error);
+      if (!response || "error" in response) {
+        throw new Error(response?.error ?? "Failed to fetch occasion");
       }
-
       return response.data;
     },
     queryKey: ["occasions", id],
