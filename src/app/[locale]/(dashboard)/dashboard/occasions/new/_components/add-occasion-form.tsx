@@ -42,9 +42,9 @@ export default function AddOccasionForm() {
   };
 
   return (
-    <div className="rounded-2xl p-6">
+    <div className="w-[67.563rem] bg-white rounded-2xl">
       <Form {...form}>
-        <form className="w-[746px]" onSubmit={form.handleSubmit(onSubmit)}>
+        <form className="w-[746px] p-6" onSubmit={form.handleSubmit(onSubmit)}>
           {/* Name */}
           <FormField
             control={form.control}

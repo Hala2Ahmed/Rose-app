@@ -7,7 +7,9 @@ export async function fetchOccasions({
 } = {}): Promise<OccasionResponse> {
   const url = new URL(`${process.env.API_URL}/occasions`);
   url.searchParams.append("limit", String(limit));
-  url.searchParams.append("page", String(page));
+  if (!query) {
+    url.searchParams.append("page", String(page));
+  }
   url.searchParams.append("search", String(query));
 
   const response = await fetch(url.toString(), {

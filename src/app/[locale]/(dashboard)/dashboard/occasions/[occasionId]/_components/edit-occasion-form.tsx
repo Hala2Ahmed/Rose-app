@@ -53,7 +53,7 @@ export default function EditOccasionForm() {
   }, [occasion, form]);
   return (
     <div className="ms-6">
-      <h1 className="font-semibold text-2xl text-zinc-800 mb-6 flex gap-2">
+      <h1 className="font-semibold text-2xl text-zinc-800 mb-6 flex gap-2 mt-7">
         {t("update-occasion")}
         {isLoading ? (
           <Skeleton className=" w-[10rem] mt-2" />
@@ -61,9 +61,11 @@ export default function EditOccasionForm() {
           <span> {occasion?.occasion.name}</span>
         )}
       </h1>
-      <div className="max-w-[67.563rem] rounded-2xl p-6">
+      <div className="max-w-[67.563rem] rounded-2xl bg-white">
         <Form {...form}>
-          <form className="w-[746px]" onSubmit={form.handleSubmit(onSubmit)}>
+          <form
+            className="w-[746px] p-6"
+            onSubmit={form.handleSubmit(onSubmit)}>
             {/* Name */}
 
             <FormField

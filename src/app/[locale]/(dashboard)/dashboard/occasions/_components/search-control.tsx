@@ -20,7 +20,7 @@ export default function SearchInputControl() {
   const [inputValue, setInputValue] = useState(
     searchParams.get("search") || "",
   );
-  const debouncedValue = useDebounce(inputValue, 100);
+  const debouncedValue = useDebounce(inputValue, 500);
   const isMounted = useRef(false);
 
   //effect
