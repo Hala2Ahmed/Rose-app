@@ -18,10 +18,13 @@ export default function ActionButtons({
   currentPage: number;
   totalItemsOnPage: number;
 }) {
+  //translations
   const t = useTranslations("common");
 
+  //hook
   const [isPending, startTransition] = useTransition();
 
+  //function
   async function handleDelete() {
     startTransition(async () => {
       try {
@@ -37,6 +40,7 @@ export default function ActionButtons({
   }
   return (
     <div className="flex justify-end gap-2 mx-5">
+      {/* Edit Button */}
       <Button className="bg-[#0063D01A] text-blue-600 hover:bg-[#004c9e1a]">
         <Link
           className="flex gap-1 items-center"
@@ -48,6 +52,7 @@ export default function ActionButtons({
 
       {/* Wait Until delete confirmation modal is ready */}
 
+      {/* Delete button */}
       <Button
         disabled={isPending}
         className="bg-[#FF00001A] hover:bg-[#b400001a] text-red-600"

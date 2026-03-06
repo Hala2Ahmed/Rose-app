@@ -1,10 +1,11 @@
 "use server";
 
+import { redirect } from "@/i18n/navigation";
 import { DeleteOccasionResponse } from "@/lib/types/occasions.types";
 import getToken from "@/lib/utils/manage-token";
+import { getLocale } from "next-intl/server";
 import { revalidateTag } from "next/cache";
 import { isRedirectError } from "next/dist/client/components/redirect";
-import { redirect } from "next/navigation";
 
 export async function deleteOccasionAction(
   occasionId: string,
@@ -12,6 +13,7 @@ export async function deleteOccasionAction(
   totalItemsOnPage: number,
 ): Promise<ApiResponse<DeleteOccasionResponse>> {
   const token = await getToken();
+  const locale = await getLocale();
 
   try {
     const response = await fetch(
@@ -32,7 +34,10 @@ export async function deleteOccasionAction(
     revalidateTag("occasions");
 
     if (totalItemsOnPage === 1 && currentPage > 1) {
-      redirect(`/dashboard/occasions?page=${currentPage - 1}`);
+      redirect({
+        href: `/dashboard/occasions?page=${currentPage - 1}`,
+        locale,
+      });
     }
 
     return response.json();

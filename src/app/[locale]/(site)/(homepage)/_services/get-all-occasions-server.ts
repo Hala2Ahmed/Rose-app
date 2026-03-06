@@ -5,13 +5,11 @@ type OccasionResult =
   | { success: true; data: OccasionResponse }
   | { success: false; error: string; data: null };
 
-export async function getAllOccasions({
-  limit = 10,
-  page = 1,
-  query = "",
-} = {}): Promise<OccasionResult> {
+export async function getAllOccasions(
+  params: Record<string, string | number> = {},
+): Promise<OccasionResult> {
   try {
-    const data = await fetchOccasions({ limit, page, query });
+    const data = await fetchOccasions(params);
     return { success: true, data };
   } catch (error) {
     console.error("Error fetching occasions:", error);

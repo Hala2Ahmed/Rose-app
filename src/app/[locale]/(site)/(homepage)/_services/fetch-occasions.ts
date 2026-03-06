@@ -1,16 +1,13 @@
 import { OccasionResponse } from "@/lib/types/occasions.types";
 
-export async function fetchOccasions({
-  page = 1,
-  limit = 10,
-  query = "",
-} = {}): Promise<OccasionResponse> {
+export async function fetchOccasions(
+  params: Record<string, string | number> = {},
+): Promise<OccasionResponse> {
   const url = new URL(`${process.env.API_URL}/occasions`);
-  url.searchParams.append("limit", String(limit));
-  if (!query) {
-    url.searchParams.append("page", String(page));
-  }
-  url.searchParams.append("search", String(query));
+
+  Object.entries(params).forEach(([key, value]) => {
+    url.searchParams.append(key, String(value));
+  });
 
   const response = await fetch(url.toString(), {
     next: { tags: ["occasions"] },

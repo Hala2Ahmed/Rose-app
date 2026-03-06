@@ -28,7 +28,7 @@ export async function AllOccasionsTable({
   const allData = await getAllOccasions({
     page: page,
     limit: query ? 99 : 12,
-    query: query,
+    search: query,
   });
 
   //empty state

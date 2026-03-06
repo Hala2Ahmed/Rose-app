@@ -1,17 +1,15 @@
 import { OccasionResponse } from "@/lib/types/occasions.types";
 
-interface AllOccasionsParams {
-  page?: number;
-  limit?: number;
-}
-
 export async function allOccasionsService(
-  params: AllOccasionsParams = {},
+  params: Record<string, string | number> = {},
 ): Promise<OccasionResponse> {
-  const { page = 1, limit = 10 } = params;
-
-  const response = await fetch(`/api/occasions?limit=${limit}&page=${page}`);
-  const data: OccasionResponse = await response.json();
-
-  return data;
+  const { page = 1, limit = 10, ...rest } = params;
+  const searchParams = new URLSearchParams(
+    Object.entries({ page, limit, ...rest }).reduce(
+      (acc, [k, v]) => ({ ...acc, [k]: String(v) }),
+      {},
+    ),
+  );
+  const response = await fetch(`/api/occasions?${searchParams}`);
+  return response.json();
 }
