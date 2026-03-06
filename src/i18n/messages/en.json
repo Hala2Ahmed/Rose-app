@@ -294,6 +294,16 @@
   "product-may-like": {
     "title": "Products You May Like"
   },
+  "dashboard": {
+    "overview": {
+      "total-products": "Total Products",
+      "total-orders": "Total Orders",
+      "total-categories": "Total Categories",
+      "total-revenue": "Total Revenue",
+      "products": "{count, plural, =0 {{formattedCount} product} one {{formattedCount} product} other {{formattedCount} products}}",
+      "all-categories": "All Categories"
+    }
+  },
   "address": {
     "add-address-title": "Add a New Address",
     "update-address-title": "Update Address Info",

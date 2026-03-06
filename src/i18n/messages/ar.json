@@ -294,6 +294,16 @@
   "product-may-like": {
     "title": "منتجات قد تُعجبك"
   },
+  "dashboard": {
+    "overview": {
+      "total-products": "إجمالي المنتجات",
+      "total-orders": "إجمالي الطلبات",
+      "total-categories": "إجمالي الفئات",
+      "total-revenue": "إجمالي الإيرادات",
+      "products": "{count, plural, =0 {لا يوجد منتجات} one {منتج واحد} two {منتجان} few {{formattedCount} منتجات} many {{formattedCount} منتجاً} other {{formattedCount} منتج}}",
+      "all-categories": "جميع الفئات"
+    }
+  },
   "address": {
     "add-address-title": "إضافة عنوان جديد",
     "update-address-title": "تحديث معلومات العنوان",

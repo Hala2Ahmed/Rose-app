@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -52,7 +51,7 @@
   }
 
   .dark {
-    --background: #27272A;
+    --background: #27272a;
     --foreground: 210 20% 98%;
     --card: 224 71.4% 4.1%;
     --card-foreground: 210 20% 98%;
@@ -107,18 +106,16 @@
   display: none; /* Chrome, Safari */
 }
 
-
-
 /* Swiper pagination customization */
 .swiper-pagination-custom .swiper-pagination-bullet {
-  background-color: #FBEAEA;
+  background-color: #fbeaea;
   width: 10px;
   height: 10px;
   opacity: 1;
 }
 
 .swiper-pagination-custom .swiper-pagination-bullet-active {
-  background-color: #A6252A;
+  background-color: #a6252a;
   width: 30px;
   border-radius: 12px;
 }
