@@ -33,7 +33,13 @@
     "forbidden-link": "الذهاب إلى الصفحة الرئيسية",
     "notFound-heading": "هذه الصفحة غير موجودة.",
     "notFound-paragraph": "لم نتمكن من العثور على الصفحة التي تبحث عنها، يرجى التأكد من أنك في المسار الصحيح.",
-    "confirm-message": "هل أنت متأكد انك تريد حذف هذا {item}؟"
+    "confirm-message": "هل أنت متأكد انك تريد حذف هذا {item}؟",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "deleteing": "يتم المسح ..",
+    "occasion-success-delete": "تم حذف المناسبة بنجاح",
+    "search": "ابحث ...",
+    "emptyState": "لا يوجد {title} "
   },
   "about": {
     "title": "من نحن",
@@ -242,6 +248,7 @@
       "price-to-greater-than-from": "يجب أن يكون السعر 'إلى' أكبر من السعر 'من'"
     }
   },
+
   "order": {
     "order": "طلب",
     "orders": "الطلبات",
@@ -302,6 +309,36 @@
       "total-revenue": "إجمالي الإيرادات",
       "products": "{count, plural, =0 {لا يوجد منتجات} one {منتج واحد} two {منتجان} few {{formattedCount} منتجات} many {{formattedCount} منتجاً} other {{formattedCount} منتج}}",
       "all-categories": "جميع الفئات"
+    },
+    "occasions": {
+      "product": "{count, plural, =0 {لا يوجد منتجات} one {منتج واحد} two {منتجان} few {{formattedCount} منتجات} many {{formattedCount} منتجاً} other {{formattedCount} منتج}}",
+      "name": "الاسم",
+      "products": "المنتجات",
+      "all-occasions": "جميع المناسابات",
+      "add-new": "اضف مناسبة جديدة",
+      "search": "ابحث...",
+      "delete-success": " تم مسح المناسبة !",
+      "name-label": "الأسم",
+      "occasion-image-label": "صورة المناسبة",
+      "upload": "حمل الصورة",
+      "occasion-name": "ادخل اسم المناسبة",
+      "validations": {
+        "occasions-min": "يجب ان يكون اسم المناسبة اكثر من ثلاثة احرف",
+        "occasions-max": "يجب الا يزيد اسم المناسبة عن 20 حرف",
+        "occasions-required": "برجاء ادخال اسم مناسبة صحيح",
+        "photo-required": "برجاء ادخال صورة",
+        "file-too-large": "حجم الملف كبير",
+        "invalid-file-type": "يُسمح فقط بملفات .jpg و .png و .gif"
+      },
+      "add-success": "تم اضافة المناسبة",
+      "add-occasions": "اضف مناسبة",
+      "adding": "يتم الاضافة ..",
+      "edit-occasions": "تعديل المناسبة",
+      "editing": "يتم التعديل ..",
+      "edit-success": "تم تعديل المناسبة",
+      "occasion": "مناسبة",
+      "update-occasion": "عدل مناسبة:",
+      "view-image": "عرض صورة المناسبة\n"
     }
   },
   "address": {
@@ -324,7 +361,7 @@
     "phone-placeholder": "رقم الهاتف",
     "update": "تحديث",
     "add": "اضافة",
-    "address": "العنوان",
+    "confirm-delete": "هل أنت متأكد انك تريد حذف هذا العنوان؟",
     "next": "التالي",
     "street_min": "يجب أن يتكون الشارع من حرفين على الأقل.",
     "phone_invalid": "يرجى إدخال رقم هاتف صحيح.",
@@ -334,6 +371,7 @@
     "lat_invalid": "يرجى اختيار موقع صالح من الخريطة.",
     "long_invalid": "يرجى اختيار موقع صالح من الخريطة."
   },
+
   "dashboard-layout": {
     "preview": "عرض الموقع",
     "overview": "نظرة عامة",

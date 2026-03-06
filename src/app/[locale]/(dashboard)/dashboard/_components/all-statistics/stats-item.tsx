@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils/tailwind-merge";
 import {
   CircleDollarSign,
   ClipboardList,
@@ -23,12 +24,12 @@ function StatItem({
   bgClassName,
 }: StatItemProps) {
   return (
-    <div className={`${bgClassName} rounded-2xl p-4 w-full`}>
+    <div className={cn(" rounded-2xl p-4 w-full", bgClassName)}>
       <Icon className={iconClassName} width={35} height={35} />
 
       {/* Value Of Stats */}
       <span
-        className={`font-semibold text-2xl ${iconClassName} mt-3 mb-1 block`}>
+        className={cn("font-semibold text-2xl mt-3 mb-1 block", iconClassName)}>
         {value}
       </span>
 

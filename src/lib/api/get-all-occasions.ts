@@ -1,10 +1,10 @@
 import { allOccasionsService } from "@/app/[locale]/(site)/(homepage)/_services/all-occasion.service";
-import { Occasion } from "../types/occasions.types";
+import { OccasionResponse } from "../types/occasions.types";
 
 type OccasionResult =
   | {
       success: true;
-      data: Occasion[];
+      data: OccasionResponse;
     }
   | {
       success: false;
@@ -14,6 +14,7 @@ type OccasionResult =
 
 interface GetOccasionsParams {
   limit?: number;
+  page?: number;
 }
 
 export async function getAllOccasions(
@@ -21,7 +22,7 @@ export async function getAllOccasions(
 ): Promise<OccasionResult> {
   try {
     const data = await allOccasionsService(params);
-    return { success: true, data: data.occasions };
+    return { success: true, data: data };
   } catch (error) {
     console.error("Error fetching occasions:", error);
     return {

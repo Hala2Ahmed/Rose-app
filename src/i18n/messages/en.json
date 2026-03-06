@@ -33,7 +33,14 @@
     "forbidden-link": "Go to Homepage",
     "notFound-heading": "This page does not exist.",
     "notFound-paragraph": "We couldn’t find the page your are looking for, please make sure you are in the right path.",
-    "confirm-message": "Are you sure you want to delete this {item}?"
+    "confirm-message": "Are you sure you want to delete this {item}?",
+
+    "delete": "Delete",
+    "edit": "Edit",
+    "deleteing": "Deleting ..",
+    "occasion-success-delete": "Occasion deleted successfully",
+    "search": "Search ...",
+    "emptyState": "No {title} Found"
   },
   "about": {
     "title": "About",
@@ -302,8 +309,39 @@
       "total-revenue": "Total Revenue",
       "products": "{count, plural, =0 {{formattedCount} product} one {{formattedCount} product} other {{formattedCount} products}}",
       "all-categories": "All Categories"
+    },
+    "occasions": {
+      "product": "{count, plural, =0 {{formattedCount} product} one {{formattedCount} product} other {{formattedCount} products}}",
+      "name": "Name",
+      "products": "Products",
+      "all-occasions": "All Occasions",
+      "add-new": "Add new occasion",
+      "search": "Search...",
+      "delete-success": "occasion has been deleted !",
+      "name-label": "Name",
+      "occasion-name": "Enter occasion name",
+      "occasion-image-label": "Occasion image",
+      "validations": {
+        "occasions-min": "occasion name must exceed 3 charachters",
+        "occasions-max": "occasion name cannot exceed 20 charachters",
+        "occasions-required": "please enter a valid occasion name",
+        "photo-required": "please enter a photo",
+        "file-too-large": "file is too large",
+        "invalid-file-type": "Only .jpg, .png, and .gif files are allowed"
+      },
+      "add-success": "occasion has been added !",
+      "upload": "Upload File",
+      "add-occasions": "Add Occasion",
+      "adding": "Adding occasion ..",
+      "edit-occasions": "Update Occasion",
+      "editing": "Updating occasion ..",
+      "edit-success": "occasion has been edited !",
+      "occasion": "Occasion",
+      "update-occasion": "Update Occasion:",
+      "view-image": "View Occasion Image"
     }
   },
+
   "address": {
     "add-address-title": "Add a New Address",
     "update-address-title": "Update Address Info",
