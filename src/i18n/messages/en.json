@@ -233,26 +233,25 @@
       "price-to-greater-than-from": "Price 'to' must be greater than price 'from'"
     }
   },
-
   "order": {
     "order": "Order",
     "orders": "Orders",
     "created": "Created in",
-    "canceled":"Canceled",
+    "canceled": "Canceled",
     "done": "Done",
-    "delivered":"Delivered",
-    "in_progress":"In Progress",
-    "pending":"Pending",
-    "total_price":"Total Price",
-    "paid":"Paid",
-    "status":"Status",
-    "payment_method":"Payment Method",
+    "delivered": "Delivered",
+    "in_progress": "In Progress",
+    "pending": "Pending",
+    "total_price": "Total Price",
+    "paid": "Paid",
+    "status": "Status",
+    "payment_method": "Payment Method",
     "delivery_status": "Delivery Status",
-    "order_items":"Order Items",
-    "less":"Show Less",
-    "all":"Show All",
-    "rating":"Rating",
-    "ratings":"Ratings"
+    "order_items": "Order Items",
+    "less": "Show Less",
+    "all": "Show All",
+    "rating": "Rating",
+    "ratings": "Ratings"
   },
   "profile": {
     "update-profile": "Update Profile",
@@ -286,7 +285,6 @@
   },
   "product-may-like": {
     "title": "Products You May Like"
-
   },
   "address": {
     "add-address-title": "Add a New Address",
@@ -317,5 +315,14 @@
     "username_max": "Username must not exceed 20 characters.",
     "lat_invalid": "Please select a valid location on the map.",
     "long_invalid": "Please select a valid location on the map."
+  },
+  "dashboard-layout": {
+    "preview": "Preview Website",
+    "overview": "Overview",
+    "categories": "Categories",
+    "occasions": "Occasions",
+    "products": "Products",
+    "account": "Account",
+    "logout": "Log out"
   }
 }
