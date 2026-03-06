@@ -323,5 +323,14 @@
     "username_max": "Username must not exceed 20 characters.",
     "lat_invalid": "Please select a valid location on the map.",
     "long_invalid": "Please select a valid location on the map."
+  },
+  "dashboard-layout": {
+    "preview": "Preview Website",
+    "overview": "Overview",
+    "categories": "Categories",
+    "occasions": "Occasions",
+    "products": "Products",
+    "account": "Account",
+    "logout": "Log out"
   }
 }
