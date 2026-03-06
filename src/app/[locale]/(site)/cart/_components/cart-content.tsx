@@ -44,36 +44,38 @@ export default function CartContent() {
 
       {/* Cart Items */}
       <div className="border border-zinc-200 p-5 rounded-xl max-h-[50rem] overflow-y-auto cart-scroll">
-        {cart?.cartItems?.map((item) => (
-          <div
-            key={item.product._id}
-            className="flex justify-between border-b last:border-b-0 border-zinc-200 py-5"
-          >
-            <div className="flex items-center gap-4">
-              {item.product?.imgCover && (
-                <Image
-                  src={item.product.imgCover}
-                  alt={item.product.title}
-                  width={117}
-                  height={140}
-                  className="rounded-lg object-cover w-28 h-36"
+        {cart?.cartItems
+          ?.filter((item) => item.product?._id)
+          .map((item) => (
+            <div
+              key={item.product._id}
+              className="flex justify-between border-b last:border-b-0 border-zinc-200 py-5"
+            >
+              <div className="flex items-center gap-4">
+                {item.product?.imgCover && (
+                  <Image
+                    src={item.product.imgCover}
+                    alt={item.product.title}
+                    width={117}
+                    height={140}
+                    className="rounded-lg object-cover w-28 h-36"
+                  />
+                )}
+
+                <CartProductDetails item={item} />
+              </div>
+
+              <div className="flex flex-col justify-between items-end h-[140px] ms-32">
+                <DeleteProduct productId={item.product._id} />
+
+                <CartQuantityControl
+                  productId={item.product._id}
+                  stock={item.product.quantity}
+                  initialQty={item.quantity}
                 />
-              )}
-
-              <CartProductDetails item={item} />
+              </div>
             </div>
-
-            <div className="flex flex-col justify-between items-end h-[140px] ms-32">
-              <DeleteProduct productId={item.product._id} />
-
-              <CartQuantityControl
-                productId={item.product._id}
-                stock={item.product.quantity}
-                initialQty={item.quantity}
-              />
-            </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );
