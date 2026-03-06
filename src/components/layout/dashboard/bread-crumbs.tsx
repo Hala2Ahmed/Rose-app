@@ -24,13 +24,16 @@ export function Breadcrumbs() {
         <Breadcrumb className="py-6 -ms-10 ps-14 border-b border-black/8 dark:border-zinc-50/8 bg-white dark:bg-zinc-900">
             <BreadcrumbList>
                 {pathSegments.map((segment, index) => {
+                    {/* Breadcrumbs variables */ }
                     const href = "/" + [locale, ...pathSegments.slice(0, index + 1)].join("/")
                     const isLast = index === pathSegments.length - 1
 
                     return (
                         <BreadcrumbItem key={href}>
+                            {/* Breadcrumb separator */}
                             {index !== 0 && <BreadcrumbSeparator />}
 
+                            {/* Breadcrumb page and links */}
                             {isLast ? (
                                 <BreadcrumbPage className="capitalize">
                                     {formatLabel(segment)}

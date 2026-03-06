@@ -17,7 +17,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             </aside>
 
             <div className="ms-10 w-full h-screen bg-zinc-50 dark:bg-zinc-700">
+                {/* Breadcrumbs */}
                 <Breadcrumbs />
+                {/* Children */}
                 <div className="ps-4">
                     {children}
                 </div>

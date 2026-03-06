@@ -16,11 +16,13 @@ export default async function Footer() {
             <SidebarMenu>
                 <SidebarMenuItem>
                     <DropdownMenu>
+
                         <DropdownMenuTrigger asChild>
                             <SidebarMenuButton
                                 className="flex items-center justify-center pt-4 pb-6 
                             overflow-visible hover:bg-transparent active:bg-transparent 
                             data-[state=open]:bg-transparent">
+                                {/* Profile pic */}
                                 {session?.user?.photo ? (
                                     <Image
                                         src={session?.user.photo || ""}
@@ -39,14 +41,20 @@ export default async function Footer() {
                                         {session?.user.firstName.charAt(0).toUpperCase()}
                                     </div>
                                 )}
+
+                                {/* Profile name and email */}
                                 <div className="flex flex-col gap-1">
                                     <span className="font-bold text-sm text-zinc-800 dark:text-zinc-200 leading-100">{session?.user.firstName} {session?.user.lastName}</span>
                                     <span className="text-softGray dark:text-zinc-500 text-sm font-semibold leading-100">{session?.user.email}</span>
                                 </div>
+
+                                {/* Vertical ellipsis for user menu */}
                                 <EllipsisVertical className="ml-auto" size={18} />
+                                
                             </SidebarMenuButton>
                         </DropdownMenuTrigger>
 
+                        {/* User menu */}
                         <CustomDropDownMenu />
                     </DropdownMenu>
                 </SidebarMenuItem>

@@ -16,6 +16,7 @@ export default function Header() {
 
     return (
         <SidebarHeader className="pt-6 px-8">
+            {/* Image header */}
             <div
                 className="pt-15 pb-6 px-15"
             >
@@ -28,6 +29,7 @@ export default function Header() {
                 />
             </div>
 
+            {/*Preview button */}
             <Button
                 variant="primary"
                 className="py-3.5 px-9 leading-100 rounded-base cursor-pointer"

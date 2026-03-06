@@ -16,10 +16,13 @@ export function AppSidebar() {
         <Sidebar
             className="w-303 flex flex-col items-center justify-between"
             side={isRTL ? "right" : "left"}>
+            {/* Header */}
             <Header />
+            {/* Content */}
             <SidebarContent className="px-8 pt-6">
                 <SidebarContentMenu />
             </SidebarContent>
+            {/*Footer */}
             <Footer />
         </Sidebar>
     )

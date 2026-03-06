@@ -45,6 +45,7 @@ export default function SidebarContentMenu() {
                 return (
                     <SidebarMenuItem key={menu.name} className=" text-zinc-800 w-full">
                         <SidebarMenuButton className="h-11" asChild>
+                            {/* Button link */}
                             <Link href={menu.url}
                                 className={cn(
                                     "flex items-center gap-2 py-2.5 ps-2.5 w-full",
@@ -55,7 +56,9 @@ export default function SidebarContentMenu() {
                                             dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-200`
                                 )}
                             >
+                                {/* Button icon*/}
                                 <menu.icon width={25} height={25} />
+                                {/* Button name */}
                                 <span className="font-bold text-lg leading-normal">{menu.name}</span>
                             </Link>
                         </SidebarMenuButton>
