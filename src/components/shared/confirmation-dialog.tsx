@@ -21,10 +21,10 @@ type Props = {
     onConfirm: () => void;
     open: boolean,
     setOpen: Dispatch<SetStateAction<boolean>>,
-    confirmMessage: string,
+    category: string,
 }
 
-export function DeleteAddressDialog({ confirmMessage, open, isPending, trigger, onConfirm, setOpen }: Props) {
+export function DeleteAddressDialog({ category, open, isPending, trigger, onConfirm, setOpen }: Props) {
     //Translation 
     const t = useTranslations("common");
 
@@ -33,8 +33,9 @@ export function DeleteAddressDialog({ confirmMessage, open, isPending, trigger, 
             <AlertDialogTrigger asChild>
                 {trigger}
             </AlertDialogTrigger>
+
             <AlertDialogContent className="w-474 rounded-2xl bg-white dark:bg-zinc-800">
-                {/* X icon */}
+                {/* Dialog close button */}
                 <div className="flex justify-end pb-6">
                     <AlertDialogCancel
                         asChild
@@ -46,7 +47,7 @@ export function DeleteAddressDialog({ confirmMessage, open, isPending, trigger, 
                     </AlertDialogCancel>
                 </div>
 
-                {/* Header */}
+                {/* Dialog header */}
                 <AlertDialogHeader className="items-center text-center">
                     {/* Icon */}
                     <div className="mb-8 flex h-26 w-26 items-center justify-center rounded-full bg-dark-gray-5 dark:bg-zinc-50">
@@ -55,14 +56,14 @@ export function DeleteAddressDialog({ confirmMessage, open, isPending, trigger, 
                         </div>
                     </div>
 
-                    {/*Description */}
+                    {/*Dialog description */}
                     <AlertDialogTitle className="font-semibold text-5 leading-100 text-dark-gray dark:text-zinc-50">
-                        {confirmMessage}
+                        {t("confirm-message", { item: category })}
                     </AlertDialogTitle>
                 </AlertDialogHeader>
 
                 <AlertDialogFooter className="grid grid-cols-2 justify-between gap-2.5 mt-20">
-                    {/* Cancel button */}
+                    {/* Dialog close button */}
                     <AlertDialogCancel
                         asChild
                         onClick={() => setOpen(false)}
@@ -74,7 +75,7 @@ export function DeleteAddressDialog({ confirmMessage, open, isPending, trigger, 
                         </Button>
                     </AlertDialogCancel>
 
-                    {/*Confirm button */}
+                    {/*Dialog confirm button */}
                     <Button
                         variant="destructive"
                         onClick={onConfirm}
