@@ -1,5 +1,5 @@
+import { getSingleOccasionService } from "@/app/[locale]/(dashboard)/dashboard/occasions/_services/get-occasion-by-id";
 import { SingleOccasionResponse } from "../types/occasions.types";
-import { getSingleOccasionAction } from "@/app/[locale]/(dashboard)/dashboard/occasions/_actions/occasion-by-id.action";
 
 type OccasionResult =
   | {
@@ -16,7 +16,8 @@ export async function getOccasionById(
   occasionId: string | string[],
 ): Promise<OccasionResult> {
   try {
-    const data = await getSingleOccasionAction(occasionId);
+    const data = await getSingleOccasionService(occasionId);
+
     return { success: true, data: data };
   } catch (error) {
     console.error("Error fetching occasions:", error);
