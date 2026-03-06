@@ -16,7 +16,7 @@ export default function AllOccasionsHeader() {
 
         <h3 className="font-semibold text-2xl">{t("all-occasions")}</h3>
         <Button>
-          <Link href="/dashboard/occasions/new" className="flex">
+          <Link href="/dashboard/occasions/add-occasion" className="flex">
             <Plus />
             {t("add-new")}
           </Link>

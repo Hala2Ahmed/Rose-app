@@ -24,14 +24,12 @@ function StatItem({
   bgClassName,
 }: StatItemProps) {
   return (
-    <div className={(cn(" rounded-2xl p-4 w-full"), bgClassName)}>
+    <div className={cn(" rounded-2xl p-4 w-full", bgClassName)}>
       <Icon className={iconClassName} width={35} height={35} />
 
       {/* Value Of Stats */}
       <span
-        className={
-          (cn("font-semibold text-2xl mt-3 mb-1 block"), iconClassName)
-        }>
+        className={cn("font-semibold text-2xl mt-3 mb-1 block", iconClassName)}>
         {value}
       </span>
 

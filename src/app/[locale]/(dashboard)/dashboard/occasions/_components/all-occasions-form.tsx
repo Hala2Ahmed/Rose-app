@@ -22,6 +22,7 @@ import { OccasionFields } from "@/lib/types/occasions.types";
 import useAddOccasion from "../_hooks/use-add-occasion";
 import useUpdateOccasion from "../_hooks/use-update-occasion";
 import useGetSingleOccasion from "../_hooks/use-get-occasion-by-id";
+import GalleryDialog from "@/components/shared/gallery-dialog";
 
 interface OccasionFormProps {
   occasionId?: string | string[];
@@ -155,13 +156,18 @@ export default function OccasionForm({ occasionId }: OccasionFormProps) {
 
           {/* View image button — only shown in edit mode */}
           {isEditMode && (
-            <Button
-              type="button"
-              className="text-blue-600 border-[#00000014] border ms-auto flex"
-              variant="link">
-              <LucideImage />
-              {t("view-image")}
-            </Button>
+            <GalleryDialog
+              content={occasion?.occasion?.image ?? ""}
+              trigger={
+                <Button
+                  type="button"
+                  className="text-blue-600 border-[#00000014] border ms-auto flex"
+                  variant="link">
+                  <LucideImage />
+                  {t("view-image")}
+                </Button>
+              }
+            />
           )}
 
           {/* Backend error */}

@@ -42,7 +42,6 @@ export default function EmailStep(
   //Mutation
   const { isPending, error, sendOtp } = useSendOtp();
 
-
   // Hooks 
   const {
     storedValue: otpCountdown,

@@ -1,5 +1,5 @@
 // imports
-import { IBenefitsSection, IOccasionsSection } from "../types";
+import { IBenefitsSection, IOccasionsSection, Orders } from "../types";
 import { Headset, RefreshCw, ShieldCheck, Truck } from 'lucide-react';
 
 // Feature items displayed in the About section
@@ -101,3 +101,136 @@ export const occasion = {
     badge: "occasion_badge",
     title: "occasion_title"
 };
+
+
+export const fakeData: Orders[] = [{
+    orderNumber: "12345",
+    createdAt: "13 July, 2025 at 1:36 PM",
+    totalPrice: 1820,
+    paymentMethod: "Cash",
+    paid: "cash",
+    status: "canceled",
+    data: [
+        {
+            id: 1,
+            title: "Moko Chocolate Set | Esperance Rose",
+            image: "/assets/images/image3.png",
+            price: 1800,
+            quantity: 2,
+            rating: 5,
+            reviews: 4,
+        },
+        {
+            id: 2,
+            title: "Moko Chocolate Set | Esperance Rose",
+            image: "/assets/images/image3.png",
+            price: 1800,
+            quantity: 2,
+            rating: 5,
+            reviews: 4,
+        },
+        {
+            id: 3,
+            title: "Moko Chocolate Set | Esperance Rose",
+            image: "/assets/images/image3.png",
+            price: 1800,
+            quantity: 2,
+            rating: 5,
+            reviews: 4,
+        },
+        {
+            id: 4,
+            title: "Moko Chocolate Set | Esperance Rose",
+            image: "/assets/images/image3.png",
+            price: 1800,
+            quantity: 2,
+            rating: 5,
+            reviews: 4,
+        },
+        {
+            id: 5,
+            title: "Moko Chocolate Set | Esperance Rose",
+            image: "/assets/images/image3.png",
+            price: 1800,
+            quantity: 2,
+            rating: 5,
+            reviews: 4,
+        },
+        {
+            id: 6,
+            title: "Moko Chocolate Set | Esperance Rose",
+            image: "/assets/images/image3.png",
+            price: 1800,
+            quantity: 2,
+            rating: 5,
+            reviews: 4,
+        },
+    ],
+},
+{
+    orderNumber: "12344",
+    createdAt: "13 July, 2025 at 1:36 PM",
+    totalPrice: 1870,
+    paymentMethod: "Cash",
+    status: "in progress",
+    paid: "cash",
+    data: [
+        {
+            id: 1,
+            title: "Moko Chocolate Set | Esperance Rose",
+            image: "/assets/images/image5.png",
+            price: 1800,
+            quantity: 2,
+            rating: 5,
+            reviews: 4,
+        },
+        {
+            id: 2,
+            title: "Moko Chocolate Set | Esperance Rose",
+            image: "/assets/images/image5.png",
+            price: 1800,
+            quantity: 2,
+            rating: 5,
+            reviews: 4,
+        },
+        {
+            id: 3,
+            title: "Moko Chocolate Set | Esperance Rose",
+            image: "/assets/images/image5.png",
+            price: 1800,
+            quantity: 2,
+            rating: 5,
+            reviews: 4,
+        },
+    ],
+},
+
+{
+    orderNumber: "12344",
+    createdAt: "13 July, 2025 at 1:36 PM",
+    totalPrice: 1870,
+    paymentMethod: "Credit Card",
+    status: "done",
+    paid: "credit card",
+    data: [
+        {
+            id: 1,
+            title: "Moko Chocolate Set | Esperance Rose",
+            image: "/assets/images/image5.png",
+            price: 1800,
+            quantity: 2,
+            rating: 5,
+            reviews: 4,
+        },
+        {
+            id: 2,
+            title: "Moko Chocolate Set | Esperance Rose",
+            image: "/assets/images/image5.png",
+            price: 1800,
+            quantity: 2,
+            rating: 5,
+            reviews: 4,
+        },
+    ],
+},
+];

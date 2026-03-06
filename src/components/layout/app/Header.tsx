@@ -17,10 +17,14 @@ import LanguageSwitcher from "./language-switcher";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/auth";
 import InfoUser from "./info-user";
+
+import ModeToggle from "./mode-toggle";
+
 import NavigationMenu from "./navigation-menu";
 
 import CartItems from "./cart-items";
 import UserDropDown from "@/components/shared/user-dropdown";
+
 
 /* -------------------------------------------------------------------------- */
 /*                                   Header                                   */
@@ -99,6 +103,7 @@ async function Header() {
               <CartItems />
             </Link>
             <Notifications notificationCount={5} />
+            <ModeToggle />
           </div>
 
           {/* Language Switcher */}
