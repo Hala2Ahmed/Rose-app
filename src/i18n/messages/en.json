@@ -33,7 +33,14 @@
     "forbidden-link": "Go to Homepage",
     "notFound-heading": "This page does not exist.",
     "notFound-paragraph": "We couldn’t find the page your are looking for, please make sure you are in the right path.",
-    "confirm-message": "Are you sure you want to delete this {item}?"
+    "confirm-message": "Are you sure you want to delete this {item}?",
+
+    "delete": "Delete",
+    "edit": "Edit",
+    "deleteing": "Deleting ..",
+    "occasion-success-delete": "Occasion deleted successfully",
+    "search": "Search ...",
+    "emptyState": "No {title} Found"
   },
   "about": {
     "title": "About",
@@ -294,46 +301,45 @@
   "product-may-like": {
     "title": "Products You May Like"
   },
-  "address": {
-    "add-address-title": "Add a New Address",
-    "update-address-title": "Update Address Info",
-    "my-addresses": "My Addresses",
-    "empty-addresses": "No addresses attached",
-    "success-delete": "Address deleted successfully",
-    "error": "Something happened error",
-    "address-format": "{username} St., {street} St., {city}",
-    "address-details": "Enter address details",
-    "address-location": "Find Your Location",
-    "success-add": "Address added successfully",
-    "success-update": "Address updated successfully",
-    "city-label": "City",
-    "city-placeholder": "Enter city name",
-    "address-label": "Address",
-    "address-placeholder": "Enter your full address",
-    "phone-label": "Phone",
-    "phone-placeholder": "Phone number",
-    "update": "Update",
-    "add": "Add",
-    "address": "address",
-    "next": "next",
-    "street_min": "Street must be at least 2 characters long.",
-    "phone_invalid": "Please enter a valid phone number.",
-    "city_min": "City is required.",
-    "username_min": "Username must be at least 3 characters.",
-    "username_max": "Username must not exceed 20 characters.",
-    "lat_invalid": "Please select a valid location on the map.",
-    "long_invalid": "Please select a valid location on the map."
-  },
-  "dashboard-layout": {
-    "preview": "Preview Website",
-    "overview": "Overview",
-    "categories": "Categories",
-    "occasions": "Occasions",
-    "products": "Products",
-    "account": "Account",
-    "logout": "Log out"
-  },
   "dashboard": {
+    "overview": {
+      "total-products": "Total Products",
+      "total-orders": "Total Orders",
+      "total-categories": "Total Categories",
+      "total-revenue": "Total Revenue",
+      "products": "{count, plural, =0 {{formattedCount} product} one {{formattedCount} product} other {{formattedCount} products}}",
+      "all-categories": "All Categories"
+    },
+    "occasions": {
+      "product": "{count, plural, =0 {{formattedCount} product} one {{formattedCount} product} other {{formattedCount} products}}",
+      "name": "Name",
+      "products": "Products",
+      "all-occasions": "All Occasions",
+      "add-new": "Add new occasion",
+      "search": "Search...",
+      "delete-success": "occasion has been deleted !",
+      "name-label": "Name",
+      "occasion-name": "Enter occasion name",
+      "occasion-image-label": "Occasion image",
+      "validations": {
+        "occasions-min": "occasion name must exceed 3 charachters",
+        "occasions-max": "occasion name cannot exceed 20 charachters",
+        "occasions-required": "please enter a valid occasion name",
+        "photo-required": "please enter a photo",
+        "file-too-large": "file is too large",
+        "invalid-file-type": "Only .jpg, .png, and .gif files are allowed"
+      },
+      "add-success": "occasion has been added !",
+      "upload": "Upload File",
+      "add-occasions": "Add Occasion",
+      "adding": "Adding occasion ..",
+      "edit-occasions": "Update Occasion",
+      "editing": "Updating occasion ..",
+      "edit-success": "occasion has been edited !",
+      "occasion": "Occasion",
+      "update-occasion": "Update Occasion:",
+      "view-image": "View Occasion Image"
+    },
     "products-form": {
       "add-product-header": "Add a New Product",
       "product-added-successfully": "Product added successfully",
@@ -383,5 +389,45 @@
       "product-gallery-required": "Product gallery images are required",
       "each-image-size-limit": "Each image must be less than 5MB"
     }
+  },
+
+  "address": {
+    "add-address-title": "Add a New Address",
+    "update-address-title": "Update Address Info",
+    "my-addresses": "My Addresses",
+    "empty-addresses": "No addresses attached",
+    "success-delete": "Address deleted successfully",
+    "error": "Something happened error",
+    "address-format": "{username} St., {street} St., {city}",
+    "address-details": "Enter address details",
+    "address-location": "Find Your Location",
+    "success-add": "Address added successfully",
+    "success-update": "Address updated successfully",
+    "city-label": "City",
+    "city-placeholder": "Enter city name",
+    "address-label": "Address",
+    "address-placeholder": "Enter your full address",
+    "phone-label": "Phone",
+    "phone-placeholder": "Phone number",
+    "update": "Update",
+    "add": "Add",
+    "address": "address",
+    "next": "next",
+    "street_min": "Street must be at least 2 characters long.",
+    "phone_invalid": "Please enter a valid phone number.",
+    "city_min": "City is required.",
+    "username_min": "Username must be at least 3 characters.",
+    "username_max": "Username must not exceed 20 characters.",
+    "lat_invalid": "Please select a valid location on the map.",
+    "long_invalid": "Please select a valid location on the map."
+  },
+  "dashboard-layout": {
+    "preview": "Preview Website",
+    "overview": "Overview",
+    "categories": "Categories",
+    "occasions": "Occasions",
+    "products": "Products",
+    "account": "Account",
+    "logout": "Log out"
   }
 }
