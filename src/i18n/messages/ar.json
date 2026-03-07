@@ -25,7 +25,11 @@
     "reset": "إعادة ضبط",
     "confirm": "تأكيد",
     "cancel": "الغاء",
-    "logout": "تسجيل خروج"
+    "logout": "تسجيل خروج",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "deleteing": "يتم الحذف ..",
+    "search": "ابحث ..."
   },
   "about": {
     "title": "من نحن",
@@ -315,5 +319,20 @@
     "username_max": "يجب ألا يتجاوز اسم المستخدم 20 حرفًا.",
     "lat_invalid": "يرجى اختيار موقع صالح من الخريطة.",
     "long_invalid": "يرجى اختيار موقع صالح من الخريطة."
+  },
+  "dashboard": {
+    "products-table": {
+      "name": "الاسم",
+      "price": "السعر",
+      "stock": "المخزون",
+      "sales": "المبيعات",
+      "ratings": "التقييمات",
+      "price-value": "{formattedValue} ج.م",
+      "stock-value": "{count, plural, =0 {{formattedCount} عنصر} one {{formattedCount} عنصر} other {{formattedCount} عناصر}}",
+      "sales-value": "{count, plural, =0 {{formattedCount} مبيعة} one {{formattedCount} مبيعة} other {{formattedCount} مبيعات}}",
+      "rating-value": "{avg}/5 ({formattedCount})",
+      "add-new": "إضافة منتج جديد",
+      "title": "جميع المنتجات"
+    }
   }
 }

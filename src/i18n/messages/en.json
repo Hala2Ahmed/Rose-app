@@ -25,7 +25,11 @@
     "reset": "Reset",
     "confirm": "Confirm",
     "cancel": "Cancel",
-    "logout": "Log Out"
+    "logout": "Log Out",
+    "delete": "Delete",
+    "edit": "Edit",
+    "deleteing": "Deleting ..",
+    "search": "Search ..."
   },
   "about": {
     "title": "About",
@@ -233,26 +237,25 @@
       "price-to-greater-than-from": "Price 'to' must be greater than price 'from'"
     }
   },
-
   "order": {
     "order": "Order",
     "orders": "Orders",
     "created": "Created in",
-    "canceled":"Canceled",
+    "canceled": "Canceled",
     "done": "Done",
-    "delivered":"Delivered",
-    "in_progress":"In Progress",
-    "pending":"Pending",
-    "total_price":"Total Price",
-    "paid":"Paid",
-    "status":"Status",
-    "payment_method":"Payment Method",
+    "delivered": "Delivered",
+    "in_progress": "In Progress",
+    "pending": "Pending",
+    "total_price": "Total Price",
+    "paid": "Paid",
+    "status": "Status",
+    "payment_method": "Payment Method",
     "delivery_status": "Delivery Status",
-    "order_items":"Order Items",
-    "less":"Show Less",
-    "all":"Show All",
-    "rating":"Rating",
-    "ratings":"Ratings"
+    "order_items": "Order Items",
+    "less": "Show Less",
+    "all": "Show All",
+    "rating": "Rating",
+    "ratings": "Ratings"
   },
   "profile": {
     "update-profile": "Update Profile",
@@ -286,7 +289,6 @@
   },
   "product-may-like": {
     "title": "Products You May Like"
-
   },
   "address": {
     "add-address-title": "Add a New Address",
@@ -317,5 +319,20 @@
     "username_max": "Username must not exceed 20 characters.",
     "lat_invalid": "Please select a valid location on the map.",
     "long_invalid": "Please select a valid location on the map."
+  },
+  "dashboard": {
+    "products-table": {
+      "name": "Name",
+      "price": "Price",
+      "stock": "Stock",
+      "sales": "Sales",
+      "ratings": "Ratings",
+      "price-value": "{formattedValue} EGP",
+      "stock-value": "{count, plural, =0 {{formattedCount} item} one {{formattedCount} item} other {{formattedCount} items}}",
+      "sales-value": "{count, plural, =0 {{formattedCount} sale} one {{formattedCount} sale} other {{formattedCount} sales}}",
+      "rating-value": "{avg}/5 ({formattedCount})",
+      "add-new": "Add a new product",
+      "title": "All Products"
+    }
   }
 }
