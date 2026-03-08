@@ -1,4 +1,4 @@
-import { getAllOccasions } from "@/app/[locale]/(site)/(homepage)/_services/get-all-occasions.service";
+import { getAllOccasions } from "@/app/[locale]/(site)/(homepage)/_services/get-all-occasions-server";
 import AddProductForm from "./_components/add-product-form";
 import { getAllCategories } from "@/lib/services/get-all-categories.service";
 

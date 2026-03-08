@@ -35,15 +35,12 @@ import {
   UpdateProductFormData,
 } from "@/lib/types/products-dashboard";
 import { LucideImage } from "lucide-react";
+import GalleryDialog from "@/components/shared/gallery-dialog";
 
-export default function ProductForm({
-  mode,
-  defaultValues,
-  onSubmit,
-  isPending,
-  occasions,
-  categories,
-}: ProductFormProps) {
+export default function ProductForm(props: ProductFormProps) {
+  const { mode, defaultValues, onSubmit, isPending, occasions, categories } =
+    props;
+
   //translations
   const t = useTranslations("dashboard.products-form");
 
@@ -59,8 +56,8 @@ export default function ProductForm({
   const discount = form.watch("discount");
 
   React.useEffect(() => {
-    const calculated =
-      Number(price || 0) - (Number(price || 0) * Number(discount || 0)) / 100;
+    const calculated = Number(price || 0) - Number(discount || 0);
+
     form.setValue("priceAfterDiscount", calculated > 0 ? calculated : 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [price, discount]);
@@ -81,7 +78,7 @@ export default function ProductForm({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(handleSubmit)}
-        className="max-w-[62.5rem] space-y-4 grid grid-cols-3 gap-x-2.5 rounded-2xl bg-white px-7 py-6"
+        className="max-w-[67.563rem] space-y-4 grid grid-cols-3 gap-x-2.5 rounded-2xl bg-white px-7 py-6"
       >
         {/* Title */}
         <FormField
@@ -317,23 +314,33 @@ export default function ProductForm({
         <div className="col-span-3 pt-4 flex gap-2.5 justify-end items-end">
           {mode === "edit" && (
             <div className="flex gap-2.5">
-              <Button
-                type="button"
-                className="flex border text-blue-600 border-[#00000014]"
-                variant={"link"}
-              >
-                <LucideImage />
-                {t("view-product-cover-btn")}
-              </Button>
+              <GalleryDialog
+                content={props.imgCover ?? ""}
+                trigger={
+                  <Button
+                    type="button"
+                    className="flex border text-blue-600 border-[#00000014]"
+                    variant="link"
+                  >
+                    <LucideImage />
+                    {t("view-product-cover-btn")}
+                  </Button>
+                }
+              />
 
-              <Button
-                type="button"
-                className="flex border text-blue-600 border-[#00000014]"
-                variant={"link"}
-              >
-                <LucideImage />
-                {t("view-product-gallery-btn")}
-              </Button>
+              <GalleryDialog
+                content={props.images ?? []}
+                trigger={
+                  <Button
+                    type="button"
+                    className="flex border text-blue-600 border-[#00000014]"
+                    variant="link"
+                  >
+                    <LucideImage />
+                    {t("view-product-gallery-btn")}
+                  </Button>
+                }
+              />
             </div>
           )}
         </div>

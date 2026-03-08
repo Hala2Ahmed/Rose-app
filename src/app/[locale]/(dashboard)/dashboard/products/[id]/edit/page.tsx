@@ -1,7 +1,7 @@
 import { getProductDetails } from "@/app/[locale]/(site)/products/[id]/_actions/product-content.action";
 import UpdateProductForm from "./_components/update-product-form";
-import { getAllOccasions } from "@/app/[locale]/(site)/(homepage)/_services/get-all-occasions.service";
 import { getAllCategories } from "@/lib/services/get-all-categories.service";
+import { getAllOccasions } from "@/app/[locale]/(site)/(homepage)/_services/get-all-occasions-server";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const [product, occasionsResult, categoriesResult] = await Promise.all([

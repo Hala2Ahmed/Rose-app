@@ -24,6 +24,8 @@ export type EditProps = {
   isPending?: boolean;
   occasions: Occasion[];
   categories: Category[];
+  imgCover?: string;
+  images?: string[];
 };
 
 export type ProductFormProps = AddProps | EditProps;

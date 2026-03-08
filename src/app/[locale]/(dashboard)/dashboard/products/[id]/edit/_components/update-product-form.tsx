@@ -39,10 +39,7 @@ export default function UpdateProduct({
     price: product.price,
     discount:
       product.price && product.priceAfterDiscount
-        ? Math.round(
-            ((product.price - product.priceAfterDiscount) / product.price) *
-              100,
-          )
+        ? product.price - product.priceAfterDiscount
         : 0,
     priceAfterDiscount: product.priceAfterDiscount,
     category: product.category,
@@ -64,6 +61,8 @@ export default function UpdateProduct({
         defaultValues={defaultValues}
         occasions={occasions}
         categories={categories}
+        imgCover={product.imgCover}
+        images={product.images}
       />
     </div>
   );
