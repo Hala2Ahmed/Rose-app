@@ -86,8 +86,8 @@ const ShippingAddressStep: React.FC<ShippingAddressStepProps> = ({
                 className={cn(
                   "relative cursor-pointer transition-all",
                   isSelected
-                    ? "bg-maroon-600 text-zinc-50 border-maroon-600"
-                    : "border-zinc-300 text-zinc-800 hover:bg-zinc-50",
+                    ? "bg-maroon-600 text-zinc-50 border-maroon-600 dark:bg-softPink-200 dark:border-softPink-200 dark:text-zinc-800"
+                    : "border-zinc-300 text-zinc-800 hover:bg-zinc-50 dark:bg-zinc-700 dark:hover:bg-zinc-600 dark:border-zinc-700 dark:text-zinc-50",
                 )}
               >
                 <CardContent className="p-4">
@@ -99,8 +99,8 @@ const ShippingAddressStep: React.FC<ShippingAddressStepProps> = ({
                         className={cn(
                           "rounded-full w-8 h-8 p-1.5",
                           isSelected
-                            ? "bg-zinc-50 text-maroon-600"
-                            : "bg-maroon-600 text-zinc-50",
+                            ? "bg-zinc-50 text-maroon-600 "
+                            : "bg-maroon-600 text-zinc-50 dark:bg-softPink-200 dark:text-zinc-800",
                         )}
                       >
                         <PhoneIcon size={20} />
@@ -109,7 +109,7 @@ const ShippingAddressStep: React.FC<ShippingAddressStepProps> = ({
                       <span
                         className={cn(
                           "text-lg",
-                          isSelected ? "text-zinc-50" : "text-zinc-500",
+                          isSelected ? "text-zinc-50 dark:text-zinc-800" : "text-zinc-500 dark:text-zinc-50",
                         )}
                       >
                         {address.phone}
@@ -121,8 +121,8 @@ const ShippingAddressStep: React.FC<ShippingAddressStepProps> = ({
                     className={cn(
                       "w-fit px-3 rounded-full",
                       isSelected
-                        ? "text-zinc-50 bg-zinc-800"
-                        : "text-zinc-800 bg-zinc-100",
+                        ? "text-zinc-50 bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-800"
+                        : "text-zinc-800 bg-zinc-100 dark:bg-zinc-900 dark:text-zinc-50",
                     )}
                   >
                     {address.street}
@@ -137,8 +137,8 @@ const ShippingAddressStep: React.FC<ShippingAddressStepProps> = ({
       {/* OR */}
       <div className="my-3 flex items-center justify-center">
         <Separator className="w-full max-w-xs" />
-        <span className="mx-2.5 text-zinc-500 text-lg font-semibold">OR</span>
-        <Separator className="w-full max-w-xs" />
+        <span className="mx-2.5 text-zinc-500 text-lg font-semibold dark:text-zinc-100">OR</span>
+        <Separator className="w-full max-w-xs dark:text-zinc-100" />
       </div>
 
       {/* Add new address */}

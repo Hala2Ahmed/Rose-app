@@ -14,7 +14,7 @@ export const createCashOrder = async ({
 
   if (!token) throw new Error("Not logged in");
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders`, {
+  const response = await fetch(`${process.env.API_URL}/orders`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token?.accessToken || clientToken}`,

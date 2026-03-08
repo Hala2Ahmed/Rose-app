@@ -9,6 +9,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "@/i18n/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCartResponse } from "../_services/cart.service";
+import { useCartQuery } from "@/hooks/use-cart";
 
 export default function CartSummary() {
   //Translation
@@ -21,16 +22,17 @@ export default function CartSummary() {
   const { data: session } = useSession();
 
   //Queries
-  const { data: cartResponse } = useQuery({
-    queryKey: ["cart-response"],
-    queryFn: fetchCartResponse,
-  });
+  // const { data: cartResponse } = useQuery({
+  //   queryKey: ["cart-response"],
+  //   queryFn: fetchCartResponse,
+  // });
+
+  const { data: cart } = useCartQuery();
 
   //State
-  const total = cartResponse?.cart?.totalPrice || 0;
-  const isAuthenticated =
-    !!session?.accessToken ||
-    (typeof window !== "undefined" && !!sessionStorage.getItem("token"));
+  // const total = cartResponse?.cart?.totalPrice || 0;
+  const total = cart?.totalPrice || 0;
+  const isAuthenticated = !!session;
   const isCheckoutDisabled = total === 0 || !isAuthenticated;
 
   //Function
@@ -49,11 +51,11 @@ export default function CartSummary() {
       <h2 className="text-3xl font-semibold mb-6">{t("title")}</h2>
 
       {/* Summary Card */}
-      <Card className="rounded-2xl border-none bg-zinc-50">
+      <Card className="rounded-2xl border-none bg-zinc-50 dark:bg-zinc-700">
         {/* Coupon Code Section */}
         <CardContent className="p-4 space-y-2.5">
           <div className="flex gap-2.5">
-            <Input className="h-12" placeholder={t("coupon-placeholder")} />
+            <Input className="h-12 dark:bg-zinc-600" placeholder={t("coupon-placeholder")} />
             <Button className="h-12">
               <Ticket size={20} />
               {t("apply")}
@@ -65,7 +67,7 @@ export default function CartSummary() {
           </div>
 
           {/* Total Price */}
-          <div className="flex items-center justify-between text-zinc-800 text-2xl font-bold">
+          <div className="flex items-center justify-between text-zinc-800 text-2xl font-bold dark:text-zinc-100">
             <span>{t("total")}</span>
             <span>
               {total.toFixed(2)} {t("currency")}

@@ -31,7 +31,7 @@ export default function Checkout() {
   };
 
   return (
-    <div className=" w-[49rem]">
+    <div className="w-[49rem]">
       <div className="max-w-3xl mx-auto">
         <Stepper steps={steps} currentStep={currentStep} />
 

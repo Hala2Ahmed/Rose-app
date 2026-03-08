@@ -20,13 +20,14 @@ export default function InfoUser() {
   const firstName = user?.firstName;
 
   return (
-    <HoverCard openDelay={100} closeDelay={40000}>
+    <HoverCard openDelay={100}>
       <div className="inline-block cursor-pointer">
         {!token ? (
           <HoverCardTrigger asChild>
             <Link
               href="/login"
-              className="flex items-center gap-1 text-sm py-1">
+              className="flex items-center gap-1 text-sm py-1"
+            >
               <User className="h-5 w-5" />
               {t("Login")}
             </Link>
@@ -47,7 +48,8 @@ export default function InfoUser() {
       {!token && (
         <HoverCardContent
           align="start"
-          className="w-[400px] p-0 shadow-2xl rounded-lg overflow-hidden">
+          className="w-[400px] p-0 shadow-2xl rounded-lg overflow-hidden"
+        >
           <LoginPopover />
         </HoverCardContent>
       )}

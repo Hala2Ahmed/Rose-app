@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { InputPassword } from "@/components/ui/input-password";
 
 export default function LoginForm() {
   // Hook
@@ -42,7 +43,11 @@ export default function LoginForm() {
             name="password"
             control={form.control}
             render={({ field }) => (
-              <Input {...field} type="password" placeholder="••••••••" />
+              <InputPassword
+                {...field}
+                type="password"
+                placeholder="••••••••"
+              />
             )}
           />
 

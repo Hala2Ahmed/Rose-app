@@ -48,7 +48,7 @@ const PaymentMethodStep: React.FC<PaymentMethodStepProps> = ({ onBack }) => {
         <img
           src="/assets/payment/cash.png"
           alt={t("methods.cash.title")}
-          className="w-48 mx-auto"
+          className="w-48 mx-auto dark:brightness-0 dark:invert"
         />
       ),
     },
@@ -58,7 +58,7 @@ const PaymentMethodStep: React.FC<PaymentMethodStepProps> = ({ onBack }) => {
         <img
           src="/assets/payment/credit.png"
           alt={t("methods.card.title")}
-          className="w-48 mx-auto"
+          className="w-48 mx-auto dark:brightness-0 dark:invert"
         />
       ),
     },
@@ -167,8 +167,8 @@ const PaymentMethodStep: React.FC<PaymentMethodStepProps> = ({ onBack }) => {
               key={method.id}
               onClick={() => setSelectedPayment(method.id)}
               className={cn(
-                "cursor-pointer transition-all hover:bg-zinc-50",
-                isSelected && "bg-zinc-50",
+                "cursor-pointer transition-all hover:bg-zinc-50 dark:bg-zinc-700 dark:hover:bg-zinc-600",
+                isSelected && "bg-zinc-50 dark:bg-zinc-600",
               )}
             >
               <CardContent className="px-8 py-4 text-center space-y-2.5">
@@ -176,12 +176,12 @@ const PaymentMethodStep: React.FC<PaymentMethodStepProps> = ({ onBack }) => {
                 <h3
                   className={cn(
                     "text-2xl font-semibold",
-                    isSelected ? "text-maroon-600" : "text-zinc-800",
+                    isSelected ? "text-maroon-600 dark:text-softPink-300" : "text-zinc-800 dark:text-zinc-50",
                   )}
                 >
                   {t(`methods.${method.id}.title`)}
                 </h3>
-                <p className="text-sm text-zinc-500">
+                <p className="text-sm text-zinc-500 dark:text-zinc-300">
                   {t(`methods.${method.id}.description`)}
                 </p>
               </CardContent>

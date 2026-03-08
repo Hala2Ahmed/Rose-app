@@ -15,7 +15,7 @@ export const createCardOrder = async ({
   if (!token) throw new Error("Not logged in");
 
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/orders/checkout?url=${process.env.BASE_URL}`,
+    `${process.env.API_URL}/orders/checkout?url=${process.env.BASE_URL}`,
     {
       method: "POST",
       headers: {
