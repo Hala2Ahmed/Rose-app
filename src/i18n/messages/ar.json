@@ -248,7 +248,49 @@
       "price-to-greater-than-from": "يجب أن يكون السعر 'إلى' أكبر من السعر 'من'"
     }
   },
-
+  "cart": {
+  "summary": {
+    "title": "ملخص الطلب",
+    "coupon-placeholder": "كود الخصم",
+    "apply": "تطبيق الكود",
+    "no-coupons": "لا يوجد كوبونات مفعلة",
+    "total": "الإجمالي",
+    "checkout": "إتمام الشراء",
+    "currency": "جنيه"
+  },
+"address": {
+  "title": "عنوان الشحن",
+  "add": "إضافة عنوان جديد",
+  "next": "التالي",
+  "error": "فشل تحميل العناوين",
+  "empty": "لا يوجد عناوين محفوظة"
+},
+"payment": {
+  "title": "طريقة الدفع",
+  "back": "رجوع",
+  "checkout": "إتمام الطلب",
+  "methods": {
+    "cash": {
+      "title": "الدفع عند الاستلام",
+      "description": "سيتم الدفع نقدًا عند استلام الطلب."
+    },
+    "card": {
+      "title": "بطاقة ائتمان",
+      "description": "سيتم تحويلك بشكل آمن إلى Stripe لإتمام عملية الدفع."
+    }
+}},
+    "cart-header": "عربة التسوق",
+    "products-count": "منتجات",
+    "clean-cart-btn": "تفريغ العربة",
+    "clean-cart-btn-loading": "جارٍ تفريغ العربة...",
+    "cart-empty": "عربة التسوق فارغة، هل ترغب في التسوق؟",
+    "remove-btn": "إزالة",
+    "continue-shopping-btn": "متابعة التسوق",
+    "clear-cart-successfully": "تم تفريغ السلة بنجاح",
+    "product-removed-successfully": "تم إزالة المنتج من السلة بنجاح",
+    "quantity-updated-successfully": "تم تحديث الكمية بنجاح",
+    "product-added-successfully": "تمت إضافة المنتج إلى السلة بنجاح"
+},
   "order": {
     "order": "طلب",
     "orders": "الطلبات",
@@ -284,19 +326,6 @@
     "orders": "الطلبات",
     "dashboard": "لوحة التحكم",
     "hello": "مرحبا "
-  },
-  "cart": {
-    "cart-header": "عربة التسوق",
-    "products-count": "منتجات",
-    "clean-cart-btn": "تفريغ العربة",
-    "clean-cart-btn-loading": "جارٍ تفريغ العربة...",
-    "cart-empty": "عربة التسوق فارغة، هل ترغب في التسوق؟",
-    "remove-btn": "إزالة",
-    "continue-shopping-btn": "متابعة التسوق",
-    "clear-cart-successfully": "تم تفريغ السلة بنجاح",
-    "product-removed-successfully": "تم إزالة المنتج من السلة بنجاح",
-    "quantity-updated-successfully": "تم تحديث الكمية بنجاح",
-    "product-added-successfully": "تمت إضافة المنتج إلى السلة بنجاح"
   },
   "product-may-like": {
     "title": "منتجات قد تُعجبك"
@@ -371,7 +400,6 @@
     "lat_invalid": "يرجى اختيار موقع صالح من الخريطة.",
     "long_invalid": "يرجى اختيار موقع صالح من الخريطة."
   },
-
   "dashboard-layout": {
     "preview": "عرض الموقع",
     "overview": "نظرة عامة",

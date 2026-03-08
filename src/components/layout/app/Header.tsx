@@ -25,7 +25,6 @@ import NavigationMenu from "./navigation-menu";
 import CartItems from "./cart-items";
 import UserDropDown from "@/components/shared/user-dropdown";
 
-
 /* -------------------------------------------------------------------------- */
 /*                                   Header                                   */
 /* -------------------------------------------------------------------------- */
@@ -65,7 +64,7 @@ async function Header() {
   ];
 
   return (
-    <header className="w-full bg-white shadow-sm dark:bg-zinc-900">
+    <header className="w-full bg-white shadow-sm dark:bg-zinc-800">
       {/* ==================== Top Header Section ==================== */}
       <div className="flex items-center justify-between px-9 py-4 gap-4">
         {/* Logo */}

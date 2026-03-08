@@ -248,6 +248,50 @@
       "price-to-greater-than-from": "Price 'to' must be greater than price 'from'"
     }
   },
+  "cart": {
+  "summary": {
+    "title": "Summary",
+    "coupon-placeholder": "Coupon Code",
+    "apply": "Apply Coupon",
+    "no-coupons": "No coupons applied",
+    "total": "Total",
+    "checkout": "Checkout",
+    "currency": "EGP"
+  },
+  "address": {
+    "title": "Shipping Address",
+    "add": "Add New Address",
+    "next": "Next",
+    "error": "Failed to load addresses",
+    "empty": "No saved addresses found"
+},
+"payment": {
+  "title": "Payment Method",
+  "back": "Back",
+  "checkout": "Checkout",
+  "methods": {
+    "cash": {
+      "title": "Cash on Delivery",
+      "description": "You'll pay in cash when your order is delivered."
+    },
+    "card": {
+      "title": "Credit Card",
+      "description": "You'll be securely redirected to Stripe to complete your payment."
+    }
+}
+},
+    "cart-header": "Cart",
+    "products-count": "products",
+    "clean-cart-btn": "Clean Cart",
+    "clean-cart-btn-loading": "Cleaning...",
+    "cart-empty": "Your cart is empty, wanna try shopping?",
+    "remove-btn": "Remove",
+    "continue-shopping-btn": "Continue Shopping",
+    "clear-cart-successfully": "Cart cleared successfully",
+    "product-removed-successfully": "Product removed from cart successfully",
+    "quantity-updated-successfully": "Quantity updated successfully",
+    "product-added-successfully": "Product added to cart successfully"
+},
   "order": {
     "order": "Order",
     "orders": "Orders",
@@ -285,19 +329,7 @@
     "dashboard": "Dashboard",
     "hello": "Hello"
   },
-  "cart": {
-    "cart-header": "Cart",
-    "products-count": "products",
-    "clean-cart-btn": "Clean Cart",
-    "clean-cart-btn-loading": "Cleaning...",
-    "cart-empty": "Your cart is empty, wanna try shopping?",
-    "remove-btn": "Remove",
-    "continue-shopping-btn": "Continue Shopping",
-    "clear-cart-successfully": "Cart cleared successfully",
-    "product-removed-successfully": "Product removed from cart successfully",
-    "quantity-updated-successfully": "Quantity updated successfully",
-    "product-added-successfully": "Product added to cart successfully"
-  },
+
   "product-may-like": {
     "title": "Products You May Like"
   },
@@ -380,5 +412,5 @@
     "products": "Products",
     "account": "Account",
     "logout": "Log out"
-  }
-}
+  }}
+
