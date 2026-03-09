@@ -35,7 +35,7 @@ export default function CartContent() {
   if (!cart || cart.cartItems.length === 0) return <EmptyCart />;
 
   return (
-    <div className="max-w-[782px] mb-12">
+    <div className="w-full mb-12">
       {/*Cart Header */}
       <CartHeader
         cartLength={cart.cartItems.length}

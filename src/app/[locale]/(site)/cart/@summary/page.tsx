@@ -1,5 +1,6 @@
 import React from "react";
+import CartSummary from "../_components/cart-summary";
 
 export default function page() {
-  return <div>summary</div>;
+  return (<CartSummary/>);
 }
