@@ -78,7 +78,7 @@ export default function ProductForm(props: ProductFormProps) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(handleSubmit)}
-        className="max-w-[67.563rem] space-y-4 grid grid-cols-3 gap-x-2.5 rounded-2xl bg-white px-7 py-6"
+        className="max-w-[67.563rem] space-y-4 grid grid-cols-3 gap-x-2.5 rounded-2xl bg-white px-7 py-6 dark:bg-zinc-800"
       >
         {/* Title */}
         <FormField

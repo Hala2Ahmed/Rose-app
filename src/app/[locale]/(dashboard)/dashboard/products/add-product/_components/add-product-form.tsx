@@ -52,9 +52,9 @@ export default function AddProduct({ occasions, categories }: Props) {
   };
 
   return (
-    <div className="bg-zinc-50 px-7">
+    <div className="bg-zinc-50 dark:bg-zinc-700 px-7">
       {/* Page header */}
-      <h3 className="text-zinc-800 text-2xl font-semibold py-6">
+      <h3 className="text-zinc-800 dark:text-white text-2xl font-semibold py-6">
         {t("add-product-header")}
       </h3>
 
