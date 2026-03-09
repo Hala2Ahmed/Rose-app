@@ -7,8 +7,6 @@ import { Ticket, MoveRight, MoveLeft } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { useSession } from "next-auth/react";
 import { useRouter } from "@/i18n/navigation";
-import { useQuery } from "@tanstack/react-query";
-import { fetchCartResponse } from "../_services/cart.service";
 import { useCartQuery } from "@/hooks/use-cart";
 
 export default function CartSummary() {

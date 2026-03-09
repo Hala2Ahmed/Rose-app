@@ -20,7 +20,7 @@ export function Breadcrumbs() {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
   const locale = segments[0];
-  const pathSegments = segments.slice(1);
+  const pathSegments = segments.slice(1).filter((seg) => seg !== "edit");
 
   // 👇 resolves any id segments to their entity names
   const resolvedLabels = useResolveBreadcrumbLabels(pathSegments);

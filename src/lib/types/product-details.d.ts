@@ -13,4 +13,5 @@ export type ProductDetails = {
   rateCount: number;
   isInWishlist: boolean;
   category: sting,
+  occasion: string
 };
