@@ -1,16 +1,15 @@
 import { OccasionResponse } from "@/lib/types/occasions.types";
 
-interface AllOccasionsParams {
-  page?: number;
-  limit?: number;
-}
-
-export async function allOccasionsService(): Promise<Occasion[]> {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/occasions?limit=4`,
+export async function allOccasionsService(
+  params: Record<string, string | number> = {},
+): Promise<OccasionResponse> {
+  const { page = 1, limit = 10, ...rest } = params;
+  const searchParams = new URLSearchParams(
+    Object.entries({ page, limit, ...rest }).reduce(
+      (acc, [k, v]) => ({ ...acc, [k]: String(v) }),
+      {},
+    ),
   );
-
-  const data: OccasionResponse = await response.json();
-
-  return data;
+  const response = await fetch(`/api/occasions?${searchParams}`);
+  return response.json();
 }

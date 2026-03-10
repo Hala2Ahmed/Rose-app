@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/auth";
@@ -18,6 +19,26 @@ export default async function OccasionsPage() {
           Coming soon.
         </p>
       </div>
+=======
+import React, { Suspense } from "react";
+import { AllOccasionsTable } from "./_components/all-occasions-table";
+import { AllOccasionsTableSkeleton } from "@/components/skeletons/occasions-table.skeleton";
+
+export default async function OccasionsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string; search?: string }>;
+}) {
+  const { page, search } = await searchParams;
+  const currentPage = Number(page) || 1;
+  const query = search ?? "";
+
+  return (
+    <div className="max-w-[68.813rem] m-5">
+      <Suspense fallback={<AllOccasionsTableSkeleton />}>
+        <AllOccasionsTable page={currentPage} query={query} />
+      </Suspense>
+>>>>>>> 08bdac9a35da0bf634688f8a898179289654f02b
     </div>
   );
 }

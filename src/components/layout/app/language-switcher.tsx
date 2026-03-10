@@ -37,7 +37,7 @@ const LanguageSwitcher = ({ className }: Props) => {
       onClick={switchLanguage}
       variant={"ghost"}
       className={cn(
-        "text-zinc-700 dark:text-zinc-50 rounded-none shadow-none",
+        "text-zinc-700 dark:text-zinc-50 rounded-none shadow-none hover:bg-transparent dark:hover:bg-transparent",
         className,
       )}>
       {locale == "ar" ? "English" : "العربية"}

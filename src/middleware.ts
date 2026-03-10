@@ -6,6 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 const intlMiddleware = createMiddleware(routing);
 
 const authPages = ["/login", "/register", "/forgot-password"];
+const protectedPages = ["/dashboard", "/profile"];
 
 export default async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -20,6 +21,18 @@ export default async function middleware(req: NextRequest) {
   const token = await getToken({ req });
 
   if (pathnameWithoutLocale.startsWith("/dashboard")) {
+    if (!token) {
+      const loginUrl = new URL(`/${locale}/login`, req.url);
+      loginUrl.searchParams.set("callbackUrl", pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+    return intlMiddleware(req);
+  }
+  const isProtectedPage = protectedPages.some((page) =>
+    pathnameWithoutLocale.startsWith(page),
+  );
+
+  if (isProtectedPage) {
     if (!token) {
       const loginUrl = new URL(`/${locale}/login`, req.url);
       loginUrl.searchParams.set("callbackUrl", pathname);

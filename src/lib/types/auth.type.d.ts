@@ -1,12 +1,9 @@
-import { DefaultSession } from "next-auth";
+import { DefaultSession, User } from "next-auth";
 import z from "zod";
-import { registerSchema } from "../schemes/auth.schema";
 import {
   emailStepSchema,
   resetPasswordStepSchema,
 } from "../schemes/auth.schema";
-
-export type RegisterFields = z.infer<ReturnType<typeof registerSchema>>;
 
 declare module "next-auth" {
   interface Session {
@@ -19,7 +16,7 @@ declare module "next-auth" {
       phone: string;
       photo: string;
       role: "user" | "admin";
-      gender: "male" | "female" | "other";
+      gender: "male" | "female";
     };
   }
 
@@ -94,6 +91,15 @@ export type ResetPasswordStepFields = z.infer<
 
 // Response returned by the reset password step API
 export type ResetPasswordStepResponse = {
+  message: string;
+  token: string;
+};
+
+export type UpdateProfileResponse = {
+  user: User[user];
+  message: string;
+};
+export type ChangePasswordResponse = {
   message: string;
   token: string;
 };
