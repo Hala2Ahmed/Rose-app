@@ -11,7 +11,7 @@ export default function ContinueShopping() {
   return (
     <Link href="/products">
       <Button className="mt-6">
-        <MoveLeft /> {t("continue-shopping-btn")}
+        <MoveLeft className="rtl:rotate-180" /> {t("continue-shopping-btn")}
       </Button>
     </Link>
   );

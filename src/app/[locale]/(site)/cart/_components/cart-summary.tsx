@@ -19,16 +19,9 @@ export default function CartSummary() {
   const router = useRouter();
   const { data: session } = useSession();
 
-  //Queries
-  // const { data: cartResponse } = useQuery({
-  //   queryKey: ["cart-response"],
-  //   queryFn: fetchCartResponse,
-  // });
-
   const { data: cart } = useCartQuery();
 
   //State
-  // const total = cartResponse?.cart?.totalPrice || 0;
   const total = cart?.totalPrice || 0;
   const isAuthenticated = !!session;
   const isCheckoutDisabled = total === 0 || !isAuthenticated;
@@ -44,7 +37,7 @@ export default function CartSummary() {
   };
 
   return (
-    <div className="w-[29rem]" dir={isRTL ? "rtl" : "ltr"}>
+    <div className="w-full sm:w-[29rem]" dir={isRTL ? "rtl" : "ltr"}>
       {/* Title */}
       <h2 className="text-3xl font-semibold mb-6">{t("title")}</h2>
 

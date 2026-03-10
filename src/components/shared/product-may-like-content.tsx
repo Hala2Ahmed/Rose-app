@@ -8,14 +8,20 @@ import {
   CarouselPrevious,
 } from "../ui/carousel";
 import { RecommendedProduct } from "@/lib/types/recommendations";
+import { useLocale } from "next-intl";
 
 export default function ProductMayLikeContent({
   data,
 }: {
   data: RecommendedProduct[];
 }) {
+  const locale = useLocale();
+
   return (
-    <Carousel opts={{ align: "start" }} className="w-full">
+    <Carousel
+      opts={{ align: "start", direction: locale === "ar" ? "rtl" : "ltr" }}
+      className="w-full"
+    >
       <CarouselContent className="-ms-6 my-10">
         {data.map((product) => (
           <CarouselItem
@@ -26,8 +32,8 @@ export default function ProductMayLikeContent({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="-start-5 bg-maroon-500 hover:bg-maroon-600 text-white hover:text-white w-10 h-10 border-0 rtl:left-auto rtl:-right-5 rtl:-rotate-180" />
-      <CarouselNext className="-end-4 bg-maroon-500 hover:bg-maroon-600 text-white hover:text-white w-10 h-10 border-0 rtl:right-auto rtl:-left-4 rtl:-rotate-180" />
+      <CarouselPrevious className="-start-5 bg-maroon-500 hover:bg-maroon-600 text-white hover:text-white w-10 h-10 border-0" />
+      <CarouselNext className="-end-4 bg-maroon-500 hover:bg-maroon-600 text-white hover:text-white w-10 h-10 border-0" />
     </Carousel>
   );
 }

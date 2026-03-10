@@ -78,14 +78,14 @@ export default function ProductForm(props: ProductFormProps) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(handleSubmit)}
-        className="max-w-[67.563rem] space-y-4 grid grid-cols-3 gap-x-2.5 rounded-2xl bg-white px-7 py-6 dark:bg-zinc-800"
+        className="max-w-[67.563rem] space-y-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-2.5  rounded-2xl bg-white px-7 py-6 dark:bg-zinc-800"
       >
         {/* Title */}
         <FormField
           control={form.control}
           name="title"
           render={({ field }) => (
-            <FormItem className="col-span-3">
+            <FormItem className="col-span-1 sm:col-span-2 lg:col-span-3">
               <FormLabel>
                 {t("title-field")} <span className="text-destructive">*</span>
               </FormLabel>
@@ -102,7 +102,7 @@ export default function ProductForm(props: ProductFormProps) {
           control={form.control}
           name="description"
           render={({ field }) => (
-            <FormItem className="col-span-3">
+            <FormItem className="col-span-1 sm:col-span-2 lg:col-span-3">
               <FormLabel>
                 {t("description-field")}{" "}
                 <span className="text-destructive">*</span>
@@ -182,7 +182,7 @@ export default function ProductForm(props: ProductFormProps) {
           control={form.control}
           name="quantity"
           render={({ field }) => (
-            <FormItem className="col-span-3">
+            <FormItem className="col-span-1 sm:col-span-2 lg:col-span-3">
               <FormLabel>
                 {t("quantity-field")}{" "}
                 <span className="text-destructive">*</span>
@@ -205,7 +205,7 @@ export default function ProductForm(props: ProductFormProps) {
               control={form.control}
               name="imgCover"
               render={({ field }) => (
-                <FormItem className="col-span-3">
+                <FormItem className="col-span-1 sm:col-span-2 lg:col-span-3">
                   <FormLabel>
                     {t("product-cover-field")}{" "}
                     <span className="text-destructive">*</span>
@@ -226,7 +226,7 @@ export default function ProductForm(props: ProductFormProps) {
               control={form.control}
               name="images"
               render={({ field }) => (
-                <FormItem className="col-span-3">
+                <FormItem className="col-span-1 sm:col-span-2 lg:col-span-3">
                   <FormLabel>
                     {t("product-gallery-field")}{" "}
                     <span className="text-destructive">*</span>
@@ -253,7 +253,7 @@ export default function ProductForm(props: ProductFormProps) {
           control={form.control}
           name="category"
           render={({ field }) => (
-            <FormItem className="col-span-3">
+            <FormItem className="col-span-1 sm:col-span-2 lg:col-span-3">
               <FormLabel>
                 {t("category-field")}{" "}
                 <span className="text-destructive">*</span>
@@ -282,7 +282,7 @@ export default function ProductForm(props: ProductFormProps) {
           control={form.control}
           name="occasion"
           render={({ field }) => (
-            <FormItem className="col-span-3">
+            <FormItem className="col-span-1 sm:col-span-2 lg:col-span-3">
               <FormLabel>
                 {t("occasion-field")}{" "}
                 <span className="text-destructive">*</span>
@@ -311,7 +311,7 @@ export default function ProductForm(props: ProductFormProps) {
         />
 
         {/* Images Button (Only for edit mode) */}
-        <div className="col-span-3 pt-4 flex gap-2.5 justify-end items-end">
+        <div className="col-span-1 sm:col-span-2 lg:col-span-3 pt-4 flex gap-2.5 justify-end items-end">
           {mode === "edit" && (
             <div className="flex gap-2.5">
               <GalleryDialog
@@ -346,7 +346,7 @@ export default function ProductForm(props: ProductFormProps) {
         </div>
 
         {/* Submit Button */}
-        <div className="col-span-3 pt-28">
+        <div className="col-span-1 sm:col-span-2 lg:col-span-3 pt-28">
           <Button
             type="submit"
             loading={isPending}

@@ -19,7 +19,7 @@ export default function AddToCartButton({
       onClick={() => mutate({ product, quantity: 1 })}
       disabled={isPending || product.quantity <= 0}
     >
-      <ShoppingCart className="w-6 h-6 mr-2.5" />
+      <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6 mr-2.5" />
       {product.quantity <= 0
         ? "Out of Stock"
         : isPending
