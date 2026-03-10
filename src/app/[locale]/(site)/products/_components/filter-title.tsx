@@ -41,7 +41,7 @@ export default function FilterTitle({
     });
   };
   return (
-    <div className="flex justify-between items-center  border-t mb-2">
+    <div className="flex justify-between items-center border-t mb-2">
       {/* Filter Title */}
       <h3 className="font-semibold text-lg mt-2">{title}</h3>
 
@@ -50,7 +50,7 @@ export default function FilterTitle({
         <Button
           onClick={handleReset}
           variant={"ghost"}
-          className="text-red-600 hover:bg-transparent p-0 font-normal mt-2">
+          className="text-red-600 hover:bg-transparent p-0 font-normal mt-2 dark:text-red-500">
           <XIcon width={15} height={15} />
           {t("reset")}
         </Button>

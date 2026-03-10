@@ -11,7 +11,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { RegisterFields } from "@/lib/types/auth.type";
 import { PhoneInput } from "@/components/ui/phone-input";
 import { registerSchema } from "@/lib/schemes/auth.schema";
 import { useTranslations } from "next-intl";
@@ -27,6 +26,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { RegisterFields } from "@/lib/types/auth";
 
 export default function RegisterForm() {
   //state
