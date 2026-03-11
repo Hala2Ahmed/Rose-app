@@ -334,6 +334,13 @@
     "title": "Products You May Like"
   },
   "dashboard": {
+    "top_selling": "Top Selling Products",
+    "sales": "{count, plural, =0 {{formattedCount} Sales} one {{formattedCount} Sale} other {{formattedCount} Sales}}",
+    "price": "({value, number, ::currency/EGP})",
+    "low_stock": "Low Stock Products",
+    "products": "Products"
+  },
+
     "overview": {
       "total-products": "Total Products",
       "total-orders": "Total Orders",
@@ -420,8 +427,8 @@
       "invalid-file-type": "Only .jpg, .jpeg, .png and .webp formats are supported",
       "product-gallery-required": "Product gallery images are required",
       "each-image-size-limit": "Each image must be less than 5MB"
-    }
-  },
+    },
+  
 
   "address": {
     "add-address-title": "Add a New Address",

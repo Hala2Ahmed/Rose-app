@@ -331,6 +331,12 @@
     "title": "منتجات قد تُعجبك"
   },
   "dashboard": {
+    "top_selling": "الأكثر مبيعًا",
+    "sales": "{count, plural, =0 {{formattedCount} مبيعات} one {{formattedCount} مبيع} other {{formattedCount} مبيعات}}",
+    "price": "({value, number, ::currency/EGP})",
+    "low_stock": "المنتجات ذات المخزون المنخفض",
+    "products": "المنتجات"
+  },
     "overview": {
       "total-products": "إجمالي المنتجات",
       "total-orders": "إجمالي الطلبات",
