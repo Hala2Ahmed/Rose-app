@@ -1,9 +1,7 @@
-"use client";
-
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils/tailwind-merge";
 import TopSellingProductsSkeleton from "@/components/skeletons/top-selling-products-skeleton";
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 import { useProducts } from "../../../../../hooks/useProducts";
 import { Product } from "@/lib/types/products";
 
@@ -14,10 +12,16 @@ type TopSellingProductUI = {
   sales: number;
 };
 
-export default function TopSellingProducts() {
+const RANK_GRADIENTS: Record<number, string> = {
+  0: "bg-gradient-to-r from-[#DFAC1640] to-[#DFAC1640]/10",
+  1: "bg-gradient-to-r from-[#dddfe5] to-[#dddfe5]/35",
+  2: "bg-gradient-to-r from-[#e4d1c1] to-[#e4d1c1]/35",
+};
 
+export default function TopSellingProducts() {
   //Translation
   const t = useTranslations("dashboard");
+  const format = useFormatter();
 
   //Hooks
   const { data, isLoading, isError, error } = useProducts({
@@ -52,21 +56,15 @@ export default function TopSellingProducts() {
 
         <div className="space-y-2.5 overflow-y-auto h-[21.5rem] scrollbar-hide">
           {products.map((product, index) => {
-            const isTop1 = index === 0;
-            const isTop2 = index === 1;
-            const isTop3 = index === 2;
-
-            {/* products */}
+            {
+              /* products */
+            }
             return (
               <div
                 key={product.id}
                 className={cn(
                   "flex items-center justify-between px-2.5 py-1.5 rounded-sm transition-colors text-zinc-800",
-                  isTop1 &&
-                    "bg-gradient-to-r from-[#DFAC1640] to-[#DFAC1640]/10",
-                  isTop2 && "bg-gradient-to-r from-[#dddfe5] to-[#dddfe5]/35",
-                  isTop3 && "bg-gradient-to-r from-[#e4d1c1] to-[#e4d1c1]/35",
-                  !isTop1 && !isTop2 && !isTop3 && "bg-zinc-100",
+                  RANK_GRADIENTS[index] ?? "bg-zinc-100",
                 )}
               >
                 <div className="flex items-center gap-1 min-w-0">
@@ -74,13 +72,17 @@ export default function TopSellingProducts() {
                     {product.name}
                   </p>
                   <span className="text-xs whitespace-nowrap">
-                    ({product.price.toLocaleString()} EGP)
+                    {t("price", { value: product.price })}
                   </span>
                 </div>
 
                 <div className="flex items-center text-sm gap-1">
-                  <span className="font-bold">{product.sales}</span>
-                  <span>{t("sales")}</span>
+                  <span className="font-bold">
+                    {t("sales", {
+                      count: product.sales,
+                      formattedCount: format.number(product.sales),
+                    })}
+                  </span>
                 </div>
               </div>
             );

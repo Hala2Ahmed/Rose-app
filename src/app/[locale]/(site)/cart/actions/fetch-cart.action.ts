@@ -19,10 +19,16 @@ export async function fetchCart() {
     cache: "no-store",
   });
 
+  if (!res.ok) {
+    console.error("fetchCart failed with status:", res.status);
+    return { cartItems: [], totalPrice: 0 };
+  }
+
   const payload: ApiResponse<CartResponse> = await res.json();
 
   if ("error" in payload) {
-    throw new Error(payload.error);
+    console.error("fetchCart API error:", payload.error);
+    return { cartItems: [], totalPrice: 0 };
   }
 
   return payload.cart;

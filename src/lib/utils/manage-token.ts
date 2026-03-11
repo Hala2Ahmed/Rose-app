@@ -1,10 +1,12 @@
 "use server";
 import { decode, encode, JWT } from "next-auth/jwt";
 import { cookies } from "next/headers";
+
 const cookieName =
   process.env.NODE_ENV === "production"
     ? "__Secure-next-auth.session-token"
     : "next-auth.session-token";
+    
 export default async function getToken() {
   const tokenCookie = cookies().get(cookieName)?.value;
 

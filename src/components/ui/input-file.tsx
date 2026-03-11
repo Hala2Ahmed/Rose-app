@@ -12,18 +12,24 @@ interface FileInputProps
 }
 
 const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
-  ({ className, status = "default", id, ...props }, ref) => {
+  ({ className, status = "default", id,onChange,value, ...props }, ref) => {
     const inputId = id || React.useId();
     const [fileName, setFileName] = React.useState<string>("");
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const files = e.target.files;
       if (files && files.length > 0) {
-        setFileName(files[0].name);
+        if (props.multiple) {
+          setFileName(
+            files.length === 1 ? files[0].name : `${files.length} files selected`
+          );
+        } else {
+          setFileName(files[0].name);
+        }
       } else {
         setFileName("");
       }
-      props.onChange?.(e);
+      onChange?.(e);
     };
 
     const statusStyles = {
@@ -50,8 +56,8 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
           ref={ref}
           disabled={status === "disabled"}
           className="sr-only"
-          onChange={handleFileChange}
           {...props}
+          onChange={handleFileChange}
         />
 
         <label

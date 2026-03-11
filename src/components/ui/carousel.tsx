@@ -4,7 +4,7 @@ import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 import { cn } from "@/lib/utils/tailwind-merge"
 import { Button } from "@/components/ui/button"
@@ -163,7 +163,7 @@ const CarouselContent = React.forwardRef<
         ref={ref}
         className={cn(
           "flex",
-          orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
+          orientation === "horizontal" ? "" : "-mt-4 flex-col",
           className
         )}
         {...props}
@@ -219,8 +219,8 @@ const CarouselPrevious = React.forwardRef<
       {...props}
     >
       {locale === "ar" ?
-        <ArrowRight className="h-4 w-4" />
-        : <ArrowLeft className="h-4 w-4" />}
+        <ChevronRight className="h-4 w-4" />
+        : <ChevronLeft className="h-4 w-4" />}
 
       <span className="sr-only">Previous slide</span>
     </Button>
@@ -252,8 +252,8 @@ const CarouselNext = React.forwardRef<
       {...props}
     >
       {locale === "ar" ?
-        <ArrowLeft className="h-4 w-4" />
-        : <ArrowRight className="h-4 w-4" />}
+        <ChevronLeft className="h-4 w-4" />
+        : <ChevronRight className="h-4 w-4" />}
 
       <span className="sr-only">Next slide</span>
     </Button>

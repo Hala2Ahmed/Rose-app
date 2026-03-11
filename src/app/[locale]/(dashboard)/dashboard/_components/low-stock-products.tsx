@@ -1,5 +1,3 @@
-"use client";
-
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils/tailwind-merge";
 import { useProducts } from "../../../../../hooks/useProducts";
@@ -14,7 +12,6 @@ type ProductStockUI = {
 };
 
 export default function LowStockProducts() {
-  
   //Translation
   const t = useTranslations("dashboard");
 

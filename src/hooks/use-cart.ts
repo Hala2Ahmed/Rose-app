@@ -97,12 +97,13 @@ export function useAddToCart() {
 
 // sync the guest cart to the server after the user logs in.
 export function useSyncGuestCart() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const qc = useQueryClient();
   const syncedRef = useRef(false);
 
   useEffect(() => {
-    if (!session?.user || syncedRef.current) return;
+    if (status !== "authenticated" || !session?.user || syncedRef.current)
+      return;
 
     syncedRef.current = true;
 
@@ -161,5 +162,5 @@ export function useSyncGuestCart() {
         syncedRef.current = false;
       }
     })();
-  }, [session?.user, qc]);
+  }, [status, session?.user, qc]);
 }
