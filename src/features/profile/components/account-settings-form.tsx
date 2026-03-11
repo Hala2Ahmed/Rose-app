@@ -291,7 +291,7 @@ export function AccountSettingsForm({ user }: AccountSettingsFormProps) {
               loading={isSubmitting}
               className="w-auto"
             >
-              Save Changes
+              {isSubmitting ? "Saving..." : "Save Changes"}
             </Button>
 
           </div>

@@ -423,8 +423,7 @@
       "invalid-file-type": "يُسمح فقط بصيغ .jpgو .jpeg و .pngو .webp",
       "product-gallery-required": "صور معرض المنتج مطلوبة",
       "each-image-size-limit": "يجب ألا يتجاوز حجم كل صورة 5 ميجابايت"
-    }
-  },
+    },
   "address": {
     "add-address-title": "إضافة عنوان جديد",
     "update-address-title": "تحديث معلومات العنوان",
