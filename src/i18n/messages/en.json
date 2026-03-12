@@ -249,37 +249,37 @@
     }
   },
   "cart": {
-  "summary": {
-    "title": "Summary",
-    "coupon-placeholder": "Coupon Code",
-    "apply": "Apply Coupon",
-    "no-coupons": "No coupons applied",
-    "total": "Total",
-    "checkout": "Checkout",
-    "currency": "EGP"
-  },
-  "address": {
-    "title": "Shipping Address",
-    "add": "Add New Address",
-    "next": "Next",
-    "error": "Failed to load addresses",
-    "empty": "No saved addresses found"
-},
-"payment": {
-  "title": "Payment Method",
-  "back": "Back",
-  "checkout": "Checkout",
-  "methods": {
-    "cash": {
-      "title": "Cash on Delivery",
-      "description": "You'll pay in cash when your order is delivered."
+    "summary": {
+      "title": "Summary",
+      "coupon-placeholder": "Coupon Code",
+      "apply": "Apply Coupon",
+      "no-coupons": "No coupons applied",
+      "total": "Total",
+      "checkout": "Checkout",
+      "currency": "EGP"
     },
-    "card": {
-      "title": "Credit Card",
-      "description": "You'll be securely redirected to Stripe to complete your payment."
-    }
-}
-},
+    "address": {
+      "title": "Shipping Address",
+      "add": "Add New Address",
+      "next": "Next",
+      "error": "Failed to load addresses",
+      "empty": "No saved addresses found"
+    },
+    "payment": {
+      "title": "Payment Method",
+      "back": "Back",
+      "checkout": "Checkout",
+      "methods": {
+        "cash": {
+          "title": "Cash on Delivery",
+          "description": "You'll pay in cash when your order is delivered."
+        },
+        "card": {
+          "title": "Credit Card",
+          "description": "You'll be securely redirected to Stripe to complete your payment."
+        }
+      }
+    },
     "cart-header": "Cart",
     "products-count": "products",
     "clean-cart-btn": "Clean Cart",
@@ -291,7 +291,7 @@
     "product-removed-successfully": "Product removed from cart successfully",
     "quantity-updated-successfully": "Quantity updated successfully",
     "product-added-successfully": "Product added to cart successfully"
-},
+  },
   "order": {
     "order": "Order",
     "orders": "Orders",
@@ -334,6 +334,11 @@
     "title": "Products You May Like"
   },
   "dashboard": {
+    "top_selling": "Top Selling Products",
+    "sales": "{count, plural, =0 {{formattedCount} Sales} one {{formattedCount} Sale} other {{formattedCount} Sales}}",
+    "price": "({value, number, ::currency/EGP})",
+    "low_stock": "Low Stock Products",
+    "products": "Products",
     "overview": {
       "total-products": "Total Products",
       "total-orders": "Total Orders",
@@ -461,5 +466,5 @@
     "products": "Products",
     "account": "Account",
     "logout": "Log out"
-  }}
-
+  }
+}
