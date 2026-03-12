@@ -1,5 +1,6 @@
 "use server";
 
+import { JSON_HEADER } from "@/lib/constants/api.constance";
 import { ProductDetails } from "@/lib/types/product-details";
 
 export async function getProductDetails(
@@ -10,7 +11,7 @@ export async function getProductDetails(
     const res = await fetch(`${process.env.API_URL}/products/${id}`, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json",
+        ...JSON_HEADER,
       },
       cache: "no-store",
     });

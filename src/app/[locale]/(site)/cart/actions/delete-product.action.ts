@@ -1,5 +1,6 @@
 "use server";
 
+import { JSON_HEADER } from "@/lib/constants/api.constance";
 import getToken from "@/lib/utils/manage-token";
 
 export async function deleteProductAction(productId: string) {
@@ -15,7 +16,7 @@ export async function deleteProductAction(productId: string) {
     {
       method: "DELETE",
       headers: {
-        "Content-Type": "application/json",
+        ...JSON_HEADER,
         Authorization: `Bearer ${token.accessToken}`,
       },
     },

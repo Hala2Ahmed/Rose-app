@@ -1,10 +1,9 @@
 import { Badge } from "@/components/ui/badge";
 import { ProductDetails } from "@/lib/types/product-details";
-import { HeartPlus, Package, Star } from "lucide-react";
+import { Package, Star } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import React from "react";
 import ProductGallery from "./product-gallery";
-import { Button } from "@/components/ui/button";
 import AddToCartButton from "./add-to-cart-btn";
 
 export default function ProductInfo({ product }: { product: ProductDetails }) {
@@ -81,10 +80,6 @@ export default function ProductInfo({ product }: { product: ProductDetails }) {
 
         {/* Buttons */}
         <div className="flex gap-2.5 mt-auto">
-          <Button variant="ghost" className="bg-zinc-100 text-zinc-800">
-            <HeartPlus className="w-5 h-5 sm:w-6 sm:h-6" />
-          </Button>
-
           <AddToCartButton product={product!} />
         </div>
       </div>

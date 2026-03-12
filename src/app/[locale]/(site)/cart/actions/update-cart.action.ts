@@ -1,5 +1,6 @@
 "use server";
 
+import { JSON_HEADER } from "@/lib/constants/api.constance";
 import type { CartResponse } from "@/lib/types/cart";
 import getToken from "@/lib/utils/manage-token";
 
@@ -16,7 +17,7 @@ export async function updateCartAction(productId: string, quantity: number) {
     {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json",
+        ...JSON_HEADER,
         Authorization: `Bearer ${token.accessToken}`,
       },
       body: JSON.stringify({ quantity }),

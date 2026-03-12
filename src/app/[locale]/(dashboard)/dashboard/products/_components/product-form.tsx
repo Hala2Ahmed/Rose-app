@@ -313,7 +313,7 @@ export default function ProductForm(props: ProductFormProps) {
         {/* Images Button (Only for edit mode) */}
         <div className="col-span-1 sm:col-span-2 lg:col-span-3 pt-4 flex gap-2.5 justify-end items-end">
           {mode === "edit" && (
-            <div className="flex gap-2.5">
+            <div className="flex flex-wrap gap-2.5">
               <GalleryDialog
                 content={props.imgCover ?? ""}
                 trigger={

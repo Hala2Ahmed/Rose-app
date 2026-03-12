@@ -1,5 +1,6 @@
 "use server";
 
+import { JSON_HEADER } from "@/lib/constants/api.constance";
 import { EmailStepFields, EmailStepResponse } from "@/lib/types/auth.type";
 
 export async function sendOtpAction(fields: EmailStepFields) {
@@ -7,7 +8,7 @@ export async function sendOtpAction(fields: EmailStepFields) {
   const response = await fetch(`${process.env.API_URL}/auth/forgotPassword`, {
     method: "POST",
     body: JSON.stringify(fields),
-    headers: { "Content-Type": "application/json" },
+    headers: { ...JSON_HEADER },
   });
 
   const payload: ApiResponse<EmailStepResponse> = await response.json();
