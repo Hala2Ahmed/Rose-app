@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import getToken from "../utils/manage-token";
 import { authOptions } from "@/auth";
 import { RecommendationsResponse } from "../types/recommendations";
+import { JSON_HEADER } from "../constants/api.constance";
 
 export async function fetchRecommendations() {
   try {
@@ -33,7 +34,7 @@ export async function fetchRecommendations() {
       {
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
+          ...JSON_HEADER,
           Authorization: `Bearer ${token.accessToken}`,
         },
         next: { revalidate: 60 },

@@ -2,6 +2,7 @@
 
 import getToken from "@/lib/utils/manage-token";
 import type { CartResponse } from "@/lib/types/cart";
+import { JSON_HEADER } from "@/lib/constants/api.constance";
 
 export async function fetchCart() {
   const token = await getToken();
@@ -13,7 +14,7 @@ export async function fetchCart() {
   const res = await fetch(`${process.env.API_URL}/cart`, {
     method: "GET",
     headers: {
-      "Content-Type": "application/json",
+      ...JSON_HEADER,
       Authorization: `Bearer ${token.accessToken}`,
     },
     cache: "no-store",

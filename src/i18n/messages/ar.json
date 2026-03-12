@@ -249,36 +249,37 @@
     }
   },
   "cart": {
-  "summary": {
-    "title": "ملخص الطلب",
-    "coupon-placeholder": "كود الخصم",
-    "apply": "تطبيق الكود",
-    "no-coupons": "لا يوجد كوبونات مفعلة",
-    "total": "الإجمالي",
-    "checkout": "إتمام الشراء",
-    "currency": "جنيه"
-  },
-"address": {
-  "title": "عنوان الشحن",
-  "add": "إضافة عنوان جديد",
-  "next": "التالي",
-  "error": "فشل تحميل العناوين",
-  "empty": "لا يوجد عناوين محفوظة"
-},
-"payment": {
-  "title": "طريقة الدفع",
-  "back": "رجوع",
-  "checkout": "إتمام الطلب",
-  "methods": {
-    "cash": {
-      "title": "الدفع عند الاستلام",
-      "description": "سيتم الدفع نقدًا عند استلام الطلب."
+    "summary": {
+      "title": "ملخص الطلب",
+      "coupon-placeholder": "كود الخصم",
+      "apply": "تطبيق الكود",
+      "no-coupons": "لا يوجد كوبونات مفعلة",
+      "total": "الإجمالي",
+      "checkout": "إتمام الشراء",
+      "currency": "جنيه"
     },
-    "card": {
-      "title": "بطاقة ائتمان",
-      "description": "سيتم تحويلك بشكل آمن إلى Stripe لإتمام عملية الدفع."
-    }
-}},
+    "address": {
+      "title": "عنوان الشحن",
+      "add": "إضافة عنوان جديد",
+      "next": "التالي",
+      "error": "فشل تحميل العناوين",
+      "empty": "لا يوجد عناوين محفوظة"
+    },
+    "payment": {
+      "title": "طريقة الدفع",
+      "back": "رجوع",
+      "checkout": "إتمام الطلب",
+      "methods": {
+        "cash": {
+          "title": "الدفع عند الاستلام",
+          "description": "سيتم الدفع نقدًا عند استلام الطلب."
+        },
+        "card": {
+          "title": "بطاقة ائتمان",
+          "description": "سيتم تحويلك بشكل آمن إلى Stripe لإتمام عملية الدفع."
+        }
+      }
+    },
     "cart-header": "عربة التسوق",
     "products-count": "منتجات",
     "clean-cart-btn": "تفريغ العربة",
@@ -290,7 +291,7 @@
     "product-removed-successfully": "تم إزالة المنتج من السلة بنجاح",
     "quantity-updated-successfully": "تم تحديث الكمية بنجاح",
     "product-added-successfully": "تمت إضافة المنتج إلى السلة بنجاح"
-},
+  },
   "order": {
     "order": "طلب",
     "orders": "الطلبات",
@@ -335,8 +336,7 @@
     "sales": "{count, plural, =0 {{formattedCount} مبيعات} one {{formattedCount} مبيع} other {{formattedCount} مبيعات}}",
     "price": "({value, number, ::currency/EGP})",
     "low_stock": "المنتجات ذات المخزون المنخفض",
-    "products": "المنتجات"
-  },
+    "products": "المنتجات",
     "overview": {
       "total-products": "إجمالي المنتجات",
       "total-orders": "إجمالي الطلبات",
@@ -375,7 +375,7 @@
       "update-occasion": "عدل مناسبة:",
       "view-image": "عرض صورة المناسبة\n"
     },
-      "products-form": {
+    "products-form": {
       "add-product-header": "إضافة منتج جديد",
       "product-added-successfully": "تمت إضافة المنتج بنجاح",
       "update-product-header": "تحديث المنتج",
@@ -423,7 +423,8 @@
       "invalid-file-type": "يُسمح فقط بصيغ .jpgو .jpeg و .pngو .webp",
       "product-gallery-required": "صور معرض المنتج مطلوبة",
       "each-image-size-limit": "يجب ألا يتجاوز حجم كل صورة 5 ميجابايت"
-    },
+    }
+  },
   "address": {
     "add-address-title": "إضافة عنوان جديد",
     "update-address-title": "تحديث معلومات العنوان",

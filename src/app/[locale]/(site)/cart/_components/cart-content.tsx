@@ -49,7 +49,7 @@ export default function CartContent() {
           .map((item) => (
             <div
               key={item.product._id}
-              className="flex justify-between border-b last:border-b-0 border-zinc-200 py-5"
+              className="flex flex-col sm:flex-row sm:justify-between gap-4 border-b last:border-b-0 border-zinc-200 py-5"
             >
               <div className="flex items-center gap-4">
                 {item.product?.imgCover && (
@@ -65,7 +65,7 @@ export default function CartContent() {
                 <CartProductDetails item={item} />
               </div>
 
-              <div className="flex flex-col justify-between items-end h-[140px] ms-32">
+              <div className="flex flex-col sm:flex-col justify-between sm:items-end sm:h-[8.75rem] items-start gap-3">
                 <DeleteProduct productId={item.product._id} />
 
                 <CartQuantityControl

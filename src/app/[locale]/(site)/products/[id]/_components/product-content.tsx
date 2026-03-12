@@ -13,7 +13,7 @@ export default async function ProductContent({ id }: { id: string }) {
   }
 
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-8 sm:gap-12 px-4 sm:px-6 lg:px-0">
       {/* Product details */}
       < ProductInfo product={product} />
 

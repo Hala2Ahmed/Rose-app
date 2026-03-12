@@ -1,5 +1,6 @@
 "use server";
 
+import { JSON_HEADER } from "@/lib/constants/api.constance";
 import getToken from "@/lib/utils/manage-token";
 
 export async function deleteCartAction() {
@@ -13,7 +14,7 @@ export async function deleteCartAction() {
   const res = await fetch(`${process.env.API_URL}/cart`, {
     method: "DELETE",
     headers: {
-      "Content-Type": "application/json",
+      ...JSON_HEADER,
       Authorization: `Bearer ${token.accessToken}`,
     },
   });

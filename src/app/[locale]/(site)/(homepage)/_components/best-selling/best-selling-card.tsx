@@ -7,6 +7,7 @@ import { BestSellingProduct } from "@/lib/types/best-selling.types";
 import { renderStars } from "@/lib/utils/render-stars";
 import { useAddToCart } from "@/hooks/use-cart";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 
 type BestSellingCardProps = {
   data: BestSellingProduct;
@@ -37,16 +38,18 @@ export default function BestSellingCard({
   return (
     <article className="w-full relative group">
       <div className="relative h-72 rounded-2xl overflow-hidden">
-        <Image
-          src={data.imgCover}
-          alt={data.title}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          placeholder="blur"
-          blurDataURL="data:image/svg+xml;base64,..."
-          quality={85}
-          className="object-cover"
-        />
+        <Link href={`/products/${data._id}`}>
+          <Image
+            src={data.imgCover}
+            alt={data.title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            placeholder="blur"
+            blurDataURL="data:image/svg+xml;base64,..."
+            quality={85}
+            className="object-cover"
+          />
+        </Link>
 
         {onWishlistToggle && (
           <button
@@ -83,10 +86,11 @@ export default function BestSellingCard({
           </div>
         )}
       </div>
-
-      <h3 className="mt-2 text-maroon-700 text-lg font-medium line-clamp-2">
-        {data.title.split(" ").slice(0, 4).join(" ")}
-      </h3>
+      <Link href={`/products/${data._id}`}>
+        <h3 className="mt-2 text-maroon-700 text-lg font-medium line-clamp-2">
+          {data.title.split(" ").slice(0, 4).join(" ")}
+        </h3>
+      </Link>
 
       <div className="flex items-center justify-between">
         <div>

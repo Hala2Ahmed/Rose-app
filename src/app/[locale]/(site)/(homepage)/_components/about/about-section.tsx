@@ -11,7 +11,7 @@ export default function About() {
   const t = useTranslations("about");
 
   return (
-    <section className="flex gap-20 mb-16 justify-center items-center">
+    <section className="flex flex-col lg:flex-row gap-10 lg:gap-20 mb-16 px-4 sm:px-8 lg:px-0 justify-center items-center">
       {/* Images */}
       <div className="flex gap-2">
         {/* Main Image with Decorative Border */}
@@ -29,7 +29,7 @@ export default function About() {
         </div>
 
         {/* Side Images */}
-        <div className="flex flex-col gap-2 py-4">
+        <div className="hidden sm:flex flex-col gap-2 py-4">
           <Image
             className="rounded-full object-cover w-[12.063rem] h-[12.063rem]"
             src="/assets/images/image14.png"
@@ -51,7 +51,7 @@ export default function About() {
       <div className="py-5 max-w-2xl">
         <SubTitle title={t("title")} />
 
-        <h2 className="font-bold text-3xl pb-2 pt-6 text-maroon-700 dark:text-softPink-200">
+        <h2 className="font-bold text-2xl sm:text-3xl pb-2 pt-6 text-maroon-700 dark:text-softPink-200">
           {t.rich("header", {
             span: (chunk) => (
               <span className="text-softPink-500 dark:text-maroon-400">
@@ -70,7 +70,7 @@ export default function About() {
           </Button>
         </Link>
 
-        <ul className="grid grid-cols-2 gap-6">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {ABOUT_FEATURES.map((feature) => (
             <li
               key={feature.id}

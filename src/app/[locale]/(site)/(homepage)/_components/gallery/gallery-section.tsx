@@ -10,7 +10,7 @@ export default function Gallery() {
   const t = useTranslations("gallery");
 
   return (
-    <section>
+    <section className="px-4 sm:px-8 lg:px-0">
       {/* Section Header */}
       <SubTitle className="text-center" title={t("title")} />
       <header className="text-center mt-2 mb-10">
@@ -18,7 +18,7 @@ export default function Gallery() {
       </header>
 
       {/* Masonry Gallery */}
-      <div className="columns-3 gap-3 space-y-3.5">
+      <div className="columns-1 sm:columns-2 lg:columns-3 gap-3 space-y-3.5">
         {GALLERY_FEATURES.map((image) => (
           <div
             key={image.id}
