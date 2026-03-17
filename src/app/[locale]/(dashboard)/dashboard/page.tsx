@@ -27,7 +27,9 @@ export default async function Page() {
         <Suspense fallback={<AllCategoriesStatsSkeleton />}>
           <AllCategoriesStats />
         </Suspense>
-        <div className="bg-zinc-50 w-full min-h-screen p-10 md:flex gap-6">
+      </div>
+      <div>
+        <div className="bg-zinc-50 w-full min-h-screen pt-6 md:flex gap-6">
           <TopSellingProducts />
           <LowStockProducts />
         </div>

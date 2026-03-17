@@ -16,7 +16,7 @@ export default async function AllStatsCard() {
   const stats = result.data.statistics;
 
   return (
-    <Card className="md:w-[31.25rem] grid grid-cols-2 py-6 px-6 gap-4 shadow-none border-white  ms-4 ">
+    <Card className="w-[33.5rem] h-[28rem] grid grid-cols-2 py-6 px-6 gap-4 shadow-none border-white  ms-4 ">
       <StatisticsItem stats={stats} />
     </Card>
   );

@@ -1,3 +1,4 @@
+"use client";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils/tailwind-merge";
 import { useProducts } from "../../../../../hooks/useProducts";
@@ -39,7 +40,7 @@ export default function LowStockProducts() {
     })) ?? [];
 
   return (
-    <Card className="rounded-2xl border-none shadow-none bg-white w-[33.5rem] h-[28rem]">
+    <Card className="rounded-2xl border-none shadow-none bg-white w-[33.5rem] h-[28rem] ms-4">
       <CardContent className="p-6 space-y-6">
         <h2 className="text-2xl font-semibold text-zinc-800">
           {t("low_stock")}
@@ -53,8 +54,7 @@ export default function LowStockProducts() {
             return (
               <div
                 key={product.id}
-                className="flex items-center justify-between py-3"
-              >
+                className="flex items-center justify-between py-3">
                 <span className="truncate max-w-[220px] text-zinc-800">
                   {product.name}
                 </span>
@@ -63,8 +63,7 @@ export default function LowStockProducts() {
                   className={cn(
                     "text-sm font-medium",
                     isLow ? "text-red-600" : "text-zinc-700",
-                  )}
-                >
+                  )}>
                   {product.stock} {t("products")}
                 </span>
               </div>

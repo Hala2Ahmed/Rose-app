@@ -82,8 +82,7 @@ export default async function ProductsPage({ searchParams }: PageProps) {
               <ProductCardSkeleton key={i} />
             ))}
           </div>
-        }
-      >
+        }>
         <ProductGrid initialPage={initialPage} initialData={initialData} />
       </Suspense>
     </div>

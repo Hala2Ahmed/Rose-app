@@ -1,3 +1,4 @@
+"use client";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils/tailwind-merge";
 import TopSellingProductsSkeleton from "@/components/skeletons/top-selling-products-skeleton";
@@ -48,7 +49,7 @@ export default function TopSellingProducts() {
     })) ?? [];
 
   return (
-    <Card className="rounded-2xl border-none shadow-none bg-white w-[33.5rem] h-[28rem]">
+    <Card className="rounded-2xl border-none shadow-none bg-white w-[33.5rem] h-[28rem] ms-4">
       <CardContent className="p-6 space-y-6">
         <h2 className="text-2xl font-semibold text-zinc-800">
           {t("top_selling")}
@@ -65,8 +66,7 @@ export default function TopSellingProducts() {
                 className={cn(
                   "flex items-center justify-between px-2.5 py-1.5 rounded-sm transition-colors text-zinc-800",
                   RANK_GRADIENTS[index] ?? "bg-zinc-100",
-                )}
-              >
+                )}>
                 <div className="flex items-center gap-1 min-w-0">
                   <p className="font-semibold truncate max-w-[220px]">
                     {product.name}
