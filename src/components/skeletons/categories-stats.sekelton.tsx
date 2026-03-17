@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function AllCategoriesStatsSkeleton() {
   return (
-    <Card className="md:w-[582px] p-6 max-h-[390px] overflow-auto scrollbar-hide  shadow-none border-white">
+    <Card className="md:w-[582px] p-6 max-h-[390px] overflow-auto scrollbar-hide shadow-none border-white dark:border-zinc-800 dark:bg-zinc-800">
       <Skeleton className="h-8 w-40 mb-4" />
 
       {Array.from({ length: 5 }).map((_, i) => (

@@ -34,7 +34,7 @@ export async function AllOccasionsTable({
   //empty state
   if (allData?.data?.occasions.length == 0) {
     return (
-      <div className="rounded-2xl p-6 bg-white">
+      <div className="rounded-2xl p-6 bg-white dark:bg-zinc-800">
         <AllOccasionsHeader />
         <EmptyState title={t("occasion")} />
       </div>
@@ -45,16 +45,16 @@ export async function AllOccasionsTable({
 
   return (
     <>
-      <div className="rounded-2xl p-6 bg-white">
+      <div className="rounded-2xl p-6 bg-white dark:bg-zinc-800">
         <AllOccasionsHeader />
         <Table>
           {/* Table Header */}
-          <TableHeader className="bg-zinc-50 rounded-lg">
+          <TableHeader className="bg-zinc-50 rounded-lg dark:bg-zinc-900/50">
             <TableRow>
-              <TableHead className="w-[100px] rounded-tl-md text-zinc-900">
+              <TableHead className="w-[100px] rounded-tl-md text-zinc-900 dark:text-zinc-200">
                 {t("name")}
               </TableHead>
-              <TableHead className="text-zinc-900">{t("products")}</TableHead>
+              <TableHead className="text-zinc-900 dark:text-zinc-200">{t("products")}</TableHead>
               <TableHead></TableHead>
               <TableHead className="text-right rounded-tr-md "></TableHead>
             </TableRow>

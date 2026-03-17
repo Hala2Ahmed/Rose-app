@@ -40,14 +40,14 @@ export default function LowStockProducts() {
     })) ?? [];
 
   return (
-    <Card className="rounded-2xl border-none shadow-none bg-white w-[33.5rem] h-[28rem] ms-4">
+    <Card className="rounded-2xl border-none shadow-none bg-white w-[33.5rem] h-[28rem] dark:bg-zinc-800">
       <CardContent className="p-6 space-y-6">
-        <h2 className="text-2xl font-semibold text-zinc-800">
+        <h2 className="text-2xl font-semibold text-zinc-800 dark:text-zinc-100">
           {t("low_stock")}
         </h2>
 
         {/* products in stock */}
-        <div className="divide-y divide-zinc-200 overflow-y-auto h-[21.5rem] scrollbar-hide">
+        <div className="divide-y divide-zinc-200 overflow-y-auto h-[21.5rem] scrollbar-hide dark:divide-zinc-600">
           {products.map((product) => {
             const isLow = product.stock < 5;
 
@@ -55,14 +55,14 @@ export default function LowStockProducts() {
               <div
                 key={product.id}
                 className="flex items-center justify-between py-3">
-                <span className="truncate max-w-[220px] text-zinc-800">
+                <span className="truncate max-w-[220px] text-zinc-800 dark:text-zinc-200">
                   {product.name}
                 </span>
 
                 <span
                   className={cn(
                     "text-sm font-medium",
-                    isLow ? "text-red-600" : "text-zinc-700",
+                    isLow ? "text-red-600 " : "text-zinc-700 dark:text-zinc-200",
                   )}>
                   {product.stock} {t("products")}
                 </span>

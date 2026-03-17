@@ -16,7 +16,7 @@ export function AllOccasionsTableSkeleton() {
   return (
     <>
       <Table>
-        <TableHeader className="bg-zinc-50 rounded-lg">
+        <TableHeader className="bg-zinc-50 rounded-lg dark:bg-zinc-800">
           <TableRow>
             <TableHead className="w-[100px] rounded-tl-md text-zinc-900">
               {t("name")}

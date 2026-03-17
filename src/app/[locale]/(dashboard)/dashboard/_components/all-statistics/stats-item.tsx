@@ -29,11 +29,12 @@ function StatItem({
 
       {/* Value Of Stats */}
       <span
-        className={cn("font-semibold text-2xl mt-3 mb-1 block", iconClassName)}>
+        className={cn("font-semibold text-2xl mt-3 mb-1 block", iconClassName)}
+      >
         {value}
       </span>
 
-      <p className="text-zinc-800 font-medium">{label}</p>
+      <p className="text-zinc-800 dark:text-zinc-200 font-medium">{label}</p>
     </div>
   );
 }
@@ -72,7 +73,6 @@ export default async function StatisticsItem({ stats }: { stats: Stats }) {
         {sorted.map((part, i) =>
           part.type === "currency" ? (
             <span key={i} className="text-sm font-medium">
-              {" "}
               {part.value}
             </span>
           ) : (
@@ -89,32 +89,32 @@ export default async function StatisticsItem({ stats }: { stats: Stats }) {
       key: "totalProducts",
       icon: Package,
       label: t("total-products"),
-      iconClassName: "text-maroon-600",
-      bgClassName: "bg-maroon-50",
+      iconClassName: "text-maroon-600 dark:text-maroon-400",
+      bgClassName: "bg-maroon-50 dark:bg-maroon-900/30",
       value: format.number(stats.totalProducts, "precise"),
     },
     {
       key: "totalOrders",
       icon: ReceiptText,
       label: t("total-orders"),
-      iconClassName: "text-blue-600",
-      bgClassName: "bg-[#0063D00D]",
+      iconClassName: "text-blue-600 dark:text-blue-400",
+      bgClassName: "bg-[#0063D00D] dark:bg-blue-900/30",
       value: format.number(stats.totalOrders, "precise"),
     },
     {
       key: "totalCategories",
       icon: ClipboardList,
       label: t("total-categories"),
-      iconClassName: "text-[#753CBF]",
-      bgClassName: "bg-[#753CBF0D]",
+      iconClassName: "text-[#753CBF] dark:text-purple-400",
+      bgClassName: "bg-[#753CBF0D] dark:bg-purple-900/30",
       value: format.number(stats.totalCategories, "precise"),
     },
     {
       key: "totalRevenue",
       icon: CircleDollarSign,
       label: t("total-revenue"),
-      iconClassName: "text-emerald-600",
-      bgClassName: "bg-[#0089610D]",
+      iconClassName: "text-emerald-600 dark:text-emerald-400",
+      bgClassName: "bg-[#0089610D] dark:bg-emerald-900/30",
       value: formatCurrency(stats.totalRevenue),
     },
   ];

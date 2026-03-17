@@ -81,7 +81,7 @@ export default function OccasionForm({ occasionId }: OccasionFormProps) {
   };
 
   return (
-    <div className="max-w-[67.563rem] bg-white rounded-2xl">
+    <div className="max-w-[67.563rem] bg-white rounded-2xl dark:bg-zinc-800">
       <Form {...form}>
         <form className="w-[746px] p-6" onSubmit={form.handleSubmit(onSubmit)}>
           {/* Name Field */}
@@ -161,7 +161,7 @@ export default function OccasionForm({ occasionId }: OccasionFormProps) {
               trigger={
                 <Button
                   type="button"
-                  className="text-blue-600 border-[#00000014] border ms-auto flex"
+                  className="text-blue-600 border-[#00000014] border ms-auto flex dark:border-zinc-900 dark:text-blue-500"
                   variant="link">
                   <LucideImage />
                   {t("view-image")}

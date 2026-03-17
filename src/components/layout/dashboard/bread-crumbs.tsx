@@ -1,4 +1,3 @@
-// components/breadcrumbs.tsx
 "use client";
 
 import Link from "next/link";
@@ -26,7 +25,7 @@ export function Breadcrumbs() {
   const resolvedLabels = useResolveBreadcrumbLabels(pathSegments);
 
   return (
-    <Breadcrumb className="py-6 -ms-10 ps-14 border-b border-black/8 dark:border-zinc-50/8 bg-white dark:bg-zinc-900">
+    <Breadcrumb className="py-6 -ms-10 ps-14 border-b border-black/8 dark:border-zinc-50/8 bg-white dark:bg-zinc-800">
       <BreadcrumbList>
         {pathSegments.map((segment, index) => {
           const href =

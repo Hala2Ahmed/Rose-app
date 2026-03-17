@@ -16,7 +16,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <SidebarTrigger />
       </aside>
 
-      <div className="ms-10 w-full min-h-screen bg-zinc-50 dark:bg-zinc-700">
+      <div className="ms-10 w-full min-h-screen bg-zinc-50 dark:bg-zinc-900">
         {/* Breadcrumbs */}
         <Breadcrumbs />
         {/* Children */}

@@ -17,21 +17,22 @@ export default async function Page() {
   return (
     <>
       {/* First Section Statstics */}
-
-      <div className="md:flex gap-6 pt-6  mb-5">
-        {/* statstics card for all items */}
-        <Suspense fallback={<StatisticsCardSkeleton />}>
-          <AllStatsCard />
-        </Suspense>
-        {/* statstics card for all categories */}
-        <Suspense fallback={<AllCategoriesStatsSkeleton />}>
-          <AllCategoriesStats />
-        </Suspense>
-      </div>
-      <div>
-        <div className="bg-zinc-50 w-full min-h-screen pt-6 md:flex gap-6">
-          <TopSellingProducts />
-          <LowStockProducts />
+      <div className="mx-4 my-6 space-y-6">
+        <div className="md:flex gap-6">
+          {/* statstics card for all items */}
+          <Suspense fallback={<StatisticsCardSkeleton />}>
+            <AllStatsCard />
+          </Suspense>
+          {/* statstics card for all categories */}
+          <Suspense fallback={<AllCategoriesStatsSkeleton />}>
+            <AllCategoriesStats />
+          </Suspense>
+        </div>
+        <div>
+          <div className="md:flex gap-6">
+            <TopSellingProducts />
+            <LowStockProducts />
+          </div>
         </div>
       </div>
     </>

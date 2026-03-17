@@ -12,7 +12,7 @@ export default async function Footer() {
     const session = await getServerSession(authOptions);
 
     return (
-        <SidebarFooter className="mx-6 py-6 border-t border-black/5">
+        <SidebarFooter className="px-6 py-6 border-t border-black/5 dark:bg-zinc-800">
             <SidebarMenu>
                 <SidebarMenuItem>
                     <DropdownMenu>

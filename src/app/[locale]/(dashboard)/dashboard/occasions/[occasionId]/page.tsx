@@ -12,7 +12,7 @@ export default function Editpage() {
   const { occasion, isLoading } = useGetSingleOccasion(occasionId);
   return (
     <div className="ms-6">
-      <h1 className="font-semibold text-2xl text-zinc-800 mb-6 flex gap-2 mt-7">
+      <h1 className="font-semibold text-2xl text-zinc-800 mb-6 flex gap-2 mt-7 dark:text-zinc-200">
         {t("update-occasion")}
         {isLoading ? (
           <Skeleton className="w-[10rem] mt-2" />

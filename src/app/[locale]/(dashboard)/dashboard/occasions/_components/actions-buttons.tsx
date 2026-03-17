@@ -41,22 +41,30 @@ export default function ActionButtons({
   return (
     <div className="flex justify-end gap-2 mx-5">
       {/* Edit Button */}
-      <Button className="bg-[#0063D01A] text-blue-600 hover:bg-[#004c9e1a]">
+      <Button
+        className="
+      bg-[#0063D01A] text-blue-600 hover:bg-[#004c9e1a]
+      dark:bg-blue-900/20 dark:text-blue-400 dark:hover:bg-blue-900/40
+    "
+      >
         <Link
           className="flex gap-1 items-center"
-          href={`/dashboard/occasions/${occasionId}`}>
+          href={`/dashboard/occasions/${occasionId}`}
+        >
           <Pencil />
           {t("edit")}
         </Link>
       </Button>
 
-      {/* Wait Until delete confirmation modal is ready */}
-
-      {/* Delete button */}
+      {/* Delete Button */}
       <Button
         disabled={isPending}
-        className="bg-[#FF00001A] hover:bg-[#b400001a] text-red-600"
-        onClick={handleDelete}>
+        onClick={handleDelete}
+        className="
+      bg-[#FF00001A] text-red-600 hover:bg-[#b400001a]
+      dark:bg-red-900/20 dark:text-red-400 dark:hover:bg-red-900/40
+    "
+      >
         <Trash2 />
         {isPending ? t("deleteing") : t("delete")}
       </Button>

@@ -20,7 +20,7 @@ export function CustomDropDownMenu() {
     return (
         <DropdownMenuContent
             side="top"
-            className="w-56 text-zinc-700 text-base font-medium"
+            className="w-56 text-zinc-700 text-base font-medium dark:bg-zinc-800 "
         >
             {/* Username */}
             <DropdownMenuItem className="h-11 rtl:flex-row-reverse">

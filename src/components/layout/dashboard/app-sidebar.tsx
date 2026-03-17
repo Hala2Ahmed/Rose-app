@@ -14,12 +14,12 @@ export function AppSidebar() {
 
     return (
         <Sidebar
-            className="w-303 flex flex-col items-center justify-between"
+            className="w-303 flex flex-col items-center justify-between dark:bg-zinc-800"
             side={isRTL ? "right" : "left"}>
             {/* Header */}
             <Header />
             {/* Content */}
-            <SidebarContent className="px-8 pt-6">
+            <SidebarContent className="px-8 pt-6 dark:bg-zinc-800">
                 <SidebarContentMenu />
             </SidebarContent>
             {/*Footer */}
