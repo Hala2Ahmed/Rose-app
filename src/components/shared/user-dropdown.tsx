@@ -37,7 +37,6 @@ export default function UserDropDown({ initialData }: InitialDataProps) {
   const t = useTranslations("header");
   const { profileData: session } = useGetProfileData();
   const userData = session || initialData;
-  console.log(userData, "uu");
 
   return (
     <>
