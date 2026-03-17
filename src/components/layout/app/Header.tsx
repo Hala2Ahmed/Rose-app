@@ -21,8 +21,9 @@ import HeaderSearch from "./header/header-search";
 import CartItems from "./cart-items";
 import ModeToggle from "./mode-toggle";
 import NavigationMenu from "./navigation-menu";
+import UserDropDown from "@/components/shared/user-dropdown";
 
-// Header                                  
+// Header
 
 async function Header() {
   //get user info from server side on first page loading to avoid flashing of info
@@ -77,9 +78,8 @@ async function Header() {
         <HeaderSearch />
 
         {/* User Actions */}
+        {session?.user ? <UserDropDown initialData={session} /> : <InfoUser />}
         <div className="flex items-center gap-6 text-gray-700 dark:text-zinc-50">
-          <InfoUser />
-
           <div className="flex items-center gap-4 px-4 border-x border-zinc-200 dark:border-zinc-700">
             <Heart className="h-5 w-5 cursor-pointer" />
             <Link href="/cart" className="relative">
