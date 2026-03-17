@@ -37,6 +37,7 @@ export default function UserDropDown({ initialData }: InitialDataProps) {
   const t = useTranslations("header");
   const { profileData: session } = useGetProfileData();
   const userData = session || initialData;
+  console.log(userData, "uu");
 
   return (
     <>
@@ -87,12 +88,16 @@ export default function UserDropDown({ initialData }: InitialDataProps) {
             <DropdownMenuSeparator className="bg-zinc-100" />
 
             {/* Dashboard */}
-            <Link href={"/dashboard"}>
-              <DropdownMenuItem className="cursor-pointer">
-                <Settings /> {t("dashboard")}
-              </DropdownMenuItem>
-            </Link>
-            <DropdownMenuSeparator className="bg-zinc-100" />
+            {userData.user.role != "user" && (
+              <>
+                <Link href={"/dashboard"}>
+                  <DropdownMenuItem className="cursor-pointer">
+                    <Settings /> {t("dashboard")}
+                  </DropdownMenuItem>
+                </Link>
+                <DropdownMenuSeparator className="bg-zinc-100" />
+              </>
+            )}
 
             {/* separated button for reusablility */}
             <LogOutButton />
