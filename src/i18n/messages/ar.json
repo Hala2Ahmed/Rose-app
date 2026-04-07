@@ -455,6 +455,20 @@
     "lat_invalid": "يرجى اختيار موقع صالح من الخريطة.",
     "long_invalid": "يرجى اختيار موقع صالح من الخريطة."
   },
+  "dashboard": {
+    "products-table": {
+      "name": "الاسم",
+      "price": "السعر",
+      "stock": "المخزون",
+      "sales": "المبيعات",
+      "ratings": "التقييمات",
+      "price-value": "{formattedValue} ج.م",
+      "stock-value": "{count, plural, =0 {{formattedCount} عنصر} one {{formattedCount} عنصر} other {{formattedCount} عناصر}}",
+      "sales-value": "{count, plural, =0 {{formattedCount} مبيعة} one {{formattedCount} مبيعة} other {{formattedCount} مبيعات}}",
+      "rating-value": "{avg}/5 ({formattedCount})",
+      "add-new": "إضافة منتج جديد",
+      "title": "جميع المنتجات"
+    }
   "dashboard-layout": {
     "preview": "عرض الموقع",
     "overview": "نظرة عامة",

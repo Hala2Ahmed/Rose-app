@@ -1,19 +1,12 @@
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import { authOptions } from "@/auth";
-import { DashboardBreadcrumb } from "@/components/dashboard/dashboard-breadcrumb";
-import { AccountSettingsForm } from "@/features/profile/components/account-settings-form";
+import React from "react";
+import ProductsTable from "./_components/products-table";
+import ProductsTableHeader from "./_components/products-table-header";
 
-export default async function AccountSettingsPage() {
-  const session = await getServerSession(authOptions);
-  if (!session?.user) {
-    redirect("/login");
-  }
-
+export default function Products() {
   return (
-    <div className="p-6 md:p-8 ">
-      <DashboardBreadcrumb items={[{ label: "Account" }]} />
-      <AccountSettingsForm user={session.user} />
+    <div className="bg-white p-6 rounded-2xl">
+      <ProductsTableHeader />
+      <ProductsTable />
     </div>
   );
 }

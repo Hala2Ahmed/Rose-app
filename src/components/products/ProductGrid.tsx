@@ -5,8 +5,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import ProductCardSkeleton from "@/components/skeletons/product-card.skeleton";
 import { AppPagination } from "@/components/ui/pagination";
-import { useProducts } from "@/hooks/useProducts";
-import { useWishlist } from "@/hooks/useWishlist";
+import { useProducts } from "@/hooks/use-products";
+import { useWishlist } from "@/hooks/use-wishlist";
 import BestSellingCard from "@/app/[locale]/(site)/(homepage)/_components/best-selling/best-selling-card";
 import { BestSellingProduct } from "@/lib/types/best-selling.types";
 

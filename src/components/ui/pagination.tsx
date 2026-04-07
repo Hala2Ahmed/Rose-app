@@ -9,7 +9,7 @@ import {
   MoreHorizontal,
 } from "lucide-react";
 import { cn } from "@/lib/utils/tailwind-merge";
-import { usePagination } from "@/hooks/usePagination";
+import { usePagination } from "@/hooks/use-pagination";
 
 // ==================== Types
 type PaginationProps = {
