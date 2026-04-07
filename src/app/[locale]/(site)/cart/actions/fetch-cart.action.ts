@@ -2,6 +2,7 @@
 
 import getToken from "@/lib/utils/manage-token";
 import type { CartResponse } from "@/lib/types/cart";
+import { JSON_HEADER } from "@/lib/constants/api.constance";
 
 export async function fetchCart() {
   const token = await getToken();
@@ -13,16 +14,22 @@ export async function fetchCart() {
   const res = await fetch(`${process.env.API_URL}/cart`, {
     method: "GET",
     headers: {
-      "Content-Type": "application/json",
+      ...JSON_HEADER,
       Authorization: `Bearer ${token.accessToken}`,
     },
     cache: "no-store",
   });
 
+  if (!res.ok) {
+    console.error("fetchCart failed with status:", res.status);
+    return { cartItems: [], totalPrice: 0 };
+  }
+
   const payload: ApiResponse<CartResponse> = await res.json();
 
   if ("error" in payload) {
-    throw new Error(payload.error);
+    console.error("fetchCart API error:", payload.error);
+    return { cartItems: [], totalPrice: 0 };
   }
 
   return payload.cart;

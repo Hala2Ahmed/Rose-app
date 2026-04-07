@@ -10,7 +10,7 @@ export default function CartLayout({
 }) {
   return (
     <>
-      <div className="flex gap-12">
+      <div className="lg:flex justify-between gap-4">
         {children}
         {summary}
       </div>

@@ -3,7 +3,7 @@ import ContinueShopping from "./continue-shopping-btn";
 
 export default function Cart() {
   return (
-    <div className="max-w-[782px] mb-12">
+    <div className="max-w-[49rem] w-full mb-12">
       <CartContent />
       <ContinueShopping />
     </div>

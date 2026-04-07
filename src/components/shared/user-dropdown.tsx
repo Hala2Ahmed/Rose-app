@@ -41,6 +41,7 @@ export default function UserDropDown({ initialData }: InitialDataProps) {
   return (
     <>
       <div className="flex items-center justify-between">
+        {/* User Info */}
         <div className="font-sarabun">
           <p className="text-xs text-zinc-500 m-0 p-0 font-normal">
             {t("hello")}
@@ -62,25 +63,40 @@ export default function UserDropDown({ initialData }: InitialDataProps) {
               </DropdownMenuLabel>
               <DropdownMenuSeparator className="bg-zinc-100" />
 
+              {/* Profile Settings */}
               <Link href={"/profile"}>
                 <DropdownMenuItem className="cursor-pointer">
                   <UserRound />
                   {t("my-profile")}
                 </DropdownMenuItem>
               </Link>
+
+              {/* User Adresses */}
               <DropdownMenuItem>
-                <MapPinHouse />
+                <MapPinHouse className="cursor-pointer" />
                 {t("addresses")}
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <ScrollText /> {t("orders")}
-              </DropdownMenuItem>
+
+              {/* User Orders */}
+              <Link href={"/allOrders"}>
+                <DropdownMenuItem className="cursor-pointer">
+                  <ScrollText /> {t("orders")}
+                </DropdownMenuItem>
+              </Link>
             </DropdownMenuGroup>
             <DropdownMenuSeparator className="bg-zinc-100" />
-            <DropdownMenuItem>
-              <Settings /> {t("dashboard")}
-            </DropdownMenuItem>
-            <DropdownMenuSeparator className="bg-zinc-100" />
+
+            {/* Dashboard */}
+            {userData.user.role != "user" && (
+              <>
+                <Link href={"/dashboard"}>
+                  <DropdownMenuItem className="cursor-pointer">
+                    <Settings /> {t("dashboard")}
+                  </DropdownMenuItem>
+                </Link>
+                <DropdownMenuSeparator className="bg-zinc-100" />
+              </>
+            )}
 
             {/* separated button for reusablility */}
             <LogOutButton />

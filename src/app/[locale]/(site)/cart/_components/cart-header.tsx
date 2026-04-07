@@ -22,8 +22,8 @@ export default function CartHeader({
   const clearCart = useClearCart(!!session?.user);
 
   return (
-    <div className="flex justify-between items-center pb-5 max-w-[782px] w-full">
-      <h2 className="font-bold text-5xl text-zinc-800 dark:text-softPink-200">
+    <div className="flex justify-between items-center pb-5 w-full">
+      <h2 className="font-bold text-2xl sm:text-4xl lg:text-5xl text-zinc-800 dark:text-softPink-200">
         {t("cart-header")}{" "}
         <span className="font-medium text-base text-zinc-400">
           {cartLength} {t("products-count")}

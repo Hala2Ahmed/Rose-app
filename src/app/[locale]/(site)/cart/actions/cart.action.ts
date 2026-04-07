@@ -1,5 +1,6 @@
 "use server";
 
+import { JSON_HEADER } from "@/lib/constants/api.constance";
 import type { CartResponse } from "@/lib/types/cart";
 import getToken from "@/lib/utils/manage-token";
 
@@ -14,7 +15,7 @@ export async function addToCartAction(productId: string, quantity: number) {
   const res = await fetch(`${process.env.API_URL}/cart`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      ...JSON_HEADER,
       Authorization: `Bearer ${token.accessToken}`,
     },
     body: JSON.stringify({ product: productId, quantity }),

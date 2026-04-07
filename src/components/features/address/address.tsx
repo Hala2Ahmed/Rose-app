@@ -95,7 +95,7 @@ export default function Address({ address, setOperationStep, setAddressId }: Add
                 {/* Delete address */}
                 <DeleteAddressDialog
                     onConfirm={confirmDeleteAddress}
-                    confirmMessage={t("confirm-delete")}
+                    category={t("address")}
                     isPending={isPending}
                     open={open}
                     setOpen={setOpen}

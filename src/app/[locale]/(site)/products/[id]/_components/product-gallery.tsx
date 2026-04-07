@@ -13,18 +13,18 @@ export default function ProductGallery({
   const [active, setActive] = useState(imgCover);
 
   return (
-    <div className="grid gap-2.5 max-h-[32.6875rem]">
+    <div className="grid gap-2.5 w-full max-h-[32.6875rem]">
       {/* Main Image */}
       <Image
         src={active}
         alt="Product image"
         width={605}
         height={402}
-        className="object-cover transition duration-300 rounded-xl max-w-[37.8125rem] max-h-[25.125rem]"
+        className="object-cover transition duration-300 rounded-xl w-full max-w-[37.8125rem] max-h-[25.125rem]"
       />
 
       {/* Thumbnails */}
-      <div className="grid grid-cols-6 gap-x-2.5">
+      <div className="grid grid-cols-4 sm:grid-cols-6 gap-x-2 sm:gap-x-2.5">
         {images.map((img, i) => (
           <button
             key={"thumbnail-" + _id + img}
@@ -42,7 +42,7 @@ export default function ProductGallery({
               alt={"Thumbnail product image"}
               width={91}
               height={111}
-              className="object-cover rounded-md max-w-[5.6875rem] max-h-[6.9375rem]"
+              className="object-cover rounded-md w-full max-w-[5.6875rem] max-h-[6.9375rem]"
             />
           </button>
         ))}

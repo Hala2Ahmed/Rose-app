@@ -26,10 +26,21 @@
     "confirm": "Confirm",
     "cancel": "Cancel",
     "logout": "Log Out",
+    "error-heading": "Oops, something went wrong!",
+    "error-paragraph": "Something unexpected happened, please refresh the page or try again shortly.",
+    "forbidden-heading": "You are not authorized to access this page.",
+    "forbidden-paragraph": "If you think this is wrong, please contact the support.",
+    "forbidden-link": "Go to Homepage",
+    "notFound-heading": "This page does not exist.",
+    "notFound-paragraph": "We couldn’t find the page your are looking for, please make sure you are in the right path.",
+    "confirm-message": "Are you sure you want to delete this {item}?",
+
     "delete": "Delete",
     "edit": "Edit",
     "deleteing": "Deleting ..",
-    "search": "Search ..."
+    "occasion-success-delete": "Occasion deleted successfully",
+    "search": "Search ...",
+    "emptyState": "No {title} Found"
   },
   "about": {
     "title": "About",
@@ -237,6 +248,50 @@
       "price-to-greater-than-from": "Price 'to' must be greater than price 'from'"
     }
   },
+  "cart": {
+    "summary": {
+      "title": "Summary",
+      "coupon-placeholder": "Coupon Code",
+      "apply": "Apply Coupon",
+      "no-coupons": "No coupons applied",
+      "total": "Total",
+      "checkout": "Checkout",
+      "currency": "EGP"
+    },
+    "address": {
+      "title": "Shipping Address",
+      "add": "Add New Address",
+      "next": "Next",
+      "error": "Failed to load addresses",
+      "empty": "No saved addresses found"
+    },
+    "payment": {
+      "title": "Payment Method",
+      "back": "Back",
+      "checkout": "Checkout",
+      "methods": {
+        "cash": {
+          "title": "Cash on Delivery",
+          "description": "You'll pay in cash when your order is delivered."
+        },
+        "card": {
+          "title": "Credit Card",
+          "description": "You'll be securely redirected to Stripe to complete your payment."
+        }
+      }
+    },
+    "cart-header": "Cart",
+    "products-count": "products",
+    "clean-cart-btn": "Clean Cart",
+    "clean-cart-btn-loading": "Cleaning...",
+    "cart-empty": "Your cart is empty, wanna try shopping?",
+    "remove-btn": "Remove",
+    "continue-shopping-btn": "Continue Shopping",
+    "clear-cart-successfully": "Cart cleared successfully",
+    "product-removed-successfully": "Product removed from cart successfully",
+    "quantity-updated-successfully": "Quantity updated successfully",
+    "product-added-successfully": "Product added to cart successfully"
+  },
   "order": {
     "order": "Order",
     "orders": "Orders",
@@ -274,22 +329,105 @@
     "dashboard": "Dashboard",
     "hello": "Hello"
   },
-  "cart": {
-    "cart-header": "Cart",
-    "products-count": "products",
-    "clean-cart-btn": "Clean Cart",
-    "clean-cart-btn-loading": "Cleaning...",
-    "cart-empty": "Your cart is empty, wanna try shopping?",
-    "remove-btn": "Remove",
-    "continue-shopping-btn": "Continue Shopping",
-    "clear-cart-successfully": "Cart cleared successfully",
-    "product-removed-successfully": "Product removed from cart successfully",
-    "quantity-updated-successfully": "Quantity updated successfully",
-    "product-added-successfully": "Product added to cart successfully"
-  },
+
   "product-may-like": {
     "title": "Products You May Like"
   },
+  "dashboard": {
+    "top_selling": "Top Selling Products",
+    "sales": "{count, plural, =0 {{formattedCount} Sales} one {{formattedCount} Sale} other {{formattedCount} Sales}}",
+    "price": "({value, number, ::currency/EGP})",
+    "low_stock": "Low Stock Products",
+    "products": "Products",
+    "overview": {
+      "total-products": "Total Products",
+      "total-orders": "Total Orders",
+      "total-categories": "Total Categories",
+      "total-revenue": "Total Revenue",
+      "products": "{count, plural, =0 {{formattedCount} product} one {{formattedCount} product} other {{formattedCount} products}}",
+      "all-categories": "All Categories"
+    },
+    "occasions": {
+      "product": "{count, plural, =0 {{formattedCount} product} one {{formattedCount} product} other {{formattedCount} products}}",
+      "name": "Name",
+      "products": "Products",
+      "all-occasions": "All Occasions",
+      "add-new": "Add new occasion",
+      "search": "Search...",
+      "delete-success": "occasion has been deleted !",
+      "name-label": "Name",
+      "occasion-name": "Enter occasion name",
+      "occasion-image-label": "Occasion image",
+      "validations": {
+        "occasions-min": "occasion name must exceed 3 charachters",
+        "occasions-max": "occasion name cannot exceed 20 charachters",
+        "occasions-required": "please enter a valid occasion name",
+        "photo-required": "please enter a photo",
+        "file-too-large": "file is too large",
+        "invalid-file-type": "Only .jpg, .png, and .gif files are allowed"
+      },
+      "add-success": "occasion has been added !",
+      "upload": "Upload File",
+      "add-occasions": "Add Occasion",
+      "adding": "Adding occasion ..",
+      "edit-occasions": "Update Occasion",
+      "editing": "Updating occasion ..",
+      "edit-success": "occasion has been edited !",
+      "occasion": "Occasion",
+      "update-occasion": "Update Occasion:",
+      "view-image": "View Occasion Image"
+    },
+    "products-form": {
+      "add-product-header": "Add a New Product",
+      "product-added-successfully": "Product added successfully",
+      "update-product-header": "Update Product",
+      "product-updated-successfully": "Product updated successfully",
+      "title-field": "Title",
+      "title-field-placeholder": "Enter product title",
+      "description-field": "Description",
+      "description-field-placeholder": "Enter product description",
+      "price-field": "Price",
+      "price-field-placeholder": "Example: 5000",
+      "discount-field": "Discount",
+      "discount-field-placeholder": "Example: 5",
+      "price-after-discount-field": "Price after discount",
+      "price-after-discount-field-placeholder": "Example: 5",
+      "quantity-field": "Quantity",
+      "quantity-field-placeholder": "Enter product quantity",
+      "product-cover-field": "Product Cover",
+      "product-gallery-field": "Product Gallery",
+      "category-field": "Category",
+      "select-field": "Select an option",
+      "occasion-field": "Occasion",
+      "view-product-cover-btn": "View product cover",
+      "view-product-gallery-btn": "View product gallery",
+      "add-product-btn": "Add Product",
+      "update-product-btn": "Update Product",
+      "product-title-required": "Product title is required",
+      "title-min-length": "Title must be at least 2 characters",
+      "title-max-length": "Title must be less than 100 characters",
+      "product-description-required": "Product description is required",
+      "description-min-length": "Description must be at least 10 characters",
+      "description-max-length": "Description must be less than 2000 characters",
+      "price-invalid": "Please enter a valid price",
+      "price-required": "Product price is required",
+      "price-too-high": "Price is too high",
+      "discount-negative": "Discount cannot be negative",
+      "discount-max": "Discount cannot exceed 100%",
+      "quantity-integer": "Quantity must be a whole number",
+      "quantity-negative": "Quantity cannot be negative",
+      "quantity-required": "Product quantity is required",
+      "quantity-too-high": "Quantity is too high",
+      "category-required": "Please select a category for the product",
+      "occasion-required": "Please select a occasion for the product",
+      "product-cover-required": "Product cover is required",
+      "file-size-limit": "File size must be less than 5MB",
+      "invalid-file-type": "Only .jpg, .jpeg, .png and .webp formats are supported",
+      "product-gallery-required": "Product gallery images are required",
+      "each-image-size-limit": "Each image must be less than 5MB"
+    }
+  },
+
   "address": {
     "add-address-title": "Add a New Address",
     "update-address-title": "Update Address Info",
@@ -310,7 +448,7 @@
     "phone-placeholder": "Phone number",
     "update": "Update",
     "add": "Add",
-    "confirm-delete": "Are you sure you want to delete this address?",
+    "address": "address",
     "next": "next",
     "street_min": "Street must be at least 2 characters long.",
     "phone_invalid": "Please enter a valid phone number.",
@@ -334,5 +472,13 @@
       "add-new": "Add a new product",
       "title": "All Products"
     }
+  "dashboard-layout": {
+    "preview": "Preview Website",
+    "overview": "Overview",
+    "categories": "Categories",
+    "occasions": "Occasions",
+    "products": "Products",
+    "account": "Account",
+    "logout": "Log out"
   }
 }
