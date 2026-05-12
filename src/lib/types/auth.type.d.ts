@@ -4,6 +4,7 @@ import {
   emailStepSchema,
   resetPasswordStepSchema,
 } from "../schemes/auth.schema";
+import { FORGOT_PASSWORD_STEPS } from "../constants/auth.constant";
 
 declare module "next-auth" {
   interface Session {
@@ -74,6 +75,9 @@ export type RegisterResponse = {
     createdAt: string;
   };
 };
+
+export type ForgotPasswordSteps =
+  (typeof FORGOT_PASSWORD_STEPS)[keyof typeof FORGOT_PASSWORD_STEPS];
 
 // Form fields for the email step
 export type EmailStepFields = z.infer<ReturnType<typeof emailStepSchema>>;

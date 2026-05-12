@@ -7,10 +7,9 @@ import { cn } from "@/lib/utils/tailwind-merge";
 
 type OTPStatus = "default" | "error" | "disabled";
 
-interface InputOTPProps
-  extends React.ComponentPropsWithoutRef<typeof OTPInput> {
+type InputOTPProps = React.ComponentPropsWithoutRef<typeof OTPInput> & {
   status?: OTPStatus;
-}
+};
 
 const InputOTP = React.forwardRef<
   React.ElementRef<typeof OTPInput>,
@@ -32,12 +31,12 @@ const InputOTP = React.forwardRef<
       containerClassName={cn(
         "flex items-center justify-center gap-2",
         status === "disabled" && "opacity-50 cursor-not-allowed",
-        containerClassName
+        containerClassName,
       )}
       className={cn(
         "flex h-11 w-full bg-white px-3 py-2 border rounded-xl placeholder:text-zinc-400 focus:outline-none focus:border focus:border-maroon-600 dark:focus:border-softpink-400",
         statusStyles[status],
-        className
+        className,
       )}
       {...props}
     />
@@ -83,7 +82,7 @@ const InputOTPSlot = React.forwardRef<
           status !== "disabled" &&
           "z-10 ring-1 ring-maroon-600 dark:ring-softpink-400",
         status === "disabled" && "opacity-50 cursor-not-allowed",
-        className
+        className,
       )}
       {...props}
     >

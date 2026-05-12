@@ -127,6 +127,12 @@
         "otp-toast": "A new OTP code has been sent"
       },
       "reset-password-step": {
+        "forgot-password-title": "Forgot Password?",
+        "forgotPassword-description": "Worry not, we’ll send you instructions to help you reset it.",
+        "otp-title": "Enter the OTP Code",
+        "otp-description": "We have sent a 6-digit code to <span>{email}</span> <button>Edit</button>",
+        "new-password-title": "Create a new password",
+        "new-password-description": "Set a strong password to secure your account.",
         "password-required": "Your password is required",
         "password-password-pattern": "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character",
         "re-password-mismatch": "Password and confirm password must match",
