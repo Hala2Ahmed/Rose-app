@@ -64,12 +64,6 @@ export default function LoginForm() {
         </Link>
       </div>
 
-      {/* remember me */}
-      <div className="flex items-center gap-2">
-        <input type="checkbox" name="remember" />
-        <Label className="text-zinc-800">{t("remember")}</Label>
-      </div>
-
       <Button type="submit">{t("Login")}</Button>
     </form>
   );

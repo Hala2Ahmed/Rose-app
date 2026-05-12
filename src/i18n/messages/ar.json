@@ -126,6 +126,12 @@
         "otp-toast": "تم إرسال رمز التحقق الجديد بنجاح"
       },
       "reset-password-step": {
+        "forgotPassword-title": "هل نسيت كلمة المرور؟",
+        "forgotPassword-description": "لا تقلق، سنرسل لك التعليمات لمساعدتك على إعادة تعيين كلمة المرور.",
+        "otp-title": "أدخل رمز التحقق",
+        "otp-description": "لقد أرسلنا رمز تحقق مكوّن من 6 أرقام إلى <span>{email}</span> <button>تعديل</button>",
+        "newPassword-title": "إنشاء كلمة مرور جديدة",
+        "newPassword-description": "قم بتعيين كلمة مرور قوية لحماية حسابك.",
         "password-required": "كلمة المرور الخاصة بك مطلوبة",
         "password-password-pattern": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، حرف واحد كبير وحرف صغير ورقم واحد وحرف خاص واحد",
         "re-password-mismatch": "يجب أن تتطابق كلمة المرور وتأكيد كلمة المرور",
