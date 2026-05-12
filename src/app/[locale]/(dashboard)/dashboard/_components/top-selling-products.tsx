@@ -3,8 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils/tailwind-merge";
 import TopSellingProductsSkeleton from "@/components/skeletons/top-selling-products-skeleton";
 import { useFormatter, useTranslations } from "next-intl";
-import { useProducts } from "../../../../../hooks/useProducts";
 import { Product } from "@/lib/types/products";
+import { useProducts } from "@/hooks/use-products";
 
 type TopSellingProductUI = {
   id: string;

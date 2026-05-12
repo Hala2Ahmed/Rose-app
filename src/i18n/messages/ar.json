@@ -429,7 +429,29 @@
       "invalid-file-type": "يُسمح فقط بصيغ .jpgو .jpeg و .pngو .webp",
       "product-gallery-required": "صور معرض المنتج مطلوبة",
       "each-image-size-limit": "يجب ألا يتجاوز حجم كل صورة 5 ميجابايت"
-    }
+    },
+        "products-table": {
+      "name": "الاسم",
+      "price": "السعر",
+      "stock": "المخزون",
+      "sales": "المبيعات",
+      "ratings": "التقييمات",
+      "price-value": "{formattedValue} ج.م",
+      "stock-value": "{count, plural, =0 {{formattedCount} عنصر} one {{formattedCount} عنصر} other {{formattedCount} عناصر}}",
+      "sales-value": "{count, plural, =0 {{formattedCount} مبيعة} one {{formattedCount} مبيعة} other {{formattedCount} مبيعات}}",
+      "rating-value": "{avg}/5 ({formattedCount})",
+      "add-new": "إضافة منتج جديد",
+      "title": "جميع المنتجات"
+    },
+  "dashboard-layout": {
+    "preview": "عرض الموقع",
+    "overview": "نظرة عامة",
+    "categories": "التصنيفات",
+    "occasions": "المناسبات",
+    "products": "المنتجات",
+    "account": "الحساب",
+    "logout": "تسجيل خروج"
+  }
   },
   "address": {
     "add-address-title": "إضافة عنوان جديد",
@@ -460,28 +482,5 @@
     "username_max": "يجب ألا يتجاوز اسم المستخدم 20 حرفًا.",
     "lat_invalid": "يرجى اختيار موقع صالح من الخريطة.",
     "long_invalid": "يرجى اختيار موقع صالح من الخريطة."
-  },
-  "dashboard": {
-    "products-table": {
-      "name": "الاسم",
-      "price": "السعر",
-      "stock": "المخزون",
-      "sales": "المبيعات",
-      "ratings": "التقييمات",
-      "price-value": "{formattedValue} ج.م",
-      "stock-value": "{count, plural, =0 {{formattedCount} عنصر} one {{formattedCount} عنصر} other {{formattedCount} عناصر}}",
-      "sales-value": "{count, plural, =0 {{formattedCount} مبيعة} one {{formattedCount} مبيعة} other {{formattedCount} مبيعات}}",
-      "rating-value": "{avg}/5 ({formattedCount})",
-      "add-new": "إضافة منتج جديد",
-      "title": "جميع المنتجات"
-    }
-  "dashboard-layout": {
-    "preview": "عرض الموقع",
-    "overview": "نظرة عامة",
-    "categories": "التصنيفات",
-    "occasions": "المناسبات",
-    "products": "المنتجات",
-    "account": "الحساب",
-    "logout": "تسجيل خروج"
   }
 }

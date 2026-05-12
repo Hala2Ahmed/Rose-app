@@ -21,7 +21,7 @@ export default function SidebarContentMenu() {
   const pathName = usePathname();
 
   //Translation
-  const t = useTranslations("dashboard-layout");
+  const t = useTranslations("dashboard.dashboard-layout");
 
   //variables
   const menus = [

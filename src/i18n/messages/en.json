@@ -431,9 +431,30 @@
       "invalid-file-type": "Only .jpg, .jpeg, .png and .webp formats are supported",
       "product-gallery-required": "Product gallery images are required",
       "each-image-size-limit": "Each image must be less than 5MB"
+    },
+    "products-table": {
+      "name": "Name",
+      "price": "Price",
+      "stock": "Stock",
+      "sales": "Sales",
+      "ratings": "Ratings",
+      "price-value": "{formattedValue} EGP",
+      "stock-value": "{count, plural, =0 {{formattedCount} item} one {{formattedCount} item} other {{formattedCount} items}}",
+      "sales-value": "{count, plural, =0 {{formattedCount} sale} one {{formattedCount} sale} other {{formattedCount} sales}}",
+      "rating-value": "{avg}/5 ({formattedCount})",
+      "add-new": "Add a new product",
+      "title": "All Products"
+    },
+    "dashboard-layout": {
+      "preview": "Preview Website",
+      "overview": "Overview",
+      "categories": "Categories",
+      "occasions": "Occasions",
+      "products": "Products",
+      "account": "Account",
+      "logout": "Log out"
     }
   },
-
   "address": {
     "add-address-title": "Add a New Address",
     "update-address-title": "Update Address Info",
@@ -463,28 +484,5 @@
     "username_max": "Username must not exceed 20 characters.",
     "lat_invalid": "Please select a valid location on the map.",
     "long_invalid": "Please select a valid location on the map."
-  },
-  "dashboard": {
-    "products-table": {
-      "name": "Name",
-      "price": "Price",
-      "stock": "Stock",
-      "sales": "Sales",
-      "ratings": "Ratings",
-      "price-value": "{formattedValue} EGP",
-      "stock-value": "{count, plural, =0 {{formattedCount} item} one {{formattedCount} item} other {{formattedCount} items}}",
-      "sales-value": "{count, plural, =0 {{formattedCount} sale} one {{formattedCount} sale} other {{formattedCount} sales}}",
-      "rating-value": "{avg}/5 ({formattedCount})",
-      "add-new": "Add a new product",
-      "title": "All Products"
-    }
-  "dashboard-layout": {
-    "preview": "Preview Website",
-    "overview": "Overview",
-    "categories": "Categories",
-    "occasions": "Occasions",
-    "products": "Products",
-    "account": "Account",
-    "logout": "Log out"
   }
 }

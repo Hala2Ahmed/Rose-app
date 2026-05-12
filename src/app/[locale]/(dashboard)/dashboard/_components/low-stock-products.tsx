@@ -1,10 +1,10 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils/tailwind-merge";
-import { useProducts } from "../../../../../hooks/useProducts";
 import { useTranslations } from "next-intl";
 import { Product } from "@/lib/types/products";
 import TopSellingProductsSkeleton from "@/components/skeletons/top-selling-products-skeleton";
+import { useProducts } from "@/hooks/use-products";
 
 type ProductStockUI = {
   id: string;
