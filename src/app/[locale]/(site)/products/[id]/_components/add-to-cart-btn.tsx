@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { HeartMinus, HeartPlus, ShoppingCart } from "lucide-react";
 import { ProductDetails } from "@/lib/types/product-details";
 import { useAddToCart } from "@/hooks/use-cart";
-import { useWishlist } from "@/hooks/useWishlist";
+import { useWishlist } from "@/hooks/use-wishlist";
 
 export default function AddToCartButton({
   product,
