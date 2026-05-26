@@ -24,7 +24,7 @@ const tajawal = Tajawal({
 });
 
 const edwardianScript = localFont({
-  src: "../fonts/edwardianscriptitc.ttf", // adjust path as needed
+  src: "../../fonts/edwardianscriptitc.ttf", // adjust path as needed
   variable: "--font-edwardian",
   display: "swap",
 });
