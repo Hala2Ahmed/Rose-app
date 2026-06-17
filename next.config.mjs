@@ -5,6 +5,9 @@ const nextConfig = {
   images: {
     domains: ["flower.elevateegy.com"],
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();

@@ -1,7 +1,7 @@
 "use server";
 
 import { AddReview, AddReviewFields } from "@/lib/types/reviews";
-import { getToken } from "@/lib/utils/manage-token";
+import getToken from "@/lib/utils/manage-token";
 import { revalidateTag } from "next/cache";
 
 export async function AddReviewAction(fields: {
