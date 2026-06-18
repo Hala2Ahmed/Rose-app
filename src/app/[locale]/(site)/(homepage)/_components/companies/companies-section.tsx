@@ -12,7 +12,7 @@ export default function Companies() {
       {/* Section Title */}
       <h2 className="text-4xl sm:text-3xl lg:text-4xl text-maroon-700 font-bold dark:text-softPink-200">
         {t.rich("header", {
-          span: (chunk) => (
+          span: (chunk: React.ReactNode) => (
             <span className="text-softPink-500 dark:text-maroon-400">
               {chunk}
             </span>

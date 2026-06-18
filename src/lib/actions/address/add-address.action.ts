@@ -2,7 +2,7 @@
 
 import { getServerSession } from "next-auth";
 import type { AddAddress, AddressFields } from "../../types/addresses";
-import { getToken } from "../../utils/manage-token";
+import getToken from "../../utils/manage-token";
 import { authOptions } from "../../../auth";
 
 export async function addAddressAction(fields: AddressFields) {

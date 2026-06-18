@@ -1,7 +1,7 @@
 "use client";
 
+import { AppPagination } from "@/components/ui/pagination";
 import { useState } from "react";
-import { AppPagination } from "@/components/ui/Pagination";
 
 export default function HomePagination() {
   // Example state for current page

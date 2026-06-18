@@ -1,6 +1,6 @@
 "use server";
 
-import { getToken } from "../../utils/manage-token";
+import getToken from "../../utils/manage-token";
 
 export async function deleteAddressAction(id: string) {
     const token = await getToken();

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AppPagination } from "@/components/ui/Pagination";
+import { AppPagination } from "../ui/pagination";
 
 export default function HomePagination() {
   const [page, setPage] = useState(5); 
